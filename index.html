@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inside Sales Academy — Rappi</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --rappi:#FF441F;--rappi-d:#CC3518;--rappi-l:#FF6B47;--rappi-p:#FFF0EC;
+  --bg:#F8FAFC;--sb:#0F172A;--sbt:#94A3B8;--card:#fff;--bdr:#E2E8F0;
+  --tx:#1E293B;--txm:#64748B;--gold:#F59E0B;--ok:#10B981;--warn:#F59E0B;
+}
+body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--tx);height:100vh;overflow:hidden;}
+.app{display:flex;height:100vh;overflow:hidden;}
+
+.sb{width:210px;background:var(--sb);display:flex;flex-direction:column;flex-shrink:0;transition:width .25s;position:relative;z-index:10;}
+.sb.col{width:58px;}
+.sb-logo{padding:16px 14px;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;gap:9px;cursor:pointer;}
+.logo-ic{width:32px;height:32px;background:var(--rappi);border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px;}
+.logo-tx{color:#fff;font-weight:800;font-size:14px;white-space:nowrap;}
+.logo-tx span{color:var(--rappi);}
+.sb-nav{flex:1;padding:10px 7px;display:flex;flex-direction:column;gap:2px;overflow:hidden;}
+.ni{display:flex;align-items:center;gap:10px;padding:9px 11px;border-radius:9px;cursor:pointer;color:var(--sbt);font-size:12px;font-weight:500;white-space:nowrap;overflow:hidden;transition:all .15s;}
+.ni:hover{background:rgba(255,255,255,.06);color:#fff;}
+.ni.act{background:rgba(255,68,31,.15);color:var(--rappi);}
+.ni .ic{font-size:16px;flex-shrink:0;width:18px;text-align:center;}
+.nb{background:var(--rappi);color:#fff;font-size:9px;font-weight:700;padding:1px 5px;border-radius:10px;margin-left:auto;}
+.sb-bot{padding:10px 7px;border-top:1px solid rgba(255,255,255,.06);}
+.max-b{display:flex;align-items:center;gap:9px;padding:9px 11px;background:rgba(255,68,31,.1);border:1px solid rgba(255,68,31,.2);border-radius:9px;cursor:pointer;color:var(--rappi);font-size:11px;font-weight:600;white-space:nowrap;overflow:hidden;transition:all .2s;}
+.max-b:hover{background:rgba(255,68,31,.2);}
+.col-btn{position:absolute;top:50%;right:-11px;transform:translateY(-50%);width:22px;height:22px;background:var(--sb);border:1px solid rgba(255,255,255,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#fff;font-size:10px;z-index:11;}
+
+.main{flex:1;display:flex;flex-direction:column;overflow:hidden;}
+.hdr{background:#fff;border-bottom:1px solid var(--bdr);padding:10px 18px;display:flex;align-items:center;gap:12px;flex-shrink:0;}
+.hdr-l{flex:1;}
+.hdr-l h2{font-size:15px;font-weight:700;}
+.hdr-l p{font-size:11px;color:var(--txm);}
+.hdr-r{display:flex;align-items:center;gap:10px;}
+.pts-ctr{background:var(--sb);border-radius:18px;padding:5px 12px;display:flex;align-items:center;gap:7px;cursor:pointer;}
+.pts-v{color:#fff;font-weight:700;font-size:13px;}
+.pts-l{color:#64748B;font-size:9px;font-weight:500;}
+.lvl-b{display:flex;align-items:center;gap:5px;background:var(--rappi-p);border:1px solid rgba(255,68,31,.2);border-radius:18px;padding:4px 10px;}
+.lvl-n{color:var(--rappi);font-size:11px;font-weight:700;}
+.max-av{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--rappi),#FF8C5A);border:2px solid var(--rappi);display:flex;align-items:center;justify-content:center;font-size:17px;cursor:pointer;transition:transform .2s;}
+.max-av:hover{transform:scale(1.08);}
+.nb-btn{width:32px;height:32px;border-radius:9px;background:var(--bg);border:1px solid var(--bdr);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:14px;position:relative;}
+.nb-dot{width:7px;height:7px;background:var(--rappi);border-radius:50%;position:absolute;top:5px;right:5px;border:1.5px solid #fff;}
+
+.cnt{flex:1;overflow-y:auto;padding:18px;}
+.cnt::-webkit-scrollbar{width:3px;}
+.cnt::-webkit-scrollbar-thumb{background:var(--bdr);border-radius:3px;}
+.scr{display:none;animation:fdIn .25s ease;}
+.scr.act{display:block;}
+@keyframes fdIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+.login{position:absolute;inset:0;background:var(--sb);display:flex;align-items:center;justify-content:center;z-index:100;}
+.lc{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:36px;width:360px;text-align:center;}
+.lc-max{font-size:44px;margin-bottom:6px;}
+.lc-logo{width:52px;height:52px;background:var(--rappi);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto 16px;}
+.lc-title{color:#fff;font-size:20px;font-weight:800;margin-bottom:3px;}
+.lc-title span{color:var(--rappi);}
+.lc-sub{color:var(--sbt);font-size:12px;margin-bottom:24px;}
+.lc-err{color:#F87171;font-size:11px;margin-bottom:7px;display:none;}
+.lc-in{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:9px;padding:11px 14px;color:#fff;font-family:'Poppins',sans-serif;font-size:12px;outline:none;transition:border .2s;margin-bottom:10px;}
+.lc-in:focus{border-color:var(--rappi);}
+.lc-in::placeholder{color:rgba(255,255,255,.3);}
+.lc-btn{width:100%;background:var(--rappi);border:none;border-radius:9px;padding:12px;color:#fff;font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;margin-bottom:12px;}
+.lc-btn:hover{background:var(--rappi-d);}
+.lc-hint{color:rgba(255,255,255,.25);font-size:10px;}
+.role-hint{color:rgba(255,255,255,.4);font-size:10px;margin-top:8px;padding:8px;background:rgba(255,255,255,.04);border-radius:8px;}
+
+.card{background:#fff;border:1px solid var(--bdr);border-radius:13px;padding:16px;}
+.sec-tit{font-size:14px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:7px;}
+.g2{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+
+.wb{background:linear-gradient(135deg,var(--sb) 0%,#1E293B 100%);border-radius:14px;padding:22px;margin-bottom:16px;position:relative;overflow:hidden;}
+.wb::before{content:'';position:absolute;right:-20px;top:-20px;width:160px;height:160px;background:rgba(255,68,31,.08);border-radius:50%;}
+.wb-gt{color:#94A3B8;font-size:12px;font-weight:500;margin-bottom:3px;}
+.wb-nm{color:#fff;font-size:20px;font-weight:800;margin-bottom:6px;}
+.wb-nm span{color:var(--rappi);}
+.wb-msg{color:#64748B;font-size:12px;margin-bottom:14px;}
+.wb-cta{background:var(--rappi);color:#fff;border:none;border-radius:9px;padding:9px 18px;font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s;}
+.wb-cta:hover{background:var(--rappi-d);}
+.wb-max{position:absolute;right:16px;top:50%;transform:translateY(-50%);font-size:42px;}
+.stat-c{background:#fff;border:1px solid var(--bdr);border-radius:11px;padding:13px;text-align:center;}
+.sv{font-size:20px;font-weight:800;}
+.sv.o{color:var(--rappi);}
+.sl{font-size:10px;color:var(--txm);font-weight:500;margin-top:1px;}
+.si{font-size:18px;margin-bottom:3px;}
+.streak-b{background:#fff;border:1px solid var(--bdr);border-radius:11px;padding:12px 14px;margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+.streak-days{display:flex;gap:5px;}
+.dd{width:26px;height:26px;border-radius:7px;background:var(--bg);border:1px solid var(--bdr);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;color:var(--txm);}
+.dd.done{background:var(--rappi);border-color:var(--rappi);color:#fff;}
+.dd.today{background:var(--rappi-p);border-color:var(--rappi);color:var(--rappi);}
+.qc{background:#fff;border:1px solid var(--bdr);border-radius:11px;padding:12px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:10px;}
+.qc:hover{border-color:var(--rappi);box-shadow:0 0 0 3px rgba(255,68,31,.05);}
+
+.fb{display:flex;gap:7px;margin-bottom:14px;overflow-x:auto;padding-bottom:3px;}
+.fb::-webkit-scrollbar{height:2px;}
+.fb-btn{background:#fff;border:1px solid var(--bdr);border-radius:18px;padding:5px 12px;font-family:'Poppins',sans-serif;font-size:11px;font-weight:500;cursor:pointer;white-space:nowrap;transition:all .2s;color:var(--txm);}
+.fb-btn.act{background:var(--rappi);border-color:var(--rappi);color:#fff;}
+.mg{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+.mc{background:#fff;border:1px solid var(--bdr);border-radius:13px;overflow:hidden;cursor:pointer;transition:all .2s;position:relative;}
+.mc:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.07);}
+.mc.lk{opacity:.55;cursor:not-allowed;}
+.mc.done{border-color:var(--ok);}
+.mt{height:80px;display:flex;align-items:center;justify-content:center;font-size:34px;position:relative;}
+.mt.pc{background:linear-gradient(135deg,#1E3A5F,#2D5A8E);}
+.mt.ci{background:linear-gradient(135deg,#1A3C2B,#2D6147);}
+.mt.ob{background:linear-gradient(135deg,#3D1A1A,#7C2D2D);}
+.mt.ng{background:linear-gradient(135deg,#3D2A0A,#7C5A1A);}
+.mt.pr{background:linear-gradient(135deg,#1A1A3D,#2D2D7C);}
+.mt.ms{background:linear-gradient(135deg,#2A1A3D,#5A2D7C);}
+.mt.pv{background:linear-gradient(135deg,#0A2D2D,#1A5A5A);}
+.mt.co{background:linear-gradient(135deg,#2D1A0A,#7C4A1A);}
+.mt.vt{background:linear-gradient(135deg,#1A2D0A,#4A7C1A);}
+.m-lk{position:absolute;inset:0;background:rgba(15,23,42,.7);display:flex;align-items:center;justify-content:center;font-size:24px;}
+.m-tg{position:absolute;top:7px;left:7px;font-size:9px;font-weight:700;padding:2px 7px;border-radius:10px;}
+.mb{padding:10px 11px;}
+.m-tit{font-size:12px;font-weight:700;margin-bottom:3px;line-height:1.3;}
+.m-met{font-size:10px;color:var(--txm);margin-bottom:7px;}
+.m-prog{height:3px;background:var(--bdr);border-radius:2px;}
+.m-pfil{height:100%;background:var(--rappi);border-radius:2px;}
+.m-ft{display:flex;justify-content:space-between;align-items:center;margin-top:5px;}
+.m-pts{font-size:10px;font-weight:600;color:var(--rappi);}
+.m-dur{font-size:10px;color:var(--txm);}
+
+.ls{width:100%;background:#fff;border:1px solid var(--bdr);border-radius:9px;padding:9px 12px;font-family:'Poppins',sans-serif;font-size:12px;outline:none;margin-bottom:12px;color:var(--tx);}
+.ls:focus{border-color:var(--rappi);}
+.ll{display:flex;flex-direction:column;gap:7px;}
+.li{background:#fff;border:1px solid var(--bdr);border-radius:11px;padding:12px 14px;display:flex;align-items:center;gap:10px;cursor:pointer;transition:all .2s;}
+.li:hover{border-color:var(--rappi);background:var(--rappi-p);}
+.li-ic{font-size:20px;width:36px;height:36px;background:var(--bg);border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.li-tit{font-size:12px;font-weight:600;margin-bottom:2px;}
+.li-met{font-size:10px;color:var(--txm);display:flex;gap:7px;}
+.li-cat{font-size:9px;font-weight:700;padding:2px 7px;border-radius:10px;background:var(--rappi-p);color:var(--rappi);}
+
+.pod{display:flex;align-items:flex-end;justify-content:center;gap:8px;margin-bottom:16px;padding:0 16px;}
+.pi{text-align:center;flex:1;}
+.pav{border-radius:50%;margin:0 auto 5px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;color:#fff;}
+.p1 .pav{background:linear-gradient(135deg,#F59E0B,#D97706);width:48px;height:48px;border:3px solid #F59E0B;}
+.p2 .pav{background:linear-gradient(135deg,#94A3B8,#64748B);width:40px;height:40px;border:2px solid #94A3B8;}
+.p3 .pav{background:linear-gradient(135deg,#B45309,#92400E);width:40px;height:40px;border:2px solid #B45309;}
+.pn{font-size:10px;font-weight:600;margin-bottom:3px;}
+.pp{font-size:11px;font-weight:700;color:var(--rappi);}
+.pb{border-radius:7px 7px 0 0;margin:5px auto 0;}
+.p1 .pb{height:60px;width:52px;background:linear-gradient(180deg,#FEF3C7,#FDE68A);}
+.p2 .pb{height:42px;width:44px;background:linear-gradient(180deg,#F1F5F9,#E2E8F0);}
+.p3 .pb{height:28px;width:44px;background:linear-gradient(180deg,#FEF3C7,#FDE68A);opacity:.6;}
+.rl{display:flex;flex-direction:column;gap:5px;}
+.ri{background:#fff;border:1px solid var(--bdr);border-radius:9px;padding:9px 12px;display:flex;align-items:center;gap:10px;}
+.ri.me{border-color:var(--rappi);background:var(--rappi-p);}
+.r-num{font-size:12px;font-weight:700;color:var(--txm);width:20px;text-align:center;}
+.r-av{width:28px;height:28px;border-radius:50%;background:var(--sb);display:flex;align-items:center;justify-content:center;color:#fff;font-size:10px;font-weight:700;}
+.r-nm{font-size:12px;font-weight:600;}
+.r-info{font-size:10px;color:var(--txm);}
+
+.ph{background:linear-gradient(135deg,var(--sb),#1E293B);border-radius:14px;padding:20px;margin-bottom:14px;text-align:center;}
+.pav2{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--rappi),var(--rappi-l));display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800;color:#fff;margin:0 auto 10px;border:3px solid rgba(255,255,255,.2);}
+.p-nm{color:#fff;font-size:16px;font-weight:800;}
+.p-role{color:var(--sbt);font-size:11px;margin-top:3px;}
+.xb{margin-top:10px;}
+.xl{color:rgba(255,255,255,.4);font-size:10px;margin-bottom:3px;display:flex;justify-content:space-between;}
+.xbar{height:5px;background:rgba(255,255,255,.1);border-radius:3px;}
+.xfil{height:100%;background:var(--rappi);border-radius:3px;}
+.ach{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:14px;}
+.ac{background:#fff;border:1px solid var(--bdr);border-radius:11px;padding:11px;text-align:center;}
+.ac-i{font-size:22px;margin-bottom:3px;}
+.ac-n{font-size:10px;font-weight:600;}
+.ac-d{font-size:9px;color:var(--txm);}
+
+.det{position:absolute;inset:0;background:var(--bg);z-index:50;overflow-y:auto;display:none;}
+.det.open{display:block;animation:slideUp .25s ease;}
+@keyframes slideUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.dh{background:var(--sb);padding:18px;position:sticky;top:0;z-index:5;}
+.db-btn{color:rgba(255,255,255,.5);font-size:12px;cursor:pointer;margin-bottom:8px;display:flex;align-items:center;gap:5px;}
+.db-btn:hover{color:#fff;}
+.dt{color:#fff;font-size:16px;font-weight:800;}
+.dm{color:rgba(255,255,255,.4);font-size:11px;margin-top:3px;}
+.dbody{padding:18px;}
+.dpc{background:#fff;border:1px solid var(--bdr);border-radius:11px;padding:14px;margin-bottom:14px;}
+.dpl{display:flex;justify-content:space-between;font-size:11px;font-weight:600;margin-bottom:7px;}
+.dpb{height:7px;background:var(--bg);border-radius:4px;}
+.dpf{height:100%;background:var(--rappi);border-radius:4px;}
+.lsn-l{display:flex;flex-direction:column;gap:7px;margin-bottom:14px;}
+.lsn{background:#fff;border:1px solid var(--bdr);border-radius:9px;padding:11px 13px;display:flex;align-items:center;gap:9px;cursor:pointer;transition:all .2s;}
+.lsn:hover{border-color:var(--rappi);}
+.lsn.done .l-ic{background:var(--ok);color:#fff;border:none;}
+.l-ic{width:30px;height:30px;border-radius:7px;background:var(--bg);border:1px solid var(--bdr);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;}
+.l-tit{font-size:12px;font-weight:600;flex:1;}
+.l-dur{font-size:10px;color:var(--txm);}
+.qz-btn{width:100%;background:var(--rappi);border:none;border-radius:11px;padding:13px;color:#fff;font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;margin-bottom:7px;}
+.qz-btn:hover{background:var(--rappi-d);}
+.qz-btn:disabled{background:var(--bdr);color:var(--txm);cursor:not-allowed;}
+
+.qov{position:absolute;inset:0;background:var(--bg);z-index:60;display:none;overflow-y:auto;}
+.qov.open{display:block;animation:slideUp .25s ease;}
+.qh{background:var(--sb);padding:18px;}
+.q-back{color:rgba(255,255,255,.5);font-size:11px;cursor:pointer;margin-bottom:7px;}
+.q-tit{color:#fff;font-size:14px;font-weight:700;}
+.q-pb{height:3px;background:rgba(255,255,255,.1);border-radius:2px;margin-top:10px;}
+.q-pf{height:100%;background:var(--rappi);border-radius:2px;transition:width .35s;}
+.qb{padding:18px;}
+.q-num{font-size:11px;color:var(--txm);font-weight:600;margin-bottom:5px;}
+.q-q{font-size:14px;font-weight:700;margin-bottom:14px;line-height:1.4;}
+.q-opts{display:flex;flex-direction:column;gap:7px;margin-bottom:16px;}
+.q-opt{background:#fff;border:1.5px solid var(--bdr);border-radius:9px;padding:11px 13px;cursor:pointer;transition:all .2s;font-size:12px;text-align:left;font-family:'Poppins',sans-serif;color:var(--tx);}
+.q-opt:hover{border-color:var(--rappi);background:var(--rappi-p);}
+.q-opt.sel{border-color:var(--rappi);background:var(--rappi-p);font-weight:600;}
+.q-opt.cor{border-color:var(--ok);background:#ECFDF5;color:#065F46;}
+.q-opt.wr{border-color:#EF4444;background:#FEF2F2;color:#991B1B;}
+.q-nxt{width:100%;background:var(--rappi);border:none;border-radius:9px;padding:12px;color:#fff;font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;cursor:pointer;}
+.q-fb{padding:11px 13px;border-radius:9px;font-size:12px;margin-bottom:14px;display:none;line-height:1.4;}
+.q-fb.cor{background:#ECFDF5;border:1px solid #A7F3D0;color:#065F46;}
+.q-fb.wr{background:#FEF2F2;border:1px solid #FECACA;color:#991B1B;}
+.r-scr{text-align:center;padding:24px 16px;}
+.r-em{font-size:52px;margin-bottom:10px;}
+.r-sc{font-size:44px;font-weight:900;color:var(--rappi);margin:7px 0;}
+.r-msg{font-size:14px;font-weight:600;margin-bottom:6px;}
+.r-sub{font-size:12px;color:var(--txm);margin-bottom:16px;}
+.r-pts{background:var(--sb);color:#fff;border-radius:11px;padding:12px;margin-bottom:14px;}
+.r-pv{font-size:20px;font-weight:800;color:var(--gold);}
+.r-pl{font-size:11px;color:rgba(255,255,255,.5);}
+.r-act{display:flex;flex-direction:column;gap:7px;}
+.r-btn{border-radius:9px;padding:11px;font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;cursor:pointer;border:none;}
+.r-btn.pri{background:var(--rappi);color:#fff;}
+.r-btn.sec{background:#fff;border:1px solid var(--bdr);color:var(--tx);}
+
+.adm-tabs{display:flex;gap:7px;margin-bottom:14px;border-bottom:1px solid var(--bdr);padding-bottom:10px;}
+.adm-tab{background:none;border:none;font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;color:var(--txm);cursor:pointer;padding:6px 12px;border-radius:8px;transition:all .2s;}
+.adm-tab.act{background:var(--rappi);color:#fff;}
+.kpi-g{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px;}
+.kpi{background:#fff;border:1px solid var(--bdr);border-radius:11px;padding:13px;text-align:center;}
+.kpi-v{font-size:22px;font-weight:800;color:var(--rappi);}
+.kpi-l{font-size:10px;color:var(--txm);margin-top:2px;}
+.kpi-ic{font-size:18px;margin-bottom:3px;}
+.country-row{background:#fff;border:1px solid var(--bdr);border-radius:10px;padding:12px 14px;display:flex;align-items:center;gap:12px;margin-bottom:6px;}
+.c-flag{font-size:22px;width:36px;text-align:center;}
+.c-info{flex:1;}
+.c-name{font-size:13px;font-weight:700;}
+.c-sub{font-size:11px;color:var(--txm);}
+.c-bar-wrap{width:120px;}
+.c-bar{height:6px;background:var(--bdr);border-radius:3px;margin-top:4px;}
+.c-bar-f{height:100%;background:var(--rappi);border-radius:3px;}
+.c-pct{font-size:11px;font-weight:700;color:var(--rappi);min-width:32px;text-align:right;}
+.user-row{background:#fff;border:1px solid var(--bdr);border-radius:9px;padding:9px 12px;display:flex;align-items:center;gap:10px;margin-bottom:5px;}
+.u-av{width:30px;height:30px;border-radius:50%;background:var(--sb);display:flex;align-items:center;justify-content:center;color:#fff;font-size:10px;font-weight:700;flex-shrink:0;}
+.u-nm{font-size:12px;font-weight:600;flex:1;}
+.u-prog{width:80px;}
+.u-pb{height:5px;background:var(--bdr);border-radius:3px;}
+.u-pf{height:100%;border-radius:3px;}
+.u-pf.hi{background:var(--ok);}
+.u-pf.md{background:var(--warn);}
+.u-pf.lo{background:var(--rappi);}
+.u-pts{font-size:11px;font-weight:700;color:var(--rappi);min-width:55px;text-align:right;}
+.alert-row{background:#FEF2F2;border:1px solid #FECACA;border-radius:9px;padding:9px 12px;display:flex;align-items:center;gap:10px;margin-bottom:5px;}
+.alert-icon{font-size:16px;}
+.alert-info{flex:1;}
+.alert-nm{font-size:12px;font-weight:600;color:#991B1B;}
+.alert-sub{font-size:10px;color:#DC2626;}
+.alert-action{font-size:10px;font-weight:600;color:var(--rappi);cursor:pointer;border:1px solid var(--rappi);border-radius:6px;padding:3px 8px;background:none;}
+.login-log{background:#fff;border:1px solid var(--bdr);border-radius:9px;padding:9px 12px;display:flex;align-items:center;gap:10px;margin-bottom:5px;}
+.ll-av{width:28px;height:28px;border-radius:50%;background:var(--sb);display:flex;align-items:center;justify-content:center;color:#fff;font-size:9px;font-weight:700;flex-shrink:0;}
+.ll-nm{font-size:12px;font-weight:600;flex:1;}
+.ll-status{display:flex;flex-direction:column;align-items:flex-end;gap:2px;}
+.ll-active{font-size:10px;color:var(--ok);font-weight:600;display:flex;align-items:center;gap:4px;}
+.ll-dot{width:6px;height:6px;background:var(--ok);border-radius:50%;}
+.ll-time{font-size:9px;color:var(--txm);}
+.recog-card{background:linear-gradient(135deg,var(--sb),#1E293B);border-radius:13px;padding:16px;margin-bottom:12px;}
+.recog-title{color:#fff;font-size:14px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:7px;}
+.recog-item{display:flex;align-items:center;gap:10px;margin-bottom:8px;padding:10px;background:rgba(255,255,255,.05);border-radius:9px;}
+.recog-pos{font-size:18px;width:30px;text-align:center;}
+.recog-av{width:32px;height:32px;border-radius:50%;background:var(--rappi);display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:700;}
+.recog-info{flex:1;}
+.recog-nm{color:#fff;font-size:12px;font-weight:700;}
+.recog-sub{color:rgba(255,255,255,.4);font-size:10px;}
+.recog-pts{color:var(--gold);font-size:12px;font-weight:700;}
+.send-recog{background:var(--rappi);border:none;border-radius:8px;padding:7px 14px;color:#fff;font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;cursor:pointer;margin-top:8px;}
+.ldr-kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px;}
+.lkpi{background:#fff;border:1px solid var(--bdr);border-radius:11px;padding:12px;text-align:center;}
+.lkpi-v{font-size:18px;font-weight:800;color:var(--rappi);}
+.lkpi-l{font-size:10px;color:var(--txm);margin-top:2px;}
+.need-help{background:#FEF3C7;border:1px solid #FDE68A;border-radius:11px;padding:14px;margin-bottom:14px;}
+.nh-tit{font-size:13px;font-weight:700;color:#92400E;margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+.nh-item{display:flex;align-items:center;gap:9px;margin-bottom:7px;padding:9px;background:rgba(255,255,255,.7);border-radius:8px;}
+.nh-av{width:28px;height:28px;border-radius:50%;background:#F59E0B;display:flex;align-items:center;justify-content:center;color:#fff;font-size:10px;font-weight:700;}
+.nh-nm{font-size:12px;font-weight:600;flex:1;color:#92400E;}
+.nh-sub{font-size:10px;color:#B45309;}
+.coach-btn{background:#F59E0B;border:none;border-radius:6px;padding:4px 10px;color:#fff;font-family:'Poppins',sans-serif;font-size:10px;font-weight:600;cursor:pointer;}
+
+.max-chat{position:fixed;bottom:24px;right:24px;width:270px;background:#fff;border:1px solid var(--bdr);border-radius:14px;box-shadow:0 8px 28px rgba(0,0,0,.1);z-index:80;display:none;}
+.max-chat.open{display:block;animation:slideUp .2s ease;}
+.mch{background:var(--sb);border-radius:14px 14px 0 0;padding:11px 13px;display:flex;align-items:center;gap:9px;}
+.mch-tit{color:#fff;font-size:12px;font-weight:700;}
+.mch-st{color:var(--rappi);font-size:10px;}
+.mch-cl{color:rgba(255,255,255,.4);cursor:pointer;margin-left:auto;font-size:14px;}
+.mcb{padding:11px;height:140px;overflow-y:auto;display:flex;flex-direction:column;gap:7px;}
+.mm{background:var(--rappi-p);border-radius:9px 9px 9px 2px;padding:9px 11px;font-size:11px;color:var(--tx);max-width:88%;line-height:1.4;}
+.mm.me{background:var(--sb);color:#fff;border-radius:9px 9px 2px 9px;align-self:flex-end;}
+.mci{border-top:1px solid var(--bdr);padding:9px 11px;display:flex;gap:7px;}
+.m-in{flex:1;border:1px solid var(--bdr);border-radius:7px;padding:7px;font-family:'Poppins',sans-serif;font-size:11px;outline:none;color:var(--tx);}
+.m-snd{background:var(--rappi);border:none;border-radius:7px;padding:0 10px;color:#fff;cursor:pointer;font-size:14px;}
+
+.cft{position:fixed;inset:0;pointer-events:none;z-index:200;display:none;}
+.cft.act{display:block;}
+.cp{position:absolute;width:7px;height:7px;border-radius:2px;animation:cfall linear forwards;}
+@keyframes cfall{0%{transform:translateY(-10px) rotate(0);opacity:1}100%{transform:translateY(110vh) rotate(720deg);opacity:0}}
+</style>
+</head>
+<body>
+
+<div class="cft" id="confetti"></div>
+
+<div class="max-chat" id="maxChat">
+  <div class="mch">
+    <div style="font-size:18px;">🤖</div>
+    <div><div class="mch-tit">Max — Mentor IS</div><div class="mch-st">● Activo</div></div>
+    <div class="mch-cl" onclick="toggleMax()">✕</div>
+  </div>
+  <div class="mcb" id="chatBody">
+    <div class="mm">¡Hola crack! Soy Max. ¿En qué te ayudo hoy? 🚀</div>
+    <div class="mm">💡 Completa los módulos en orden para desbloquear contenido y sumar RappiPoints.</div>
+  </div>
+  <div class="mci">
+    <input class="m-in" id="chatIn" placeholder="Pregúntale a Max..." onkeydown="if(event.key==='Enter')sendMax()">
+    <button class="m-snd" onclick="sendMax()">➤</button>
+  </div>
+</div>
+
+<div class="login" id="loginSc">
+  <div class="lc">
+    <div class="lc-max">🤖</div>
+    <div class="lc-logo">🚀</div>
+    <div class="lc-title">Inside Sales <span>Academy</span></div>
+    <div class="lc-sub">El programa de entrenamiento élite de Rappi</div>
+    <div class="lc-err" id="loginErr">❌ Correo no encontrado. Verifica e intenta de nuevo.</div>
+    <input class="lc-in" id="emailIn" type="email" placeholder="tu.correo@rappi.com" onkeydown="if(event.key==='Enter')doLogin()">
+    <button class="lc-btn" onclick="doLogin()">🚀 ¡Vamos con toda, crack!</button>
+    <div class="lc-hint">Solo para el equipo Inside Sales de Rappi</div>
+    <div class="role-hint">Demo — Comercial: <b>karen.oviedo@rappi.com</b><br>Líder: <b>camila.ruiz@rappi.com</b><br>Admin: <b>admin@rappi.com</b></div>
+  </div>
+</div>
+
+<div class="app">
+  <div class="sb" id="sidebar">
+    <div class="sb-logo" onclick="toggleSb()">
+      <div class="logo-ic">🚀</div>
+      <div class="logo-tx">Rappi<span>X</span></div>
+    </div>
+    <div class="sb-nav" id="sbNav"></div>
+    <div class="sb-bot">
+      <div class="max-b" onclick="toggleMax()">
+        <div style="font-size:16px;flex-shrink:0;">🤖</div>
+        <span>Soporte Max</span>
+      </div>
+    </div>
+    <div class="col-btn" onclick="toggleSb()" id="colBtn">◀</div>
+  </div>
+
+  <div class="main">
+    <div class="hdr">
+      <div class="hdr-l">
+        <h2 id="hdrTitle">Dashboard</h2>
+        <p id="hdrSub">¡A romperla hoy!</p>
+      </div>
+      <div class="hdr-r">
+        <div class="pts-ctr" id="ptsDisplay" style="display:none">
+          <span>⚡</span>
+          <div><div class="pts-v" id="ptsVal">0</div><div class="pts-l">RappiPoints</div></div>
+        </div>
+        <div class="lvl-b" id="lvlBadge" style="display:none">
+          <span id="lvlIcon">🥈</span><span class="lvl-n" id="lvlName">Silver</span>
+        </div>
+        <div class="nb-btn">🔔<div class="nb-dot"></div></div>
+        <div class="max-av" onclick="toggleMax()">🤖</div>
+      </div>
+    </div>
+    <div class="cnt">
+      <div class="scr act" id="scr-home"></div>
+      <div class="scr" id="scr-academy"></div>
+      <div class="scr" id="scr-library"></div>
+      <div class="scr" id="scr-leaderboard"></div>
+      <div class="scr" id="scr-profile"></div>
+      <div class="scr" id="scr-admin"></div>
+      <div class="scr" id="scr-leader"></div>
+    </div>
+  </div>
+</div>
+
+<div class="det" id="modDet">
+  <div class="dh">
+    <div class="db-btn" onclick="closeDet()">← Volver a Academia</div>
+    <div class="dt" id="detTitle"></div>
+    <div class="dm" id="detMeta"></div>
+  </div>
+  <div class="dbody">
+    <div class="dpc">
+      <div class="dpl"><span>Progreso</span><span id="detPct">0%</span></div>
+      <div class="dpb"><div class="dpf" id="detFill" style="width:0%"></div></div>
+    </div>
+    <div class="sec-tit">📖 Lecciones</div>
+    <div class="lsn-l" id="lsnList"></div>
+    <button class="qz-btn" id="qzStartBtn" onclick="startQuizFromDet()">🎯 Iniciar Quiz</button>
+    <div id="qzReq" style="text-align:center;font-size:11px;color:var(--txm);padding:3px;">Completa todas las lecciones para desbloquear el quiz</div>
+  </div>
+</div>
+
+<div class="qov" id="quizOv">
+  <div class="qh">
+    <div class="q-back" onclick="closeQuiz()">← Salir del quiz</div>
+    <div class="q-tit" id="qTitle">Quiz</div>
+    <div class="q-pb"><div class="q-pf" id="qPfil" style="width:10%"></div></div>
+  </div>
+  <div class="qb" id="qBody"></div>
+</div>
+
+<script>
+const COUNTRIES={AR:'🇦🇷',MX:'🇲🇽',CO:'🇨🇴',CL:'🇨🇱',PE:'🇵🇪',EC:'🇪🇨'};
+const LEADERS=new Set(['camila.ruiz@rappi.com','maria.casallas@rappi.com','juan.olivares@rappi.com','santiago.saenz@rappi.com','jimena.velasquez@rappi.com','gisell.rojas@rappi.com','maria.marmolejo@rappi.com','tatiana.lozano@rappi.com','mauricio.mora@rappi.com','marcela.reyes@rappi.com','juan.guaje@rappi.com','oscar.barajas@rappi.com','arnold.velasquez@rappi.com','estefany.ariza@rappi.com','oscar.caucali@rappi.com','sebastian.ibanez@rappi.com','danilo.ortega@rappi.com','jeimmy.wilches@rappi.com','edy.vargas@rappi.com','leyni.poveda@rappi.com','lina.macias@rappi.com','alejandro.castillo@rappi.com','brayan.sanabria@rappi.com','nicolas.loaiza@rappi.com','robinson.zamora@rappi.com','alejandra.mejia@rappi.com','leidi.torres@rappi.com','deisy.chacon@rappi.com','maria.colorado@rappi.com']);
+const COMERCIALES_SAMPLE=[{email:'karen.oviedo@rappi.com',name:'Karen Oviedo',country:'AR',leader:'camila.ruiz@rappi.com',team:'Inbound'},{email:'jorge.ramirez@rappi.com',name:'Jorge Ramírez',country:'AR',leader:'brayan.sanabria@rappi.com',team:'Outbound'},{email:'daniela.bejarano@rappi.com',name:'Daniela Bejarano',country:'AR',leader:'maria.casallas@rappi.com',team:'Outbound'},{email:'german.godoy@rappi.com',name:'German Godoy',country:'AR',leader:'camila.ruiz@rappi.com',team:'Inbound'},{email:'angie.barriga@rappi.com',name:'Angie Barriga',country:'CO',leader:'nicolas.loaiza@rappi.com',team:'Inbound'},{email:'ginna.ararat@rappi.com',name:'Ginna Ararat',country:'CO',leader:'nicolas.loaiza@rappi.com',team:'Inbound'},{email:'tatiana.garcia@rappi.com',name:'Tatiana García',country:'CO',leader:'nicolas.loaiza@rappi.com',team:'Inbound'},{email:'yensi.benavides@rappi.com',name:'Yensi Benavides',country:'MX',leader:'robinson.zamora@rappi.com',team:'Outbound'},{email:'adriana.martinez@rappi.com',name:'Adriana Martínez',country:'MX',leader:'sebastian.ibanez@rappi.com',team:'Inbound'},{email:'kenly.manrique@rappi.com',name:'Kenly Manrique',country:'PE',leader:'jeimmy.wilches@rappi.com',team:'Outbound'},{email:'daniela.acosta@rappi.com',name:'Daniela Acosta',country:'PE',leader:'oscar.barajas@rappi.com',team:'Inbound'},{email:'andrea.gaona@rappi.com',name:'Andrea Gaona',country:'CL',leader:'camila.ruiz@rappi.com',team:'Inbound'},{email:'laura.barrios@rappi.com',name:'Laura Barrios',country:'CL',leader:'camila.ruiz@rappi.com',team:'Inbound'},{email:'sebastian.escobar@rappi.com',name:'Sebastián Escobar',country:'EC',leader:'tatiana.lozano@rappi.com',team:'Outbound'},{email:'cristian.quiroga@rappi.com',name:'Cristian Quiroga',country:'EC',leader:'oscar.barajas@rappi.com',team:'Inbound'},{email:'andres.soto@rappi.com',name:'Andrés Soto',country:'MX',leader:'gisell.rojas@rappi.com',team:'Outbound'},{email:'jessica.uribe@rappi.com',name:'Jessica Uribe',country:'MX',leader:'oscar.caucali@rappi.com',team:'Inbound'},{email:'carol.barragan@rappi.com',name:'Carol Barragán',country:'MX',leader:'juan.guaje@rappi.com',team:'Outbound'},{email:'nicol.espitia@rappi.com',name:'Nicol Espitia',country:'PE',leader:'jeimmy.wilches@rappi.com',team:'Outbound'},{email:'ana.nieto@rappi.com',name:'Ana Nieto',country:'CO',leader:'marcela.reyes@rappi.com',team:'Inbound'}];
+const MODULES=[{id:1,titulo:'Preparación Comercial',sub:'Onboarding · Pitch · Objeciones',emoji:'🚀',cat:'pc',tag:'completado',locked:false,progress:100,pts:150,lecciones:[{t:'Onboarding Inside Sales — Día 1',d:'15 min',done:true},{t:'Modelo de negocio Rappi',d:'12 min',done:true},{t:'Manejo de Pitch y Objeciones',d:'10 min',done:true},{t:'Cartilla de llamadas efectivas',d:'8 min',done:true}],desc:'Inducción primer día. Aprende el modelo de negocio, cómo estructurar tu pitch y manejar objeciones desde el inicio.'},{id:2,titulo:'Prospección',sub:'Hunteo · Validación de Zonas',emoji:'🎯',cat:'pc',tag:'completado',locked:false,progress:100,pts:200,lecciones:[{t:'Técnicas de Hunteo — Top Performers',d:'12 min',done:true},{t:'Validación de zonas con Grappi',d:'10 min',done:true},{t:'Herramientas de prospección digital',d:'9 min',done:true}],desc:'Principales técnicas de hunteo que usan los top performers.'},{id:3,titulo:'Conocimiento del Cliente',sub:'Smart Pitch · Segmentación',emoji:'🧠',cat:'ci',tag:'prioritario',locked:false,progress:60,pts:200,lecciones:[{t:'Smart Pitch — App de entrenamiento',d:'14 min',done:true},{t:'Calculadora de simulador de ganancias',d:'10 min',done:true},{t:'Tipificación y segmentación del cliente',d:'12 min',done:false},{t:'Personalización del pitch por tipo',d:'8 min',done:false}],desc:'Aprende a vender desde cero con Smart Pitch.'},{id:4,titulo:'Apertura y Contactabilidad',sub:'Amazon Connect · Elevator Pitch',emoji:'📞',cat:'ci',tag:'nuevo',locked:false,progress:0,pts:150,lecciones:[{t:'Amazon Connect — Herramienta principal',d:'11 min',done:false},{t:'Elevator Pitch estructurado',d:'9 min',done:false},{t:'Scripts de primer contacto',d:'8 min',done:false},{t:'Métricas de contactabilidad',d:'7 min',done:false}],desc:'Amazon Connect y Elevator Pitch que captura atención.'},{id:5,titulo:'Propuesta de Valor y Cierre',sub:'Objeciones · Estrategias de Cierre',emoji:'🔑',cat:'ci',tag:'bloqueado',locked:true,progress:0,pts:250,lecciones:[{t:'Propuesta de valor — Beneficios Rappi',d:'12 min',done:false},{t:'Manejo avanzado de objeciones',d:'10 min',done:false},{t:'Estrategias de cierre efectivo',d:'14 min',done:false},{t:'Seguimiento efectivo de clientes',d:'10 min',done:false}],desc:'La propuesta de valor que nos diferencia.'},{id:6,titulo:'Pre-Venta y Proceso',sub:'Neteo · Power BI · Perfect Store',emoji:'📊',cat:'vt',tag:'bloqueado',locked:true,progress:0,pts:200,lecciones:[{t:'Neteo de deuda — Validación previa',d:'10 min',done:false},{t:'Power BI — Revisión de deuda',d:'8 min',done:false},{t:'Perfect Store — Carga de catálogo',d:'12 min',done:false},{t:'Renegociación Churn — Proceso',d:'9 min',done:false}],desc:'Valida deuda y catálogo antes de vender.'},{id:7,titulo:'Proceso de Venta',sub:'Zoho · SOB · Portal Manager',emoji:'💼',cat:'vt',tag:'bloqueado',locked:true,progress:0,pts:300,lecciones:[{t:'Onboarding, Zoho y SOB',d:'14 min',done:false},{t:'Creación de Expansiones Manager',d:'10 min',done:false},{t:'Portal Partners — Datos fiscales',d:'11 min',done:false},{t:'Brand Expansion y Nueva Negociación',d:'12 min',done:false},{t:'Dock Checker — Seguimiento',d:'9 min',done:false}],desc:'Flujo completo de venta en Zoho, SOB y Portal Manager.'},{id:8,titulo:'Posventa y Contratos',sub:'Contratos · Milla Extra · Power BI',emoji:'🏆',cat:'pv',tag:'bloqueado',locked:true,progress:0,pts:250,lecciones:[{t:'Capacitación en contratos y permanencia',d:'12 min',done:false},{t:'Cambios contractuales por país',d:'10 min',done:false},{t:'Milla Extra — Revisión de payout',d:'8 min',done:false},{t:'Power BI Handoff — Tiendas activas',d:'11 min',done:false},{t:'WOW FarmerMass y Churn',d:'10 min',done:false}],desc:'Contratos, beneficios posventa y seguimiento de tiendas.'}];
+const LEADER_MODULES=[{id:'L1',titulo:'Liderazgo de Alta Performance',emoji:'👑',cat:'ms',progress:0,pts:200,lecciones:[{t:'De vendedor a líder — El salto mental',d:'12 min',done:false},{t:'Estilos de liderazgo situacional',d:'10 min',done:false},{t:'Cómo inspirar sin micromanagear',d:'8 min',done:false}]},{id:'L2',titulo:'Seguimiento Efectivo del Equipo',emoji:'📈',cat:'ms',progress:0,pts:200,lecciones:[{t:'KPIs clave de Inside Sales',d:'10 min',done:false},{t:'Reuniones 1:1 que generan resultados',d:'12 min',done:false},{t:'Power BI para líderes — Dashboard',d:'11 min',done:false},{t:'Detección temprana de riesgo',d:'9 min',done:false}]},{id:'L3',titulo:'Coaching Comercial',emoji:'🎯',cat:'ms',progress:0,pts:250,lecciones:[{t:'Qué es coaching y qué no es',d:'8 min',done:false},{t:'Metodología GROW para ventas',d:'14 min',done:false},{t:'Feedback que genera cambio real',d:'10 min',done:false},{t:'Role-play como herramienta de coaching',d:'12 min',done:false}]},{id:'L4',titulo:'Trabajo en Equipo y Cultura Rappi',emoji:'🤝',cat:'ms',progress:0,pts:150,lecciones:[{t:'Cultura de alta velocidad Rappi',d:'9 min',done:false},{t:'Cómo construir equipos cohesionados',d:'10 min',done:false},{t:'Gestión del conflicto en equipo',d:'8 min',done:false}]}];
+const LIBRARY_DATA=[{t:'Onboarding Inside Sales',cat:'Preparación',ico:'📋',type:'PPT'},{t:'Cartilla Llamadas Efectivas',cat:'Preparación',ico:'📞',type:'PDF'},{t:'Smart Pitch — Guía de uso',cat:'Cliente',ico:'📱',type:'DOC'},{t:'Elevator Pitch IS',cat:'Apertura',ico:'🎤',type:'PPT'},{t:'Estrategias de Cierre IS',cat:'Cierre',ico:'🔑',type:'PDF'},{t:'Playbook Condonación de Deuda',cat:'Pre-Venta',ico:'💳',type:'PDF'},{t:'Manual Onboarding — Zoho + SOB',cat:'Venta',ico:'💼',type:'DOC'},{t:'Brand Expansion — Flujo Zoho',cat:'Venta',ico:'📈',type:'PPT'},{t:'Playbook Nueva Negociación',cat:'Venta',ico:'🤝',type:'PPT'},{t:'Reglas Menú — Playbook 2024',cat:'Proceso',ico:'📋',type:'PDF'},{t:'Rappi Aliados y Portal Partners',cat:'Proceso',ico:'🏪',type:'DOC'},{t:'Contratos — Permanencia y Pago',cat:'Posventa',ico:'📄',type:'PDF'},{t:'Power BI Handoff Dashboard',cat:'Posventa',ico:'📊',type:'LINK'},{t:'WOW FarmerMass — Playbook ELC',cat:'Posventa',ico:'🌟',type:'PDF'}];
+const QUIZ_DATA={Prospección:[{q:'¿Cuál es la principal ventaja del hunteo por LinkedIn sobre el hunteo por llamada fría?',opts:['Es más rápido','Permite segmentar y validar al prospecto antes del primer contacto','Es más económico','Tiene mayor tasa de respuesta siempre'],correct:1,exp:'LinkedIn permite conocer el negocio, volumen y contacto clave antes de llamar, mejorando la tasa de éxito.'},{q:'¿Qué es Grappi en el contexto de Rappi?',opts:['Un CRM de seguimiento','Una app para validar zonas geográficas activas','Un sistema de facturación','Un chat interno'],correct:1,exp:'Grappi permite validar qué zonas tienen demanda activa para priorizar prospectos con mayor probabilidad de éxito.'},{q:'¿Cuántos touchpoints se recomiendan antes de dar por perdido a un prospecto?',opts:['1-2','3-4','5-8','Más de 10'],correct:2,exp:'La mayoría de ventas B2B cierran entre el 5° y 8° contacto.'},{q:'Un comercial tiene 200 prospectos. ¿Cuál es el criterio más importante para priorizar?',opts:['Los más fáciles de contactar','Los que tienen mayor potencial de GMV y fit con Rappi','Los más cercanos geográficamente','Los que respondieron primero'],correct:1,exp:'El potencial de GMV es el indicador central.'},{q:'¿Qué significa ICP en ventas?',opts:['Internal Contact Protocol','Ideal Customer Profile','Inbound Call Process','Integrated CRM Platform'],correct:1,exp:'El ICP define el perfil exacto del cliente ideal.'},{q:'Al hacer hunteo outbound, ¿cuál es el mejor momento del día para llamar a un restaurante?',opts:['7-9 AM','10-11 AM o 3-4 PM','12-2 PM (hora de almuerzo)','Después de las 6 PM'],correct:1,exp:'Entre las 10-11 AM o 3-4 PM el dueño ya abrió pero no está en el pico de servicio.'},{q:'¿Qué hace que un pitch de prospección sea efectivo?',opts:['Hablar mucho del producto','Ser breve, mencionar un insight del negocio del prospecto y hacer una pregunta abierta','Mencionar todos los beneficios de Rappi','Enviar un email primero siempre'],correct:1,exp:'El mejor pitch tiene: gancho relevante, propuesta de valor diferenciada y pregunta que abre conversación.'},{q:'¿Cuál es la diferencia entre leads Inbound y Outbound?',opts:['Inbound son más caros','Outbound son más calificados siempre','Inbound llega solo a Rappi con interés; Outbound es contactado proactivamente','No hay diferencia práctica'],correct:2,exp:'Los leads Inbound ya mostraron interés. Los Outbound permiten escalar volumen.'},{q:'Un prospecto dice "ya tengo demasiados pedidos sin Rappi". ¿Cómo respondes?',opts:['Está bien, lo llamo en 3 meses','Le pregunto cuánto estaría ganando adicional si multiplicara esos pedidos con Rappi','Le digo que sin Rappi perderá clientes','Le envío un email con estadísticas'],correct:1,exp:'Esta objeción es señal positiva. La respuesta correcta muestra el incremento en GMV que Rappi generaría.'},{q:'¿Cuál de estos datos NO es útil para calificar un prospecto de restaurante?',opts:['Número de mesas del restaurante','Presencia en otras plataformas de delivery','Reseñas en Google','El color de la fachada del local'],correct:3,exp:'El color de la fachada no tiene correlación con el potencial de ventas.'}]};
+const COUNTRY_DATA=[{code:'MX',name:'México',flag:'🇲🇽',total:180,active:172,progress:62},{code:'AR',name:'Argentina',flag:'🇦🇷',total:89,active:85,progress:71},{code:'CO',name:'Colombia',flag:'🇨🇴',total:68,active:65,progress:58},{code:'CL',name:'Chile',flag:'🇨🇱',total:52,active:50,progress:65},{code:'PE',name:'Perú',flag:'🇵🇪',total:61,active:58,progress:54},{code:'EC',name:'Ecuador',flag:'🇪🇨',total:35,active:33,progress:48}];
+const TOP_USERS=[{nm:'Karen Oviedo',ini:'KO',pts:2850,prog:94,country:'AR',leader:'Camila Ruiz'},{nm:'Adriana Martínez',ini:'AM',pts:2640,prog:88,country:'MX',leader:'Sebastián Ibáñez'},{nm:'Angie Barriga',ini:'AB',pts:2410,prog:82,country:'CO',leader:'Nicolas Loaiza'},{nm:'Laura Barrios',ini:'LB',pts:2180,prog:78,country:'CL',leader:'Camila Ruiz'},{nm:'Jessica Uribe',ini:'JU',pts:1950,prog:71,country:'MX',leader:'Oscar Caucali'},{nm:'Tatiana García',ini:'TG',pts:1720,prog:65,country:'CO',leader:'Nicolas Loaiza'},{nm:'Andrea Gaona',ini:'AG',pts:1540,prog:58,country:'CL',leader:'Camila Ruiz'},{nm:'Nicol Espitia',ini:'NE',pts:980,prog:38,country:'PE',leader:'Jeimmy Wilches'}];
+const NEED_HELP=[{nm:'Daniela Bejarano',ini:'DB',country:'AR',prog:12,leader:'Maria Casallas',issue:'Sin actividad hace 5 días'},{nm:'Kenly Manrique',ini:'KM',country:'PE',prog:8,leader:'Jeimmy Wilches',issue:'0 módulos completados'},{nm:'Jorge Ramírez',ini:'JR',country:'AR',prog:22,leader:'Brayan Sanabria',issue:'Quiz fallido 2 veces'}];
+const LOGIN_LOG=[{nm:'Karen Oviedo',ini:'KO',active:true,time:'Hace 2 min',mods:'Mod 3 — Smart Pitch'},{nm:'Adriana Martínez',ini:'AM',active:true,time:'Hace 5 min',mods:'Quiz Prospección'},{nm:'Angie Barriga',ini:'AB',active:true,time:'Hace 12 min',mods:'Mod 2 — Prospección'},{nm:'Laura Barrios',ini:'LB',active:false,time:'Hace 1 hora',mods:'Biblioteca'},{nm:'Jessica Uribe',ini:'JU',active:false,time:'Hace 2 horas',mods:'Mod 4 — Apertura'},{nm:'German Godoy',ini:'GG',active:false,time:'Ayer 4:30 PM',mods:'Mod 1 — Preparación'}];
+
+let CU=null,curMod=null,qQ=[],qIdx=0,qScore=0,qAnswered=false,curQuizMod='';
+
+function ls(k,v){if(v!==undefined)localStorage.setItem(k,JSON.stringify(v));else{try{return JSON.parse(localStorage.getItem(k))}catch{return null}}}
+function initials(e){const p=e.split('@')[0].split('.');return(p[0][0]+(p[1]?p[1][0]:'')).toUpperCase();}
+function firstName(e){const n=e.split('@')[0].split('.');return n[0].charAt(0).toUpperCase()+n[0].slice(1);}
+
+function doLogin(){
+  const email=document.getElementById('emailIn').value.trim().toLowerCase();
+  let role='comercial';
+  if(email==='admin@rappi.com')role='admin';
+  else if(LEADERS.has(email))role='leader';
+  else if(!email.endsWith('@rappi.com')){document.getElementById('loginErr').style.display='block';return;}
+  document.getElementById('loginErr').style.display='none';
+  CU={email,name:firstName(email),initials:initials(email),role,points:ls('isa_pts_'+email)||840,leader:COMERCIALES_SAMPLE.find(u=>u.email===email)?.leader||null,country:COMERCIALES_SAMPLE.find(u=>u.email===email)?.country||'CO'};
+  ls('isa_email',email);
+  document.getElementById('loginSc').style.display='none';
+  buildApp();
+}
+function logout(){ls('isa_email',null);location.reload();}
+
+function buildApp(){
+  buildSidebar();buildHome();buildAcademy();buildLibrary();buildLeaderboard();buildProfile();
+  if(CU.role==='admin')buildAdmin();
+  if(CU.role==='leader')buildLeader();
+  document.getElementById('ptsDisplay').style.display='flex';
+  document.getElementById('lvlBadge').style.display='flex';
+  document.getElementById('ptsVal').textContent=CU.points.toLocaleString();
+  const lvl=CU.points>2000?'Legend':CU.points>1000?'Silver':'Rookie';
+  document.getElementById('lvlName').textContent=lvl;
+  document.getElementById('lvlIcon').textContent=lvl==='Legend'?'🏆':lvl==='Silver'?'🥈':'🎖️';
+}
+
+function buildSidebar(){
+  const nav=document.getElementById('sbNav');
+  let items=[{id:'home',ic:'🏠',label:'Home'},{id:'academy',ic:'📚',label:'Academia',badge:'2'},{id:'library',ic:'📂',label:'Biblioteca'},{id:'leaderboard',ic:'🏆',label:'Ranking'},{id:'profile',ic:'👤',label:'Mi Perfil'}];
+  if(CU.role==='admin')items.push({id:'admin',ic:'⚙️',label:'Admin Panel'});
+  if(CU.role==='leader')items.push({id:'leader',ic:'📊',label:'Mi Equipo'});
+  nav.innerHTML=items.map(i=>`<div class="ni${i.id==='home'?' act':''}" onclick="showSc('${i.id}',this)"><span class="ic">${i.ic}</span><span>${i.label}</span>${i.badge?`<span class="nb">${i.badge}</span>`:''}</div>`).join('')+`<div class="ni" onclick="logout()" style="margin-top:auto;color:#EF4444;opacity:.7;"><span class="ic">🚪</span><span>Salir</span></div>`;
+}
+
+function showSc(name,el){
+  document.querySelectorAll('.scr').forEach(s=>s.classList.remove('act'));
+  document.getElementById('scr-'+name).classList.add('act');
+  if(el){document.querySelectorAll('.ni').forEach(n=>n.classList.remove('act'));el.classList.add('act');}
+  const titles={home:'Dashboard',academy:'📚 Academia',library:'📂 Biblioteca',leaderboard:'🏆 Ranking',profile:'👤 Mi Perfil',admin:'⚙️ Admin Panel',leader:'📊 Mi Equipo'};
+  document.getElementById('hdrTitle').textContent=titles[name]||name;
+}
+function toggleSb(){const s=document.getElementById('sidebar');s.classList.toggle('col');document.getElementById('colBtn').textContent=s.classList.contains('col')?'▶':'◀';}
+
+function buildHome(){
+  const n=CU.name,flag=COUNTRIES[CU.country]||'🌎';
+  document.getElementById('scr-home').innerHTML=`<div class="wb"><div class="wb-gt">Bienvenid@ de vuelta ${flag}</div><div class="wb-nm">¡Hola, <span>${n}</span>! 👋</div><div class="wb-msg" style="color:#fff;font-weight:600;">Tienes módulos pendientes. <strong style="color:#FF441F;">¡Vamos con toda, crack!</strong></div><button class="wb-cta" onclick="showSc('academy',document.querySelectorAll('.ni')[1])">Continuar aprendiendo →</button><div class="wb-max">🤖</div></div><div class="g3" style="margin-bottom:14px;"><div class="stat-c"><div class="si">📚</div><div class="sv o">2/8</div><div class="sl">Módulos completados</div></div><div class="stat-c"><div class="si">⚡</div><div class="sv o">${CU.points.toLocaleString()}</div><div class="sl">RappiPoints</div></div><div class="stat-c"><div class="si">🏆</div><div class="sv" style="color:#F59E0B">#4</div><div class="sl">Ranking equipo</div></div></div><div class="streak-b"><div style="font-size:22px;">🔥</div><div style="flex:1;"><div style="font-size:12px;font-weight:600;margin-bottom:5px;">Racha — 4 días consecutivos</div><div class="streak-days"><div class="dd done">L</div><div class="dd done">M</div><div class="dd done">M</div><div class="dd done">J</div><div class="dd today">V</div><div class="dd">S</div><div class="dd">D</div></div></div></div><div class="sec-tit">🎯 Acceso rápido</div><div class="g2"><div class="qc" onclick="showSc('academy',document.querySelectorAll('.ni')[1])"><div style="font-size:22px;">▶️</div><div><div style="font-size:12px;font-weight:600;">Continuar</div><div style="font-size:10px;color:var(--txm);">Módulo 3 — Smart Pitch</div></div></div><div class="qc" onclick="openQuiz('Prospección')"><div style="font-size:22px;">📝</div><div><div style="font-size:12px;font-weight:600;">Quiz disponible</div><div style="font-size:10px;color:var(--txm);">Módulo 2 — Prospección</div></div></div><div class="qc" onclick="showSc('leaderboard',document.querySelectorAll('.ni')[3])"><div style="font-size:22px;">🏆</div><div><div style="font-size:12px;font-weight:600;">Ver ranking</div><div style="font-size:10px;color:var(--txm);">Estás en el Top 5</div></div></div><div class="qc" onclick="dlReport()"><div style="font-size:22px;">📊</div><div><div style="font-size:12px;font-weight:600;">Rappi-Report</div><div style="font-size:10px;color:var(--txm);">Descarga tu feedback</div></div></div></div>`;
+}
+
+function buildAcademy(){renderAcademy('all');}
+function renderAcademy(filter){
+  const mods=CU.role==='leader'?[...MODULES,...LEADER_MODULES]:MODULES;
+  const filtered=filter==='all'?mods:mods.filter(m=>m.tag===filter);
+  const thumbCls={pc:'pc',ci:'ci',ob:'ob',vt:'vt',pv:'pv',ms:'ms'};
+  const tagColor={completado:'background:#ECFDF5;color:#065F46',prioritario:'background:#FEF3C7;color:#92400E',nuevo:'background:#EFF6FF;color:#1D4ED8',bloqueado:'background:#F1F5F9;color:#475569'};
+  const tagLabel={completado:'✅ Completado',prioritario:'⚡ Prioritario',nuevo:'🆕 Nuevo',bloqueado:'🔒 Bloqueado'};
+  document.getElementById('scr-academy').innerHTML=`<div class="fb"><button class="fb-btn${filter==='all'?' act':''}" onclick="renderAcademy('all')">Todos</button><button class="fb-btn${filter==='nuevo'?' act':''}" onclick="renderAcademy('nuevo')">🆕 Nuevos</button><button class="fb-btn${filter==='prioritario'?' act':''}" onclick="renderAcademy('prioritario')">⚡ Prioritarios</button><button class="fb-btn${filter==='completado'?' act':''}" onclick="renderAcademy('completado')">✅ Completados</button></div><div class="mg">${filtered.map(m=>`<div class="mc${m.locked?' lk':''}${m.tag==='completado'?' done':''}" onclick="${m.locked?`alert('🔒 Completa el módulo anterior para desbloquear.')`:`openDet(${typeof m.id==='number'?m.id:`'${m.id}'`})`}"><div class="mt ${thumbCls[m.cat]||'ms'}"><span style="position:relative;z-index:2">${m.emoji}</span>${m.locked?'<div class="m-lk">🔒</div>':''}${m.tag?`<span class="m-tg" style="${tagColor[m.tag]||''}">${tagLabel[m.tag]||m.tag}</span>`:'<span class="m-tg" style="background:#F3E8FF;color:#6D28D9">👑 Líderes</span>'}</div><div class="mb"><div class="m-tit">${m.titulo}</div><div class="m-met">📖 ${m.lecciones.length} lecciones • ${m.sub||''}</div><div class="m-prog"><div class="m-pfil" style="width:${m.progress||0}%"></div></div><div class="m-ft"><span class="m-pts">⚡ ${m.pts||150} pts</span><span class="m-dur">${m.progress||0}%</span></div></div></div>`).join('')}</div>`;
+}
+
+function openDet(id){
+  const m=[...MODULES,...LEADER_MODULES].find(x=>x.id===id);
+  if(!m)return;curMod=m;
+  document.getElementById('detTitle').textContent=m.emoji+' '+m.titulo;
+  document.getElementById('detMeta').textContent=`${m.lecciones.length} lecciones • ${(m.desc||'').substring(0,80)}...`;
+  const done=m.lecciones.filter(l=>l.done).length,pct=Math.round(done/m.lecciones.length*100);
+  document.getElementById('detPct').textContent=pct+'%';
+  document.getElementById('detFill').style.width=pct+'%';
+  document.getElementById('lsnList').innerHTML=m.lecciones.map((l,i)=>`<div class="lsn${l.done?' done':''}" onclick="viewLsn(${typeof m.id==='number'?m.id:`'${m.id}'`},${i})"><div class="l-ic">${l.done?'✅':'▶️'}</div><div class="l-tit">${l.t}</div><span class="l-dur">${l.d}</span></div>`).join('');
+  const allDone=m.lecciones.every(l=>l.done);
+  document.getElementById('qzStartBtn').disabled=!allDone;
+  document.getElementById('qzReq').style.display=allDone?'none':'block';
+  document.getElementById('modDet').classList.add('open');
+}
+function viewLsn(id,idx){
+  const m=[...MODULES,...LEADER_MODULES].find(x=>x.id===id);
+  if(!m)return;m.lecciones[idx].done=true;m.progress=Math.round(m.lecciones.filter(l=>l.done).length/m.lecciones.length*100);
+  addPts(10);showMaxTip(['¡Lección completada! 🔥 +10 pts','¡Dale con toda! ⚡','¡Learn Rappido! 🚀','¡Eres un crack!'][Math.floor(Math.random()*4)]);openDet(id);
+}
+function closeDet(){document.getElementById('modDet').classList.remove('open');}
+function startQuizFromDet(){if(curMod)openQuiz(curMod.titulo);}
+
+function buildLibrary(){renderLib('all','');}
+function renderLib(cat,search){
+  const filtered=LIBRARY_DATA.filter(i=>(cat==='all'||i.cat===cat)&&i.t.toLowerCase().includes(search.toLowerCase()));
+  document.getElementById('scr-library').innerHTML=`<input class="ls" placeholder="🔍 Buscar en la biblioteca..." oninput="renderLib('${cat}',this.value)" value="${search}"><div class="fb" style="margin-bottom:12px;">${['all','Preparación','Cliente','Apertura','Cierre','Pre-Venta','Venta','Proceso','Posventa'].map(c=>`<button class="fb-btn${cat===c?' act':''}" onclick="renderLib('${c}','${search}')">${c==='all'?'Todos':c}</button>`).join('')}</div><div class="ll">${filtered.map(i=>`<div class="li"><div class="li-ic">${i.ico}</div><div style="flex:1;"><div class="li-tit">${i.t}</div><div class="li-met"><span>${i.type}</span></div></div><span class="li-cat">${i.cat}</span></div>`).join('')}</div>`;
+}
+
+function buildLeaderboard(){
+  const top3=TOP_USERS.slice(0,3),rest=TOP_USERS.slice(3);
+  document.getElementById('scr-leaderboard').innerHTML=`<div style="text-align:center;margin-bottom:14px;"><div style="font-size:12px;font-weight:600;color:var(--txm);">Semana actual</div><div style="font-size:18px;font-weight:800;margin-top:3px;">🏆 Top Comerciales Rappi</div></div><div class="pod"><div class="pi p2"><div class="pav" style="width:40px;height:40px">${top3[1].ini}</div><div class="pn">${top3[1].nm.split(' ')[0]}</div><div class="pp">${top3[1].pts.toLocaleString()}</div><div class="pb"></div></div><div class="pi p1"><div class="pav">${top3[0].ini}</div><div class="pn">🥇 ${top3[0].nm.split(' ')[0]}</div><div class="pp">${top3[0].pts.toLocaleString()}</div><div class="pb"></div></div><div class="pi p3"><div class="pav" style="width:40px;height:40px">${top3[2].ini}</div><div class="pn">${top3[2].nm.split(' ')[0]}</div><div class="pp">${top3[2].pts.toLocaleString()}</div><div class="pb"></div></div></div><div class="rl">${rest.map((u,i)=>`<div class="ri"><div class="r-num">${i+4}</div><div class="r-av">${u.ini}</div><div style="flex:1;"><div class="r-nm">${u.nm}</div><div class="r-info">${COUNTRIES[u.country]||''} ${u.country} • ${u.pts.toLocaleString()} pts</div></div></div>`).join('')}<div class="ri me"><div class="r-num">4</div><div class="r-av">${CU.initials}</div><div style="flex:1;"><div class="r-nm">${CU.name} (Tú)</div><div class="r-info">${COUNTRIES[CU.country]||''} • ${CU.points.toLocaleString()} pts</div></div><div style="font-size:12px;color:var(--rappi);font-weight:700;">⭐</div></div></div>`;
+}
+
+function buildProfile(){
+  const lvl=CU.points>2000?'Legend':CU.points>1000?'Silver':'Rookie',xpPct=Math.min(Math.round((CU.points/2000)*100),100);
+  const roleLabel={admin:'Admin • Rappi IS',leader:'Leader/Coordinator • IS',comercial:'IS Hunter • Equipo Comercial'}[CU.role];
+  document.getElementById('scr-profile').innerHTML=`<div class="ph"><div class="pav2">${CU.initials}</div><div class="p-nm">${CU.name}</div><div class="p-role">${roleLabel}</div><div style="margin-top:8px;display:inline-flex;align-items:center;gap:5px;background:rgba(255,68,31,.15);border:1px solid rgba(255,68,31,.3);border-radius:18px;padding:3px 10px;"><span style="color:var(--rappi);font-size:11px;font-weight:600;">${lvl==='Legend'?'🏆':lvl==='Silver'?'🥈':'🎖️'} ${lvl}</span></div><div class="xb"><div class="xl"><span>XP: ${CU.points.toLocaleString()}</span><span>Meta Legend: 2,000</span></div><div class="xbar"><div class="xfil" style="width:${xpPct}%"></div></div></div></div><div class="sec-tit">🏅 Logros</div><div class="ach"><div class="ac"><div class="ac-i">🎯</div><div class="ac-n">First Blood</div><div class="ac-d">Primer quiz 100%</div></div><div class="ac"><div class="ac-i">🔥</div><div class="ac-n">On Fire</div><div class="ac-d">5 días seguidos</div></div><div class="ac"><div class="ac-i">⚡</div><div class="ac-n">Rappido</div><div class="ac-d">Módulo en 1 día</div></div><div class="ac" style="opacity:.35"><div class="ac-i">🏆</div><div class="ac-n">Legend</div><div class="ac-d">Top 1 ranking</div></div><div class="ac" style="opacity:.35"><div class="ac-i">💯</div><div class="ac-n">Perfect Run</div><div class="ac-d">3 quizzes 100%</div></div><div class="ac" style="opacity:.35"><div class="ac-i">🚀</div><div class="ac-n">Full Stack</div><div class="ac-d">Todos los módulos</div></div></div><button class="qz-btn" onclick="dlReport()" style="background:var(--sb)">📊 Descargar Rappi-Report</button><button class="qz-btn" onclick="logout()" style="background:transparent;border:1px solid var(--bdr);color:var(--txm);margin-top:7px;">Cerrar sesión</button>`;
+}
+
+function buildAdmin(){renderAdminTab('overview');}
+function renderAdminTab(tab){
+  document.getElementById('scr-admin').innerHTML=`<div class="adm-tabs"><button class="adm-tab${tab==='overview'?' act':''}" onclick="renderAdminTab('overview')">📊 Overview</button><button class="adm-tab${tab==='users'?' act':''}" onclick="renderAdminTab('users')">👥 Comerciales</button><button class="adm-tab${tab==='access'?' act':''}" onclick="renderAdminTab('access')">🔍 Asistencia</button><button class="adm-tab${tab==='recognition'?' act':''}" onclick="renderAdminTab('recognition')">🏅 Reconocimiento</button></div>${tab==='overview'?renderAdmOverview():tab==='users'?renderAdmUsers():tab==='access'?renderAdmAccess():renderAdmRecognition()}`;
+}
+function renderAdmOverview(){return`<div class="kpi-g"><div class="kpi"><div class="kpi-ic">👥</div><div class="kpi-v">485</div><div class="kpi-l">Total comerciales</div></div><div class="kpi"><div class="kpi-ic">✅</div><div class="kpi-v">472</div><div class="kpi-l">Activos en academia</div></div><div class="kpi"><div class="kpi-ic">📈</div><div class="kpi-v">61%</div><div class="kpi-l">Progreso promedio</div></div><div class="kpi"><div class="kpi-ic">⚠️</div><div class="kpi-v">23</div><div class="kpi-l">Necesitan refuerzo</div></div></div><div class="sec-tit">🌎 Progreso por país</div>${COUNTRY_DATA.map(c=>`<div class="country-row"><div class="c-flag">${c.flag}</div><div class="c-info"><div class="c-name">${c.name}</div><div class="c-sub">${c.active}/${c.total} activos</div></div><div class="c-bar-wrap"><div class="c-bar"><div class="c-bar-f" style="width:${c.progress}%"></div></div></div><div class="c-pct">${c.progress}%</div></div>`).join('')}<div class="sec-tit" style="margin-top:14px">⚠️ Requieren refuerzo urgente</div>${NEED_HELP.map(u=>`<div class="alert-row"><div class="alert-icon">🚨</div><div class="alert-info"><div class="alert-nm">${u.nm} ${COUNTRIES[u.country]||''}</div><div class="alert-sub">${u.issue} • Líder: ${firstName(u.leader)}</div></div><button class="alert-action" onclick="alert('📧 Notificación enviada al líder de ${u.nm}')">Notificar líder</button></div>`).join('')}`;}
+function renderAdmUsers(){return`<div style="font-size:12px;color:var(--txm);margin-bottom:10px;">485 comerciales activos · Ordenados por progreso ↓</div>${TOP_USERS.map((u,i)=>`<div class="user-row"><div class="r-num">#${i+1}</div><div class="u-av">${u.ini}</div><div class="u-nm">${u.nm}<div style="font-size:10px;color:var(--txm);">${COUNTRIES[u.country]||''} ${u.country} · ${u.leader}</div></div><div class="u-prog"><div class="u-pb"><div class="u-pf ${u.prog>70?'hi':u.prog>40?'md':'lo'}" style="width:${u.prog}%"></div></div><div style="font-size:9px;color:var(--txm);margin-top:2px;">${u.prog}% completado</div></div><div class="u-pts">⚡ ${u.pts.toLocaleString()}</div></div>`).join('')}<div style="text-align:center;font-size:11px;color:var(--txm);padding:10px;">+ 477 comerciales más</div>`;}
+function renderAdmAccess(){return`<div style="font-size:12px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;background:var(--ok);border-radius:50%;display:inline-block;"></span> En línea ahora: 3 comerciales</div>${LOGIN_LOG.map(u=>`<div class="login-log"><div class="ll-av" style="${u.active?'background:#065F46':''}">${u.ini}</div><div class="ll-nm">${u.nm}<div style="font-size:10px;color:var(--txm);">${u.mods}</div></div><div class="ll-status">${u.active?`<div class="ll-active"><div class="ll-dot"></div>Activo</div>`:'<div style="font-size:10px;color:var(--txm);">Inactivo</div>'}<div class="ll-time">${u.time}</div></div></div>`).join('')}<div style="margin-top:14px;padding:12px;background:var(--bg);border-radius:10px;font-size:11px;color:var(--txm);">📊 <b>Esta semana:</b> 312 logins · 89% asistencia · 47 módulos completados</div>`;}
+function renderAdmRecognition(){return`<div class="recog-card"><div class="recog-title">🏆 Top 3 — ¡A reconocerlos!</div>${TOP_USERS.slice(0,3).map((u,i)=>`<div class="recog-item"><div class="recog-pos">${['🥇','🥈','🥉'][i]}</div><div class="recog-av">${u.ini}</div><div class="recog-info"><div class="recog-nm">${u.nm}</div><div class="recog-sub">${COUNTRIES[u.country]||''} ${u.country} · ${u.leader}</div></div><div class="recog-pts">⚡ ${u.pts.toLocaleString()}</div></div>`).join('')}<button class="send-recog" onclick="alert('🎉 ¡Reconocimiento enviado!')">🎉 Enviar reconocimiento</button></div><div class="card"><div class="sec-tit">📣 Mensaje del gerente</div><textarea style="width:100%;height:80px;border:1px solid var(--bdr);border-radius:8px;padding:10px;font-family:'Poppins',sans-serif;font-size:12px;resize:none;outline:none;color:var(--tx);" placeholder="Escribe un mensaje para todo el equipo IS..."></textarea><button style="margin-top:8px;background:var(--rappi);border:none;border-radius:8px;padding:8px 16px;color:#fff;font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;cursor:pointer;" onclick="alert('📢 Mensaje enviado a los 485 comerciales!')">📢 Enviar a todo el equipo</button></div>`;}
+
+function buildLeader(){
+  document.getElementById('scr-leader').innerHTML=`<div style="margin-bottom:14px;font-size:13px;font-weight:700;">👋 Hola ${CU.name}, aquí está el resumen de tu equipo</div><div class="ldr-kpi"><div class="lkpi"><div class="lkpi-v">8</div><div class="lkpi-l">Comerciales</div></div><div class="lkpi"><div class="lkpi-v">68%</div><div class="lkpi-l">Progreso promedio</div></div><div class="lkpi"><div class="lkpi-v">2</div><div class="lkpi-l">Necesitan apoyo</div></div></div><div class="need-help"><div class="nh-tit">⚠️ Requieren coaching esta semana</div>${NEED_HELP.slice(0,2).map(u=>`<div class="nh-item"><div class="nh-av">${u.ini}</div><div style="flex:1;"><div class="nh-nm">${u.nm}</div><div class="nh-sub">${u.issue}</div></div><button class="coach-btn" onclick="alert('📅 1:1 agendado con ${u.nm}.')">Agendar 1:1</button></div>`).join('')}</div><div class="sec-tit">👥 Mi equipo — Progreso</div>${TOP_USERS.slice(0,5).map((u,i)=>`<div class="user-row"><div class="r-num">#${i+1}</div><div class="u-av">${u.ini}</div><div class="u-nm">${u.nm}<div style="font-size:10px;color:var(--txm);">${COUNTRIES[u.country]||''} · ${u.pts.toLocaleString()} pts</div></div><div class="u-prog"><div class="u-pb"><div class="u-pf ${u.prog>70?'hi':u.prog>40?'md':'lo'}" style="width:${u.prog}%"></div></div><div style="font-size:9px;color:var(--txm);">${u.prog}%</div></div><div style="font-size:14px">${u.prog>70?'⭐':u.prog>40?'📈':'🆘'}</div></div>`).join('')}<div style="margin-top:14px;padding:12px;background:var(--rappi-p);border:1px solid rgba(255,68,31,.15);border-radius:10px;font-size:11px;color:#CC3518;">💡 <b>Tip de Max:</b> Los líderes que hacen 1:1 semanales logran 40% más progreso en su equipo.</div>`;
+}
+
+function openQuiz(name){curQuizMod=name;qQ=QUIZ_DATA['Prospección']||[];qIdx=0;qScore=0;qAnswered=false;document.getElementById('qTitle').textContent='🎯 Quiz: '+name;document.getElementById('quizOv').classList.add('open');renderQ();}
+function closeQuiz(){document.getElementById('quizOv').classList.remove('open');}
+function renderQ(){
+  if(qIdx>=qQ.length){showResults();return;}
+  const q=qQ[qIdx];qAnswered=false;
+  document.getElementById('qPfil').style.width=((qIdx/qQ.length)*100)+'%';
+  document.getElementById('qBody').innerHTML=`<div class="q-num">Pregunta ${qIdx+1} de ${qQ.length}</div><div class="q-q">${q.q}</div><div class="q-opts">${q.opts.map((o,i)=>`<button class="q-opt" onclick="selOpt(${i})">${String.fromCharCode(65+i)}. ${o}</button>`).join('')}</div><div class="q-fb" id="qFb"></div><button class="q-nxt" id="qNxt" onclick="nextQ()" style="display:none">Siguiente →</button>`;
+}
+function selOpt(i){
+  if(qAnswered)return;qAnswered=true;
+  const q=qQ[qIdx];
+  document.querySelectorAll('.q-opt').forEach((o,j)=>{if(j===q.correct)o.classList.add('cor');else if(j===i)o.classList.add('wr');o.disabled=true;});
+  const fb=document.getElementById('qFb');
+  if(i===q.correct){qScore++;fb.className='q-fb cor';fb.textContent='✅ '+q.exp;addPts(20);}else{fb.className='q-fb wr';fb.textContent='❌ '+q.exp;}
+  fb.style.display='block';document.getElementById('qNxt').style.display='block';
+}
+function nextQ(){qIdx++;renderQ();}
+function showResults(){
+  const pct=Math.round(qScore/qQ.length*100),pass=pct>=70;
+  const emoji=pct===100?'🎉':pct>=70?'🚀':pct>=50?'😅':'💪';
+  const msg=pct===100?'¡PERFECTO! ¡Eres un CRACK!':pct>=80?'¡Brutal! Nivel otro.':pct>=70?'¡Aprobado! Sigue así.':'¡Sigue practicando!';
+  document.getElementById('qBody').innerHTML=`<div class="r-scr"><div class="r-em">${emoji}</div><div style="font-size:12px;font-weight:600;color:var(--txm);">Resultado del quiz</div><div class="r-sc">${pct}%</div><div class="r-msg">${pass?'🎯 ¡Módulo aprobado!':'❌ No aprobado'}</div><div class="r-sub">"${msg}" — Max 🤖</div><div class="r-pts"><div class="r-pv">+${qScore*20} ⚡</div><div class="r-pl">RappiPoints ganados</div></div><div class="r-act">${pass?`<button class="r-btn pri" onclick="closeQuiz();closeDet()">🏆 Ver mi progreso</button>`:''}<button class="r-btn sec" onclick="openQuiz('${curQuizMod}')">🔄 Repetir quiz</button><button class="r-btn sec" onclick="dlReport()">📊 Rappi-Report</button></div></div>`;
+  addPts(qScore*20);if(pct===100)launchConfetti();
+}
+
+function addPts(n){if(!CU)return;CU.points+=n;ls('isa_pts_'+CU.email,CU.points);document.getElementById('ptsVal').textContent=CU.points.toLocaleString();const el=document.getElementById('ptsVal');el.style.color='#FF441F';setTimeout(()=>el.style.color='#fff',600);}
+function launchConfetti(){const c=document.getElementById('confetti');c.innerHTML='';c.classList.add('act');const cols=['#FF441F','#FF6B47','#F59E0B','#10B981','#3B82F6','#8B5CF6'];for(let i=0;i<70;i++){const p=document.createElement('div');p.className='cp';p.style.cssText=`left:${Math.random()*100}%;background:${cols[Math.floor(Math.random()*cols.length)]};animation-duration:${1+Math.random()*2}s;animation-delay:${Math.random()*.5}s;width:${5+Math.random()*7}px;height:${5+Math.random()*7}px;border-radius:${Math.random()>.5?'50%':'2px'};`;c.appendChild(p);}setTimeout(()=>{c.classList.remove('act');c.innerHTML='';},3000);}
+function showMaxTip(msg){const b=document.getElementById('chatBody');const el=document.createElement('div');el.className='mm';el.textContent=msg;b.appendChild(el);b.scrollTop=b.scrollHeight;}
+function toggleMax(){document.getElementById('maxChat').classList.toggle('open');}
+const maxR=['¡Dale con toda! 🔥','¡Learn Rappido! 🚀 El que aprende rápido, crece rápido.','Tip: el silencio después del cierre es tu mejor aliado. 🤐','¡Eres un crack! Sigue así y llegarás al Legend. ⭐'];
+let rIdx=0;
+function sendMax(){const inp=document.getElementById('chatIn');if(!inp.value.trim())return;const b=document.getElementById('chatBody');const um=document.createElement('div');um.className='mm me';um.textContent=inp.value;b.appendChild(um);inp.value='';b.scrollTop=b.scrollHeight;setTimeout(()=>{showMaxTip(maxR[rIdx%maxR.length]);rIdx++;},700);}
+
+function dlReport(){
+  const n=CU?.name||'Usuario',pts=CU?.points||0,lvl=pts>2000?'Legend':pts>1000?'Silver':'Rookie';
+  const txt=`📊 RAPPI-REPORT — INSIDE SALES ACADEMY\n${'='.repeat(44)}\n\nNombre: ${n}\nRol: ${CU?.role||'Comercial'}\nNivel: ${lvl}\nPaís: ${CU?.country||'N/A'} ${COUNTRIES[CU?.country]||''}\nRappiPoints: ${pts.toLocaleString()}\nFecha: ${new Date().toLocaleDateString('es-CO',{weekday:'long',year:'numeric',month:'long',day:'numeric'})}\n${CU?.leader?`Líder: ${CU.leader}\n`:''}\n${'—'.repeat(44)}\n🤖 FEEDBACK DE MAX\n${'—'.repeat(44)}\n\n✅ FORTALEZAS:\n• Racha activa de aprendizaje — gran disciplina\n• Módulos de Preparación y Prospección completados\n• Actitud de crecimiento constante\n\n📈 ÁREAS DE MEJORA:\n• Completar módulo de Smart Pitch (60% avance)\n• Iniciar módulo de Apertura y Contactabilidad\n• Alcanzar 80%+ en todos los módulos activos\n\n💪 DE MAX PARA TI:\n"¡${n}, tú eres un crack! ${pts.toLocaleString()} RappiPoints demuestran\ntu compromiso. ¡Vamos con toda! — Max 🚀"\n\n${'—'.repeat(44)}\n📊 PROGRESO POR MÓDULO:\n• Preparación Comercial: ✅ 100%\n• Prospección: ✅ 100%\n• Conocimiento del Cliente: 🔄 60%\n• Apertura y Contactabilidad: 📚 0% (disponible)\n• Propuesta de Valor y Cierre: 🔒 Bloqueado\n${'='.repeat(44)}\nInside Sales Academy — Rappi | Powered by Max AI 🤖\n`;
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([txt],{type:'text/plain;charset=utf-8'}));a.download=`RappiReport_${n.replace(/\s/,'_')}_${new Date().toISOString().slice(0,10)}.txt`;a.click();
+  showMaxTip('¡Tu Rappi-Report listo! 📊 🔥');
+}
+
+window.onload=()=>{
+  const saved=ls('isa_email');
+  if(saved){
+    const isLeader=LEADERS.has(saved),isAdmin=saved==='admin@rappi.com';
+    CU={email:saved,name:firstName(saved),initials:initials(saved),role:isAdmin?'admin':isLeader?'leader':'comercial',points:ls('isa_pts_'+saved)||840,leader:COMERCIALES_SAMPLE.find(u=>u.email===saved)?.leader||null,country:COMERCIALES_SAMPLE.find(u=>u.email===saved)?.country||'CO'};
+    document.getElementById('loginSc').style.display='none';
+    buildApp();
+  }
+};
+</script>
+</body>
+</html>
