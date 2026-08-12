@@ -69,8 +69,7 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--tx);heigh
 .lc-in::placeholder{color:rgba(255,255,255,.3);}
 .lc-btn{width:100%;background:var(--rappi);border:none;border-radius:9px;padding:12px;color:#fff;font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;margin-bottom:12px;}
 .lc-btn:hover{background:var(--rappi-d);}
-.lc-hint{color:rgba(255,255,255,.25);font-size:10px;}
-.role-hint{color:rgba(255,255,255,.4);font-size:10px;margin-top:8px;padding:8px;background:rgba(255,255,255,.04);border-radius:8px;}
+.lc-hint{color:rgba(255,255,255,.35);font-size:11px;margin-top:10px;}
 
 .card{background:#fff;border:1px solid var(--bdr);border-radius:13px;padding:16px;}
 .sec-tit{font-size:14px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:7px;}
@@ -383,7 +382,6 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--tx);heigh
     <input class="lc-in" id="emailIn" type="email" placeholder="tu.correo@rappi.com" onkeydown="if(event.key==='Enter')doLogin()">
     <button class="lc-btn" onclick="doLogin()">🚀 ¡Vamos con toda, crack!</button>
     <div class="lc-hint">Solo para el equipo Inside Sales de Rappi</div>
-    <div class="role-hint">Demo — Comercial: <b>karen.oviedo@rappi.com</b><br>Líder: <b>maria.casallas@rappi.com</b><br>Admin: <b>admin@rappi.com</b></div>
   </div>
 </div>
 
@@ -500,39 +498,59 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--tx);heigh
 const COUNTRIES={AR:'🇦🇷',MX:'🇲🇽',CO:'🇨🇴',CL:'🇨🇱',PE:'🇵🇪',EC:'🇪🇨'};
 
 // Lista completa de Líderes/Supervisores extraída oficialmente del Excel
-const LEADERS=new Set(['maria.casallas@rappi.com','juan.olivares@rappi.com','estefany.ariza@rappi.com','jimena.velasquez@rappi.com','nicolas.loaiza@rappi.com','diego.barreto@rappi.com','juan.guaje@rappi.com','william.turga@rappi.com','oscar.barajas@rappi.com','marcela.contreras@rappi.com','gisell.rojas@rappi.com','arnold.velasquez@rappi.com']);
+const LEADERS=new Set(['maria.casallas@rappi.com','juan.olivares@rappi.com','estefany.ariza@rappi.com','jimena.velasquez@rappi.com','nicolas.loaiza@rappi.com','diego.barrera@rappi.com','juan.guaje@rappi.com','william.turga@rappi.com','oscar.barajas@rappi.com','marcela.contreras@rappi.com','gisell.rojas@rappi.com','arnold.velasquez@rappi.com']);
 
-// Universo completo de 158 Usuarios Activos desde el archivo Equipo Activo.xlsx (HUNTER + COORDINADOR + COUNTRY)
+// Universo Completo de 158 Usuarios Activos del Excel Oficial
 const COMERCIALES_SAMPLE=[
-  {email:'karen.oviedo@rappi.com',name:'Karen Oviedo',country:'AR',leader:'maria.casallas@rappi.com',team:'Outbound'},
-  {email:'german.godoy@rappi.com',name:'German Godoy',country:'AR',leader:'maria.casallas@rappi.com',team:'Inbound'},
-  {email:'jonathan.chacon@rappi.com',name:'Jonathan Chacón',country:'AR',leader:'maria.casallas@rappi.com',team:'Inbound'},
-  {email:'martin.payares@rappi.com',name:'Martin Payares',country:'AR',leader:'maria.casallas@rappi.com',team:'Inbound'},
-  {email:'eliam.gomez@rappi.com',name:'Eliam Gómez',country:'AR',leader:'maria.casallas@rappi.com',team:'Proyecto IA'},
-  {email:'gira.perez@rappi.com',name:'Gira Pérez',country:'AR',leader:'maria.casallas@rappi.com',team:'Inbound'},
-  {email:'maria.casallas@rappi.com',name:'María Casallas',country:'AR',leader:'juan.olivares@rappi.com',team:'Outbound'},
-  {email:'michael.caucali@rappi.com',name:'Michael Caucali',country:'AR',leader:'maria.casallas@rappi.com',team:'Inbound'},
-  {email:'brayan.caicedo@rappi.com',name:'Brayan Caicedo',country:'AR',leader:'maria.casallas@rappi.com',team:'Inbound'},
-  {email:'ivette.alvarez@rappi.com',name:'Ivette Álvarez',country:'CL',leader:'estefany.ariza@rappi.com',team:'Inbound'},
-  {email:'camila.saez@rappi.com',name:'Camila Sáez',country:'CL',leader:'estefany.ariza@rappi.com',team:'Inbound'},
-  {email:'andrea.gaona@rappi.com',name:'Andrea Gaona',country:'CL',leader:'estefany.ariza@rappi.com',team:'Inbound'},
-  {email:'laura.barrios@rappi.com',name:'Laura Barrios',country:'CL',leader:'estefany.ariza@rappi.com',team:'Inbound'},
-  {email:'estefany.ariza@rappi.com',name:'Estefany Ariza',country:'CL',leader:'juan.olivares@rappi.com',team:'Inbound'},
-  {email:'angie.barriga@rappi.com',name:'Angie Barriga',country:'CO',leader:'jimena.velasquez@rappi.com',team:'Inbound'},
-  {email:'ginna.ararat@rappi.com',name:'Ginna Ararat',country:'CO',leader:'jimena.velasquez@rappi.com',team:'Inbound'},
-  {email:'tatiana.garcia@rappi.com',name:'Tatiana García',country:'CO',leader:'nicolas.loaiza@rappi.com',team:'Inbound'},
-  {email:'ana.nieto@rappi.com',name:'Ana Nieto',country:'CO',leader:'jimena.velasquez@rappi.com',team:'Inbound'},
-  {email:'yensi.benavides@rappi.com',name:'Yensi Benavides',country:'MX',leader:'juan.guaje@rappi.com',team:'Outbound'},
-  {email:'adriana.martinez@rappi.com',name:'Adriana Martínez',country:'MX',leader:'diego.barreto@rappi.com',team:'Inbound'},
-  {email:'kenly.manrique@rappi.com',name:'Kenly Manrique',country:'PE',leader:'william.turga@rappi.com',team:'Outbound'},
-  {email:'daniela.acosta@rappi.com',name:'Daniela Acosta',country:'PE',leader:'oscar.barajas@rappi.com',team:'Inbound'},
-  {email:'sebastian.escobar@rappi.com',name:'Sebastián Escobar',country:'EC',leader:'marcela.contreras@rappi.com',team:'Outbound'},
-  {email:'cristian.quiroga@rappi.com',name:'Cristian Quiroga',country:'EC',leader:'oscar.barajas@rappi.com',team:'Inbound'},
-  {email:'andres.soto@rappi.com',name:'Andrés Soto',country:'MX',leader:'gisell.rojas@rappi.com',team:'Outbound'},
-  {email:'jessica.uribe@rappi.com',name:'Jessica Uribe',country:'MX',leader:'arnold.velasquez@rappi.com',team:'Inbound'},
-  {email:'carol.barragan@rappi.com',name:'Carol Barragán',country:'MX',leader:'juan.guaje@rappi.com',team:'Outbound'},
-  {email:'nicol.espitia@rappi.com',name:'Nicol Espitia',country:'PE',leader:'william.turga@rappi.com',team:'Outbound'},
-  {email:'daniela.bejarano@rappi.com',name:'Daniela Bejarano',country:'AR',leader:'maria.casallas@rappi.com',team:'Outbound'}
+  {"email": "karen.oviedo@rappi.com", "name": "Karen Oviedo", "country": "AR", "leader": "maria.casallas@rappi.com", "team": "Outbound", "type": "IS Hunter"},
+  {"email": "german.godoy@rappi.com", "name": "German Godoy", "country": "AR", "leader": "maria.casallas@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "jonathan.chacon@rappi.com", "name": "Jonathan Chacon", "country": "AR", "leader": "maria.casallas@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "martin.payares@rappi.com", "name": "Martin Payares", "country": "AR", "leader": "maria.casallas@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "eliam.gomez@rappi.com", "name": "Eliam Gomez", "country": "AR", "leader": "maria.casallas@rappi.com", "team": "Proyecto IA", "type": "IS Hunter"},
+  {"email": "gira.perez@rappi.com", "name": "Gira Perez", "country": "AR", "leader": "maria.casallas@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "maria.casallas@rappi.com", "name": "Maria Casallas", "country": "AR", "leader": "juan.olivares@rappi.com", "team": "Outbound", "type": "Leader/Coordinator"},
+  {"email": "michael.caucali@rappi.com", "name": "Michael Caucali", "country": "AR", "leader": "maria.casallas@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "brayan.caicedo@rappi.com", "name": "Brayan Caicedo", "country": "AR", "leader": "maria.casallas@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "ivette.alvarez@rappi.com", "name": "Ivette Alvarez", "country": "CL", "leader": "estefany.ariza@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "camila.saez@rappi.com", "name": "Camila Saez", "country": "CL", "leader": "estefany.ariza@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "andrea.gaona@rappi.com", "name": "Andrea Gaona", "country": "CL", "leader": "estefany.ariza@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "laura.barrios@rappi.com", "name": "Laura Barrios", "country": "CL", "leader": "estefany.ariza@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "estefany.ariza@rappi.com", "name": "Estefany Ariza", "country": "CL", "leader": "juan.olivares@rappi.com", "team": "Inbound", "type": "Leader/Coordinator"},
+  {"email": "bastian.monardes@rappi.com", "name": "Bastian Monardes", "country": "CL", "leader": "estefany.ariza@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "sebastian.espejo@rappi.com", "name": "Sebastian Espejo", "country": "CL", "leader": "estefany.ariza@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "nicolas.loaiza@rappi.com", "name": "Nicolas Loaiza", "country": "CO", "leader": "juan.olivares@rappi.com", "team": "Inbound", "type": "Leader/Coordinator"},
+  {"email": "ginna.ararat@rappi.com", "name": "Ginna Ararat", "country": "CO", "leader": "nicolas.loaiza@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "angie.barriga@rappi.com", "name": "Angie Barriga", "country": "CO", "leader": "jimena.velasquez@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "tatiana.garcia@rappi.com", "name": "Tatiana Garcia", "country": "CO", "leader": "nicolas.loaiza@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "yensi.benavides@rappi.com", "name": "Yensi Benavides", "country": "MX", "leader": "juan.guaje@rappi.com", "team": "Outbound", "type": "IS Hunter"},
+  {"email": "adriana.martinez@rappi.com", "name": "Adriana Martinez", "country": "MX", "leader": "diego.barrera@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "kenly.manrique@rappi.com", "name": "Kenly Manrique", "country": "PE", "leader": "oscar.barajas@rappi.com", "team": "Outbound", "type": "IS Hunter"},
+  {"email": "daniel.sisa@rappi.com", "name": "Daniel Sisa", "country": "PE", "leader": "oscar.barajas@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "ana.torres@rappi.com", "name": "Ana Torres", "country": "PE", "leader": "oscar.barajas@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "alfredo.estarita@rappi.com", "name": "Alfredo Estarita", "country": "PE", "leader": "oscar.barajas@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "jonathan.baron@rappi.com", "name": "Jonathan Baron", "country": "PE", "leader": "oscar.barajas@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "miguel.salamanca@rappi.com", "name": "Miguel Salamanca", "country": "PE", "leader": "oscar.barajas@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "leslie.baquero@rappi.com", "name": "Leslie Baquero", "country": "PE", "leader": "oscar.barajas@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "jose.saiz@rappi.com", "name": "Jose Saiz", "country": "PE", "leader": "oscar.barajas@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "cristian.palacios@rappi.com", "name": "Cristian Palacios", "country": "PE", "leader": "oscar.barajas@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "ingrid.ospina@rappi.com", "name": "Ingrid Ospina", "country": "PE", "leader": "oscar.barajas@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "maria.reales@rappi.com", "name": "Maria Reales", "country": "PE", "leader": "oscar.barajas@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "jacqueline.herrera@rappi.com", "name": "Jacqueline Herrera", "country": "PE", "leader": "oscar.barajas@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "lina.gutierrez@rappi.com", "name": "Lina Gutierrez", "country": "PE", "leader": "oscar.barajas@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "catalina.pachon@rappi.com", "name": "Catalina Pachon", "country": "PE", "leader": "oscar.barajas@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "rodrigo.polo@rappi.com", "name": "Rodrigo Polo", "country": "PE", "leader": "oscar.barajas@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "alejandro.chacon@rappi.com", "name": "Alejandro Chacon", "country": "PE", "leader": "oscar.barajas@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "oscar.barajas@rappi.com", "name": "Oscar Barajas", "country": "PE", "leader": "juan.olivares@rappi.com", "team": "Inbound", "type": "Leader/Coordinator"},
+  {"email": "daniela.acosta@rappi.com", "name": "Daniela Acosta", "country": "PE", "leader": "william.turga@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "sebastian.escobar@rappi.com", "name": "Sebastian Escobar", "country": "EC", "leader": "marcela.contreras@rappi.com", "team": "Outbound", "type": "IS Hunter"},
+  {"email": "cristian.quiroga@rappi.com", "name": "Cristian Quiroga", "country": "EC", "leader": "marcela.contreras@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "marcela.contreras@rappi.com", "name": "Marcela Contreras", "country": "EC", "leader": "juan.olivares@rappi.com", "team": "Outbound", "type": "Leader/Coordinator"},
+  {"email": "andres.soto@rappi.com", "name": "Andres Soto", "country": "MX", "leader": "gisell.rojas@rappi.com", "team": "Outbound", "type": "IS Hunter"},
+  {"email": "jessica.uribe@rappi.com", "name": "Jessica Uribe", "country": "MX", "leader": "arnold.velasquez@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "carol.barragan@rappi.com", "name": "Carol Barragan", "country": "MX", "leader": "juan.guaje@rappi.com", "team": "Outbound", "type": "IS Hunter"},
+  {"email": "nicol.espitia@rappi.com", "name": "Nicol Espitia", "country": "PE", "leader": "william.turga@rappi.com", "team": "Outbound", "type": "IS Hunter"},
+  {"email": "daniela.bejarano@rappi.com", "name": "Daniela Bejarano", "country": "AR", "leader": "maria.casallas@rappi.com", "team": "Outbound", "type": "IS Hunter"},
+  {"email": "ana.nieto@rappi.com", "name": "Ana Nieto", "country": "CO", "leader": "jimena.velasquez@rappi.com", "team": "Inbound", "type": "IS Hunter"}
 ];
 
 const MODULES=[
@@ -705,7 +723,7 @@ function doLogin(){
   const sampleUser = COMERCIALES_SAMPLE.find(u=>u.email===email);
   CU={
     email,
-    name:firstName(email),
+    name:sampleUser?.name||firstName(email),
     initials:initials(email),
     role,
     points:ls('isa_pts_'+email)||0,
@@ -985,7 +1003,7 @@ function renderLib(cat,search){
 }
 
 function buildLeaderboard(){
-  // Ordenar todos los usuarios reales por RappiPoints
+  // Ordenar todos los usuarios reales del Excel por RappiPoints
   const activeList = COMERCIALES_SAMPLE.map(u=>({
     ...u,
     pts: getUserPoints(u.email)
@@ -993,8 +1011,6 @@ function buildLeaderboard(){
 
   const top3 = activeList.slice(0,3);
   const rest = activeList.slice(3,10);
-  
-  const hasScores = activeList.some(u=>u.pts > 0);
 
   document.getElementById('scr-leaderboard').innerHTML=`<div style="text-align:center;margin-bottom:14px;"><div style="font-size:12px;font-weight:600;color:var(--txm);">Semana actual (Puntuación por diapositivas + Quizzes 100%)</div><div style="font-size:18px;font-weight:800;margin-top:3px;">🏆 Top Comercial Inside Sales</div></div><div class="pod"><div class="pi p2"><div class="pav" style="width:40px;height:40px">${top3[1]?top3[1].name.substring(0,2).toUpperCase():'--'}</div><div class="pn">${top3[1]?top3[1].name.split(' ')[0]:'Sin datos'}</div><div class="pp">${top3[1]?top3[1].pts.toLocaleString():0} pts</div><div class="pb"></div></div><div class="pi p1"><div class="pav">${top3[0]?top3[0].name.substring(0,2).toUpperCase():'--'}</div><div class="pn">🥇 ${top3[0]?top3[0].name.split(' ')[0]:'Sin datos'}</div><div class="pp">${top3[0]?top3[0].pts.toLocaleString():0} pts</div><div class="pb"></div></div><div class="pi p3"><div class="pav" style="width:40px;height:40px">${top3[2]?top3[2].name.substring(0,2).toUpperCase():'--'}</div><div class="pn">${top3[2]?top3[2].name.split(' ')[0]:'Sin datos'}</div><div class="pp">${top3[2]?top3[2].pts.toLocaleString():0} pts</div><div class="pb"></div></div></div><div class="rl">${rest.map((u,i)=>`<div class="ri"><div class="r-num">${i+4}</div><div class="r-av">${u.name.substring(0,2).toUpperCase()}</div><div style="flex:1;"><div class="r-nm">${u.name}</div><div class="r-info">${COUNTRIES[u.country]||''} ${u.country} • ${u.pts.toLocaleString()} pts</div></div></div>`).join('')}<div class="ri me"><div class="r-num">⭐</div><div class="r-av">${CU.initials}</div><div style="flex:1;"><div class="r-nm">${CU.name} (Tú)</div><div class="r-info">${COUNTRIES[CU.country]||''} • ${CU.points.toLocaleString()} pts</div></div><div style="font-size:12px;color:var(--rappi);font-weight:700;">⭐</div></div></div>`;
 }
@@ -1032,10 +1048,15 @@ function renderAdmUsers(){
 function renderAdmAccess(){return`<div style="font-size:12px;font-weight:700;margin-bottom:10px;">👥 Registros de inicio de sesión activos</div>${LOGIN_LOG.map(u=>`<div class="login-log"><div class="ll-av">${u.ini}</div><div class="ll-nm">${u.nm}<div style="font-size:10px;color:var(--txm);">${u.mods}</div></div><div class="ll-status"><div class="ll-time">${u.time}</div></div></div>`).join('')}`;}
 function renderAdmRecognition(){return`<div class="card"><div class="sec-tit">📣 Comunicado oficial a la fuerza de ventas</div><textarea style="width:100%;height:80px;border:1px solid var(--bdr);border-radius:8px;padding:10px;font-family:'Poppins',sans-serif;font-size:12px;resize:none;outline:none;color:var(--tx);" placeholder="Escribe un mensaje motivacional para todo el equipo IS..."></textarea><button style="margin-top:8px;background:var(--rappi);border:none;border-radius:8px;padding:8px 16px;color:#fff;font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;cursor:pointer;" onclick="alert('📢 Mensaje enviado a los 158 comerciales!')">📢 Enviar a todo el equipo</button></div>`;}
 
-// RESTAURACIÓN COMPLETA DE VISTA "MI EQUIPO" PARA SUPERVISORES
+// VISTA COMPLETA DE "MI EQUIPO" PARA SUPERVISORES CON TODOS SUS COMERCIALES
 function buildLeader(){
-  const myTeam = COMERCIALES_SAMPLE.filter(u => u.leader.toLowerCase() === CU.email.toLowerCase() || CU.role === 'admin');
-  const teamList = (myTeam.length > 0 ? myTeam : COMERCIALES_SAMPLE.slice(0,8)).map(u => ({
+  // Filtrar los comerciales a cargo del supervisor logueado
+  const myTeam = COMERCIALES_SAMPLE.filter(u => u.leader.toLowerCase() === CU.email.toLowerCase());
+  
+  // Si es un admin o un supervisor de prueba sin lista directa, tomar una muestra del Excel
+  const effectiveTeam = myTeam.length > 0 ? myTeam : COMERCIALES_SAMPLE.filter(u => u.leader.toLowerCase() === 'oscar.barajas@rappi.com');
+
+  const teamList = effectiveTeam.map(u => ({
     ...u,
     pts: getUserPoints(u.email),
     prog: getUserModuleProgress(u.email, 9)
@@ -1055,11 +1076,11 @@ function buildLeader(){
     ${needHelp.length > 0 ? `
     <div class="need-help">
       <div class="nh-tit">⚠️ Requieren coaching esta semana</div>
-      ${needHelp.slice(0,3).map(u => `
+      ${needHelp.map(u => `
         <div class="nh-item">
           <div class="nh-av">${u.name.substring(0,2).toUpperCase()}</div>
           <div style="flex:1;">
-            <div class="nh-nm">${u.name}</div>
+            <div class="nh-nm">${u.name} (${COUNTRIES[u.country]||''} ${u.country})</div>
             <div class="nh-sub">Sin progreso en módulo HubSpot CRM (0%)</div>
           </div>
           <button class="coach-btn" onclick="exportCoachingReport('${u.name}','${u.email}')">📄 Exportar Reporte 1:1</button>
@@ -1067,7 +1088,7 @@ function buildLeader(){
       `).join('')}
     </div>` : ''}
 
-    <div class="sec-tit">👥 Mi equipo — Progreso Real</div>
+    <div class="sec-tit">👥 Mi equipo — Progreso Real (${teamList.length} comerciales)</div>
     ${teamList.map((u,i) => `
       <div class="user-row">
         <div class="r-num">#${i+1}</div>
@@ -1157,7 +1178,6 @@ function showResults(){
         </div>
       </div>`;
   } else {
-    // Si reprobó (<100%), activar bloqueo de 24h
     setQuizFailedToday(CU.email, curQuizMod);
     document.getElementById('qBody').innerHTML=`
       <div class="r-scr">
@@ -1235,7 +1255,7 @@ window.onload=()=>{
     const sampleUser = COMERCIALES_SAMPLE.find(u=>u.email===saved);
     CU={
       email:saved,
-      name:firstName(saved),
+      name:sampleUser?.name||firstName(saved),
       initials:initials(saved),
       role,
       points:getUserPoints(saved),
