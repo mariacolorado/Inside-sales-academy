@@ -168,12 +168,14 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--tx);heigh
 .xl{color:rgba(255,255,255,.4);font-size:10px;margin-bottom:3px;display:flex;justify-content:space-between;}
 .xbar{height:5px;background:rgba(255,255,255,.1);border-radius:3px;}
 .xfil{height:100%;background:var(--rappi);border-radius:3px;}
+
+/* Estilo Mejorado de Medallas/Logros */
 .ach{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:14px;}
-.ac{background:#fff;border:1px solid var(--bdr);border-radius:11px;padding:11px;text-align:center;transition:all .3s;}
-.ac.unlocked{opacity:1;border-color:var(--gold);box-shadow:0 4px 12px rgba(245,158,11,.15);}
-.ac.locked-ach{opacity:.35;filter:grayscale(1);}
+.ac{background:#fff;border:1.5px solid var(--bdr);border-radius:11px;padding:11px;text-align:center;transition:all .3s ease;}
+.ac.locked-ach{opacity:.55;background:#f8fafc;filter:contrast(0.9);}
+.ac.unlocked{opacity:1;border-color:var(--gold);background:#fff;box-shadow:0 6px 18px rgba(245,158,11,.25);transform:translateY(-2px);}
 .ac-i{font-size:22px;margin-bottom:3px;}
-.ac-n{font-size:10px;font-weight:600;}
+.ac-n{font-size:10px;font-weight:700;color:var(--tx);}
 .ac-d{font-size:9px;color:var(--txm);}
 
 .det{position:absolute;inset:0;background:var(--bg);z-index:50;overflow-y:auto;display:none;}
@@ -677,7 +679,7 @@ const LEADER_MODULES=[
   }
 ];
 
-const LIBRARY_DATA=[{t:'Onboarding Inside Sales',cat:'Preparación',ico:'📋',type:'PPT'},{t:'Cartilla Llamadas Efectivas',cat:'Preparación',ico:'📞',type:'PDF'},{t:'Smart Pitch — Guía de uso',cat:'Cliente',ico:'📱',type:'DOC'},{t:'Elevator Pitch IS',cat:'Apertura',ico:'🎤',type:'PPT'},{t:'Estrategias de Cierre IS',cat:'Cierre',ico:'🔑',type:'PDF'},{t:'Playbook Condonación de Deuda',cat:'Pre-Venta',ico:'💳',type:'PDF'},{t:'Manual Onboarding — Zoho + SOB',cat:'Venta',ico:'💼',type:'DOC'},{t:'Brand Expansion — Flujo Zoho',cat:'Venta',ico:'📈',type:'PPT'},{t:'Playbook Nueva Negociación',cat:'Venta',ico:'🤝',type:'PPT'},{t:'Reglas Menú — Playbook 2024',cat:'Proceso',ico:'📋',type:'PDF'},{t:'Rappi Aliados y Portal Partners',cat:'Proceso',ico:'🏪',type:'DOC'},{t:'Playbook HubSpot — Comerciales',cat:'Proceso',ico:'🟧',type:'PPT',url:'https://docs.google.com/presentation/d/1q02UnMTNzO3vAneqKJ0wmQOOM766U9EvA4XrU6HiqTk/edit?slide=id.g3d532270b63_0_391#slide=id.g3d532270b63_0_391'},{t:'Playbook HubSpot — Supervisores',cat:'Proceso',ico:'📙',type:'PPT',url:'https://docs.google.com/presentation/d/1Yheg2fQIhfhEWNfiAEAZjIbpxOyg0we41nJLuz3WfGc/edit?slide=id.g3d532270b63_0_391#slide=id.g3d532270b63_0_391'},{t:'Quiz Google Forms — Comerciales',cat:'Proceso',ico:'📝',type:'FORM',url:'https://docs.google.com/forms/d/e/1FAIpQLSfX-qe2PqPpZdCPDtAYmSZ7ep7w2a4k_by917pUby7nf6_0Cg/viewform?usp=header'},{t:'Quiz Google Forms — Supervisores',cat:'Proceso',ico:'📝',type:'FORM',url:'https://docs.google.com/forms/d/e/1FAIpQLSeWiIw4Kzq-I2XIo8ZeEbmZdDH2lG_goB3ZFomJqi7AUr279w/viewform'}];
+const LIBRARY_DATA=[{t:'Onboarding Inside Sales',cat:'Preparación',ico:'📋',type:'PPT'},{t:'Cartilla Llamadas Efectivas',cat:'Preparación',ico:'📞',type:'PDF'},{t:'Smart Pitch — Guía de uso',cat:'Cliente',ico:'📱',type:'DOC'},{t:'Elevator Pitch IS',cat:'Apertura',ico:'🎤',type:'PPT'},{t:'Estrategias de Cierre IS',cat:'Cierre',ico:'🔑',type:'PDF'},{t:'Playbook Condonación de Deuda',cat:'Pre-Venta',ico:'💳',type:'PDF'},{t:'Manual Onboarding — Zoho + SOB',cat:'Venta',ico:'💼',type:'DOC'},{t:'Playbook HubSpot — Comerciales',cat:'Proceso',ico:'🟧',type:'PPT',url:'https://docs.google.com/presentation/d/1q02UnMTNzO3vAneqKJ0wmQOOM766U9EvA4XrU6HiqTk/edit?slide=id.g3d532270b63_0_391#slide=id.g3d532270b63_0_391'},{t:'Playbook HubSpot — Supervisores',cat:'Proceso',ico:'📙',type:'PPT',url:'https://docs.google.com/presentation/d/1Yheg2fQIhfhEWNfiAEAZjIbpxOyg0we41nJLuz3WfGc/edit?slide=id.g3d532270b63_0_391#slide=id.g3d532270b63_0_391'},{t:'Quiz Google Forms — Comerciales',cat:'Proceso',ico:'📝',type:'FORM',url:'https://docs.google.com/forms/d/e/1FAIpQLSfX-qe2PqPpZdCPDtAYmSZ7ep7w2a4k_by917pUby7nf6_0Cg/viewform?usp=header'},{t:'Quiz Google Forms — Supervisores',cat:'Proceso',ico:'📝',type:'FORM',url:'https://docs.google.com/forms/d/e/1FAIpQLSeWiIw4Kzq-I2XIo8ZeEbmZdDH2lG_goB3ZFomJqi7AUr279w/viewform'}];
 
 const QUIZ_DATA={
 'HubSpot CRM — Comerciales':[
@@ -707,6 +709,7 @@ const COUNTRY_DATA=[{code:'MX',name:'México',flag:'🇲🇽',total:180,active:1
 
 let CU=null,curMod=null,qQ=[],qIdx=0,qScore=0,qAnswered=false,curQuizMod='';
 let curLsnMod=null,curLsnIdx=0,curSlideIdx=0;
+let currentRankingTab='hunters'; // 'hunters' o 'leaders'
 
 function ls(k,v){if(v!==undefined)localStorage.setItem(k,JSON.stringify(v));else{try{return JSON.parse(localStorage.getItem(k))}catch{return null}}}
 function initials(e){const p=e.split('@')[0].split('.');return(p[0][0]+(p[1]?p[1][0]:'')).toUpperCase();}
@@ -794,14 +797,12 @@ function toggleSb(){const s=document.getElementById('sidebar');s.classList.toggl
 function buildHome(){
   const n=CU.name,flag=COUNTRIES[CU.country]||'🌎';
   
-  // Contar módulos completados reales por el usuario
   const availableMods = CU.role==='leader'?[...MODULES,...LEADER_MODULES]:MODULES;
   let doneCount = 0;
   availableMods.forEach(m=>{
     if(getUserModuleProgress(CU.email, m.id)===100) doneCount++;
   });
 
-  // Ranking dinámico
   const sortedUsers = [...COMERCIALES_SAMPLE].sort((a,b)=>getUserPoints(b.email)-getUserPoints(a.email));
   const userRankIdx = sortedUsers.findIndex(u=>u.email===CU.email);
   const userRankLabel = (CU.points>0 && userRankIdx>=0) ? `#${userRankIdx+1}` : 'Sin ranking';
@@ -830,7 +831,6 @@ function openDet(id){
   document.getElementById('detTitle').textContent=m.emoji+' '+m.titulo;
   document.getElementById('detMeta').textContent=`${m.lecciones.length} lecciones • ${(m.desc||'').substring(0,80)}...`;
   
-  // Cargar estado de lecciones guardadas en LocalStorage
   const savedLsnState = ls('isa_lsns_'+CU.email+'_'+m.id) || [];
   m.lecciones.forEach((l, idx)=>{
     if(savedLsnState.includes(idx)) l.done = true;
@@ -844,7 +844,6 @@ function openDet(id){
   document.getElementById('detPct').textContent=pct+'%';
   document.getElementById('detFill').style.width=pct+'%';
 
-  // Renderizar lecciones con bloqueo secuencial
   document.getElementById('lsnList').innerHTML=m.lecciones.map((l,i)=>{
     const isUnlocked = (i===0 || m.lecciones[i-1].done);
     if(isUnlocked){
@@ -864,8 +863,6 @@ function openDet(id){
 
   const allDone = m.lecciones.every(l=>l.done);
   const quizStartBtn = document.getElementById('qzStartBtn');
-  
-  // Verificar si reprobó el quiz hoy (cooldown de 24h)
   const isFailedToday = isQuizFailedToday(CU.email, m.titulo);
 
   if(!allDone){
@@ -886,10 +883,9 @@ function openDet(id){
 
 function closeDet(){
   document.getElementById('modDet').classList.remove('open');
-  renderAcademy('all'); // Refresca las tarjetas externas
+  renderAcademy('all');
 }
 
-// VISOR SLIDE-BY-SLIDE INTERACTIVO
 function openLsnViewer(modId, lsnIdx){
   const m=[...MODULES,...LEADER_MODULES].find(x=>x.id===modId);
   if(!m)return;
@@ -938,7 +934,6 @@ function renderSlide(){
   document.getElementById('slideProgressFill').style.width=pct+'%';
   document.getElementById('slidePctLabel').textContent=pct+'%';
 
-  // Control de botones
   document.getElementById('btnPrevSlide').disabled = (curSlideIdx===0);
   
   const btnNext = document.getElementById('btnNextSlide');
@@ -977,7 +972,6 @@ function finishLsn(){
   
   lsn.done = true;
   
-  // Guardar estado permanente en localStorage
   const savedLsnState = ls('isa_lsns_'+CU.email+'_'+curLsnMod.id) || [];
   if(!savedLsnState.includes(curLsnIdx)){
     savedLsnState.push(curLsnIdx);
@@ -1002,24 +996,91 @@ function renderLib(cat,search){
   document.getElementById('scr-library').innerHTML=`<input class="ls" placeholder="🔍 Buscar en la biblioteca..." oninput="renderLib('${cat}',this.value)" value="${search}"><div class="fb" style="margin-bottom:12px;">${['all','Preparación','Cliente','Apertura','Cierre','Pre-Venta','Venta','Proceso','Posventa'].map(c=>`<button class="fb-btn${cat===c?' act':''}" onclick="renderLib('${c}','${search}')">${c==='all'?'Todos':c}</button>`).join('')}</div><div class="ll">${filtered.map(i=>`<div class="li"${i.url?` onclick="window.open('${i.url}','_blank')"`:''}><div class="li-ic">${i.ico}</div><div style="flex:1;"><div class="li-tit">${i.t}</div><div class="li-met"><span>${i.type}</span></div></div><span class="li-cat">${i.cat}</span></div>`).join('')}</div>`;
 }
 
+// RANKING DUAL: COMERCIALES VS SUPERVISORES
+function setRankingTab(tab){
+  currentRankingTab = tab;
+  buildLeaderboard();
+}
+
 function buildLeaderboard(){
-  // Ordenar todos los usuarios reales del Excel por RappiPoints
-  const activeList = COMERCIALES_SAMPLE.map(u=>({
+  // Separar usuarios según el tipo
+  const huntersList = COMERCIALES_SAMPLE.filter(u => u.type === 'IS Hunter').map(u=>({
     ...u,
     pts: getUserPoints(u.email)
   })).sort((a,b)=>b.pts - a.pts);
 
+  const leadersList = COMERCIALES_SAMPLE.filter(u => u.type === 'Leader/Coordinator' || LEADERS.has(u.email)).map(u=>({
+    ...u,
+    pts: getUserPoints(u.email)
+  })).sort((a,b)=>b.pts - a.pts);
+
+  const activeList = currentRankingTab === 'hunters' ? huntersList : leadersList;
+
   const top3 = activeList.slice(0,3);
   const rest = activeList.slice(3,10);
 
-  document.getElementById('scr-leaderboard').innerHTML=`<div style="text-align:center;margin-bottom:14px;"><div style="font-size:12px;font-weight:600;color:var(--txm);">Semana actual (Puntuación por diapositivas + Quizzes 100%)</div><div style="font-size:18px;font-weight:800;margin-top:3px;">🏆 Top Comercial Inside Sales</div></div><div class="pod"><div class="pi p2"><div class="pav" style="width:40px;height:40px">${top3[1]?top3[1].name.substring(0,2).toUpperCase():'--'}</div><div class="pn">${top3[1]?top3[1].name.split(' ')[0]:'Sin datos'}</div><div class="pp">${top3[1]?top3[1].pts.toLocaleString():0} pts</div><div class="pb"></div></div><div class="pi p1"><div class="pav">${top3[0]?top3[0].name.substring(0,2).toUpperCase():'--'}</div><div class="pn">🥇 ${top3[0]?top3[0].name.split(' ')[0]:'Sin datos'}</div><div class="pp">${top3[0]?top3[0].pts.toLocaleString():0} pts</div><div class="pb"></div></div><div class="pi p3"><div class="pav" style="width:40px;height:40px">${top3[2]?top3[2].name.substring(0,2).toUpperCase():'--'}</div><div class="pn">${top3[2]?top3[2].name.split(' ')[0]:'Sin datos'}</div><div class="pp">${top3[2]?top3[2].pts.toLocaleString():0} pts</div><div class="pb"></div></div></div><div class="rl">${rest.map((u,i)=>`<div class="ri"><div class="r-num">${i+4}</div><div class="r-av">${u.name.substring(0,2).toUpperCase()}</div><div style="flex:1;"><div class="r-nm">${u.name}</div><div class="r-info">${COUNTRIES[u.country]||''} ${u.country} • ${u.pts.toLocaleString()} pts</div></div></div>`).join('')}<div class="ri me"><div class="r-num">⭐</div><div class="r-av">${CU.initials}</div><div style="flex:1;"><div class="r-nm">${CU.name} (Tú)</div><div class="r-info">${COUNTRIES[CU.country]||''} • ${CU.points.toLocaleString()} pts</div></div><div style="font-size:12px;color:var(--rappi);font-weight:700;">⭐</div></div></div>`;
+  document.getElementById('scr-leaderboard').innerHTML=`
+    <div style="text-align:center;margin-bottom:14px;">
+      <div style="font-size:12px;font-weight:600;color:var(--txm);">Semana actual (Puntuación por diapositivas + Quizzes 100%)</div>
+      <div style="font-size:18px;font-weight:800;margin-top:3px;margin-bottom:12px;">🏆 Tablas de Clasificación Oficiales</div>
+      
+      <!-- Pestañas Duales de Competencia -->
+      <div class="adm-tabs" style="justify-content:center;border-bottom:none;margin-bottom:16px;">
+        <button class="adm-tab${currentRankingTab==='hunters'?' act':''}" onclick="setRankingTab('hunters')">🎯 Ranking Comerciales (${huntersList.length})</button>
+        <button class="adm-tab${currentRankingTab==='leaders'?' act':''}" onclick="setRankingTab('leaders')">👑 Ranking Supervisores (${leadersList.length})</button>
+      </div>
+    </div>
+    
+    <div class="pod">
+      <div class="pi p2">
+        <div class="pav" style="width:40px;height:40px">${top3[1]?top3[1].name.substring(0,2).toUpperCase():'--'}</div>
+        <div class="pn">${top3[1]?top3[1].name.split(' ')[0]:'Sin datos'}</div>
+        <div class="pp">${top3[1]?top3[1].pts.toLocaleString():0} pts</div>
+        <div class="pb"></div>
+      </div>
+      <div class="pi p1">
+        <div class="pav">${top3[0]?top3[0].name.substring(0,2).toUpperCase():'--'}</div>
+        <div class="pn">🥇 ${top3[0]?top3[0].name.split(' ')[0]:'Sin datos'}</div>
+        <div class="pp">${top3[0]?top3[0].pts.toLocaleString():0} pts</div>
+        <div class="pb"></div>
+      </div>
+      <div class="pi p3">
+        <div class="pav" style="width:40px;height:40px">${top3[2]?top3[2].name.substring(0,2).toUpperCase():'--'}</div>
+        <div class="pn">${top3[2]?top3[2].name.split(' ')[0]:'Sin datos'}</div>
+        <div class="pp">${top3[2]?top3[2].pts.toLocaleString():0} pts</div>
+        <div class="pb"></div>
+      </div>
+    </div>
+    
+    <div class="rl">
+      ${rest.map((u,i)=>`
+        <div class="ri">
+          <div class="r-num">${i+4}</div>
+          <div class="r-av">${u.name.substring(0,2).toUpperCase()}</div>
+          <div style="flex:1;">
+            <div class="r-nm">${u.name}</div>
+            <div class="r-info">${COUNTRIES[u.country]||''} ${u.country} • ${u.pts.toLocaleString()} pts</div>
+          </div>
+        </div>
+      `).join('')}
+      <div class="ri me">
+        <div class="r-num">⭐</div>
+        <div class="r-av">${CU.initials}</div>
+        <div style="flex:1;">
+          <div class="r-nm">${CU.name} (Tú)</div>
+          <div class="r-info">${COUNTRIES[CU.country]||''} • ${CU.points.toLocaleString()} pts</div>
+        </div>
+        <div style="font-size:12px;color:var(--rappi);font-weight:700;">⭐</div>
+      </div>
+    </div>
+  `;
 }
 
 function buildProfile(){
   const lvl=CU.points>=2000?'Legend':CU.points>=1000?'Silver':'Rookie',xpPct=Math.min(Math.round((CU.points/2000)*100),100);
   const roleLabel={admin:'Admin • Rappi IS',leader:'Leader/Coordinator • IS',comercial:'IS Hunter • Equipo Comercial'}[CU.role];
 
-  // Evaluar insignias reales del usuario
+  // Evaluar insignias reales del usuario con estados visivos nítidos desde inicio
   const hasFirstBlood = CU.points > 0;
   const hasOnFire = CU.points >= 50;
   const hasRappido = getUserModuleProgress(CU.email, 1) === 100;
@@ -1027,7 +1088,57 @@ function buildProfile(){
   const hasPerfect = CU.points >= 300;
   const hasFullStack = CU.points >= 1500;
 
-  document.getElementById('scr-profile').innerHTML=`<div class="ph"><div class="pav2">${CU.initials}</div><div class="p-nm">${CU.name}</div><div class="p-role">${roleLabel}</div><div style="margin-top:8px;display:inline-flex;align-items:center;gap:5px;background:rgba(255,68,31,.15);border:1px solid rgba(255,68,31,.3);border-radius:18px;padding:3px 10px;"><span style="color:var(--rappi);font-size:11px;font-weight:600;">${lvl==='Legend'?'🏆':lvl==='Silver'?'🥈':'🎖️'} ${lvl}</span></div><div class="xb"><div class="xl"><span>XP: ${CU.points.toLocaleString()}</span><span>Meta Legend: 2,000</span></div><div class="xbar"><div class="xfil" style="width:${xpPct}%"></div></div></div></div><div class="sec-tit">🏅 Logros Reales</div><div class="ach"><div class="ac ${hasFirstBlood?'unlocked':'locked-ach'}"><div class="ac-i">🎯</div><div class="ac-n">First Blood</div><div class="ac-d">Primer quiz 100%</div></div><div class="ac ${hasOnFire?'unlocked':'locked-ach'}"><div class="ac-i">🔥</div><div class="ac-n">On Fire</div><div class="ac-d">Racha de estudio</div></div><div class="ac ${hasRappido?'unlocked':'locked-ach'}"><div class="ac-i">⚡</div><div class="ac-n">Rappido</div><div class="ac-d">Módulo en 1 día</div></div><div class="ac ${hasHubspot?'unlocked':'locked-ach'}"><div class="ac-i">🟧</div><div class="ac-n">HubSpot Pro</div><div class="ac-d">Dominio de CRM</div></div><div class="ac ${hasPerfect?'unlocked':'locked-ach'}"><div class="ac-i">💯</div><div class="ac-n">Perfect Run</div><div class="ac-d">3 quizzes 100%</div></div><div class="ac ${hasFullStack?'unlocked':'locked-ach'}"><div class="ac-i">🚀</div><div class="ac-n">Full Stack</div><div class="ac-d">Todos los módulos</div></div></div><button class="qz-btn" onclick="dlReport()" style="background:var(--sb)">📊 Descargar Rappi-Report</button><button class="qz-btn" onclick="logout()" style="background:transparent;border:1px solid var(--bdr);color:var(--txm);margin-top:7px;">Cerrar sesión</button>`;
+  document.getElementById('scr-profile').innerHTML=`
+    <div class="ph">
+      <div class="pav2">${CU.initials}</div>
+      <div class="p-nm">${CU.name}</div>
+      <div class="p-role">${roleLabel}</div>
+      <div style="margin-top:8px;display:inline-flex;align-items:center;gap:5px;background:rgba(255,68,31,.15);border:1px solid rgba(255,68,31,.3);border-radius:18px;padding:3px 10px;">
+        <span style="color:var(--rappi);font-size:11px;font-weight:600;">${lvl==='Legend'?'🏆':lvl==='Silver'?'🥈':'🎖️'} ${lvl}</span>
+      </div>
+      <div class="xb">
+        <div class="xl"><span>XP: ${CU.points.toLocaleString()}</span><span>Meta Legend: 2,000</span></div>
+        <div class="xbar"><div class="xfil" style="width:${xpPct}%"></div></div>
+      </div>
+    </div>
+    
+    <div class="sec-tit">🏅 Logros y Medallas</div>
+    <div class="ach">
+      <div class="ac ${hasFirstBlood?'unlocked':'locked-ach'}">
+        <div class="ac-i">🎯</div>
+        <div class="ac-n">First Blood</div>
+        <div class="ac-d">Primer quiz 100%</div>
+      </div>
+      <div class="ac ${hasOnFire?'unlocked':'locked-ach'}">
+        <div class="ac-i">🔥</div>
+        <div class="ac-n">On Fire</div>
+        <div class="ac-d">Racha de estudio</div>
+      </div>
+      <div class="ac ${hasRappido?'unlocked':'locked-ach'}">
+        <div class="ac-i">⚡</div>
+        <div class="ac-n">Rappido</div>
+        <div class="ac-d">Módulo en 1 día</div>
+      </div>
+      <div class="ac ${hasHubspot?'unlocked':'locked-ach'}">
+        <div class="ac-i">🟧</div>
+        <div class="ac-n">HubSpot Pro</div>
+        <div class="ac-d">Dominio de CRM</div>
+      </div>
+      <div class="ac ${hasPerfect?'unlocked':'locked-ach'}">
+        <div class="ac-i">💯</div>
+        <div class="ac-n">Perfect Run</div>
+        <div class="ac-d">3 quizzes 100%</div>
+      </div>
+      <div class="ac ${hasFullStack?'unlocked':'locked-ach'}">
+        <div class="ac-i">🚀</div>
+        <div class="ac-n">Full Stack</div>
+        <div class="ac-d">Todos los módulos</div>
+      </div>
+    </div>
+    
+    <button class="qz-btn" onclick="dlReport()" style="background:var(--sb)">📊 Descargar Rappi-Report</button>
+    <button class="qz-btn" onclick="logout()" style="background:transparent;border:1px solid var(--bdr);color:var(--txm);margin-top:7px;">Cerrar sesión</button>
+  `;
 }
 
 function buildAdmin(){renderAdminTab('overview');}
@@ -1050,10 +1161,7 @@ function renderAdmRecognition(){return`<div class="card"><div class="sec-tit">�
 
 // VISTA COMPLETA DE "MI EQUIPO" PARA SUPERVISORES CON TODOS SUS COMERCIALES
 function buildLeader(){
-  // Filtrar los comerciales a cargo del supervisor logueado
   const myTeam = COMERCIALES_SAMPLE.filter(u => u.leader.toLowerCase() === CU.email.toLowerCase());
-  
-  // Si es un admin o un supervisor de prueba sin lista directa, tomar una muestra del Excel
   const effectiveTeam = myTeam.length > 0 ? myTeam : COMERCIALES_SAMPLE.filter(u => u.leader.toLowerCase() === 'oscar.barajas@rappi.com');
 
   const teamList = effectiveTeam.map(u => ({
@@ -1155,7 +1263,7 @@ function nextQ(){qIdx++;renderQ();}
 
 function showResults(){
   const pct = Math.round((qScore/qQ.length)*100);
-  const pass = (pct === 100); // Exige 100% estricto
+  const pass = (pct === 100);
   const m = [...MODULES,...LEADER_MODULES].find(x=>x.titulo===curQuizMod);
   const formUrl = m?.formUrl || (curQuizMod.includes('Supervisores')?'https://docs.google.com/forms/d/e/1FAIpQLSeWiIw4Kzq-I2XIo8ZeEbmZdDH2lG_goB3ZFomJqi7AUr279w/viewform':'https://docs.google.com/forms/d/e/1FAIpQLSfX-qe2PqPpZdCPDtAYmSZ7ep7w2a4k_by917pUby7nf6_0Cg/viewform?usp=header');
 
