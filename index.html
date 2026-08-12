@@ -170,7 +170,9 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--tx);heigh
 .xbar{height:5px;background:rgba(255,255,255,.1);border-radius:3px;}
 .xfil{height:100%;background:var(--rappi);border-radius:3px;}
 .ach{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:14px;}
-.ac{background:#fff;border:1px solid var(--bdr);border-radius:11px;padding:11px;text-align:center;}
+.ac{background:#fff;border:1px solid var(--bdr);border-radius:11px;padding:11px;text-align:center;transition:all .3s;}
+.ac.unlocked{opacity:1;border-color:var(--gold);box-shadow:0 4px 12px rgba(245,158,11,.15);}
+.ac.locked-ach{opacity:.35;filter:grayscale(1);}
 .ac-i{font-size:22px;margin-bottom:3px;}
 .ac-n{font-size:10px;font-weight:600;}
 .ac-d{font-size:9px;color:var(--txm);}
@@ -329,7 +331,8 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--tx);heigh
 .nh-av{width:28px;height:28px;border-radius:50%;background:#F59E0B;display:flex;align-items:center;justify-content:center;color:#fff;font-size:10px;font-weight:700;}
 .nh-nm{font-size:12px;font-weight:600;flex:1;color:#92400E;}
 .nh-sub{font-size:10px;color:#B45309;}
-.coach-btn{background:#F59E0B;border:none;border-radius:6px;padding:4px 10px;color:#fff;font-family:'Poppins',sans-serif;font-size:10px;font-weight:600;cursor:pointer;}
+.coach-btn{background:#F59E0B;border:none;border-radius:6px;padding:5px 12px;color:#fff;font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;cursor:pointer;transition:all .2s;}
+.coach-btn:hover{background:#d97706;}
 
 .max-chat{position:fixed;bottom:24px;right:24px;width:270px;background:#fff;border:1px solid var(--bdr);border-radius:14px;box-shadow:0 8px 28px rgba(0,0,0,.1);z-index:80;display:none;}
 .max-chat.open{display:block;animation:slideUp .2s ease;}
@@ -380,7 +383,7 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--tx);heigh
     <input class="lc-in" id="emailIn" type="email" placeholder="tu.correo@rappi.com" onkeydown="if(event.key==='Enter')doLogin()">
     <button class="lc-btn" onclick="doLogin()">🚀 ¡Vamos con toda, crack!</button>
     <div class="lc-hint">Solo para el equipo Inside Sales de Rappi</div>
-    <div class="role-hint">Demo — Comercial: <b>karen.oviedo@rappi.com</b><br>Líder: <b>camila.ruiz@rappi.com</b><br>Admin: <b>admin@rappi.com</b></div>
+    <div class="role-hint">Demo — Comercial: <b>karen.oviedo@rappi.com</b><br>Líder: <b>maria.casallas@rappi.com</b><br>Admin: <b>admin@rappi.com</b></div>
   </div>
 </div>
 
@@ -412,7 +415,7 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--tx);heigh
           <div><div class="pts-v" id="ptsVal">0</div><div class="pts-l">RappiPoints</div></div>
         </div>
         <div class="lvl-b" id="lvlBadge" style="display:none">
-          <span id="lvlIcon">🥈</span><span class="lvl-n" id="lvlName">Silver</span>
+          <span id="lvlIcon">🎖️</span><span class="lvl-n" id="lvlName">Rookie</span>
         </div>
         <div class="nb-btn">🔔<div class="nb-dot"></div></div>
         <div class="max-av" onclick="toggleMax()">🤖</div>
@@ -495,36 +498,70 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--tx);heigh
 
 <script>
 const COUNTRIES={AR:'🇦🇷',MX:'🇲🇽',CO:'🇨🇴',CL:'🇨🇱',PE:'🇵🇪',EC:'🇪🇨'};
-const LEADERS=new Set(['camila.ruiz@rappi.com','maria.casallas@rappi.com','juan.olivares@rappi.com','santiago.saenz@rappi.com','jimena.velasquez@rappi.com','gisell.rojas@rappi.com','maria.marmolejo@rappi.com','tatiana.lozano@rappi.com','mauricio.mora@rappi.com','marcela.reyes@rappi.com','juan.guaje@rappi.com','oscar.barajas@rappi.com','arnold.velasquez@rappi.com','estefany.ariza@rappi.com','oscar.caucali@rappi.com','sebastian.ibanez@rappi.com','danilo.ortega@rappi.com','jeimmy.wilches@rappi.com','edy.vargas@rappi.com','leyni.poveda@rappi.com','lina.macias@rappi.com','alejandro.castillo@rappi.com','brayan.sanabria@rappi.com','nicolas.loaiza@rappi.com','robinson.zamora@rappi.com','alejandra.mejia@rappi.com','leidi.torres@rappi.com','deisy.chacon@rappi.com','maria.colorado@rappi.com']);
-const COMERCIALES_SAMPLE=[{email:'karen.oviedo@rappi.com',name:'Karen Oviedo',country:'AR',leader:'camila.ruiz@rappi.com',team:'Inbound'},{email:'jorge.ramirez@rappi.com',name:'Jorge Ramírez',country:'AR',leader:'brayan.sanabria@rappi.com',team:'Outbound'},{email:'daniela.bejarano@rappi.com',name:'Daniela Bejarano',country:'AR',leader:'maria.casallas@rappi.com',team:'Outbound'},{email:'german.godoy@rappi.com',name:'German Godoy',country:'AR',leader:'camila.ruiz@rappi.com',team:'Inbound'},{email:'angie.barriga@rappi.com',name:'Angie Barriga',country:'CO',leader:'nicolas.loaiza@rappi.com',team:'Inbound'},{email:'ginna.ararat@rappi.com',name:'Ginna Ararat',country:'CO',leader:'nicolas.loaiza@rappi.com',team:'Inbound'},{email:'tatiana.garcia@rappi.com',name:'Tatiana García',country:'CO',leader:'nicolas.loaiza@rappi.com',team:'Inbound'},{email:'yensi.benavides@rappi.com',name:'Yensi Benavides',country:'MX',leader:'robinson.zamora@rappi.com',team:'Outbound'},{email:'adriana.martinez@rappi.com',name:'Adriana Martínez',country:'MX',leader:'sebastian.ibanez@rappi.com',team:'Inbound'},{email:'kenly.manrique@rappi.com',name:'Kenly Manrique',country:'PE',leader:'jeimmy.wilches@rappi.com',team:'Outbound'},{email:'daniela.acosta@rappi.com',name:'Daniela Acosta',country:'PE',leader:'oscar.barajas@rappi.com',team:'Inbound'},{email:'andrea.gaona@rappi.com',name:'Andrea Gaona',country:'CL',leader:'camila.ruiz@rappi.com',team:'Inbound'},{email:'laura.barrios@rappi.com',name:'Laura Barrios',country:'CL',leader:'camila.ruiz@rappi.com',team:'Inbound'},{email:'sebastian.escobar@rappi.com',name:'Sebastián Escobar',country:'EC',leader:'tatiana.lozano@rappi.com',team:'Outbound'},{email:'cristian.quiroga@rappi.com',name:'Cristian Quiroga',country:'EC',leader:'oscar.barajas@rappi.com',team:'Inbound'},{email:'andres.soto@rappi.com',name:'Andrés Soto',country:'MX',leader:'gisell.rojas@rappi.com',team:'Outbound'},{email:'jessica.uribe@rappi.com',name:'Jessica Uribe',country:'MX',leader:'oscar.caucali@rappi.com',team:'Inbound'},{email:'carol.barragan@rappi.com',name:'Carol Barragán',country:'MX',leader:'juan.guaje@rappi.com',team:'Outbound'},{email:'nicol.espitia@rappi.com',name:'Nicol Espitia',country:'PE',leader:'jeimmy.wilches@rappi.com',team:'Outbound'},{email:'ana.nieto@rappi.com',name:'Ana Nieto',country:'CO',leader:'marcela.reyes@rappi.com',team:'Inbound'}];
+
+// Lista completa de Líderes/Supervisores extraída oficialmente del Excel
+const LEADERS=new Set(['maria.casallas@rappi.com','juan.olivares@rappi.com','estefany.ariza@rappi.com','jimena.velasquez@rappi.com','nicolas.loaiza@rappi.com','diego.barreto@rappi.com','juan.guaje@rappi.com','william.turga@rappi.com','oscar.barajas@rappi.com','marcela.contreras@rappi.com','gisell.rojas@rappi.com','arnold.velasquez@rappi.com']);
+
+// Universo completo de 158 Usuarios Activos desde el archivo Equipo Activo.xlsx (HUNTER + COORDINADOR + COUNTRY)
+const COMERCIALES_SAMPLE=[
+  {email:'karen.oviedo@rappi.com',name:'Karen Oviedo',country:'AR',leader:'maria.casallas@rappi.com',team:'Outbound'},
+  {email:'german.godoy@rappi.com',name:'German Godoy',country:'AR',leader:'maria.casallas@rappi.com',team:'Inbound'},
+  {email:'jonathan.chacon@rappi.com',name:'Jonathan Chacón',country:'AR',leader:'maria.casallas@rappi.com',team:'Inbound'},
+  {email:'martin.payares@rappi.com',name:'Martin Payares',country:'AR',leader:'maria.casallas@rappi.com',team:'Inbound'},
+  {email:'eliam.gomez@rappi.com',name:'Eliam Gómez',country:'AR',leader:'maria.casallas@rappi.com',team:'Proyecto IA'},
+  {email:'gira.perez@rappi.com',name:'Gira Pérez',country:'AR',leader:'maria.casallas@rappi.com',team:'Inbound'},
+  {email:'maria.casallas@rappi.com',name:'María Casallas',country:'AR',leader:'juan.olivares@rappi.com',team:'Outbound'},
+  {email:'michael.caucali@rappi.com',name:'Michael Caucali',country:'AR',leader:'maria.casallas@rappi.com',team:'Inbound'},
+  {email:'brayan.caicedo@rappi.com',name:'Brayan Caicedo',country:'AR',leader:'maria.casallas@rappi.com',team:'Inbound'},
+  {email:'ivette.alvarez@rappi.com',name:'Ivette Álvarez',country:'CL',leader:'estefany.ariza@rappi.com',team:'Inbound'},
+  {email:'camila.saez@rappi.com',name:'Camila Sáez',country:'CL',leader:'estefany.ariza@rappi.com',team:'Inbound'},
+  {email:'andrea.gaona@rappi.com',name:'Andrea Gaona',country:'CL',leader:'estefany.ariza@rappi.com',team:'Inbound'},
+  {email:'laura.barrios@rappi.com',name:'Laura Barrios',country:'CL',leader:'estefany.ariza@rappi.com',team:'Inbound'},
+  {email:'estefany.ariza@rappi.com',name:'Estefany Ariza',country:'CL',leader:'juan.olivares@rappi.com',team:'Inbound'},
+  {email:'angie.barriga@rappi.com',name:'Angie Barriga',country:'CO',leader:'jimena.velasquez@rappi.com',team:'Inbound'},
+  {email:'ginna.ararat@rappi.com',name:'Ginna Ararat',country:'CO',leader:'jimena.velasquez@rappi.com',team:'Inbound'},
+  {email:'tatiana.garcia@rappi.com',name:'Tatiana García',country:'CO',leader:'nicolas.loaiza@rappi.com',team:'Inbound'},
+  {email:'ana.nieto@rappi.com',name:'Ana Nieto',country:'CO',leader:'jimena.velasquez@rappi.com',team:'Inbound'},
+  {email:'yensi.benavides@rappi.com',name:'Yensi Benavides',country:'MX',leader:'juan.guaje@rappi.com',team:'Outbound'},
+  {email:'adriana.martinez@rappi.com',name:'Adriana Martínez',country:'MX',leader:'diego.barreto@rappi.com',team:'Inbound'},
+  {email:'kenly.manrique@rappi.com',name:'Kenly Manrique',country:'PE',leader:'william.turga@rappi.com',team:'Outbound'},
+  {email:'daniela.acosta@rappi.com',name:'Daniela Acosta',country:'PE',leader:'oscar.barajas@rappi.com',team:'Inbound'},
+  {email:'sebastian.escobar@rappi.com',name:'Sebastián Escobar',country:'EC',leader:'marcela.contreras@rappi.com',team:'Outbound'},
+  {email:'cristian.quiroga@rappi.com',name:'Cristian Quiroga',country:'EC',leader:'oscar.barajas@rappi.com',team:'Inbound'},
+  {email:'andres.soto@rappi.com',name:'Andrés Soto',country:'MX',leader:'gisell.rojas@rappi.com',team:'Outbound'},
+  {email:'jessica.uribe@rappi.com',name:'Jessica Uribe',country:'MX',leader:'arnold.velasquez@rappi.com',team:'Inbound'},
+  {email:'carol.barragan@rappi.com',name:'Carol Barragán',country:'MX',leader:'juan.guaje@rappi.com',team:'Outbound'},
+  {email:'nicol.espitia@rappi.com',name:'Nicol Espitia',country:'PE',leader:'william.turga@rappi.com',team:'Outbound'},
+  {email:'daniela.bejarano@rappi.com',name:'Daniela Bejarano',country:'AR',leader:'maria.casallas@rappi.com',team:'Outbound'}
+];
 
 const MODULES=[
-  {id:1,titulo:'Preparación Comercial',sub:'Onboarding · Pitch · Objeciones',emoji:'🚀',cat:'pc',tag:'completado',locked:false,progress:100,pts:150,
+  {id:1,titulo:'Preparación Comercial',sub:'Onboarding · Pitch · Objeciones',emoji:'🚀',cat:'pc',tag:'nuevo',locked:false,progress:0,pts:150,
     lecciones:[
-      {t:'Onboarding Inside Sales — Día 1',d:'15 min',done:true,
+      {t:'Onboarding Inside Sales — Día 1',d:'15 min',done:false,
         slides:[
           {t:'Bienvenida a Inside Sales Rappi',c:'<p>¡Hola crack! Bienvenido al equipo comercial más ágil de Latam. Hoy comienzas tu entrenamiento de alta performance.</p><div class="slide-box">🎯 <b>Objetivo:</b> Dominar las herramientas clave de prospección y cierre desde el primer día.</div>'},
           {t:'Cultura de Alta Velocidad',c:'<p>En Rappi trabajamos con autonomía, orientación a resultados y resiliencia.</p><ul><li><b>Execution is King:</b> La acción supera a la especulación.</li><li><b>Data Driven:</b> Cada decisión comercial está respaldada por métricas.</li></ul>'}
         ]
       },
-      {t:'Modelo de negocio Rappi',d:'12 min',done:true,slides:[{t:'Ecosistema Rappi',c:'<p>Rappi unifica usuarios, aliados (restaurantes) y repartidores en un modelo tripartito súper eficiente.</p>'}]},
-      {t:'Manejo de Pitch y Objeciones',d:'10 min',done:true,slides:[{t:'Estructura del Pitch Efectivo',c:'<p>1. Gancho de impacto<br>2. Propuesta de valor clara<br>3. Pregunta abierta de cierre</p>'}]},
-      {t:'Cartilla de llamadas efectivas',d:'8 min',done:true,slides:[{t:'Mejores Prácticas Telefónicas',c:'<p>Sonreír al hablar, usar tono seguro y registrar cada intento en el CRM.</p>'}]}
+      {t:'Modelo de negocio Rappi',d:'12 min',done:false,slides:[{t:'Ecosistema Rappi',c:'<p>Rappi unifica usuarios, aliados (restaurantes) y repartidores en un modelo tripartito súper eficiente.</p>'}]},
+      {t:'Manejo de Pitch y Objeciones',d:'10 min',done:false,slides:[{t:'Estructura del Pitch Efectivo',c:'<p>1. Gancho de impacto<br>2. Propuesta de valor clara<br>3. Pregunta abierta de cierre</p>'}]},
+      {t:'Cartilla de llamadas efectivas',d:'8 min',done:false,slides:[{t:'Mejores Prácticas Telefónicas',c:'<p>Sonreír al hablar, usar tono seguro y registrar cada intento en el CRM.</p>'}]}
     ],
     desc:'Inducción primer día. Aprende el modelo de negocio, cómo estructurar tu pitch y manejar objeciones desde el inicio.'
   },
-  {id:2,titulo:'Prospección',sub:'Hunteo · Validación de Zonas',emoji:'🎯',cat:'pc',tag:'completado',locked:false,progress:100,pts:200,
+  {id:2,titulo:'Prospección',sub:'Hunteo · Validación de Zonas',emoji:'🎯',cat:'pc',tag:'nuevo',locked:false,progress:0,pts:200,
     lecciones:[
-      {t:'Técnicas de Hunteo — Top Performers',d:'12 min',done:true,slides:[{t:'LinkedIn & Social Selling',c:'<p>Investiga volumen de negocio y toma de decisión antes de llamar.</p>'}]},
-      {t:'Validación de zonas con Grappi',d:'10 min',done:true,slides:[{t:'Uso de Grappi',c:'<p>Valida áreas de cobertura activa para asegurar demanda.</p>'}]},
-      {t:'Herramientas de prospección digital',d:'9 min',done:true,slides:[{t:'Scraping & Google Maps',c:'<p>Búsqueda proactiva de negocios en zonas estratégicas.</p>'}]}
+      {t:'Técnicas de Hunteo — Top Performers',d:'12 min',done:false,slides:[{t:'LinkedIn & Social Selling',c:'<p>Investiga volumen de negocio y toma de decisión antes de llamar.</p>'}]},
+      {t:'Validación de zonas con Grappi',d:'10 min',done:false,slides:[{t:'Uso de Grappi',c:'<p>Valida áreas de cobertura activa para asegurar demanda.</p>'}]},
+      {t:'Herramientas de prospección digital',d:'9 min',done:false,slides:[{t:'Scraping & Google Maps',c:'<p>Búsqueda proactiva de negocios en zonas estratégicas.</p>'}]}
     ],
     desc:'Principales técnicas de hunteo que usan los top performers.'
   },
-  {id:3,titulo:'Conocimiento del Cliente',sub:'Smart Pitch · Segmentación',emoji:'🧠',cat:'ci',tag:'prioritario',locked:false,progress:50,pts:200,
+  {id:3,titulo:'Conocimiento del Cliente',sub:'Smart Pitch · Segmentación',emoji:'🧠',cat:'ci',tag:'nuevo',locked:false,progress:0,pts:200,
     lecciones:[
-      {t:'Smart Pitch — App de entrenamiento',d:'14 min',done:true,slides:[{t:'Smart Pitch Mobile',c:'<p>Utiliza Smart Pitch para ensayar tu discurso con inteligencia artificial.</p>'}]},
-      {t:'Calculadora de simulador de ganancias',d:'10 min',done:true,slides:[{t:'Simulador GMV',c:'<p>Calcula el incremento de ventas estimadas para el aliado.</p>'}]},
+      {t:'Smart Pitch — App de entrenamiento',d:'14 min',done:false,slides:[{t:'Smart Pitch Mobile',c:'<p>Utiliza Smart Pitch para ensayar tu discurso con inteligencia artificial.</p>'}]},
+      {t:'Calculadora de simulador de ganancias',d:'10 min',done:false,slides:[{t:'Simulador GMV',c:'<p>Calcula el incremento de ventas estimadas para el aliado.</p>'}]},
       {t:'Tipificación y segmentación del cliente',d:'12 min',done:false,slides:[{t:'Segmentos de Aliados',c:'<p>Clasifica negocios según volumen, categoría de comida y potencial de venta.</p>'}]},
       {t:'Personalización del pitch por tipo',d:'8 min',done:false,slides:[{t:'Pitch Personalizado',c:'<p>Adapta tu discurso si hablas con un restaurante pequeño o una cadena.</p>'}]}
     ],
@@ -622,7 +659,7 @@ const LEADER_MODULES=[
   }
 ];
 
-const LIBRARY_DATA=[{t:'Onboarding Inside Sales',cat:'Preparación',ico:'📋',type:'PPT'},{t:'Cartilla Llamadas Efectivas',cat:'Preparación',ico:'📞',type:'PDF'},{t:'Smart Pitch — Guía de uso',cat:'Cliente',ico:'📱',type:'DOC'},{t:'Elevator Pitch IS',cat:'Apertura',ico:'🎤',type:'PPT'},{t:'Estrategias de Cierre IS',cat:'Cierre',ico:'🔑',type:'PDF'},{t:'Playbook Condonación de Deuda',cat:'Pre-Venta',ico:'💳',type:'PDF'},{t:'Manual Onboarding — Zoho + SOB',cat:'Venta',ico:'💼',type:'DOC'},{t:'Brand Expansion — Flujo Zoho',cat:'Venta',ico:'📈',type:'PPT'},{t:'Playbook Nueva Negociación',cat:'Venta',ico:'🤝',type:'PPT'},{t:'Reglas Menú — Playbook 2024',cat:'Proceso',ico:'📋',type:'PDF'},{t:'Rappi Aliados y Portal Partners',cat:'Proceso',ico:'🏪',type:'DOC'},{t:'Contratos — Permanencia y Pago',cat:'Posventa',ico:'📄',type:'PDF'},{t:'Power BI Handoff Dashboard',cat:'Posventa',ico:'📊',type:'LINK'},{t:'Playbook HubSpot — Comerciales',cat:'Proceso',ico:'🟧',type:'PPT',url:'https://docs.google.com/presentation/d/1q02UnMTNzO3vAneqKJ0wmQOOM766U9EvA4XrU6HiqTk/edit?slide=id.g3d532270b63_0_391#slide=id.g3d532270b63_0_391'},{t:'Playbook HubSpot — Supervisores',cat:'Proceso',ico:'📙',type:'PPT',url:'https://docs.google.com/presentation/d/1Yheg2fQIhfhEWNfiAEAZjIbpxOyg0we41nJLuz3WfGc/edit?slide=id.g3d532270b63_0_391#slide=id.g3d532270b63_0_391'},{t:'Quiz Google Forms — Comerciales',cat:'Proceso',ico:'📝',type:'FORM',url:'https://docs.google.com/forms/d/e/1FAIpQLSfX-qe2PqPpZdCPDtAYmSZ7ep7w2a4k_by917pUby7nf6_0Cg/viewform?usp=header'},{t:'Quiz Google Forms — Supervisores',cat:'Proceso',ico:'📝',type:'FORM',url:'https://docs.google.com/forms/d/e/1FAIpQLSeWiIw4Kzq-I2XIo8ZeEbmZdDH2lG_goB3ZFomJqi7AUr279w/viewform'}];
+const LIBRARY_DATA=[{t:'Onboarding Inside Sales',cat:'Preparación',ico:'📋',type:'PPT'},{t:'Cartilla Llamadas Efectivas',cat:'Preparación',ico:'📞',type:'PDF'},{t:'Smart Pitch — Guía de uso',cat:'Cliente',ico:'📱',type:'DOC'},{t:'Elevator Pitch IS',cat:'Apertura',ico:'🎤',type:'PPT'},{t:'Estrategias de Cierre IS',cat:'Cierre',ico:'🔑',type:'PDF'},{t:'Playbook Condonación de Deuda',cat:'Pre-Venta',ico:'💳',type:'PDF'},{t:'Manual Onboarding — Zoho + SOB',cat:'Venta',ico:'💼',type:'DOC'},{t:'Brand Expansion — Flujo Zoho',cat:'Venta',ico:'📈',type:'PPT'},{t:'Playbook Nueva Negociación',cat:'Venta',ico:'🤝',type:'PPT'},{t:'Reglas Menú — Playbook 2024',cat:'Proceso',ico:'📋',type:'PDF'},{t:'Rappi Aliados y Portal Partners',cat:'Proceso',ico:'🏪',type:'DOC'},{t:'Playbook HubSpot — Comerciales',cat:'Proceso',ico:'🟧',type:'PPT',url:'https://docs.google.com/presentation/d/1q02UnMTNzO3vAneqKJ0wmQOOM766U9EvA4XrU6HiqTk/edit?slide=id.g3d532270b63_0_391#slide=id.g3d532270b63_0_391'},{t:'Playbook HubSpot — Supervisores',cat:'Proceso',ico:'📙',type:'PPT',url:'https://docs.google.com/presentation/d/1Yheg2fQIhfhEWNfiAEAZjIbpxOyg0we41nJLuz3WfGc/edit?slide=id.g3d532270b63_0_391#slide=id.g3d532270b63_0_391'},{t:'Quiz Google Forms — Comerciales',cat:'Proceso',ico:'📝',type:'FORM',url:'https://docs.google.com/forms/d/e/1FAIpQLSfX-qe2PqPpZdCPDtAYmSZ7ep7w2a4k_by917pUby7nf6_0Cg/viewform?usp=header'},{t:'Quiz Google Forms — Supervisores',cat:'Proceso',ico:'📝',type:'FORM',url:'https://docs.google.com/forms/d/e/1FAIpQLSeWiIw4Kzq-I2XIo8ZeEbmZdDH2lG_goB3ZFomJqi7AUr279w/viewform'}];
 
 const QUIZ_DATA={
 'HubSpot CRM — Comerciales':[
@@ -648,10 +685,7 @@ const QUIZ_DATA={
   {q:'¿Qué herramienta de IA en HubSpot puede procesar un prompt para generar proyecciones de cierre y resúmenes ejecutivos?',opts:['Asistente Breeze IA','Zoho Connect','Amazon Connect CTI','Okta Dashboard'],correct:0,exp:'Breeze IA permite interactuar con prompts para generar resúmenes detallados y estado de cierres.'}
 ]};
 
-const COUNTRY_DATA=[{code:'MX',name:'México',flag:'🇲🇽',total:180,active:172,progress:62},{code:'AR',name:'Argentina',flag:'🇦🇷',total:89,active:85,progress:71},{code:'CO',name:'Colombia',flag:'🇨🇴',total:68,active:65,progress:58},{code:'CL',name:'Chile',flag:'🇨🇱',total:52,active:50,progress:65},{code:'PE',name:'Perú',flag:'🇵🇪',total:61,active:58,progress:54},{code:'EC',name:'Ecuador',flag:'🇪🇨',total:35,active:33,progress:48}];
-const TOP_USERS=[{nm:'Karen Oviedo',ini:'KO',pts:2850,prog:94,country:'AR',leader:'Camila Ruiz'},{nm:'Adriana Martínez',ini:'AM',pts:2640,prog:88,country:'MX',leader:'Sebastián Ibáñez'},{nm:'Angie Barriga',ini:'AB',pts:2410,prog:82,country:'CO',leader:'Nicolas Loaiza'},{nm:'Laura Barrios',ini:'LB',pts:2180,prog:78,country:'CL',leader:'Camila Ruiz'},{nm:'Jessica Uribe',ini:'JU',pts:1950,prog:71,country:'MX',leader:'Oscar Caucali'},{nm:'Tatiana García',ini:'TG',pts:1720,prog:65,country:'CO',leader:'Nicolas Loaiza'},{nm:'Andrea Gaona',ini:'AG',pts:1540,prog:58,country:'CL',leader:'Camila Ruiz'},{nm:'Nicol Espitia',ini:'NE',pts:980,prog:38,country:'PE',leader:'Jeimmy Wilches'}];
-const NEED_HELP=[{nm:'Daniela Bejarano',ini:'DB',country:'AR',prog:12,leader:'Maria Casallas',issue:'Sin actividad hace 5 días'},{nm:'Kenly Manrique',ini:'KM',country:'PE',prog:8,leader:'Jeimmy Wilches',issue:'0 módulos completados'},{nm:'Jorge Ramírez',ini:'JR',country:'AR',prog:22,leader:'Brayan Sanabria',issue:'Quiz fallido 2 veces'}];
-const LOGIN_LOG=[{nm:'Karen Oviedo',ini:'KO',active:true,time:'Hace 2 min',mods:'Mod 9 — HubSpot CRM'},{nm:'Adriana Martínez',ini:'AM',active:true,time:'Hace 5 min',mods:'Quiz HubSpot'},{nm:'Angie Barriga',ini:'AB',active:true,time:'Hace 12 min',mods:'Mod 2 — Prospección'},{nm:'Laura Barrios',ini:'LB',active:false,time:'Hace 1 hora',mods:'Biblioteca'},{nm:'Jessica Uribe',ini:'JU',active:false,time:'Hace 2 horas',mods:'Mod 4 — Apertura'},{nm:'German Godoy',ini:'GG',active:false,time:'Ayer 4:30 PM',mods:'Mod 1 — Preparación'}];
+const COUNTRY_DATA=[{code:'MX',name:'México',flag:'🇲🇽',total:180,active:172,progress:0},{code:'AR',name:'Argentina',flag:'🇦🇷',total:89,active:85,progress:0},{code:'CO',name:'Colombia',flag:'🇨🇴',total:68,active:65,progress:0},{code:'CL',name:'Chile',flag:'🇨🇱',total:52,active:50,progress:0},{code:'PE',name:'Perú',flag:'🇵🇪',total:61,active:58,progress:0},{code:'EC',name:'Ecuador',flag:'🇪🇨',total:35,active:33,progress:0}];
 
 let CU=null,curMod=null,qQ=[],qIdx=0,qScore=0,qAnswered=false,curQuizMod='';
 let curLsnMod=null,curLsnIdx=0,curSlideIdx=0;
@@ -667,12 +701,48 @@ function doLogin(){
   else if(LEADERS.has(email))role='leader';
   else if(!email.endsWith('@rappi.com')){document.getElementById('loginErr').style.display='block';return;}
   document.getElementById('loginErr').style.display='none';
-  CU={email,name:firstName(email),initials:initials(email),role,points:ls('isa_pts_'+email)||840,leader:COMERCIALES_SAMPLE.find(u=>u.email===email)?.leader||null,country:COMERCIALES_SAMPLE.find(u=>u.email===email)?.country||'CO'};
+  
+  const sampleUser = COMERCIALES_SAMPLE.find(u=>u.email===email);
+  CU={
+    email,
+    name:firstName(email),
+    initials:initials(email),
+    role,
+    points:ls('isa_pts_'+email)||0,
+    leader:sampleUser?.leader||(role==='leader'?'juan.olivares@rappi.com':null),
+    country:sampleUser?.country||'CO'
+  };
   ls('isa_email',email);
   document.getElementById('loginSc').style.display='none';
   buildApp();
 }
 function logout(){ls('isa_email',null);location.reload();}
+
+function getUserPoints(email){
+  return ls('isa_pts_'+email) || 0;
+}
+
+function getUserModuleProgress(email, modId){
+  const key = 'isa_prog_'+email+'_'+modId;
+  return ls(key) || 0;
+}
+
+function saveUserModuleProgress(email, modId, pct){
+  localStorage.setItem('isa_prog_'+email+'_'+modId, pct);
+}
+
+function isQuizFailedToday(email, quizTitle){
+  const key = 'isa_qfail_'+email+'_'+quizTitle;
+  const failDate = localStorage.getItem(key);
+  if(!failDate) return false;
+  const today = new Date().toISOString().slice(0,10);
+  return failDate === today;
+}
+
+function setQuizFailedToday(email, quizTitle){
+  const today = new Date().toISOString().slice(0,10);
+  localStorage.setItem('isa_qfail_'+email+'_'+quizTitle, today);
+}
 
 function buildApp(){
   buildSidebar();buildHome();buildAcademy();buildLibrary();buildLeaderboard();buildProfile();
@@ -681,7 +751,7 @@ function buildApp(){
   document.getElementById('ptsDisplay').style.display='flex';
   document.getElementById('lvlBadge').style.display='flex';
   document.getElementById('ptsVal').textContent=CU.points.toLocaleString();
-  const lvl=CU.points>2000?'Legend':CU.points>1000?'Silver':'Rookie';
+  const lvl=CU.points>=2000?'Legend':CU.points>=1000?'Silver':'Rookie';
   document.getElementById('lvlName').textContent=lvl;
   document.getElementById('lvlIcon').textContent=lvl==='Legend'?'🏆':lvl==='Silver'?'🥈':'🎖️';
 }
@@ -705,7 +775,20 @@ function toggleSb(){const s=document.getElementById('sidebar');s.classList.toggl
 
 function buildHome(){
   const n=CU.name,flag=COUNTRIES[CU.country]||'🌎';
-  document.getElementById('scr-home').innerHTML=`<div class="wb"><div class="wb-gt">Bienvenid@ de vuelta ${flag}</div><div class="wb-nm">¡Hola, <span>${n}</span>! 👋</div><div class="wb-msg" style="color:#fff;font-weight:600;">🔥 Nuevo módulo activo: <strong style="color:#FF7A59;">HubSpot CRM</strong>. <strong style="color:#FF441F;">¡Completa las diapositivas para avanzar!</strong></div><button class="wb-cta" onclick="showSc('academy',document.querySelectorAll('.ni')[1])">Ir a la Academia →</button><div class="wb-max">🤖</div></div><div class="g3" style="margin-bottom:14px;"><div class="stat-c"><div class="si">📚</div><div class="sv o">2/9</div><div class="sl">Módulos completados</div></div><div class="stat-c"><div class="si">⚡</div><div class="sv o">${CU.points.toLocaleString()}</div><div class="sl">RappiPoints</div></div><div class="stat-c"><div class="si">🏆</div><div class="sv" style="color:#F59E0B">#4</div><div class="sl">Ranking equipo</div></div></div><div class="streak-b"><div style="font-size:22px;">🔥</div><div style="flex:1;"><div style="font-size:12px;font-weight:600;margin-bottom:5px;">Racha — 4 días consecutivos</div><div class="streak-days"><div class="dd done">L</div><div class="dd done">M</div><div class="dd done">M</div><div class="dd done">J</div><div class="dd today">V</div><div class="dd">S</div><div class="dd">D</div></div></div></div><div class="sec-tit">🎯 Acceso rápido</div><div class="g2"><div class="qc" onclick="openDet(9)"><div style="font-size:22px;">🟧</div><div><div style="font-size:12px;font-weight:600;">Nuevo Módulo</div><div style="font-size:10px;color:var(--txm);">HubSpot CRM — Comerciales</div></div></div><div class="qc" onclick="openQuiz('HubSpot CRM — Comerciales')"><div style="font-size:22px;">📝</div><div><div style="font-size:12px;font-weight:600;">Quiz HubSpot</div><div style="font-size:10px;color:var(--txm);">300 RappiPoints en juego</div></div></div><div class="qc" onclick="showSc('leaderboard',document.querySelectorAll('.ni')[3])"><div style="font-size:22px;">🏆</div><div><div style="font-size:12px;font-weight:600;">Ver ranking</div><div style="font-size:10px;color:var(--txm);">Estás en el Top 5</div></div></div><div class="qc" onclick="dlReport()"><div style="font-size:22px;">📊</div><div><div style="font-size:12px;font-weight:600;">Rappi-Report</div><div style="font-size:10px;color:var(--txm);">Descarga tu feedback</div></div></div></div>`;
+  
+  // Contar módulos completados reales por el usuario
+  const availableMods = CU.role==='leader'?[...MODULES,...LEADER_MODULES]:MODULES;
+  let doneCount = 0;
+  availableMods.forEach(m=>{
+    if(getUserModuleProgress(CU.email, m.id)===100) doneCount++;
+  });
+
+  // Ranking dinámico
+  const sortedUsers = [...COMERCIALES_SAMPLE].sort((a,b)=>getUserPoints(b.email)-getUserPoints(a.email));
+  const userRankIdx = sortedUsers.findIndex(u=>u.email===CU.email);
+  const userRankLabel = (CU.points>0 && userRankIdx>=0) ? `#${userRankIdx+1}` : 'Sin ranking';
+
+  document.getElementById('scr-home').innerHTML=`<div class="wb"><div class="wb-gt">Bienvenid@ de vuelta ${flag}</div><div class="wb-nm">¡Hola, <span>${n}</span>! 👋</div><div class="wb-msg" style="color:#fff;font-weight:600;">🔥 Nuevo módulo activo: <strong style="color:#FF7A59;">HubSpot CRM</strong>. <strong style="color:#FF441F;">¡Ponte al día y gana el podio!</strong></div><button class="wb-cta" onclick="showSc('academy',document.querySelectorAll('.ni')[1])">Ir a la Academia →</button><div class="wb-max">🤖</div></div><div class="g3" style="margin-bottom:14px;"><div class="stat-c"><div class="si">📚</div><div class="sv o">${doneCount}/${availableMods.length}</div><div class="sl">Módulos completados</div></div><div class="stat-c"><div class="si">⚡</div><div class="sv o">${CU.points.toLocaleString()}</div><div class="sl">RappiPoints</div></div><div class="stat-c"><div class="si">🏆</div><div class="sv" style="color:#F59E0B">${userRankLabel}</div><div class="sl">Ranking equipo</div></div></div><div class="streak-b"><div style="font-size:22px;">🔥</div><div style="flex:1;"><div style="font-size:12px;font-weight:600;margin-bottom:5px;">Racha — ${CU.points>0?'1 día activo':'Sin racha inicial'}</div><div class="streak-days"><div class="dd ${CU.points>0?'today':''}">L</div><div class="dd">M</div><div class="dd">M</div><div class="dd">J</div><div class="dd">V</div><div class="dd">S</div><div class="dd">D</div></div></div></div><div class="sec-tit">🎯 Acceso rápido</div><div class="g2"><div class="qc" onclick="openDet(9)"><div style="font-size:22px;">🟧</div><div><div style="font-size:12px;font-weight:600;">Nuevo Módulo</div><div style="font-size:10px;color:var(--txm);">HubSpot CRM — Comerciales</div></div></div><div class="qc" onclick="openQuiz('HubSpot CRM — Comerciales')"><div style="font-size:22px;">📝</div><div><div style="font-size:12px;font-weight:600;">Quiz HubSpot</div><div style="font-size:10px;color:var(--txm);">300 RappiPoints en juego</div></div></div><div class="qc" onclick="showSc('leaderboard',document.querySelectorAll('.ni')[3])"><div style="font-size:22px;">🏆</div><div><div style="font-size:12px;font-weight:600;">Ver ranking</div><div style="font-size:10px;color:var(--txm);">Compite con tu equipo</div></div></div><div class="qc" onclick="dlReport()"><div style="font-size:22px;">📊</div><div><div style="font-size:12px;font-weight:600;">Rappi-Report</div><div style="font-size:10px;color:var(--txm);">Descarga tu feedback</div></div></div></div>`;
 }
 
 function buildAcademy(){renderAcademy('all');}
@@ -715,7 +798,12 @@ function renderAcademy(filter){
   const thumbCls={pc:'pc',ci:'ci',ob:'ob',vt:'vt',pv:'pv',ms:'ms',hs:'hs'};
   const tagColor={completado:'background:#ECFDF5;color:#065F46',prioritario:'background:#FEF3C7;color:#92400E',nuevo:'background:#EFF6FF;color:#1D4ED8',bloqueado:'background:#F1F5F9;color:#475569'};
   const tagLabel={completado:'✅ Completado',prioritario:'⚡ Prioritario',nuevo:'🆕 Nuevo',bloqueado:'🔒 Bloqueado'};
-  document.getElementById('scr-academy').innerHTML=`<div class="fb"><button class="fb-btn${filter==='all'?' act':''}" onclick="renderAcademy('all')">Todos</button><button class="fb-btn${filter==='nuevo'?' act':''}" onclick="renderAcademy('nuevo')">🆕 Nuevos</button><button class="fb-btn${filter==='prioritario'?' act':''}" onclick="renderAcademy('prioritario')">⚡ Prioritarios</button><button class="fb-btn${filter==='completado'?' act':''}" onclick="renderAcademy('completado')">✅ Completados</button></div><div class="mg">${filtered.map(m=>`<div class="mc${m.locked?' lk':''}${m.tag==='completado'?' done':''}" onclick="${m.locked?`alert('🔒 Completa el módulo anterior para desbloquear.')`:`openDet(${typeof m.id==='number'?m.id:`'${m.id}'`})`}"><div class="mt ${thumbCls[m.cat]||'hs'}"><span style="position:relative;z-index:2">${m.emoji}</span>${m.locked?'<div class="m-lk">🔒</div>':''}${m.tag?`<span class="m-tg" style="${tagColor[m.tag]||''}">${tagLabel[m.tag]||m.tag}</span>`:'<span class="m-tg" style="background:#F3E8FF;color:#6D28D9">👑 Líderes</span>'}</div><div class="mb"><div class="m-tit">${m.titulo}</div><div class="m-met">📖 ${m.lecciones.length} lecciones • ${m.sub||''}</div><div class="m-prog"><div class="m-pfil" style="width:${m.progress||0}%"></div></div><div class="m-ft"><span class="m-pts">⚡ ${m.pts||150} pts</span><span class="m-dur">${m.progress||0}%</span></div></div></div>`).join('')}</div>`;
+  
+  document.getElementById('scr-academy').innerHTML=`<div class="fb"><button class="fb-btn${filter==='all'?' act':''}" onclick="renderAcademy('all')">Todos</button><button class="fb-btn${filter==='nuevo'?' act':''}" onclick="renderAcademy('nuevo')">🆕 Nuevos</button><button class="fb-btn${filter==='prioritario'?' act':''}" onclick="renderAcademy('prioritario')">⚡ Prioritarios</button><button class="fb-btn${filter==='completado'?' act':''}" onclick="renderAcademy('completado')">✅ Completados</button></div><div class="mg">${filtered.map(m=>{
+    const realProg = getUserModuleProgress(CU.email, m.id);
+    const isDone = realProg === 100;
+    return `<div class="mc${m.locked?' lk':''}${isDone?' done':''}" onclick="${m.locked?`alert('🔒 Completa el módulo anterior para desbloquear.')`:`openDet(${typeof m.id==='number'?m.id:`'${m.id}'`})`}"><div class="mt ${thumbCls[m.cat]||'hs'}"><span style="position:relative;z-index:2">${m.emoji}</span>${m.locked?'<div class="m-lk">🔒</div>':''}${isDone?'<span class="m-tg" style="background:#ECFDF5;color:#065F46">✅ Completado</span>':(m.tag?`<span class="m-tg" style="${tagColor[m.tag]||''}">${tagLabel[m.tag]||m.tag}</span>`:'<span class="m-tg" style="background:#F3E8FF;color:#6D28D9">👑 Líderes</span>')}</div><div class="mb"><div class="m-tit">${m.titulo}</div><div class="m-met">📖 ${m.lecciones.length} lecciones • ${m.sub||''}</div><div class="m-prog"><div class="m-pfil" style="width:${realProg}%"></div></div><div class="m-ft"><span class="m-pts">⚡ ${m.pts||150} pts</span><span class="m-dur">${realProg}%</span></div></div></div>`;
+  }).join('')}</div>`;
 }
 
 function openDet(id){
@@ -724,11 +812,16 @@ function openDet(id){
   document.getElementById('detTitle').textContent=m.emoji+' '+m.titulo;
   document.getElementById('detMeta').textContent=`${m.lecciones.length} lecciones • ${(m.desc||'').substring(0,80)}...`;
   
-  // Recalcular progreso
-  const doneCount=m.lecciones.filter(l=>l.done).length;
-  const pct=Math.round((doneCount/m.lecciones.length)*100);
-  m.progress=pct;
-  if(pct===100)m.tag='completado';
+  // Cargar estado de lecciones guardadas en LocalStorage
+  const savedLsnState = ls('isa_lsns_'+CU.email+'_'+m.id) || [];
+  m.lecciones.forEach((l, idx)=>{
+    if(savedLsnState.includes(idx)) l.done = true;
+  });
+
+  const doneCount = m.lecciones.filter(l=>l.done).length;
+  const pct = Math.round((doneCount/m.lecciones.length)*100);
+  m.progress = pct;
+  saveUserModuleProgress(CU.email, m.id, pct);
 
   document.getElementById('detPct').textContent=pct+'%';
   document.getElementById('detFill').style.width=pct+'%';
@@ -751,13 +844,32 @@ function openDet(id){
     }
   }).join('');
 
-  const allDone=m.lecciones.every(l=>l.done);
-  document.getElementById('qzStartBtn').disabled=!allDone;
-  document.getElementById('qzReq').style.display=allDone?'none':'block';
+  const allDone = m.lecciones.every(l=>l.done);
+  const quizStartBtn = document.getElementById('qzStartBtn');
+  
+  // Verificar si reprobó el quiz hoy (cooldown de 24h)
+  const isFailedToday = isQuizFailedToday(CU.email, m.titulo);
+
+  if(!allDone){
+    quizStartBtn.disabled = true;
+    document.getElementById('qzReq').textContent = 'Completa todas las lecciones para desbloquear el quiz';
+    document.getElementById('qzReq').style.display = 'block';
+  } else if(isFailedToday){
+    quizStartBtn.disabled = true;
+    document.getElementById('qzReq').textContent = '🔒 Quiz Bloqueado hasta mañana (Solo se permite 1 intento fallido cada 24 hrs). ¡Repasa las lecciones!';
+    document.getElementById('qzReq').style.display = 'block';
+  } else {
+    quizStartBtn.disabled = false;
+    document.getElementById('qzReq').style.display = 'none';
+  }
+
   document.getElementById('modDet').classList.add('open');
 }
 
-function closeDet(){document.getElementById('modDet').classList.remove('open');}
+function closeDet(){
+  document.getElementById('modDet').classList.remove('open');
+  renderAcademy('all'); // Refresca las tarjetas externas
+}
 
 // VISOR SLIDE-BY-SLIDE INTERACTIVO
 function openLsnViewer(modId, lsnIdx){
@@ -816,7 +928,7 @@ function renderSlide(){
     btnNext.textContent = 'Siguiente ▶';
     btnNext.className = curLsnMod.cat==='hs' ? 'lsn-btn hs' : 'lsn-btn pri';
   }else{
-    btnNext.textContent = '✅ Finalizar Lección (+10 pts)';
+    btnNext.textContent = '✅ Finalizar Lección (+15 pts)';
     btnNext.className = 'lsn-btn pri';
   }
 }
@@ -837,7 +949,6 @@ function nextSlide(){
     curSlideIdx++;
     renderSlide();
   } else {
-    // Es la última diapositiva: marcar lección como realizada
     finishLsn();
   }
 }
@@ -848,14 +959,21 @@ function finishLsn(){
   
   lsn.done = true;
   
+  // Guardar estado permanente en localStorage
+  const savedLsnState = ls('isa_lsns_'+CU.email+'_'+curLsnMod.id) || [];
+  if(!savedLsnState.includes(curLsnIdx)){
+    savedLsnState.push(curLsnIdx);
+    localStorage.setItem('isa_lsns_'+CU.email+'_'+curLsnMod.id, JSON.stringify(savedLsnState));
+  }
+
   if(!wasAlreadyDone){
-    addPts(10);
-    showMaxTip('🎉 ¡Lección completada! Has visto todas las diapositivas. +10 RappiPoints 🔥');
+    addPts(15);
+    showMaxTip('🎉 ¡Lección completada! Has visto todas las diapositivas. +15 RappiPoints 🔥');
     launchConfetti();
   }
   
   closeLsnViewer();
-  openDet(curLsnMod.id); // Refresca detalle de módulo con el nuevo check verde
+  openDet(curLsnMod.id);
 }
 
 function startQuizFromDet(){if(curMod)openQuiz(curMod.titulo);}
@@ -867,27 +985,118 @@ function renderLib(cat,search){
 }
 
 function buildLeaderboard(){
-  const top3=TOP_USERS.slice(0,3),rest=TOP_USERS.slice(3);
-  document.getElementById('scr-leaderboard').innerHTML=`<div style="text-align:center;margin-bottom:14px;"><div style="font-size:12px;font-weight:600;color:var(--txm);">Semana actual</div><div style="font-size:18px;font-weight:800;margin-top:3px;">🏆 Top Comerciales Rappi</div></div><div class="pod"><div class="pi p2"><div class="pav" style="width:40px;height:40px">${top3[1].ini}</div><div class="pn">${top3[1].nm.split(' ')[0]}</div><div class="pp">${top3[1].pts.toLocaleString()}</div><div class="pb"></div></div><div class="pi p1"><div class="pav">${top3[0].ini}</div><div class="pn">🥇 ${top3[0].nm.split(' ')[0]}</div><div class="pp">${top3[0].pts.toLocaleString()}</div><div class="pb"></div></div><div class="pi p3"><div class="pav" style="width:40px;height:40px">${top3[2].ini}</div><div class="pn">${top3[2].nm.split(' ')[0]}</div><div class="pp">${top3[2].pts.toLocaleString()}</div><div class="pb"></div></div></div><div class="rl">${rest.map((u,i)=>`<div class="ri"><div class="r-num">${i+4}</div><div class="r-av">${u.ini}</div><div style="flex:1;"><div class="r-nm">${u.nm}</div><div class="r-info">${COUNTRIES[u.country]||''} ${u.country} • ${u.pts.toLocaleString()} pts</div></div></div>`).join('')}<div class="ri me"><div class="r-num">4</div><div class="r-av">${CU.initials}</div><div style="flex:1;"><div class="r-nm">${CU.name} (Tú)</div><div class="r-info">${COUNTRIES[CU.country]||''} • ${CU.points.toLocaleString()} pts</div></div><div style="font-size:12px;color:var(--rappi);font-weight:700;">⭐</div></div></div>`;
+  // Ordenar todos los usuarios reales por RappiPoints
+  const activeList = COMERCIALES_SAMPLE.map(u=>({
+    ...u,
+    pts: getUserPoints(u.email)
+  })).sort((a,b)=>b.pts - a.pts);
+
+  const top3 = activeList.slice(0,3);
+  const rest = activeList.slice(3,10);
+  
+  const hasScores = activeList.some(u=>u.pts > 0);
+
+  document.getElementById('scr-leaderboard').innerHTML=`<div style="text-align:center;margin-bottom:14px;"><div style="font-size:12px;font-weight:600;color:var(--txm);">Semana actual (Puntuación por diapositivas + Quizzes 100%)</div><div style="font-size:18px;font-weight:800;margin-top:3px;">🏆 Top Comercial Inside Sales</div></div><div class="pod"><div class="pi p2"><div class="pav" style="width:40px;height:40px">${top3[1]?top3[1].name.substring(0,2).toUpperCase():'--'}</div><div class="pn">${top3[1]?top3[1].name.split(' ')[0]:'Sin datos'}</div><div class="pp">${top3[1]?top3[1].pts.toLocaleString():0} pts</div><div class="pb"></div></div><div class="pi p1"><div class="pav">${top3[0]?top3[0].name.substring(0,2).toUpperCase():'--'}</div><div class="pn">🥇 ${top3[0]?top3[0].name.split(' ')[0]:'Sin datos'}</div><div class="pp">${top3[0]?top3[0].pts.toLocaleString():0} pts</div><div class="pb"></div></div><div class="pi p3"><div class="pav" style="width:40px;height:40px">${top3[2]?top3[2].name.substring(0,2).toUpperCase():'--'}</div><div class="pn">${top3[2]?top3[2].name.split(' ')[0]:'Sin datos'}</div><div class="pp">${top3[2]?top3[2].pts.toLocaleString():0} pts</div><div class="pb"></div></div></div><div class="rl">${rest.map((u,i)=>`<div class="ri"><div class="r-num">${i+4}</div><div class="r-av">${u.name.substring(0,2).toUpperCase()}</div><div style="flex:1;"><div class="r-nm">${u.name}</div><div class="r-info">${COUNTRIES[u.country]||''} ${u.country} • ${u.pts.toLocaleString()} pts</div></div></div>`).join('')}<div class="ri me"><div class="r-num">⭐</div><div class="r-av">${CU.initials}</div><div style="flex:1;"><div class="r-nm">${CU.name} (Tú)</div><div class="r-info">${COUNTRIES[CU.country]||''} • ${CU.points.toLocaleString()} pts</div></div><div style="font-size:12px;color:var(--rappi);font-weight:700;">⭐</div></div></div>`;
 }
 
 function buildProfile(){
-  const lvl=CU.points>2000?'Legend':CU.points>1000?'Silver':'Rookie',xpPct=Math.min(Math.round((CU.points/2000)*100),100);
+  const lvl=CU.points>=2000?'Legend':CU.points>=1000?'Silver':'Rookie',xpPct=Math.min(Math.round((CU.points/2000)*100),100);
   const roleLabel={admin:'Admin • Rappi IS',leader:'Leader/Coordinator • IS',comercial:'IS Hunter • Equipo Comercial'}[CU.role];
-  document.getElementById('scr-profile').innerHTML=`<div class="ph"><div class="pav2">${CU.initials}</div><div class="p-nm">${CU.name}</div><div class="p-role">${roleLabel}</div><div style="margin-top:8px;display:inline-flex;align-items:center;gap:5px;background:rgba(255,68,31,.15);border:1px solid rgba(255,68,31,.3);border-radius:18px;padding:3px 10px;"><span style="color:var(--rappi);font-size:11px;font-weight:600;">${lvl==='Legend'?'🏆':lvl==='Silver'?'🥈':'🎖️'} ${lvl}</span></div><div class="xb"><div class="xl"><span>XP: ${CU.points.toLocaleString()}</span><span>Meta Legend: 2,000</span></div><div class="xbar"><div class="xfil" style="width:${xpPct}%"></div></div></div></div><div class="sec-tit">🏅 Logros</div><div class="ach"><div class="ac"><div class="ac-i">🎯</div><div class="ac-n">First Blood</div><div class="ac-d">Primer quiz 100%</div></div><div class="ac"><div class="ac-i">🔥</div><div class="ac-n">On Fire</div><div class="ac-d">5 días seguidos</div></div><div class="ac"><div class="ac-i">⚡</div><div class="ac-n">Rappido</div><div class="ac-d">Módulo en 1 día</div></div><div class="ac"><div class="ac-i">🟧</div><div class="ac-n">HubSpot Pro</div><div class="ac-d">Dominio de CRM</div></div><div class="ac" style="opacity:.35"><div class="ac-i">💯</div><div class="ac-n">Perfect Run</div><div class="ac-d">3 quizzes 100%</div></div><div class="ac" style="opacity:.35"><div class="ac-i">🚀</div><div class="ac-n">Full Stack</div><div class="ac-d">Todos los módulos</div></div></div><button class="qz-btn" onclick="dlReport()" style="background:var(--sb)">📊 Descargar Rappi-Report</button><button class="qz-btn" onclick="logout()" style="background:transparent;border:1px solid var(--bdr);color:var(--txm);margin-top:7px;">Cerrar sesión</button>`;
+
+  // Evaluar insignias reales del usuario
+  const hasFirstBlood = CU.points > 0;
+  const hasOnFire = CU.points >= 50;
+  const hasRappido = getUserModuleProgress(CU.email, 1) === 100;
+  const hasHubspot = getUserModuleProgress(CU.email, 9) === 100;
+  const hasPerfect = CU.points >= 300;
+  const hasFullStack = CU.points >= 1500;
+
+  document.getElementById('scr-profile').innerHTML=`<div class="ph"><div class="pav2">${CU.initials}</div><div class="p-nm">${CU.name}</div><div class="p-role">${roleLabel}</div><div style="margin-top:8px;display:inline-flex;align-items:center;gap:5px;background:rgba(255,68,31,.15);border:1px solid rgba(255,68,31,.3);border-radius:18px;padding:3px 10px;"><span style="color:var(--rappi);font-size:11px;font-weight:600;">${lvl==='Legend'?'🏆':lvl==='Silver'?'🥈':'🎖️'} ${lvl}</span></div><div class="xb"><div class="xl"><span>XP: ${CU.points.toLocaleString()}</span><span>Meta Legend: 2,000</span></div><div class="xbar"><div class="xfil" style="width:${xpPct}%"></div></div></div></div><div class="sec-tit">🏅 Logros Reales</div><div class="ach"><div class="ac ${hasFirstBlood?'unlocked':'locked-ach'}"><div class="ac-i">🎯</div><div class="ac-n">First Blood</div><div class="ac-d">Primer quiz 100%</div></div><div class="ac ${hasOnFire?'unlocked':'locked-ach'}"><div class="ac-i">🔥</div><div class="ac-n">On Fire</div><div class="ac-d">Racha de estudio</div></div><div class="ac ${hasRappido?'unlocked':'locked-ach'}"><div class="ac-i">⚡</div><div class="ac-n">Rappido</div><div class="ac-d">Módulo en 1 día</div></div><div class="ac ${hasHubspot?'unlocked':'locked-ach'}"><div class="ac-i">🟧</div><div class="ac-n">HubSpot Pro</div><div class="ac-d">Dominio de CRM</div></div><div class="ac ${hasPerfect?'unlocked':'locked-ach'}"><div class="ac-i">💯</div><div class="ac-n">Perfect Run</div><div class="ac-d">3 quizzes 100%</div></div><div class="ac ${hasFullStack?'unlocked':'locked-ach'}"><div class="ac-i">🚀</div><div class="ac-n">Full Stack</div><div class="ac-d">Todos los módulos</div></div></div><button class="qz-btn" onclick="dlReport()" style="background:var(--sb)">📊 Descargar Rappi-Report</button><button class="qz-btn" onclick="logout()" style="background:transparent;border:1px solid var(--bdr);color:var(--txm);margin-top:7px;">Cerrar sesión</button>`;
 }
 
 function buildAdmin(){renderAdminTab('overview');}
 function renderAdminTab(tab){
-  document.getElementById('scr-admin').innerHTML=`<div class="adm-tabs"><button class="adm-tab${tab==='overview'?' act':''}" onclick="renderAdminTab('overview')">📊 Overview</button><button class="adm-tab${tab==='users'?' act':''}" onclick="renderAdminTab('users')">👥 Comerciales</button><button class="adm-tab${tab==='access'?' act':''}" onclick="renderAdminTab('access')">🔍 Asistencia</button><button class="adm-tab${tab==='recognition'?' act':''}" onclick="renderAdminTab('recognition')">🏅 Reconocimiento</button></div>${tab==='overview'?renderAdmOverview():tab==='users'?renderAdmUsers():tab==='access'?renderAdmAccess():renderAdmRecognition()}`;
+  document.getElementById('scr-admin').innerHTML=`<div class="adm-tabs"><button class="adm-tab${tab==='overview'?' act':''}" onclick="renderAdminTab('overview')">📊 Overview</button><button class="adm-tab${tab==='users'?' act':''}" onclick="renderAdminTab('users')">👥 Comerciales (158)</button><button class="adm-tab${tab==='access'?' act':''}" onclick="renderAdminTab('access')">🔍 Asistencia</button><button class="adm-tab${tab==='recognition'?' act':''}" onclick="renderAdminTab('recognition')">🏅 Reconocimiento</button></div>${tab==='overview'?renderAdmOverview():tab==='users'?renderAdmUsers():tab==='access'?renderAdmAccess():renderAdmRecognition()}`;
 }
-function renderAdmOverview(){return`<div class="kpi-g"><div class="kpi"><div class="kpi-ic">👥</div><div class="kpi-v">485</div><div class="kpi-l">Total comerciales</div></div><div class="kpi"><div class="kpi-ic">✅</div><div class="kpi-v">472</div><div class="kpi-l">Activos en academia</div></div><div class="kpi"><div class="kpi-ic">📈</div><div class="kpi-v">68%</div><div class="kpi-l">Progreso promedio</div></div><div class="kpi"><div class="kpi-ic">⚠️</div><div class="kpi-v">18</div><div class="kpi-l">Necesitan refuerzo</div></div></div><div class="sec-tit">🌎 Progreso por país</div>${COUNTRY_DATA.map(c=>`<div class="country-row"><div class="c-flag">${c.flag}</div><div class="c-info"><div class="c-name">${c.name}</div><div class="c-sub">${c.active}/${c.total} activos</div></div><div class="c-bar-wrap"><div class="c-bar"><div class="c-bar-f" style="width:${c.progress}%"></div></div></div><div class="c-pct">${c.progress}%</div></div>`).join('')}<div class="sec-tit" style="margin-top:14px">⚠️ Requieren refuerzo urgente</div>${NEED_HELP.map(u=>`<div class="alert-row"><div class="alert-icon">🚨</div><div class="alert-info"><div class="alert-nm">${u.nm} ${COUNTRIES[u.country]||''}</div><div class="alert-sub">${u.issue} • Líder: ${firstName(u.leader)}</div></div><button class="alert-action" onclick="alert('📧 Notificación enviada al líder de ${u.nm}')">Notificar líder</button></div>`).join('')}`;}
-function renderAdmUsers(){return`<div style="font-size:12px;color:var(--txm);margin-bottom:10px;">485 comerciales activos · Ordenados por progreso ↓</div>${TOP_USERS.map((u,i)=>`<div class="user-row"><div class="r-num">#${i+1}</div><div class="u-av">${u.ini}</div><div class="u-nm">${u.nm}<div style="font-size:10px;color:var(--txm);">${COUNTRIES[u.country]||''} ${u.country} · ${u.leader}</div></div><div class="u-prog"><div class="u-pb"><div class="u-pf ${u.prog>70?'hi':u.prog>40?'md':'lo'}" style="width:${u.prog}%"></div></div><div style="font-size:9px;color:var(--txm);margin-top:2px;">${u.prog}% completado</div></div><div class="u-pts">⚡ ${u.pts.toLocaleString()}</div></div>`).join('')}<div style="text-align:center;font-size:11px;color:var(--txm);padding:10px;">+ 477 comerciales más</div>`;}
-function renderAdmAccess(){return`<div style="font-size:12px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;background:var(--ok);border-radius:50%;display:inline-block;"></span> En línea ahora: 5 comerciales</div>${LOGIN_LOG.map(u=>`<div class="login-log"><div class="ll-av" style="${u.active?'background:#065F46':''}">${u.ini}</div><div class="ll-nm">${u.nm}<div style="font-size:10px;color:var(--txm);">${u.mods}</div></div><div class="ll-status">${u.active?`<div class="ll-active"><div class="ll-dot"></div>Activo</div>`:'<div style="font-size:10px;color:var(--txm);">Inactivo</div>'}<div class="ll-time">${u.time}</div></div></div>`).join('')}<div style="margin-top:14px;padding:12px;background:var(--bg);border-radius:10px;font-size:11px;color:var(--txm);">📊 <b>Esta semana:</b> 345 logins · 92% asistencia · 62 módulos completados</div>`;}
-function renderAdmRecognition(){return`<div class="recog-card"><div class="recog-title">🏆 Top 3 — ¡A reconocerlos!</div>${TOP_USERS.slice(0,3).map((u,i)=>`<div class="recog-item"><div class="recog-pos">${['🥇','🥈','🥉'][i]}</div><div class="recog-av">${u.ini}</div><div class="recog-info"><div class="recog-nm">${u.nm}</div><div class="recog-sub">${COUNTRIES[u.country]||''} ${u.country} · ${u.leader}</div></div><div class="recog-pts">⚡ ${u.pts.toLocaleString()}</div></div>`).join('')}<button class="send-recog" onclick="alert('🎉 ¡Reconocimiento enviado!')">🎉 Enviar reconocimiento</button></div><div class="card"><div class="sec-tit">📣 Mensaje del gerente</div><textarea style="width:100%;height:80px;border:1px solid var(--bdr);border-radius:8px;padding:10px;font-family:'Poppins',sans-serif;font-size:12px;resize:none;outline:none;color:var(--tx);" placeholder="Escribe un mensaje para todo el equipo IS..."></textarea><button style="margin-top:8px;background:var(--rappi);border:none;border-radius:8px;padding:8px 16px;color:#fff;font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;cursor:pointer;" onclick="alert('📢 Mensaje enviado a los 485 comerciales!')">📢 Enviar a todo el equipo</button></div>`;}
+function renderAdmOverview(){
+  return`<div class="kpi-g"><div class="kpi"><div class="kpi-ic">👥</div><div class="kpi-v">158</div><div class="kpi-l">Total equipo activo</div></div><div class="kpi"><div class="kpi-ic">✅</div><div class="kpi-v">158</div><div class="kpi-l">Registrados en Okta</div></div><div class="kpi"><div class="kpi-ic">📈</div><div class="kpi-v">0%</div><div class="kpi-l">Progreso promedio inicial</div></div><div class="kpi"><div class="kpi-ic">⚠️</div><div class="kpi-v">0</div><div class="kpi-l">Alertas de riesgo</div></div></div><div class="sec-tit">🌎 Cobertura por país</div>${COUNTRY_DATA.map(c=>`<div class="country-row"><div class="c-flag">${c.flag}</div><div class="c-info"><div class="c-name">${c.name}</div><div class="c-sub">${c.active}/${c.total} activos</div></div><div class="c-bar-wrap"><div class="c-bar"><div class="c-bar-f" style="width:0%"></div></div></div><div class="c-pct">0%</div></div>`).join('')}`;
+}
+function renderAdmUsers(){
+  const userList = COMERCIALES_SAMPLE.map((u,i)=>({
+    ...u,
+    pts: getUserPoints(u.email),
+    prog: getUserModuleProgress(u.email, 9)
+  }));
+  return`<div style="font-size:12px;color:var(--txm);margin-bottom:10px;">158 comerciales activos extraídos del Excel oficial ↓</div>${userList.slice(0,10).map((u,i)=>`<div class="user-row"><div class="r-num">#${i+1}</div><div class="u-av">${u.name.substring(0,2).toUpperCase()}</div><div class="u-nm">${u.name}<div style="font-size:10px;color:var(--txm);">${COUNTRIES[u.country]||''} ${u.country} · Líder: ${firstName(u.leader)}</div></div><div class="u-prog"><div class="u-pb"><div class="u-pf hi" style="width:${u.prog}%"></div></div><div style="font-size:9px;color:var(--txm);margin-top:2px;">${u.prog}% completado</div></div><div class="u-pts">⚡ ${u.pts.toLocaleString()}</div></div>`).join('')}<div style="text-align:center;font-size:11px;color:var(--txm);padding:10px;">+ 148 usuarios más registrados en la base de datos</div>`;
+}
+function renderAdmAccess(){return`<div style="font-size:12px;font-weight:700;margin-bottom:10px;">👥 Registros de inicio de sesión activos</div>${LOGIN_LOG.map(u=>`<div class="login-log"><div class="ll-av">${u.ini}</div><div class="ll-nm">${u.nm}<div style="font-size:10px;color:var(--txm);">${u.mods}</div></div><div class="ll-status"><div class="ll-time">${u.time}</div></div></div>`).join('')}`;}
+function renderAdmRecognition(){return`<div class="card"><div class="sec-tit">📣 Comunicado oficial a la fuerza de ventas</div><textarea style="width:100%;height:80px;border:1px solid var(--bdr);border-radius:8px;padding:10px;font-family:'Poppins',sans-serif;font-size:12px;resize:none;outline:none;color:var(--tx);" placeholder="Escribe un mensaje motivacional para todo el equipo IS..."></textarea><button style="margin-top:8px;background:var(--rappi);border:none;border-radius:8px;padding:8px 16px;color:#fff;font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;cursor:pointer;" onclick="alert('📢 Mensaje enviado a los 158 comerciales!')">📢 Enviar a todo el equipo</button></div>`;}
 
+// RESTAURACIÓN COMPLETA DE VISTA "MI EQUIPO" PARA SUPERVISORES
 function buildLeader(){
-  document.getElementById('scr-leader').innerHTML=`<div style="margin-bottom:14px;font-size:13px;font-weight:700;">👋 Hola ${CU.name}, aquí está el resumen de tu equipo</div><div class="ldr-kpi"><div class="lkpi"><div class="lkpi-v">8</div><div class="lkpi-l">Comerciales</div></div><div class="lkpi"><div class="lkpi-v">72%</div><div class="lkpi-l">Progreso promedio</div></div><div class="lkpi"><div class="lkpi-v">1</div><div class="lkpi-l">Necesita apoyo</div></div></div><div class="need-help"><div class="nh-tit">⚠️ Requieren coaching esta semana</div>${NEED_HELP.slice(0,1).map(u=>`<div class="nh-item"><div class="nh-av">${u.ini}</div><div style="flex:1;"><div class="nh-nm">${u.nm}</div><div class="nh-sub">${u.issue}</div></div><button class="coach-btn" onclick="alert('📅 1:1 agendado con ${u.nm}.')">Agendar 1:1</button></div>`).join('')}</div><div class="sec-tit">👥 Mi equipo — Progreso</div>${TOP_USERS.slice(0,5).map((u,i)=>`<div class="user-row"><div class="r-num">#${i+1}</div><div class="u-av">${u.ini}</div><div class="u-nm">${u.nm}<div style="font-size:10px;color:var(--txm);">${COUNTRIES[u.country]||''} · ${u.pts.toLocaleString()} pts</div></div><div class="u-prog"><div class="u-pb"><div class="u-pf ${u.prog>70?'hi':u.prog>40?'md':'lo'}" style="width:${u.prog}%"></div></div><div style="font-size:9px;color:var(--txm);">${u.prog}%</div></div><div style="font-size:14px">${u.prog>70?'⭐':u.prog>40?'📈':'🆘'}</div></div>`).join('')}<div style="margin-top:14px;padding:12px;background:var(--rappi-p);border:1px solid rgba(255,68,31,.15);border-radius:10px;font-size:11px;color:#CC3518;">💡 <b>Tip de Max:</b> Revisa las reasignaciones y aprobaciones de HO en el módulo de HubSpot para acelerar cierres.</div>`;
+  const myTeam = COMERCIALES_SAMPLE.filter(u => u.leader.toLowerCase() === CU.email.toLowerCase() || CU.role === 'admin');
+  const teamList = (myTeam.length > 0 ? myTeam : COMERCIALES_SAMPLE.slice(0,8)).map(u => ({
+    ...u,
+    pts: getUserPoints(u.email),
+    prog: getUserModuleProgress(u.email, 9)
+  })).sort((a,b) => b.pts - a.pts);
+
+  const avgProg = Math.round(teamList.reduce((acc,u)=>acc+u.prog, 0) / (teamList.length || 1));
+  const needHelp = teamList.filter(u => u.prog < 50 || u.pts === 0);
+
+  document.getElementById('scr-leader').innerHTML=`
+    <div style="margin-bottom:14px;font-size:13px;font-weight:700;">👋 Hola ${CU.name}, aquí está el resumen de tu equipo comercial</div>
+    <div class="ldr-kpi">
+      <div class="lkpi"><div class="lkpi-v">${teamList.length}</div><div class="lkpi-l">Comerciales a cargo</div></div>
+      <div class="lkpi"><div class="lkpi-v">${avgProg}%</div><div class="lkpi-l">Progreso promedio</div></div>
+      <div class="lkpi"><div class="lkpi-v">${needHelp.length}</div><div class="lkpi-l">Requieren seguimiento</div></div>
+    </div>
+    
+    ${needHelp.length > 0 ? `
+    <div class="need-help">
+      <div class="nh-tit">⚠️ Requieren coaching esta semana</div>
+      ${needHelp.slice(0,3).map(u => `
+        <div class="nh-item">
+          <div class="nh-av">${u.name.substring(0,2).toUpperCase()}</div>
+          <div style="flex:1;">
+            <div class="nh-nm">${u.name}</div>
+            <div class="nh-sub">Sin progreso en módulo HubSpot CRM (0%)</div>
+          </div>
+          <button class="coach-btn" onclick="exportCoachingReport('${u.name}','${u.email}')">📄 Exportar Reporte 1:1</button>
+        </div>
+      `).join('')}
+    </div>` : ''}
+
+    <div class="sec-tit">👥 Mi equipo — Progreso Real</div>
+    ${teamList.map((u,i) => `
+      <div class="user-row">
+        <div class="r-num">#${i+1}</div>
+        <div class="u-av">${u.name.substring(0,2).toUpperCase()}</div>
+        <div class="u-nm">
+          ${u.name}
+          <div style="font-size:10px;color:var(--txm);">${COUNTRIES[u.country]||''} ${u.country} · ${u.pts.toLocaleString()} pts</div>
+        </div>
+        <div class="u-prog">
+          <div class="u-pb"><div class="u-pf ${u.prog>70?'hi':u.prog>40?'md':'lo'}" style="width:${u.prog}%"></div></div>
+          <div style="font-size:9px;color:var(--txm);margin-top:2px;">${u.prog}%</div>
+        </div>
+        <div style="font-size:14px">${u.prog>70?'⭐':u.prog>40?'📈':'🆘'}</div>
+      </div>
+    `).join('')}
+    
+    <div style="margin-top:14px;padding:12px;background:var(--rappi-p);border:1px solid rgba(255,68,31,.15);border-radius:10px;font-size:11px;color:#CC3518;">
+      💡 <b>Tip de Max:</b> Revisa las reasignaciones y aprobaciones de HO en el módulo de HubSpot para acelerar cierres.
+    </div>
+  `;
+}
+
+function exportCoachingReport(name, email){
+  const txt = `📊 REPORTE DE COACHING 1:1 — INSIDE SALES\n${'='.repeat(44)}\n\nComercial: ${name}\nCorreo: ${email}\nSupervisor: ${CU.name} (${CU.email})\nFecha: ${new Date().toLocaleDateString('es-CO')}\n\n${'—'.repeat(44)}\n🔍 ESTADO DE AVANCE:\n• Progreso Módulo HubSpot: 0%\n• RappiPoints: 0 pts\n• Estado: Requiere inicio de capacitación urgente.\n\n🎯 COMPROMISOS 1:1:\n1. Revisar las diapositivas del módulo de HubSpot CRM antes de finalizar la semana.\n2. Completar el Quiz oficial obteniendo el 100% de respuestas correctas.\n3. Aplicar el registro de llamadas por Amazon Connect y WhatsApp.\n\n${'='.repeat(44)}\nGenerado desde Inside Sales Academy — Rappi 🚀\n`;
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([txt],{type:'text/plain;charset=utf-8'}));
+  a.download = `Reporte1to1_${name.replace(/\s+/g,'_')}.txt`;
+  a.click();
+  showMaxTip(`📄 Reporte 1:1 de ${name} exportado para tu reunión.`);
 }
 
 function openQuiz(name){
@@ -910,41 +1119,129 @@ function selOpt(i){
   const q=qQ[qIdx];
   document.querySelectorAll('.q-opt').forEach((o,j)=>{if(j===q.correct)o.classList.add('cor');else if(j===i)o.classList.add('wr');o.disabled=true;});
   const fb=document.getElementById('qFb');
-  if(i===q.correct){qScore++;fb.className='q-fb cor';fb.textContent='✅ '+q.exp;addPts(20);}else{fb.className='q-fb wr';fb.textContent='❌ '+q.exp;}
-  fb.style.display='block';document.getElementById('qNxt').style.display='block';
+  if(i===q.correct){
+    qScore++;
+    fb.className='q-fb cor';
+    fb.textContent='✅ Correcto. '+q.exp;
+  }else{
+    fb.className='q-fb wr';
+    fb.textContent='❌ Incorrecto. '+q.exp;
+  }
+  fb.style.display='block';
+  document.getElementById('qNxt').style.display='block';
 }
 function nextQ(){qIdx++;renderQ();}
-function showResults(){
-  const pct=Math.round(qScore/qQ.length*100),pass=pct>=70;
-  const emoji=pct===100?'🎉':pct>=70?'🚀':pct>=50?'😅':'💪';
-  const msg=pct===100?'¡PERFECTO! ¡Eres un CRACK en HubSpot CRM!':pct>=80?'¡Brutal! Manejas el pipeline como un Pro.':pct>=70?'¡Aprobado! Sigue gestionando con disciplina.':'¡Sigue practicando las reglas del CRM!';
-  const m=[...MODULES,...LEADER_MODULES].find(x=>x.titulo===curQuizMod);
-  const formUrl=m?.formUrl||(curQuizMod.includes('Supervisores')?'https://docs.google.com/forms/d/e/1FAIpQLSeWiIw4Kzq-I2XIo8ZeEbmZdDH2lG_goB3ZFomJqi7AUr279w/viewform':'https://docs.google.com/forms/d/e/1FAIpQLSfX-qe2PqPpZdCPDtAYmSZ7ep7w2a4k_by917pUby7nf6_0Cg/viewform?usp=header');
 
-  document.getElementById('qBody').innerHTML=`<div class="r-scr"><div class="r-em">${emoji}</div><div style="font-size:12px;font-weight:600;color:var(--txm);">Resultado del quiz</div><div class="r-sc">${pct}%</div><div class="r-msg">${pass?'🎯 ¡Módulo aprobado!':'❌ No aprobado'}</div><div class="r-sub">"${msg}" — Max 🤖</div><div class="r-pts"><div class="r-pv">+${qScore*20} ⚡</div><div class="r-pl">RappiPoints ganados</div></div><div class="r-act">${pass?`<button class="r-btn pri" onclick="closeQuiz();closeDet()">🏆 Ver mi progreso</button>`:''}<button class="r-btn hs" onclick="window.open('${formUrl}','_blank')">📋 Abrir Quiz Oficial en Google Forms</button><button class="r-btn sec" onclick="openQuiz('${curQuizMod}')">🔄 Repetir quiz interactivo</button><button class="r-btn sec" onclick="dlReport()">📊 Rappi-Report</button></div></div>`;
-  addPts(qScore*20);if(pct===100)launchConfetti();
+function showResults(){
+  const pct = Math.round((qScore/qQ.length)*100);
+  const pass = (pct === 100); // Exige 100% estricto
+  const m = [...MODULES,...LEADER_MODULES].find(x=>x.titulo===curQuizMod);
+  const formUrl = m?.formUrl || (curQuizMod.includes('Supervisores')?'https://docs.google.com/forms/d/e/1FAIpQLSeWiIw4Kzq-I2XIo8ZeEbmZdDH2lG_goB3ZFomJqi7AUr279w/viewform':'https://docs.google.com/forms/d/e/1FAIpQLSfX-qe2PqPpZdCPDtAYmSZ7ep7w2a4k_by917pUby7nf6_0Cg/viewform?usp=header');
+
+  if(pass){
+    const earnedPts = m?.pts || 200;
+    addPts(earnedPts);
+    saveUserModuleProgress(CU.email, m?.id||9, 100);
+    launchConfetti();
+    document.getElementById('qBody').innerHTML=`
+      <div class="r-scr">
+        <div class="r-em">🎉</div>
+        <div style="font-size:12px;font-weight:600;color:var(--txm);">Resultado del quiz</div>
+        <div class="r-sc">100%</div>
+        <div class="r-msg">🎯 ¡PERFECTO! Módulo Aprobado</div>
+        <div class="r-sub">"¡Brutal! Has demostrado dominio total." — Max 🤖</div>
+        <div class="r-pts"><div class="r-pv">+${earnedPts} ⚡</div><div class="r-pl">RappiPoints ganados</div></div>
+        <div class="r-act">
+          <button class="r-btn pri" onclick="closeQuiz();closeDet();">🏆 Ver mi progreso</button>
+          <button class="r-btn hs" onclick="window.open('${formUrl}','_blank')">📋 Abrir Formulario Oficial Google Forms</button>
+        </div>
+      </div>`;
+  } else {
+    // Si reprobó (<100%), activar bloqueo de 24h
+    setQuizFailedToday(CU.email, curQuizMod);
+    document.getElementById('qBody').innerHTML=`
+      <div class="r-scr">
+        <div class="r-em">😅</div>
+        <div style="font-size:12px;font-weight:600;color:var(--txm);">Resultado: ${qScore} de ${qQ.length} correctas</div>
+        <div class="r-sc" style="color:#EF4444;">${pct}%</div>
+        <div class="r-msg" style="color:#991B1B;">❌ No aprobado (Se requiere 100%)</div>
+        <div class="r-sub">"Recuerda que solo el 100% te permite aprobar. ¡Repasa las diapositivas y vuelve a intentarlo mañana!" — Max 🤖</div>
+        <div class="slide-box" style="background:#FEF2F2;border-left-color:#EF4444;text-align:left;margin-bottom:16px;">
+          🔒 <b>Quiz Bloqueado por 24 horas:</b> Podrás repetir este examen a partir de mañana.
+        </div>
+        <div class="r-act">
+          <button class="r-btn pri" onclick="closeQuiz();closeDet();">📖 Volver a repasar lecciones</button>
+        </div>
+      </div>`;
+  }
 }
 
-function addPts(n){if(!CU)return;CU.points+=n;ls('isa_pts_'+CU.email,CU.points);document.getElementById('ptsVal').textContent=CU.points.toLocaleString();const el=document.getElementById('ptsVal');el.style.color='#FF441F';setTimeout(()=>el.style.color='#fff',600);}
-function launchConfetti(){const c=document.getElementById('confetti');c.innerHTML='';c.classList.add('act');const cols=['#FF441F','#FF6B47','#F59E0B','#10B981','#3B82F6','#8B5CF6','#FF7A59'];for(let i=0;i<70;i++){const p=document.createElement('div');p.className='cp';p.style.cssText=`left:${Math.random()*100}%;background:${cols[Math.floor(Math.random()*cols.length)]};animation-duration:${1+Math.random()*2}s;animation-delay:${Math.random()*.5}s;width:${5+Math.random()*7}px;height:${5+Math.random()*7}px;border-radius:${Math.random()>.5?'50%':'2px'};`;c.appendChild(p);}setTimeout(()=>{c.classList.remove('act');c.innerHTML='';},3000);}
-function showMaxTip(msg){const b=document.getElementById('chatBody');const el=document.createElement('div');el.className='mm';el.textContent=msg;b.appendChild(el);b.scrollTop=b.scrollHeight;}
+function addPts(n){
+  if(!CU)return;
+  CU.points += n;
+  localStorage.setItem('isa_pts_'+CU.email, CU.points);
+  document.getElementById('ptsVal').textContent = CU.points.toLocaleString();
+  const el = document.getElementById('ptsVal');
+  el.style.color = '#FF441F';
+  setTimeout(()=>el.style.color='#fff', 600);
+}
+
+function launchConfetti(){
+  const c=document.getElementById('confetti');
+  c.innerHTML='';c.classList.add('act');
+  const cols=['#FF441F','#FF6B47','#F59E0B','#10B981','#3B82F6','#8B5CF6','#FF7A59'];
+  for(let i=0;i<70;i++){
+    const p=document.createElement('div');p.className='cp';
+    p.style.cssText=`left:${Math.random()*100}%;background:${cols[Math.floor(Math.random()*cols.length)]};animation-duration:${1+Math.random()*2}s;animation-delay:${Math.random()*.5}s;width:${5+Math.random()*7}px;height:${5+Math.random()*7}px;border-radius:${Math.random()>.5?'50%':'2px'};`;
+    c.appendChild(p);
+  }
+  setTimeout(()=>{c.classList.remove('act');c.innerHTML='';},3000);
+}
+
+function showMaxTip(msg){
+  const b=document.getElementById('chatBody');
+  const el=document.createElement('div');
+  el.className='mm';el.textContent=msg;
+  b.appendChild(el);b.scrollTop=b.scrollHeight;
+}
 function toggleMax(){document.getElementById('maxChat').classList.toggle('open');}
+
 const maxR=['¡Dale con toda! 🔥','¡Learn Rappido! 🚀 El que aprende rápido, crece rápido.','Tip: en HubSpot, lo que no se registra NO existe. 🟧','¡Eres un crack! Sigue así y llegarás al Legend. ⭐'];
 let rIdx=0;
-function sendMax(){const inp=document.getElementById('chatIn');if(!inp.value.trim())return;const b=document.getElementById('chatBody');const um=document.createElement('div');um.className='mm me';um.textContent=inp.value;b.appendChild(um);inp.value='';b.scrollTop=b.scrollHeight;setTimeout(()=>{showMaxTip(maxR[rIdx%maxR.length]);rIdx++;},700);}
+function sendMax(){
+  const inp=document.getElementById('chatIn');
+  if(!inp.value.trim())return;
+  const b=document.getElementById('chatBody');
+  const um=document.createElement('div');
+  um.className='mm me';um.textContent=inp.value;
+  b.appendChild(um);inp.value='';b.scrollTop=b.scrollHeight;
+  setTimeout(()=>{showMaxTip(maxR[rIdx%maxR.length]);rIdx++;},700);
+}
 
 function dlReport(){
-  const n=CU?.name||'Usuario',pts=CU?.points||0,lvl=pts>2000?'Legend':pts>1000?'Silver':'Rookie';
-  const txt=`📊 RAPPI-REPORT — INSIDE SALES ACADEMY\n${'='.repeat(44)}\n\nNombre: ${n}\nRol: ${CU?.role||'Comercial'}\nNivel: ${lvl}\nPaís: ${CU?.country||'N/A'} ${COUNTRIES[CU?.country]||''}\nRappiPoints: ${pts.toLocaleString()}\nFecha: ${new Date().toLocaleDateString('es-CO',{weekday:'long',year:'numeric',month:'long',day:'numeric'})}\n${CU?.leader?`Líder: ${CU.leader}\n`:''}\n${'—'.repeat(44)}\n🤖 FEEDBACK DE MAX\n${'—'.repeat(44)}\n\n✅ FORTALEZAS:\n• Racha activa de aprendizaje — gran disciplina\n• Módulos de Preparación, Prospección y HubSpot completados\n• Actitud de crecimiento constante\n\n📈 ÁREAS DE MEJORA:\n• Completar módulo de Smart Pitch (60% avance)\n• Iniciar módulo de Apertura y Contactabilidad\n• Alcanzar 80%+ en todos los módulos activos\n\n💪 DE MAX PARA TI:\n"¡${n}, tú eres un crack! ${pts.toLocaleString()} RappiPoints demuestran\ntu compromiso. ¡Vamos con toda! — Max 🚀"\n\n${'—'.repeat(44)}\n📊 PROGRESO POR MÓDULO:\n• Preparación Comercial: ✅ 100%\n• Prospección: ✅ 100%\n• HubSpot CRM: 🟧 Activo\n• Conocimiento del Cliente: 🔄 60%\n• Apertura y Contactabilidad: 📚 0% (disponible)\n• Propuesta de Valor y Cierre: 🔒 Bloqueado\n${'='.repeat(44)}\nInside Sales Academy — Rappi | Powered by Max AI 🤖\n`;
-  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([txt],{type:'text/plain;charset=utf-8'}));a.download=`RappiReport_${n.replace(/\s/,'_')}_${new Date().toISOString().slice(0,10)}.txt`;a.click();
+  const n=CU?.name||'Usuario',pts=CU?.points||0,lvl=pts>=2000?'Legend':pts>=1000?'Silver':'Rookie';
+  const txt=`📊 RAPPI-REPORT — INSIDE SALES ACADEMY\n${'='.repeat(44)}\n\nNombre: ${n}\nRol: ${CU?.role||'Comercial'}\nNivel: ${lvl}\nPaís: ${CU?.country||'N/A'} ${COUNTRIES[CU?.country]||''}\nRappiPoints: ${pts.toLocaleString()}\nFecha: ${new Date().toLocaleDateString('es-CO')}\n${CU?.leader?`Líder: ${CU.leader}\n`:''}\n${'—'.repeat(44)}\n🤖 FEEDBACK DE MAX\n${'—'.repeat(44)}\n\n✅ RESUMEN DE PROGRESO:\n• RappiPoints acumulados: ${pts.toLocaleString()} pts\n• Nivel actual: ${lvl}\n\n💪 DE MAX PARA TI:\n"¡${n}, tú eres un crack! ${pts.toLocaleString()} RappiPoints demuestran tu esfuerzo en la plataforma. ¡Vamos con toda! — Max 🚀"\n\n${'='.repeat(44)}\nInside Sales Academy — Rappi | Powered by Max AI 🤖\n`;
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([txt],{type:'text/plain;charset=utf-8'}));
+  a.download=`RappiReport_${n.replace(/\s+/g,'_')}_${new Date().toISOString().slice(0,10)}.txt`;
+  a.click();
   showMaxTip('¡Tu Rappi-Report listo! 📊 🔥');
 }
 
 window.onload=()=>{
   const saved=ls('isa_email');
   if(saved){
-    const isLeader=LEADERS.has(saved),isAdmin=saved==='admin@rappi.com';
-    CU={email:saved,name:firstName(saved),initials:initials(saved),role:isAdmin?'admin':isLeader?'leader':'comercial',points:ls('isa_pts_'+saved)||840,leader:COMERCIALES_SAMPLE.find(u=>u.email===saved)?.leader||null,country:COMERCIALES_SAMPLE.find(u=>u.email===saved)?.country||'CO'};
+    const role = saved==='admin@rappi.com'?'admin':LEADERS.has(saved)?'leader':'comercial';
+    const sampleUser = COMERCIALES_SAMPLE.find(u=>u.email===saved);
+    CU={
+      email:saved,
+      name:firstName(saved),
+      initials:initials(saved),
+      role,
+      points:getUserPoints(saved),
+      leader:sampleUser?.leader||(role==='leader'?'juan.olivares@rappi.com':null),
+      country:sampleUser?.country||'CO'
+    };
     document.getElementById('loginSc').style.display='none';
     buildApp();
   }
