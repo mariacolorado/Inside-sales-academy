@@ -190,14 +190,50 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--tx);heigh
 .dpf{height:100%;background:var(--rappi);border-radius:4px;}
 .lsn-l{display:flex;flex-direction:column;gap:7px;margin-bottom:14px;}
 .lsn{background:#fff;border:1px solid var(--bdr);border-radius:9px;padding:11px 13px;display:flex;align-items:center;gap:9px;cursor:pointer;transition:all .2s;}
-.lsn:hover{border-color:var(--rappi);}
+.lsn:hover:not(.locked){border-color:var(--rappi);background:var(--rappi-p);}
+.lsn.locked{opacity:.55;cursor:not-allowed;background:#f1f5f9;}
 .lsn.done .l-ic{background:var(--ok);color:#fff;border:none;}
+.lsn.locked .l-ic{background:#cbd5e1;color:#64748b;}
 .l-ic{width:30px;height:30px;border-radius:7px;background:var(--bg);border:1px solid var(--bdr);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;}
 .l-tit{font-size:12px;font-weight:600;flex:1;}
 .l-dur{font-size:10px;color:var(--txm);}
 .qz-btn{width:100%;background:var(--rappi);border:none;border-radius:11px;padding:13px;color:#fff;font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;margin-bottom:7px;}
 .qz-btn:hover{background:var(--rappi-d);}
 .qz-btn:disabled{background:var(--bdr);color:var(--txm);cursor:not-allowed;}
+
+/* Visor de Lecciones Slide-by-Slide */
+.lsnov{position:absolute;inset:0;background:var(--sb);z-index:70;display:none;flex-direction:column;overflow:hidden;}
+.lsnov.open{display:flex;animation:slideUp .25s ease;}
+.lsnh{background:rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.1);padding:14px 20px;display:flex;align-items:center;gap:12px;}
+.lsnh-back{color:rgba(255,255,255,.6);font-size:12px;cursor:pointer;transition:color .2s;}
+.lsnh-back:hover{color:#fff;}
+.lsnh-tit{color:#fff;font-size:14px;font-weight:700;flex:1;}
+.lsnh-sub{color:var(--sbt);font-size:10px;}
+.lsn-body{flex:1;display:flex;flex-direction:column;padding:20px;overflow-y:auto;align-items:center;justify-content:center;}
+.slide-card{background:#fff;border-radius:16px;width:100%;max-width:820px;min-height:420px;padding:28px;box-shadow:0 12px 32px rgba(0,0,0,.3);display:flex;flex-direction:column;position:relative;}
+.slide-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;border-bottom:2px solid var(--rappi-p);padding-bottom:10px;}
+.slide-num{font-size:11px;font-weight:700;color:var(--rappi);background:var(--rappi-p);padding:3px 10px;border-radius:12px;}
+.slide-tag{font-size:10px;color:var(--txm);font-weight:600;}
+.slide-title{font-size:18px;font-weight:800;color:var(--sb);margin-bottom:14px;line-height:1.3;}
+.slide-content{font-size:13px;color:var(--tx);line-height:1.6;flex:1;}
+.slide-content p{margin-bottom:10px;}
+.slide-content ul{margin-left:18px;margin-bottom:12px;}
+.slide-content li{margin-bottom:6px;}
+.slide-box{background:var(--bg);border-left:4px solid var(--rappi);padding:12px;border-radius:0 8px 8px 0;margin:12px 0;font-size:12px;color:var(--tx);}
+.slide-box.hs{border-left-color:var(--hubspot);background:var(--hubspot-p);}
+.slide-img-placeholder{width:100%;height:180px;background:linear-gradient(135deg,#1E293B,#0F172A);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:600;margin:12px 0;text-align:center;padding:16px;}
+
+.lsn-ft{background:rgba(255,255,255,.05);border-top:1px solid rgba(255,255,255,.1);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;}
+.lsn-pbar{width:220px;height:6px;background:rgba(255,255,255,.1);border-radius:3px;overflow:hidden;}
+.lsn-pfil{height:100%;background:var(--rappi);border-radius:3px;transition:width .2s;}
+.lsn-nav{display:flex;gap:10px;}
+.lsn-btn{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;padding:8px 16px;border-radius:8px;cursor:pointer;transition:all .2s;}
+.lsn-btn:hover:not(:disabled){background:rgba(255,255,255,.2);}
+.lsn-btn:disabled{opacity:.3;cursor:not-allowed;}
+.lsn-btn.pri{background:var(--rappi);border-color:var(--rappi);}
+.lsn-btn.pri:hover{background:var(--rappi-d);}
+.lsn-btn.hs{background:var(--hubspot);border-color:var(--hubspot);}
+.lsn-btn.hs:hover{background:var(--hubspot-d);}
 
 .qov{position:absolute;inset:0;background:var(--bg);z-index:60;display:none;overflow-y:auto;}
 .qov.open{display:block;animation:slideUp .25s ease;}
@@ -326,7 +362,7 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--tx);heigh
   </div>
   <div class="mcb" id="chatBody">
     <div class="mm">¡Hola crack! Soy Max. ¿En qué te ayudo hoy? 🚀</div>
-    <div class="mm">💡 Completa los módulos en orden para desbloquear contenido y sumar RappiPoints.</div>
+    <div class="mm">💡 Completa cada lección recorriendo sus diapositivas para desbloquear la siguiente.</div>
   </div>
   <div class="mci">
     <input class="m-in" id="chatIn" placeholder="Pregúntale a Max..." onkeydown="if(event.key==='Enter')sendMax()">
@@ -394,6 +430,7 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--tx);heigh
   </div>
 </div>
 
+<!-- Modal Detalle del Módulo -->
 <div class="det" id="modDet">
   <div class="dh">
     <div class="db-btn" onclick="closeDet()">← Volver a Academia</div>
@@ -405,13 +442,48 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--tx);heigh
       <div class="dpl"><span>Progreso</span><span id="detPct">0%</span></div>
       <div class="dpb"><div class="dpf" id="detFill" style="width:0%"></div></div>
     </div>
-    <div class="sec-tit">📖 Lecciones</div>
+    <div class="sec-tit">📖 Lecciones (Completa cada lección para avanzar)</div>
     <div class="lsn-l" id="lsnList"></div>
-    <button class="qz-btn" id="qzStartBtn" onclick="startQuizFromDet()">🎯 Iniciar Quiz</button>
+    <button class="qz-btn" id="qzStartBtn" onclick="startQuizFromDet()">🎯 Iniciar Quiz del Módulo</button>
     <div id="qzReq" style="text-align:center;font-size:11px;color:var(--txm);padding:3px;">Completa todas las lecciones para desbloquear el quiz</div>
   </div>
 </div>
 
+<!-- Visor Interactivo de Lección Slide-by-Slide -->
+<div class="lsnov" id="lsnOv">
+  <div class="lsnh">
+    <div class="lsnh-back" onclick="closeLsnViewer()">← Volver al Módulo</div>
+    <div>
+      <div class="lsnh-tit" id="lsnViewTitle">Lección</div>
+      <div class="lsnh-sub" id="lsnViewSub">Módulo</div>
+    </div>
+  </div>
+  <div class="lsn-body">
+    <div class="slide-card">
+      <div class="slide-hdr">
+        <span class="slide-num" id="slideNumLabel">Slide 1 de 4</span>
+        <span class="slide-tag" id="slideTagLabel">HubSpot Training</span>
+      </div>
+      <div class="slide-title" id="slideTitle">Cargando diapositiva...</div>
+      <div class="slide-content" id="slideContent">
+        <!-- Contenido dinámico -->
+      </div>
+    </div>
+  </div>
+  <div class="lsn-ft">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <div class="lsn-pbar"><div class="lsn-pfil" id="slideProgressFill" style="width:25%"></div></div>
+      <span style="color:rgba(255,255,255,.6);font-size:10px;" id="slidePctLabel">25%</span>
+    </div>
+    <div class="lsn-nav">
+      <button class="lsn-btn" id="btnPrevSlide" onclick="prevSlide()">◀ Anterior</button>
+      <button class="lsn-btn pri" id="btnNextSlide" onclick="nextSlide()">Siguiente ▶</button>
+      <button class="lsn-btn" id="btnPlaybookExt" style="background:rgba(255,255,255,.15);display:none;" onclick="openPlaybookExt()">📖 Ver Playbook Completo</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Quiz -->
 <div class="qov" id="quizOv">
   <div class="qh">
     <div class="q-back" onclick="closeQuiz()">← Salir del quiz</div>
@@ -425,10 +497,135 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--tx);heigh
 const COUNTRIES={AR:'🇦🇷',MX:'🇲🇽',CO:'🇨🇴',CL:'🇨🇱',PE:'🇵🇪',EC:'🇪🇨'};
 const LEADERS=new Set(['camila.ruiz@rappi.com','maria.casallas@rappi.com','juan.olivares@rappi.com','santiago.saenz@rappi.com','jimena.velasquez@rappi.com','gisell.rojas@rappi.com','maria.marmolejo@rappi.com','tatiana.lozano@rappi.com','mauricio.mora@rappi.com','marcela.reyes@rappi.com','juan.guaje@rappi.com','oscar.barajas@rappi.com','arnold.velasquez@rappi.com','estefany.ariza@rappi.com','oscar.caucali@rappi.com','sebastian.ibanez@rappi.com','danilo.ortega@rappi.com','jeimmy.wilches@rappi.com','edy.vargas@rappi.com','leyni.poveda@rappi.com','lina.macias@rappi.com','alejandro.castillo@rappi.com','brayan.sanabria@rappi.com','nicolas.loaiza@rappi.com','robinson.zamora@rappi.com','alejandra.mejia@rappi.com','leidi.torres@rappi.com','deisy.chacon@rappi.com','maria.colorado@rappi.com']);
 const COMERCIALES_SAMPLE=[{email:'karen.oviedo@rappi.com',name:'Karen Oviedo',country:'AR',leader:'camila.ruiz@rappi.com',team:'Inbound'},{email:'jorge.ramirez@rappi.com',name:'Jorge Ramírez',country:'AR',leader:'brayan.sanabria@rappi.com',team:'Outbound'},{email:'daniela.bejarano@rappi.com',name:'Daniela Bejarano',country:'AR',leader:'maria.casallas@rappi.com',team:'Outbound'},{email:'german.godoy@rappi.com',name:'German Godoy',country:'AR',leader:'camila.ruiz@rappi.com',team:'Inbound'},{email:'angie.barriga@rappi.com',name:'Angie Barriga',country:'CO',leader:'nicolas.loaiza@rappi.com',team:'Inbound'},{email:'ginna.ararat@rappi.com',name:'Ginna Ararat',country:'CO',leader:'nicolas.loaiza@rappi.com',team:'Inbound'},{email:'tatiana.garcia@rappi.com',name:'Tatiana García',country:'CO',leader:'nicolas.loaiza@rappi.com',team:'Inbound'},{email:'yensi.benavides@rappi.com',name:'Yensi Benavides',country:'MX',leader:'robinson.zamora@rappi.com',team:'Outbound'},{email:'adriana.martinez@rappi.com',name:'Adriana Martínez',country:'MX',leader:'sebastian.ibanez@rappi.com',team:'Inbound'},{email:'kenly.manrique@rappi.com',name:'Kenly Manrique',country:'PE',leader:'jeimmy.wilches@rappi.com',team:'Outbound'},{email:'daniela.acosta@rappi.com',name:'Daniela Acosta',country:'PE',leader:'oscar.barajas@rappi.com',team:'Inbound'},{email:'andrea.gaona@rappi.com',name:'Andrea Gaona',country:'CL',leader:'camila.ruiz@rappi.com',team:'Inbound'},{email:'laura.barrios@rappi.com',name:'Laura Barrios',country:'CL',leader:'camila.ruiz@rappi.com',team:'Inbound'},{email:'sebastian.escobar@rappi.com',name:'Sebastián Escobar',country:'EC',leader:'tatiana.lozano@rappi.com',team:'Outbound'},{email:'cristian.quiroga@rappi.com',name:'Cristian Quiroga',country:'EC',leader:'oscar.barajas@rappi.com',team:'Inbound'},{email:'andres.soto@rappi.com',name:'Andrés Soto',country:'MX',leader:'gisell.rojas@rappi.com',team:'Outbound'},{email:'jessica.uribe@rappi.com',name:'Jessica Uribe',country:'MX',leader:'oscar.caucali@rappi.com',team:'Inbound'},{email:'carol.barragan@rappi.com',name:'Carol Barragán',country:'MX',leader:'juan.guaje@rappi.com',team:'Outbound'},{email:'nicol.espitia@rappi.com',name:'Nicol Espitia',country:'PE',leader:'jeimmy.wilches@rappi.com',team:'Outbound'},{email:'ana.nieto@rappi.com',name:'Ana Nieto',country:'CO',leader:'marcela.reyes@rappi.com',team:'Inbound'}];
-const MODULES=[{id:1,titulo:'Preparación Comercial',sub:'Onboarding · Pitch · Objeciones',emoji:'🚀',cat:'pc',tag:'completado',locked:false,progress:100,pts:150,lecciones:[{t:'Onboarding Inside Sales — Día 1',d:'15 min',done:true},{t:'Modelo de negocio Rappi',d:'12 min',done:true},{t:'Manejo de Pitch y Objeciones',d:'10 min',done:true},{t:'Cartilla de llamadas efectivas',d:'8 min',done:true}],desc:'Inducción primer día. Aprende el modelo de negocio, cómo estructurar tu pitch y manejar objeciones desde el inicio.'},{id:2,titulo:'Prospección',sub:'Hunteo · Validación de Zonas',emoji:'🎯',cat:'pc',tag:'completado',locked:false,progress:100,pts:200,lecciones:[{t:'Técnicas de Hunteo — Top Performers',d:'12 min',done:true},{t:'Validación de zonas con Grappi',d:'10 min',done:true},{t:'Herramientas de prospección digital',d:'9 min',done:true}],desc:'Principales técnicas de hunteo que usan los top performers.'},{id:3,titulo:'Conocimiento del Cliente',sub:'Smart Pitch · Segmentación',emoji:'🧠',cat:'ci',tag:'prioritario',locked:false,progress:60,pts:200,lecciones:[{t:'Smart Pitch — App de entrenamiento',d:'14 min',done:true},{t:'Calculadora de simulador de ganancias',d:'10 min',done:true},{t:'Tipificación y segmentación del cliente',d:'12 min',done:false},{t:'Personalización del pitch por tipo',d:'8 min',done:false}],desc:'Aprende a vender desde cero con Smart Pitch.'},{id:4,titulo:'Apertura y Contactabilidad',sub:'Amazon Connect · Elevator Pitch',emoji:'📞',cat:'ci',tag:'nuevo',locked:false,progress:0,pts:150,lecciones:[{t:'Amazon Connect — Herramienta principal',d:'11 min',done:false},{t:'Elevator Pitch estructurado',d:'9 min',done:false},{t:'Scripts de primer contacto',d:'8 min',done:false},{t:'Métricas de contactabilidad',d:'7 min',done:false}],desc:'Amazon Connect y Elevator Pitch que captura atención.'},{id:5,titulo:'Propuesta de Valor y Cierre',sub:'Objeciones · Estrategias de Cierre',emoji:'🔑',cat:'ci',tag:'bloqueado',locked:true,progress:0,pts:250,lecciones:[{t:'Propuesta de valor — Beneficios Rappi',d:'12 min',done:false},{t:'Manejo avanzado de objeciones',d:'10 min',done:false},{t:'Estrategias de cierre efectivo',d:'14 min',done:false},{t:'Seguimiento efectivo de clientes',d:'10 min',done:false}],desc:'La propuesta de valor que nos diferencia.'},{id:6,titulo:'Pre-Venta y Proceso',sub:'Neteo · Power BI · Perfect Store',emoji:'📊',cat:'vt',tag:'bloqueado',locked:true,progress:0,pts:200,lecciones:[{t:'Neteo de deuda — Validación previa',d:'10 min',done:false},{t:'Power BI — Revisión de deuda',d:'8 min',done:false},{t:'Perfect Store — Carga de catálogo',d:'12 min',done:false},{t:'Renegociación Churn — Proceso',d:'9 min',done:false}],desc:'Valida deuda y catálogo antes de vender.'},{id:7,titulo:'Proceso de Venta',sub:'Zoho · SOB · Portal Manager',emoji:'💼',cat:'vt',tag:'bloqueado',locked:true,progress:0,pts:300,lecciones:[{t:'Onboarding, Zoho y SOB',d:'14 min',done:false},{t:'Creación de Expansiones Manager',d:'10 min',done:false},{t:'Portal Partners — Datos fiscales',d:'11 min',done:false},{t:'Brand Expansion y Nueva Negociación',d:'12 min',done:false},{t:'Dock Checker — Seguimiento',d:'9 min',done:false}],desc:'Flujo completo de venta en Zoho, SOB y Portal Manager.'},{id:8,titulo:'Posventa y Contratos',sub:'Contratos · Milla Extra · Power BI',emoji:'🏆',cat:'pv',tag:'bloqueado',locked:true,progress:0,pts:250,lecciones:[{t:'Capacitación en contratos y permanencia',d:'12 min',done:false},{t:'Cambios contractuales por país',d:'10 min',done:false},{t:'Milla Extra — Revisión de payout',d:'8 min',done:false},{t:'Power BI Handoff — Tiendas activas',d:'11 min',done:false},{t:'WOW FarmerMass y Churn',d:'10 min',done:false}],desc:'Contratos, beneficios posventa y seguimiento de tiendas.'},{id:9,titulo:'HubSpot CRM — Comerciales',sub:'Pipeline · Contactabilidad · Breeze IA',emoji:'🟧',cat:'hs',tag:'nuevo',locked:false,progress:0,pts:300,lecciones:[{t:'Acceso a HubSpot y Perfil Okta',d:'10 min',done:false},{t:'Estructura del Pipeline y Etapas',d:'12 min',done:false},{t:'Registro de Contactabilidad y Resultados',d:'14 min',done:false},{t:'Propuestas, Handoff (HO) y Descartados',d:'12 min',done:false},{t:'Breeze IA & Tips para Negocios R2S',d:'10 min',done:false}],desc:'Capacitación oficial de HubSpot CRM para comerciales. Aprende a gestionar tu pipeline, llamadas en Amazon, WhatsApp y Breeze IA.',formUrl:'https://docs.google.com/forms/d/e/1FAIpQLSfX-qe2PqPpZdCPDtAYmSZ7ep7w2a4k_by917pUby7nf6_0Cg/viewform?usp=header'}];
-const LEADER_MODULES=[{id:'L1',titulo:'Liderazgo de Alta Performance',emoji:'👑',cat:'ms',progress:0,pts:200,lecciones:[{t:'De vendedor a líder — El salto mental',d:'12 min',done:false},{t:'Estilos de liderazgo situacional',d:'10 min',done:false},{t:'Cómo inspirar sin micromanagear',d:'8 min',done:false}]},{id:'L2',titulo:'Seguimiento Efectivo del Equipo',emoji:'📈',cat:'ms',progress:0,pts:200,lecciones:[{t:'KPIs clave de Inside Sales',d:'10 min',done:false},{t:'Reuniones 1:1 que generan resultados',d:'12 min',done:false},{t:'Power BI para líderes — Dashboard',d:'11 min',done:false},{t:'Detección temprana de riesgo',d:'9 min',done:false}]},{id:'L3',titulo:'Coaching Comercial',emoji:'🎯',cat:'ms',progress:0,pts:250,lecciones:[{t:'Qué es coaching y qué no es',d:'8 min',done:false},{t:'Metodología GROW para ventas',d:'14 min',done:false},{t:'Feedback que genera cambio real',d:'10 min',done:false},{t:'Role-play como herramienta de coaching',d:'12 min',done:false}]},{id:'L4',titulo:'Trabajo en Equipo y Cultura Rappi',emoji:'🤝',cat:'ms',progress:0,pts:150,lecciones:[{t:'Cultura de alta velocidad Rappi',d:'9 min',done:false},{t:'Cómo construir equipos cohesionados',d:'10 min',done:false},{t:'Gestión del conflicto en equipo',d:'8 min',done:false}]},{id:'L5',titulo:'HubSpot CRM — Supervisores',emoji:'📙',cat:'hs',progress:0,pts:350,lecciones:[{t:'Reasignación Individual y Masiva de Leads',d:'12 min',done:false},{t:'Creación de Negocios desde Descartados',d:'15 min',done:false},{t:'Workflows y Propiedades de Solicitud',d:'14 min',done:false},{t:'Aprobación de Handoff (HO) & Control',d:'10 min',done:false},{t:'Paneles de Control, Prompts y Reporting Semáforo',d:'15 min',done:false}],desc:'Gestión estratégica en HubSpot para Supervisores: Reasignación de negocios, ejecuciones de Workflows, aprobación de HO e informes de semáforo.',formUrl:'https://docs.google.com/forms/d/e/1FAIpQLSeWiIw4Kzq-I2XIo8ZeEbmZdDH2lG_goB3ZFomJqi7AUr279w/viewform'}];
-const LIBRARY_DATA=[{t:'Onboarding Inside Sales',cat:'Preparación',ico:'📋',type:'PPT'},{t:'Cartilla Llamadas Efectivas',cat:'Preparación',ico:'📞',type:'PDF'},{t:'Smart Pitch — Guía de uso',cat:'Cliente',ico:'📱',type:'DOC'},{t:'Elevator Pitch IS',cat:'Apertura',ico:'🎤',type:'PPT'},{t:'Estrategias de Cierre IS',cat:'Cierre',ico:'🔑',type:'PDF'},{t:'Playbook Condonación de Deuda',cat:'Pre-Venta',ico:'💳',type:'PDF'},{t:'Manual Onboarding — Zoho + SOB',cat:'Venta',ico:'💼',type:'DOC'},{t:'Brand Expansion — Flujo Zoho',cat:'Venta',ico:'📈',type:'PPT'},{t:'Playbook Nueva Negociación',cat:'Venta',ico:'🤝',type:'PPT'},{t:'Reglas Menú — Playbook 2024',cat:'Proceso',ico:'📋',type:'PDF'},{t:'Rappi Aliados y Portal Partners',cat:'Proceso',ico:'🏪',type:'DOC'},{t:'Contratos — Permanencia y Pago',cat:'Posventa',ico:'📄',type:'PDF'},{t:'Power BI Handoff Dashboard',cat:'Posventa',ico:'📊',type:'LINK'},{t:'WOW FarmerMass — Playbook ELC',cat:'Posventa',ico:'🌟',type:'PDF'},{t:'Playbook HubSpot — Comerciales',cat:'Proceso',ico:'🟧',type:'PPT',url:'https://docs.google.com/presentation/d/1q02UnMTNzO3vAneqKJ0wmQOOM766U9EvA4XrU6HiqTk/edit?slide=id.g3d532270b63_0_391#slide=id.g3d532270b63_0_391'},{t:'Playbook HubSpot — Supervisores',cat:'Proceso',ico:'📙',type:'PPT',url:'https://docs.google.com/presentation/d/1Yheg2fQIhfhEWNfiAEAZjIbpxOyg0we41nJLuz3WfGc/edit?slide=id.g3d532270b63_0_391#slide=id.g3d532270b63_0_391'},{t:'Quiz Google Forms — Comerciales',cat:'Proceso',ico:'📝',type:'FORM',url:'https://docs.google.com/forms/d/e/1FAIpQLSfX-qe2PqPpZdCPDtAYmSZ7ep7w2a4k_by917pUby7nf6_0Cg/viewform?usp=header'},{t:'Quiz Google Forms — Supervisores',cat:'Proceso',ico:'📝',type:'FORM',url:'https://docs.google.com/forms/d/e/1FAIpQLSeWiIw4Kzq-I2XIo8ZeEbmZdDH2lG_goB3ZFomJqi7AUr279w/viewform'}];
-const QUIZ_DATA={Prospección:[{q:'¿Cuál es la principal ventaja del hunteo por LinkedIn sobre el hunteo por llamada fría?',opts:['Es más rápido','Permite segmentar y validar al prospecto antes del primer contacto','Es más económico','Tiene mayor tasa de respuesta siempre'],correct:1,exp:'LinkedIn permite conocer el negocio, volumen y contacto clave antes de llamar, mejorando la tasa de éxito.'},{q:'¿Qué es Grappi en el contexto de Rappi?',opts:['Un CRM de seguimiento','Una app para validar zonas geográficas activas','Un sistema de facturación','Un chat interno'],correct:1,exp:'Grappi permite validar qué zonas tienen demanda activa para priorizar prospectos con mayor probabilidad de éxito.'},{q:'¿Cuántos touchpoints se recomiendan antes de dar por perdido a un prospecto?',opts:['1-2','3-4','5-8','Más de 10'],correct:2,exp:'La mayoría de ventas B2B cierran entre el 5° y 8° contacto.'},{q:'Un comercial tiene 200 prospectos. ¿Cuál es el criterio más importante para priorizar?',opts:['Los más fáciles de contactar','Los que tienen mayor potencial de GMV y fit con Rappi','Los más cercanos geográficamente','Los que respondieron primero'],correct:1,exp:'El potencial de GMV es el indicador central.'},{q:'¿Qué significa ICP en ventas?',opts:['Internal Contact Protocol','Ideal Customer Profile','Inbound Call Process','Integrated CRM Platform'],correct:1,exp:'El ICP define el perfil exacto del cliente ideal.'},{q:'Al hacer hunteo outbound, ¿cuál es el mejor momento del día para llamar a un restaurante?',opts:['7-9 AM','10-11 AM o 3-4 PM','12-2 PM (hora de almuerzo)','Después de las 6 PM'],correct:1,exp:'Entre las 10-11 AM o 3-4 PM el dueño ya abrió pero no está en el pico de servicio.'},{q:'¿Qué hace que un pitch de prospección sea efectivo?',opts:['Hablar mucho del producto','Ser breve, mencionar un insight del negocio del prospecto y hacer una pregunta abierta','Mencionar todos los beneficios de Rappi','Enviar un email primero siempre'],correct:1,exp:'El mejor pitch tiene: gancho relevante, propuesta de valor diferenciada y pregunta que abre conversación.'},{q:'¿Cuál es la diferencia entre leads Inbound y Outbound?',opts:['Inbound son más caros','Outbound son más calificados siempre','Inbound llega solo a Rappi con interés; Outbound es contactado proactivamente','No hay diferencia práctica'],correct:2,exp:'Los leads Inbound ya mostraron interés. Los Outbound permiten escalar volumen.'},{q:'Un prospecto dice "ya tengo demasiados pedidos sin Rappi". ¿Cómo respondes?',opts:['Está bien, lo llamo en 3 meses','Le pregunto cuánto estaría ganando adicional si multiplicara esos pedidos con Rappi','Le digo que sin Rappi perderá clientes','Le envío un email con estadísticas'],correct:1,exp:'Esta objeción es señal positiva. La respuesta correcta muestra el incremento en GMV que Rappi generaría.'},{q:'¿Cuál de estos datos NO es útil para calificar un prospecto de restaurante?',opts:['Número de mesas del restaurante','Presencia en otras plataformas de delivery','Reseñas en Google','El color de la fachada del local'],correct:3,exp:'El color de la fachada no tiene correlación con el potencial de ventas.'}],
+
+// Contenido detallado slide por slide para el visor interactivo de HubSpot y demás
+const MODULES=[
+  {id:1,titulo:'Preparación Comercial',sub:'Onboarding · Pitch · Objeciones',emoji:'🚀',cat:'pc',tag:'completado',locked:false,progress:100,pts:150,
+    lecciones:[
+      {t:'Onboarding Inside Sales — Día 1',d:'15 min',done:true,
+        slides:[
+          {t:'Bienvenida a Inside Sales Rappi',c:'<p>¡Hola crack! Bienvenido al equipo comercial más ágil de Latam. Hoy comienzas tu entrenamiento de alta performance.</p><div class="slide-box">🎯 <b>Objetivo:</b> Dominar las herramientas clave de prospección y cierre desde el primer día.</div>'},
+          {t:'Cultura de Alta Velocidad',c:'<p>En Rappi trabajamos con autonomía, orientación a resultados y resiliencia.</p><ul><li><b>Execution is King:</b> La acción supera a la especulación.</li><li><b>Data Driven:</b> Cada decisión comercial está respaldada por métricas.</li></ul>'}
+        ]
+      },
+      {t:'Modelo de negocio Rappi',d:'12 min',done:true,slides:[{t:'Ecosistema Rappi',c:'<p>Rappi unifica usuarios, aliadores (restaurantes) y repartidores en un modelo tripartito súper eficiente.</p>'}]},
+      {t:'Manejo de Pitch y Objeciones',d:'10 min',done:true,slides:[{t:'Estructura del Pitch Efectivo',c:'<p>1. Gancho de impacto<br>2. Propuesta de valor clara<br>3. Pregunta abierta de cierre</p>'}]},
+      {t:'Cartilla de llamadas efectivas',d:'8 min',done:true,slides:[{t:'Mejores Prácticas Telefónicas',c:'<p>Sonreír al hablar, usar tono seguro y registrar cada intento en el CRM.</p>'}]}
+    ],
+    desc:'Inducción primer día. Aprende el modelo de negocio, cómo estructurar tu pitch y manejar objeciones desde el inicio.'
+  },
+  {id:2,titulo:'Prospección',sub:'Hunteo · Validación de Zonas',emoji:'🎯',cat:'pc',tag:'completado',locked:false,progress:100,pts:200,
+    lecciones:[
+      {t:'Técnicas de Hunteo — Top Performers',d:'12 min',done:true,slides:[{t:'LinkedIn & Social Selling',d:'Investiga volumen de negocio y toma de decisión antes de llamar.'}]},
+      {t:'Validación de zonas con Grappi',d:'10 min',done:true,slides:[{t:'Uso de Grappi',d:'Valida áreas de cobertura activa para asegurar demanda.'}]},
+      {t:'Herramientas de prospección digital',d:'9 min',done:true,slides:[{t:'Scraping & Google Maps',d:'Búsqueda proactiva de negocios en zonas estratégicas.'}]}
+    ],
+    desc:'Principales técnicas de hunteo que usan los top performers.'
+  },
+  {id:3,titulo:'Conocimiento del Cliente',sub:'Smart Pitch · Segmentación',emoji:'🧠',cat:'ci',tag:'prioritario',locked:false,progress:50,pts:200,
+    lecciones:[
+      {t:'Smart Pitch — App de entrenamiento',d:'14 min',done:true,slides:[{t:'Smart Pitch Mobile',c:'<p>Utiliza Smart Pitch para ensayar tu discurso con inteligencia artificial.</p>'}]},
+      {t:'Calculadora de simulador de ganancias',d:'10 min',done:true,slides:[{t:'Simulador GMV',c:'<p>Calcula el incremento de ventas estimadas para el aliado.</p>'}]},
+      {t:'Tipificación y segmentación del cliente',d:'12 min',done:false,slides:[{t:'Segmentos de Aliados',c:'<p>Clasifica negocios según volumen, categoría de comida y potencial de venta.</p>'}]},
+      {t:'Personalización del pitch por tipo',d:'8 min',done:false,slides:[{t:'Pitch Personalizado',c:'<p>Adapta tu discurso si hablas con un restaurante pequeño o una cadena.</p>'}]}
+    ],
+    desc:'Aprende a vender desde cero con Smart Pitch.'
+  },
+  {id:4,titulo:'Apertura y Contactabilidad',sub:'Amazon Connect · Elevator Pitch',emoji:'📞',cat:'ci',tag:'nuevo',locked:false,progress:0,pts:150,
+    lecciones:[
+      {t:'Amazon Connect — Herramienta principal',d:'11 min',done:false,slides:[{t:'Softphone Amazon Connect',c:'<p>Consola oficial para realizar y recibir llamadas integradas con el CRM.</p>'}]},
+      {t:'Elevator Pitch estructurado',d:'9 min',done:false,slides:[{t:'El Elevador de 30 segundos',c:'<p>Capta el interés en los primeros 10 segundos de la llamada.</p>'}]},
+      {t:'Scripts de primer contacto',d:'8 min',done:false,slides:[{t:'Guion de Apertura',c:'<p>Mensajes efectivos por WhatsApp y teléfono.</p>'}]},
+      {t:'Métricas de contactabilidad',d:'7 min',done:false,slides:[{t:'KPIs de Llamadas',c:'<p>Meta: Mínimo 40 llamadas diarias con tasa de contacto >25%.</p>'}]}
+    ],
+    desc:'Amazon Connect y Elevator Pitch que captura atención.'
+  },
+  {id:9,titulo:'HubSpot CRM — Comerciales',sub:'Pipeline · Contactabilidad · Breeze IA',emoji:'🟧',cat:'hs',tag:'nuevo',locked:false,progress:0,pts:300,
+    playbookUrl:'https://docs.google.com/presentation/d/1q02UnMTNzO3vAneqKJ0wmQOOM766U9EvA4XrU6HiqTk/edit?slide=id.g3d532270b63_0_391#slide=id.g3d532270b63_0_391',
+    formUrl:'https://docs.google.com/forms/d/e/1FAIpQLSfX-qe2PqPpZdCPDtAYmSZ7ep7w2a4k_by917pUby7nf6_0Cg/viewform?usp=header',
+    lecciones:[
+      {t:'Acceso a HubSpot y Perfil Okta',d:'10 min',done:false,
+        slides:[
+          {t:'1. ¿Qué es HubSpot CRM en Rappi?',tag:'HubSpot Training · Slide 1',c:'<p>HubSpot es la plataforma unificada que conecta ventas, marketing y operaciones con inteligencia artificial.</p><div class="slide-box hs">📍 <b>Visibilidad Total:</b> Cada deal, contacto y tarea en un solo lugar.<br>⚡ <b>Más Velocidad:</b> Automatiza seguimientos.<br>🤝 <b>Sin Reprocesos:</b> Todo el equipo comparte el mismo contexto.</div>'},
+          {t:'2. Login Oficial desde Okta',tag:'HubSpot Training · Slide 2',c:'<p>Para ingresar a HubSpot siempre debes hacerlo mediante SSO corporativo:</p><ul><li>1. Ingresa a Okta con tu correo corporativo: <b>rappi.okta.com</b></li><li>2. Ve a la pestaña <b>Mis Aplicaciones</b>.</li><li>3. Haz clic en la app <b>HubSpot</b>.</li></ul><div class="slide-img-placeholder">🔑 Okta SSO > Mis Aplicaciones > Icono HubSpot</div>'},
+          {t:'3. Configuración de Perfil y WhatsApp',tag:'HubSpot Training · Slide 3',c:'<p><b>Paso Obligatorio:</b> Configura tus datos para habilitar el envío de plantillas de WhatsApp con tu firma correcta.</p><ul><li>Ve a tu avatar superior > <i>Perfil y Preferencias</i>.</li><li>Confirma tu nombre completo y teléfono comercial registrado.</li><li>Conecta tu cuenta de Calendar para agendamiento automático.</li></ul>'}
+        ]
+      },
+      {t:'Estructura del Pipeline y Etapas',d:'12 min',done:false,
+        slides:[
+          {t:'1. Diccionario de Términos en HubSpot',tag:'HubSpot Training · Slide 4',c:'<p>Familiarízate con los conceptos base del CRM:</p><ul><li><b>Negocios (Deals):</b> Oportunidades comerciales en marcha.</li><li><b>Tienda (Store):</b> Negocio o local creado en la plataforma.</li><li><b>Tipo Lead:</b> Oportunidades potenciales no vinculadas aún a Rappi.</li><li><b>Negocios Descartados:</b> Deals cerrados que NO se pueden reasignar directamente.</li></ul>'},
+          {t:'2. Recorrido del Pipeline de Ventas',tag:'HubSpot Training · Slide 5',c:'<p>El pipeline refleja el embudo de conversión desde el primer contacto hasta el Ready to Sell (R2S):</p><div class="slide-box">1. <b>Nuevo:</b> Lead asignado sin gestión inicial.<br>2. <b>En Gestión:</b> Primer intento comercial en marcha.<br>3. <b>Contacto Efectivo:</b> Comunicación real lograda.<br>4. <b>Propuesta Enviada:</b> Presentación de propuesta.<br>5. <b>Esperando Documentos:</b> Propuesta aceptada.<br>6. <b>Onboarding / R2S:</b> Carga en Portal Manager.</div>'},
+          {t:'3. Regla Técnica de Avance de Etapa',tag:'HubSpot Training · Slide 6',c:'<p>⚠️ <b>Condición técnica importante:</b></p><p>Cuando se asigna un lead en etapa <b>Nuevo</b>, el negocio NO avanzará hasta que entres al detalle del negocio y des clic en la tarea <b>"Iniciar la gestión"</b>.</p><div class="slide-img-placeholder">☑️ Completar tarea "Iniciar la gestión" en Actividades Recientes</div>'}
+        ]
+      },
+      {t:'Registro de Contactabilidad y Resultados',d:'14 min',done:false,
+        slides:[
+          {t:'1. Reglas de Contactabilidad Estricta',tag:'HubSpot Training · Slide 7',c:'<p>Para registrar correctamente una llamada o mensaje:</p><ul><li><b>Llamadas:</b> Deben realizarse usando el conector de <b>Amazon Connect</b>.</li><li><b>WhatsApp:</b> Integrado desde el panel del negocio.</li><li><b>Importante:</b> Buzón de voz o mensajes de bots NO cuentan como Contacto Efectivo.</li></ul>'},
+          {t:'2. Cómo Registrar el Resultado de la Llamada',tag:'HubSpot Training · Slide 8',c:'<p>Al finalizar una llamada en Amazon Connect:</p><ul><li>1. Detén la grabación y guarda la llamada en el panel desplegable.</li><li>2. Selecciona el resultado: <i>Conectado</i>, <i>Sin Respuesta</i> o <i>Dejó mensaje</i>.</li><li>3. <b>Obligatorio:</b> En la columna izquierda, registra el "Resultado del contacto efectivo" el mismo día.</li></ul><div class="slide-box hs">💡 Si indicó que desea ser contactado otro día, selecciona <i>"Quiere ser contactado otro día"</i>.</div>'},
+          {t:'3. Cambio y Corrección de Teléfono',tag:'HubSpot Training · Slide 9',c:'<p>Si el número del restaurante es incorrecto:</p><p>Edítalo directamente en el objeto <b>Tiendas (Store)</b> a la derecha y guarda los cambios en la base de datos central. No lo dejes solo en una nota.</p>'}
+        ]
+      },
+      {t:'Propuestas, Handoff (HO) y Descartados',d:'12 min',done:false,
+        slides:[
+          {t:'1. Registro de Propuesta Enviada y Aceptada',tag:'HubSpot Training · Slide 10',c:'<p>Pasos para avanzar el negocio con propuesta:</p><ul><li>1. Marca el resultado del contacto como <b>Propuesta Enviada</b>.</li><li>2. Registra la fecha, hora y pega el resumen de la propuesta enviada.</li><li>3. Cuando el cliente acepte, cambia el estado a <b>Aceptada</b>. El CRM lo moverá automáticamente a <i>Esperando Documentos</i>.</li></ul>'},
+          {t:'2. Proceso de Handoff (HO)',tag:'HubSpot Training · Slide 11',c:'<p>Para tiendas listas para Onboarding:</p><ul><li>El estado inicial del Handoff será <b>Pendiente</b>.</li><li>Una vez programado y realizado el HO efectivo, el Supervisor debe revisar y cambiar el estado a <b>Aprobado</b>.</li></ul>'},
+          {t:'3. Motivos de Descarte y Descartados',tag:'HubSpot Training · Slide 12',c:'<p>Si la propuesta es rechazada o el lead se ilocaliza:</p><ul><li>Indica el motivo exacto (ej. <i>Fuera de cobertura</i>, <i>Take rate alto</i>, <i>Sin gestión</i>).</li><li><b>Recuerda:</b> Los descartados quedan registrados para trazabilidad histórica.</li></ul>'}
+        ]
+      },
+      {t:'Breeze IA & Tips para Negocios R2S',d:'10 min',done:false,
+        slides:[
+          {t:'1. Asistente Breeze IA en HubSpot',tag:'HubSpot Training · Slide 13',c:'<p>Utiliza Breeze IA para acelerar tu gestión diaria:</p><ul><li>Genera resúmenes automáticos de llamadas e interacciones pasadas.</li><li>Hazle preguntas como: <i>"¿Cuál es el número de teléfono según la URL del mapa?"</i></li><li>Breeze rastreará fuentes públicas para encontrar datos faltantes.</li></ul>'},
+          {t:'2. Integración con Portal Manager',tag:'HubSpot Training · Slide 14',c:'<p>En la etapa de Onboarding, selecciona las direcciones sugeridas por HubSpot para asegurar la sincronización con Portal Manager sin errores.</p>'},
+          {t:'3. Resumen de Reglas de Oro',tag:'HubSpot Training · Slide 15',c:'<div class="slide-box hs">🎯 <b>Registra todo:</b> Si no está en HubSpot, no existe.<br>🔄 <b>Paso siguiente claro:</b> Crea una tarea con fecha límite tras cada interacción.<br>⚡ <b>3 Intentos:</b> Si no contesta tras 3 intentos, registra llamada e ilocalizado.</div><p>¡Felicitaciones! Has recorrido la teoría completa. Ahora pulsa "Finalizar Lección" para sumar tus puntos.</p>'}
+        ]
+      }
+    ],
+    desc:'Capacitación oficial de HubSpot CRM para comerciales. Aprende a gestionar tu pipeline, llamadas en Amazon, WhatsApp y Breeze IA.'
+  }
+];
+
+const LEADER_MODULES=[
+  {id:'L1',titulo:'Liderazgo de Alta Performance',emoji:'👑',cat:'ms',progress:0,pts:200,lecciones:[{t:'De vendedor a líder — El salto mental',d:'12 min',done:false,slides:[{t:'Mentalidad de Líder',c:'De enfocar tu éxito personal a potenciar el éxito de tu equipo.'}]},{t:'Estilos de liderazgo situacional',d:'10 min',done:false,slides:[{t:'Liderazgo Situacional',c:'Adapta tu acompañamiento según el nivel de madurez de cada comercial.'}]},{t:'Cómo inspirar sin micromanagear',d:'8 min',done:false,slides:[{t:'Autonomía y Control',c:'Establece metas claras y mide resultados en lugar de controlar minutos.'}]}]},
+  {id:'L5',titulo:'HubSpot CRM — Supervisores',emoji:'📙',cat:'hs',progress:0,pts:350,
+    playbookUrl:'https://docs.google.com/presentation/d/1Yheg2fQIhfhEWNfiAEAZjIbpxOyg0we41nJLuz3WfGc/edit?slide=id.g3d532270b63_0_391#slide=id.g3d532270b63_0_391',
+    formUrl:'https://docs.google.com/forms/d/e/1FAIpQLSeWiIw4Kzq-I2XIo8ZeEbmZdDH2lG_goB3ZFomJqi7AUr279w/viewform',
+    lecciones:[
+      {t:'Reasignación Individual y Masiva de Leads',d:'12 min',done:false,
+        slides:[
+          {t:'1. Vista "Inside-reasignar"',tag:'HubSpot Supervisors · Slide 1',c:'<p>Como supervisor, debes realizar las reasignaciones utilizando las vistas centrales predeterminadas.</p><ul><li>1. Ve al módulo de <b>Negocios</b>.</li><li>2. Haz clic en el icono <b>+</b> de vistas y busca <b>Inside-reasignar</b>.</li><li>3. Aplica filtros avanzados seleccionando el propietario actual.</li></ul>'},
+          {t:'2. Asignación Masiva en Bloque',tag:'HubSpot Supervisors · Slide 2',c:'<p>Pasos para reasignar un paquete de negocios:</p><ul><li>1. Selecciona las casillas de los negocios a reasignar.</li><li>2. Haz clic en el botón superior <b>Asignar</b>.</li><li>3. Elige el nuevo comercial en <i>Propietario del negocio</i> y confirma.</li></ul><div class="slide-box hs">⚠️ <b>Regla de Oro:</b> Solo se pueden reasignar negocios entre comerciales de tu propio equipo.</div>'}
+        ]
+      },
+      {t:'Creación de Negocios desde Descartados',d:'15 min',done:false,
+        slides:[
+          {t:'1. Recuperación de Tiendas Descartadas',tag:'HubSpot Supervisors · Slide 3',c:'<p>Cuando un negocio previo fue descartado pero se desea volver a trabajar:</p><ul><li>1. Ve al módulo de <b>Tiendas (Stores)</b>.</li><li>2. Carga la vista <i>Inside Stores descartadas para reasignar</i>.</li><li>3. Filtra por el motivo de descarte anterior (ej. <i>Sin gestión</i>).</li></ul>'},
+          {t:'2. Recreación Automática del Deal',tag:'HubSpot Supervisors · Slide 4',c:'<p>No se reasigna el deal descartado viejo; se ejecuta un Workflow que genera una nueva oportunidad manteniendo la trazabilidad histórica.</p>'}
+        ]
+      },
+      {t:'Workflows y Propiedades de Solicitud',d:'14 min',done:false,
+        slides:[
+          {t:'1. Edición en Bloque de Propiedades',tag:'HubSpot Supervisors · Slide 5',c:'<p>Para activar el Workflow de reciclaje de leads, edita en bloque las siguientes propiedades:</p><ul><li>1. <b>Tipo de Solicitud</b></li><li>2. <b>Solicitante</b></li><li>3. <b>Equipo Solicitante</b></li></ul><div class="slide-img-placeholder">⚙️ Editar en bloque > Actualizar Tipo de Solicitud</div>'}
+        ]
+      },
+      {t:'Aprobación de Handoff (HO) & Control',d:'10 min',done:false,
+        slides:[
+          {t:'1. Aprobación Manual de Handoff (HO)',tag:'HubSpot Supervisors · Slide 6',c:'<p>Cuando un comercial programa un HO y este resulta efectivo:</p><ul><li>El negocio entra a la etapa <i>Aprobación de Handoff</i>.</li><li>El supervisor debe ingresar, validar la información y cambiar manualmente la <i>Revisión de Handoff</i> a <b>Aprobado</b>.</li><li>Esto pasa el negocio a <b>Handoff Efectivo</b>.</li></ul>'}
+        ]
+      },
+      {t:'Paneles de Control, Prompts y Reporting Semáforo',d:'15 min',done:false,
+        slides:[
+          {t:'1. Panel Semáforo de Inside Sales',tag:'HubSpot Supervisors · Slide 7',c:'<p>Monitorea la salud del pipeline desde el panel oficial:</p><ul><li>Abre <b>Informes > Paneles</b>.</li><li>Selecciona el panel <b>[Rappi] - Inside - Prueba</b>.</li><li>Filtra por tu equipo para ver la conversión del Funnel en tiempo real.</li></ul>'},
+          {t:'2. Prompts para Reportes Ejecutivos',tag:'HubSpot Supervisors · Slide 8',c:'<p>Utiliza prompts en Breeze IA para generar resúmenes del equipo:</p><div class="slide-box hs">💬 <i>"Necesito analizar un informe ejecutivo consolidado - versión semáforo del equipo Inside."</i></div>'}
+        ]
+      }
+    ],
+    desc:'Gestión estratégica en HubSpot para Supervisores: Reasignación de negocios, ejecuciones de Workflows, aprobación de HO e informes de semáforo.'
+  }
+];
+
+const LIBRARY_DATA=[{t:'Onboarding Inside Sales',cat:'Preparación',ico:'📋',type:'PPT'},{t:'Cartilla Llamadas Efectivas',cat:'Preparación',ico:'📞',type:'PDF'},{t:'Smart Pitch — Guía de uso',cat:'Cliente',ico:'📱',type:'DOC'},{t:'Elevator Pitch IS',cat:'Apertura',ico:'🎤',type:'PPT'},{t:'Estrategias de Cierre IS',cat:'Cierre',ico:'🔑',type:'PDF'},{t:'Playbook Condonación de Deuda',cat:'Pre-Venta',ico:'💳',type:'PDF'},{t:'Manual Onboarding — Zoho + SOB',cat:'Venta',ico:'💼',type:'DOC'},{t:'Brand Expansion — Flujo Zoho',cat:'Venta',ico:'📈',type:'PPT'},{t:'Playbook Nueva Negociación',cat:'Venta',ico:'🤝',type:'PPT'},{t:'Reglas Menú — Playbook 2024',cat:'Proceso',ico:'📋',type:'PDF'},{t:'Rappi Aliados y Portal Partners',cat:'Proceso',ico:'🏪',type:'DOC'},{t:'Contratos — Permanencia y Pago',cat:'Posventa',ico:'📄',type:'PDF'},{t:'Power BI Handoff Dashboard',cat:'Posventa',ico:'📊',type:'LINK'},{t:'Playbook HubSpot — Comerciales',cat:'Proceso',ico:'🟧',type:'PPT',url:'https://docs.google.com/presentation/d/1q02UnMTNzO3vAneqKJ0wmQOOM766U9EvA4XrU6HiqTk/edit?slide=id.g3d532270b63_0_391#slide=id.g3d532270b63_0_391'},{t:'Playbook HubSpot — Supervisores',cat:'Proceso',ico:'📙',type:'PPT',url:'https://docs.google.com/presentation/d/1Yheg2fQIhfhEWNfiAEAZjIbpxOyg0we41nJLuz3WfGc/edit?slide=id.g3d532270b63_0_391#slide=id.g3d532270b63_0_391'},{t:'Quiz Google Forms — Comerciales',cat:'Proceso',ico:'📝',type:'FORM',url:'https://docs.google.com/forms/d/e/1FAIpQLSfX-qe2PqPpZdCPDtAYmSZ7ep7w2a4k_by917pUby7nf6_0Cg/viewform?usp=header'},{t:'Quiz Google Forms — Supervisores',cat:'Proceso',ico:'📝',type:'FORM',url:'https://docs.google.com/forms/d/e/1FAIpQLSeWiIw4Kzq-I2XIo8ZeEbmZdDH2lG_goB3ZFomJqi7AUr279w/viewform'}];
+
+const QUIZ_DATA={
 'HubSpot CRM — Comerciales':[
   {q:'¿Cómo se debe ingresar oficialmente a HubSpot CRM en Rappi?',opts:['Ingresando usuario y contraseña en hubspot.com','Desde Okta > Mis Aplicaciones > HubSpot','Por un enlace enviado al correo personal','Solicitando clave al administrador en Slack'],correct:1,exp:'El acceso oficial es seguro mediante SSO a través de Okta (rappi.okta.com).'},
   {q:'¿Cuál de las siguientes acciones NO cuenta como un "Contacto Efectivo" en el CRM?',opts:['Llamada telefónica conversada con el dueño','Buzón de voz o mensaje automatizado por bot de WhatsApp','Reunión virtual completada','Mensaje directo respondido por el aliado'],correct:1,exp:'Buzón de voz o mensajes automatizados de bots NO se consideran contacto efectivo.'},
@@ -451,12 +648,14 @@ const QUIZ_DATA={Prospección:[{q:'¿Cuál es la principal ventaja del hunteo po
   {q:'Al reasignar un negocio a otro comercial, ¿en qué etapa queda el negocio?',opts:['Vuelve a Nuevo siempre','Se mueve a Ganado','Queda en la misma etapa en que lo tenía la persona anterior','Se borran todas las actividades'],correct:2,exp:'La reasignación mantiene la etapa actual del negocio para no perder la madurez de la gestión.'},
   {q:'¿Qué herramienta de IA en HubSpot puede procesar un prompt para generar proyecciones de cierre y resúmenes ejecutivos?',opts:['Asistente Breeze IA','Zoho Connect','Amazon Connect CTI','Okta Dashboard'],correct:0,exp:'Breeze IA permite interactuar con prompts para generar resúmenes detallados y estado de cierres.'}
 ]};
+
 const COUNTRY_DATA=[{code:'MX',name:'México',flag:'🇲🇽',total:180,active:172,progress:62},{code:'AR',name:'Argentina',flag:'🇦🇷',total:89,active:85,progress:71},{code:'CO',name:'Colombia',flag:'🇨🇴',total:68,active:65,progress:58},{code:'CL',name:'Chile',flag:'🇨🇱',total:52,active:50,progress:65},{code:'PE',name:'Perú',flag:'🇵🇪',total:61,active:58,progress:54},{code:'EC',name:'Ecuador',flag:'🇪🇨',total:35,active:33,progress:48}];
 const TOP_USERS=[{nm:'Karen Oviedo',ini:'KO',pts:2850,prog:94,country:'AR',leader:'Camila Ruiz'},{nm:'Adriana Martínez',ini:'AM',pts:2640,prog:88,country:'MX',leader:'Sebastián Ibáñez'},{nm:'Angie Barriga',ini:'AB',pts:2410,prog:82,country:'CO',leader:'Nicolas Loaiza'},{nm:'Laura Barrios',ini:'LB',pts:2180,prog:78,country:'CL',leader:'Camila Ruiz'},{nm:'Jessica Uribe',ini:'JU',pts:1950,prog:71,country:'MX',leader:'Oscar Caucali'},{nm:'Tatiana García',ini:'TG',pts:1720,prog:65,country:'CO',leader:'Nicolas Loaiza'},{nm:'Andrea Gaona',ini:'AG',pts:1540,prog:58,country:'CL',leader:'Camila Ruiz'},{nm:'Nicol Espitia',ini:'NE',pts:980,prog:38,country:'PE',leader:'Jeimmy Wilches'}];
 const NEED_HELP=[{nm:'Daniela Bejarano',ini:'DB',country:'AR',prog:12,leader:'Maria Casallas',issue:'Sin actividad hace 5 días'},{nm:'Kenly Manrique',ini:'KM',country:'PE',prog:8,leader:'Jeimmy Wilches',issue:'0 módulos completados'},{nm:'Jorge Ramírez',ini:'JR',country:'AR',prog:22,leader:'Brayan Sanabria',issue:'Quiz fallido 2 veces'}];
 const LOGIN_LOG=[{nm:'Karen Oviedo',ini:'KO',active:true,time:'Hace 2 min',mods:'Mod 9 — HubSpot CRM'},{nm:'Adriana Martínez',ini:'AM',active:true,time:'Hace 5 min',mods:'Quiz HubSpot'},{nm:'Angie Barriga',ini:'AB',active:true,time:'Hace 12 min',mods:'Mod 2 — Prospección'},{nm:'Laura Barrios',ini:'LB',active:false,time:'Hace 1 hora',mods:'Biblioteca'},{nm:'Jessica Uribe',ini:'JU',active:false,time:'Hace 2 horas',mods:'Mod 4 — Apertura'},{nm:'German Godoy',ini:'GG',active:false,time:'Ayer 4:30 PM',mods:'Mod 1 — Preparación'}];
 
 let CU=null,curMod=null,qQ=[],qIdx=0,qScore=0,qAnswered=false,curQuizMod='';
+let curLsnMod=null,curLsnIdx=0,curSlideIdx=0;
 
 function ls(k,v){if(v!==undefined)localStorage.setItem(k,JSON.stringify(v));else{try{return JSON.parse(localStorage.getItem(k))}catch{return null}}}
 function initials(e){const p=e.split('@')[0].split('.');return(p[0][0]+(p[1]?p[1][0]:'')).toUpperCase();}
@@ -507,7 +706,7 @@ function toggleSb(){const s=document.getElementById('sidebar');s.classList.toggl
 
 function buildHome(){
   const n=CU.name,flag=COUNTRIES[CU.country]||'🌎';
-  document.getElementById('scr-home').innerHTML=`<div class="wb"><div class="wb-gt">Bienvenid@ de vuelta ${flag}</div><div class="wb-nm">¡Hola, <span>${n}</span>! 👋</div><div class="wb-msg" style="color:#fff;font-weight:600;">🔥 Nuevo módulo disponible: <strong style="color:#FF7A59;">HubSpot CRM</strong>. <strong style="color:#FF441F;">¡Ponte al día, crack!</strong></div><button class="wb-cta" onclick="showSc('academy',document.querySelectorAll('.ni')[1])">Ir a capacitaciones →</button><div class="wb-max">🤖</div></div><div class="g3" style="margin-bottom:14px;"><div class="stat-c"><div class="si">📚</div><div class="sv o">2/9</div><div class="sl">Módulos completados</div></div><div class="stat-c"><div class="si">⚡</div><div class="sv o">${CU.points.toLocaleString()}</div><div class="sl">RappiPoints</div></div><div class="stat-c"><div class="si">🏆</div><div class="sv" style="color:#F59E0B">#4</div><div class="sl">Ranking equipo</div></div></div><div class="streak-b"><div style="font-size:22px;">🔥</div><div style="flex:1;"><div style="font-size:12px;font-weight:600;margin-bottom:5px;">Racha — 4 días consecutivos</div><div class="streak-days"><div class="dd done">L</div><div class="dd done">M</div><div class="dd done">M</div><div class="dd done">J</div><div class="dd today">V</div><div class="dd">S</div><div class="dd">D</div></div></div></div><div class="sec-tit">🎯 Acceso rápido</div><div class="g2"><div class="qc" onclick="openDet(9)"><div style="font-size:22px;">🟧</div><div><div style="font-size:12px;font-weight:600;">Nuevo Módulo</div><div style="font-size:10px;color:var(--txm);">HubSpot CRM — Comerciales</div></div></div><div class="qc" onclick="openQuiz('HubSpot CRM — Comerciales')"><div style="font-size:22px;">📝</div><div><div style="font-size:12px;font-weight:600;">Quiz HubSpot</div><div style="font-size:10px;color:var(--txm);">300 RappiPoints en juego</div></div></div><div class="qc" onclick="showSc('leaderboard',document.querySelectorAll('.ni')[3])"><div style="font-size:22px;">🏆</div><div><div style="font-size:12px;font-weight:600;">Ver ranking</div><div style="font-size:10px;color:var(--txm);">Estás en el Top 5</div></div></div><div class="qc" onclick="dlReport()"><div style="font-size:22px;">📊</div><div><div style="font-size:12px;font-weight:600;">Rappi-Report</div><div style="font-size:10px;color:var(--txm);">Descarga tu feedback</div></div></div></div>`;
+  document.getElementById('scr-home').innerHTML=`<div class="wb"><div class="wb-gt">Bienvenid@ de vuelta ${flag}</div><div class="wb-nm">¡Hola, <span>${n}</span>! 👋</div><div class="wb-msg" style="color:#fff;font-weight:600;">🔥 Nuevo módulo activo: <strong style="color:#FF7A59;">HubSpot CRM</strong>. <strong style="color:#FF441F;">¡Completa las diapositivas para avanzar!</strong></div><button class="wb-cta" onclick="showSc('academy',document.querySelectorAll('.ni')[1])">Ir a la Academia →</button><div class="wb-max">🤖</div></div><div class="g3" style="margin-bottom:14px;"><div class="stat-c"><div class="si">📚</div><div class="sv o">2/9</div><div class="sl">Módulos completados</div></div><div class="stat-c"><div class="si">⚡</div><div class="sv o">${CU.points.toLocaleString()}</div><div class="sl">RappiPoints</div></div><div class="stat-c"><div class="si">🏆</div><div class="sv" style="color:#F59E0B">#4</div><div class="sl">Ranking equipo</div></div></div><div class="streak-b"><div style="font-size:22px;">🔥</div><div style="flex:1;"><div style="font-size:12px;font-weight:600;margin-bottom:5px;">Racha — 4 días consecutivos</div><div class="streak-days"><div class="dd done">L</div><div class="dd done">M</div><div class="dd done">M</div><div class="dd done">J</div><div class="dd today">V</div><div class="dd">S</div><div class="dd">D</div></div></div></div><div class="sec-tit">🎯 Acceso rápido</div><div class="g2"><div class="qc" onclick="openDet(9)"><div style="font-size:22px;">🟧</div><div><div style="font-size:12px;font-weight:600;">Nuevo Módulo</div><div style="font-size:10px;color:var(--txm);">HubSpot CRM — Comerciales</div></div></div><div class="qc" onclick="openQuiz('HubSpot CRM — Comerciales')"><div style="font-size:22px;">📝</div><div><div style="font-size:12px;font-weight:600;">Quiz HubSpot</div><div style="font-size:10px;color:var(--txm);">300 RappiPoints en juego</div></div></div><div class="qc" onclick="showSc('leaderboard',document.querySelectorAll('.ni')[3])"><div style="font-size:22px;">🏆</div><div><div style="font-size:12px;font-weight:600;">Ver ranking</div><div style="font-size:10px;color:var(--txm);">Estás en el Top 5</div></div></div><div class="qc" onclick="dlReport()"><div style="font-size:22px;">📊</div><div><div style="font-size:12px;font-weight:600;">Rappi-Report</div><div style="font-size:10px;color:var(--txm);">Descarga tu feedback</div></div></div></div>`;
 }
 
 function buildAcademy(){renderAcademy('all');}
@@ -525,21 +724,141 @@ function openDet(id){
   if(!m)return;curMod=m;
   document.getElementById('detTitle').textContent=m.emoji+' '+m.titulo;
   document.getElementById('detMeta').textContent=`${m.lecciones.length} lecciones • ${(m.desc||'').substring(0,80)}...`;
-  const done=m.lecciones.filter(l=>l.done).length,pct=Math.round(done/m.lecciones.length*100);
+  
+  // Recalcular progreso
+  const doneCount=m.lecciones.filter(l=>l.done).length;
+  const pct=Math.round((doneCount/m.lecciones.length)*100);
+  m.progress=pct;
+  if(pct===100)m.tag='completado';
+
   document.getElementById('detPct').textContent=pct+'%';
   document.getElementById('detFill').style.width=pct+'%';
-  document.getElementById('lsnList').innerHTML=m.lecciones.map((l,i)=>`<div class="lsn${l.done?' done':''}" onclick="viewLsn(${typeof m.id==='number'?m.id:`'${m.id}'`},${i})"><div class="l-ic">${l.done?'✅':'▶️'}</div><div class="l-tit">${l.t}</div><span class="l-dur">${l.d}</span></div>`).join('');
+
+  // Renderizar lecciones con bloqueo secuencial
+  document.getElementById('lsnList').innerHTML=m.lecciones.map((l,i)=>{
+    const isUnlocked = (i===0 || m.lecciones[i-1].done);
+    if(isUnlocked){
+      return `<div class="lsn${l.done?' done':''}" onclick="openLsnViewer(${typeof m.id==='number'?m.id:`'${m.id}'`},${i})">
+        <div class="l-ic">${l.done?'✅':'▶️'}</div>
+        <div class="l-tit">${l.t} ${l.done?'':'<span style="color:var(--rappi);font-size:10px;">(Hacer clic para ver diapositivas)</span>'}</div>
+        <span class="l-dur">${l.d}</span>
+      </div>`;
+    }else{
+      return `<div class="lsn locked" onclick="alert('🔒 Lección bloqueada. Debes revisar todas las diapositivas de la lección anterior para desbloquear esta.')">
+        <div class="l-ic">🔒</div>
+        <div class="l-tit" style="color:var(--txm);">${l.t}</div>
+        <span class="l-dur">${l.d}</span>
+      </div>`;
+    }
+  }).join('');
+
   const allDone=m.lecciones.every(l=>l.done);
   document.getElementById('qzStartBtn').disabled=!allDone;
   document.getElementById('qzReq').style.display=allDone?'none':'block';
   document.getElementById('modDet').classList.add('open');
 }
-function viewLsn(id,idx){
-  const m=[...MODULES,...LEADER_MODULES].find(x=>x.id===id);
-  if(!m)return;m.lecciones[idx].done=true;m.progress=Math.round(m.lecciones.filter(l=>l.done).length/m.lecciones.length*100);
-  addPts(10);showMaxTip(['¡Lección completada! 🔥 +10 pts','¡Aprende HubSpot e incrementa tus ventas! 🟧','¡Learn Rappido! 🚀','¡Eres un crack!'][Math.floor(Math.random()*4)]);openDet(id);
-}
+
 function closeDet(){document.getElementById('modDet').classList.remove('open');}
+
+// VISOR SLIDE-BY-SLIDE INTERACTIVO
+function openLsnViewer(modId, lsnIdx){
+  const m=[...MODULES,...LEADER_MODULES].find(x=>x.id===modId);
+  if(!m)return;
+  curLsnMod=m; curLsnIdx=lsnIdx; curSlideIdx=0;
+  
+  document.getElementById('lsnViewTitle').textContent=m.lecciones[lsnIdx].t;
+  document.getElementById('lsnViewSub').textContent=m.emoji+' '+m.titulo;
+  
+  if(m.playbookUrl){
+    document.getElementById('btnPlaybookExt').style.display='inline-block';
+  }else{
+    document.getElementById('btnPlaybookExt').style.display='none';
+  }
+  
+  document.getElementById('lsnOv').classList.add('open');
+  renderSlide();
+}
+
+function openPlaybookExt(){
+  if(curLsnMod && curLsnMod.playbookUrl){
+    window.open(curLsnMod.playbookUrl, '_blank');
+  }
+}
+
+function closeLsnViewer(){
+  document.getElementById('lsnOv').classList.remove('open');
+}
+
+function renderSlide(){
+  const lsn = curLsnMod.lecciones[curLsnIdx];
+  const slides = lsn.slides || [
+    {t:'Diapositiva 1: Introducción', tag:'Entrenamiento Oficial', c:`<p>Aprende los conceptos clave de <b>${lsn.t}</b>.</p><div class="slide-box">Revisa toda la información detallada para completar este módulo.</div>`},
+    {t:'Diapositiva 2: Procedimiento Comercial', tag:'Entrenamiento Oficial', c:`<p>Sigue los pasos y buenas prácticas registradas en la guía.</p>`},
+    {t:'Diapositiva 3: Cierre de Tema', tag:'Entrenamiento Oficial', c:`<p>Al llegar al final de las diapositivas se marcará automáticamente tu lección como completada.</p>`}
+  ];
+
+  const total = slides.length;
+  const s = slides[curSlideIdx];
+  
+  document.getElementById('slideNumLabel').textContent=`Slide ${curSlideIdx+1} de ${total}`;
+  document.getElementById('slideTagLabel').textContent=s.tag || curLsnMod.titulo;
+  document.getElementById('slideTitle').textContent=s.t || lsn.t;
+  document.getElementById('slideContent').innerHTML=s.c || s.d || '';
+  
+  const pct = Math.round(((curSlideIdx+1)/total)*100);
+  document.getElementById('slideProgressFill').style.width=pct+'%';
+  document.getElementById('slidePctLabel').textContent=pct+'%';
+
+  // Control de botones
+  document.getElementById('btnPrevSlide').disabled = (curSlideIdx===0);
+  
+  const btnNext = document.getElementById('btnNextSlide');
+  if(curSlideIdx < total-1){
+    btnNext.textContent = 'Siguiente ▶';
+    btnNext.className = curLsnMod.cat==='hs' ? 'lsn-btn hs' : 'lsn-btn pri';
+  }else{
+    btnNext.textContent = '✅ Finalizar Lección (+10 pts)';
+    btnNext.className = 'lsn-btn pri';
+  }
+}
+
+function prevSlide(){
+  if(curSlideIdx > 0){
+    curSlideIdx--;
+    renderSlide();
+  }
+}
+
+function nextSlide(){
+  const lsn = curLsnMod.lecciones[curLsnIdx];
+  const slides = lsn.slides || [1,2,3];
+  const total = slides.length;
+
+  if(curSlideIdx < total - 1){
+    curSlideIdx++;
+    renderSlide();
+  } else {
+    // Es la última diapositiva: marcar lección como realizada
+    finishLsn();
+  }
+}
+
+function finishLsn(){
+  const lsn = curLsnMod.lecciones[curLsnIdx];
+  const wasAlreadyDone = lsn.done;
+  
+  lsn.done = true;
+  
+  if(!wasAlreadyDone){
+    addPts(10);
+    showMaxTip('🎉 ¡Lección completada! Has visto todas las diapositivas. +10 RappiPoints 🔥');
+    launchConfetti();
+  }
+  
+  closeLsnViewer();
+  openDet(curLsnMod.id); // Refresca detalle de módulo con el nuevo check verde
+}
+
 function startQuizFromDet(){if(curMod)openQuiz(curMod.titulo);}
 
 function buildLibrary(){renderLib('all','');}
@@ -618,7 +937,7 @@ function sendMax(){const inp=document.getElementById('chatIn');if(!inp.value.tri
 function dlReport(){
   const n=CU?.name||'Usuario',pts=CU?.points||0,lvl=pts>2000?'Legend':pts>1000?'Silver':'Rookie';
   const txt=`📊 RAPPI-REPORT — INSIDE SALES ACADEMY\n${'='.repeat(44)}\n\nNombre: ${n}\nRol: ${CU?.role||'Comercial'}\nNivel: ${lvl}\nPaís: ${CU?.country||'N/A'} ${COUNTRIES[CU?.country]||''}\nRappiPoints: ${pts.toLocaleString()}\nFecha: ${new Date().toLocaleDateString('es-CO',{weekday:'long',year:'numeric',month:'long',day:'numeric'})}\n${CU?.leader?`Líder: ${CU.leader}\n`:''}\n${'—'.repeat(44)}\n🤖 FEEDBACK DE MAX\n${'—'.repeat(44)}\n\n✅ FORTALEZAS:\n• Racha activa de aprendizaje — gran disciplina\n• Módulos de Preparación, Prospección y HubSpot completados\n• Actitud de crecimiento constante\n\n📈 ÁREAS DE MEJORA:\n• Completar módulo de Smart Pitch (60% avance)\n• Iniciar módulo de Apertura y Contactabilidad\n• Alcanzar 80%+ en todos los módulos activos\n\n💪 DE MAX PARA TI:\n"¡${n}, tú eres un crack! ${pts.toLocaleString()} RappiPoints demuestran\ntu compromiso. ¡Vamos con toda! — Max 🚀"\n\n${'—'.repeat(44)}\n📊 PROGRESO POR MÓDULO:\n• Preparación Comercial: ✅ 100%\n• Prospección: ✅ 100%\n• HubSpot CRM: 🟧 Activo\n• Conocimiento del Cliente: 🔄 60%\n• Apertura y Contactabilidad: 📚 0% (disponible)\n• Propuesta de Valor y Cierre: 🔒 Bloqueado\n${'='.repeat(44)}\nInside Sales Academy — Rappi | Powered by Max AI 🤖\n`;
-  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([txt],{type:'text/plain;charset=utf-8'}));a.download=`RappiReport_${n.replace(/\s/,'_')}_${new Date().toISOString().slice(0,10)}.txt`;a.click();
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob(*txt],{type:'text/plain;charset=utf-8'}));a.download=`RappiReport_${n.replace(/\s/,'_')}_${new Date().toISOString().slice(0,10)}.txt`;a.click();
   showMaxTip('¡Tu Rappi-Report listo! 📊 🔥');
 }
 
