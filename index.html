@@ -115,7 +115,7 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--tx);heigh
 .mt.ng{background:linear-gradient(135deg,#3D2A0A,#7C5A1A);}
 .mt.pr{background:linear-gradient(135deg,#1A1A3D,#2D2D7C);}
 .mt.ms{background:linear-gradient(135deg,#2A1A3D,#5A2D7C);}
-.mt.pv{background:linear-gradient(135deg,#0A2D2D,#1A5A5A);}
+.mt.pv{background:linear-gradient(135deg,#0A2D0A,#1A5A5A);}
 .mt.co{background:linear-gradient(135deg,#2D1A0A,#7C4A1A);}
 .mt.vt{background:linear-gradient(135deg,#1A2D0A,#4A7C1A);}
 .mt.hs{background:linear-gradient(135deg,#FF7A59,#C83E1A);}
@@ -503,33 +503,6 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--tx);heigh
   </div>
 </div>
 
-<!-- Modal Visor de Documento / Recurso de la Biblioteca -->
-<div class="det" id="libModal">
-  <div class="dh">
-    <div class="db-btn" onclick="closeLibViewer()">← Volver a Biblioteca</div>
-    <div class="dt" id="libModTitle">Recurso de Biblioteca</div>
-    <div class="dm" id="libModMeta">Material IS</div>
-  </div>
-  <div class="dbody">
-    <div class="card" style="margin-bottom:16px;">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
-        <div style="font-size:28px;" id="libModIco">📄</div>
-        <div>
-          <div style="font-size:14px;font-weight:800;color:var(--sb);" id="libModType">PPT</div>
-          <div style="font-size:11px;color:var(--txm);" id="libModCat">Categoría</div>
-        </div>
-      </div>
-      <div style="font-size:13px;color:var(--tx);line-height:1.6;margin-bottom:14px;" id="libModDesc">
-        Descripción del recurso...
-      </div>
-      <div class="slide-box" id="libModResourceName">
-        <b>Recurso / Archivo:</b> Archivo oficial
-      </div>
-    </div>
-    <button class="qz-btn" id="btnLibAction" onclick="studyLibResource()">✅ Marcar como Estudiado (+10 pts)</button>
-  </div>
-</div>
-
 <!-- Modal Quiz -->
 <div class="qov" id="quizOv">
   <div class="qh">
@@ -617,6 +590,44 @@ const COMISIONES_DATA = [
   {"pais": "PE", "full_service": "20% - 22%", "no_exclusivo": "25%", "comision_0": "1 mes", "marketplace": "18%", "markdown": "20%", "comentarios": "18% IGV (Impuesto General a las Ventas)"},
   {"pais": "EC", "full_service": "20% - 22%", "no_exclusivo": "25%", "comision_0": "1 mes", "marketplace": "18%", "markdown": "20%", "comentarios": "IVA Vigente"},
   {"pais": "CL", "full_service": "23% - 25%", "no_exclusivo": "25% - 27%", "comision_0": "1 mes", "marketplace": "19%", "markdown": "20%", "comentarios": "19% Impuesto de Ley"}
+];
+
+// Los 41 Recursos extraídos del Excel de Materiales
+const LIBRARY_DATA = [
+  {"t": "Onboarding Inside Sales - Modelo de negocio - Manejo de Pitch", "cat": "Preparación", "ico": "📋", "type": "PPT", "desc": "Inducción primer día. Onboarding temas técnicos para comerciales e inducción general.", "resource": "Onboarding Inside Sales (Diapositivas 17 a 48)", "url": null},
+  {"t": "Tropicalización Comercial Latam", "cat": "Preparación", "ico": "📚", "type": "PPT", "desc": "Entender el contexto de cada país, cultura, platos principales y jerga para abordar clientes de Latam.", "resource": "Guía de Tropicalización", "url": null},
+  {"t": "Cartilla de Llamadas Efectivas IS", "cat": "Preparación", "ico": "📄", "type": "PDF", "desc": "Cartilla para prepararse antes, durante y después de una llamada. Tips comerciales para llamadas.", "resource": "Cartilla llamadas efectivas (3).pdf", "url": null},
+  {"t": "Técnicas de Hunteo Proactivo", "cat": "Preparación", "ico": "📋", "type": "PPT", "desc": "Principales técnicas de hunteo que utilizan los top performers por medio de herramientas digitales.", "resource": "Playbook Hunteo Top Performers", "url": null},
+  {"t": "Validación de Zonas con Grappi", "cat": "Preparación", "ico": "🌐", "type": "LINK", "desc": "Validación de mapas y demanda activa por zona con la herramienta Grappi.", "resource": "Grappi Tool", "url": null},
+  {"t": "Smart Pitch — App de Ventas", "cat": "Cliente", "ico": "🌐", "type": "LINK", "desc": "App para aprender a vender desde cero, simulador de ganancias y manejo de objeciones.", "resource": "Smart Pitch Mobile", "url": "https://smartpitch-rappi.vercel.app/"},
+  {"t": "Amazon Connect — Capacitación Agentes", "cat": "Apertura", "ico": "📞", "type": "PPT", "desc": "Herramienta principal para realizar llamadas e integración telefónica para comerciales.", "resource": "Amazon Connect - Agentes", "url": null},
+  {"t": "Elevator Pitch IS (Estructurado)", "cat": "Apertura", "ico": "🎤", "type": "PPT", "desc": "Elevator Pitch estructurado para captar la atención de los clientes en menos de 30 segundos.", "resource": "Elevator Pitch IS (Diapositivas 1 a 7)", "url": null},
+  {"t": "Tipificación y Segmentación del Cliente", "cat": "Cliente", "ico": "📊", "type": "PPT", "desc": "Aprende a clasificar los tipos de clientes para personalizar el valor percibido.", "resource": "Manual de Segmentación", "url": null},
+  {"t": "Propuesta de Valor y Manejo de Objeciones", "cat": "Cliente", "ico": "🔑", "type": "PPT", "desc": "Mostrar la propuesta de valor y los principales beneficios diferenciadores frente a la competencia.", "resource": "Elevator Pitch IS (Diapositivas 2, 8 a 11)", "url": null},
+  {"t": "Seguimiento Efectivo de Clientes", "cat": "Cierre", "ico": "🔄", "type": "PDF", "desc": "Cómo abordar al cliente después del primer contacto sin ser intensos con toques de valor.", "resource": "Playbook de Seguimiento", "url": null},
+  {"t": "Estrategias de Cierre Comercial", "cat": "Cierre", "ico": "🎯", "type": "PDF", "desc": "Llevar al cliente a un Call To Action efectivo para cerrar ventas de forma estructurada.", "resource": "Estrategias de cierre.pdf", "url": null},
+  {"t": "Condonación de Deuda a Aliados", "cat": "Pre-Venta", "ico": "💳", "type": "PDF", "desc": "Procedimiento para solicitar condonación de deuda antes de formalizar la venta.", "resource": "Playbook-Condonación de Deuda Aliados", "url": null},
+  {"t": "Power BI — Revisión de Deuda", "cat": "Pre-Venta", "ico": "📊", "type": "LINK", "desc": "Cómo validar si un restaurante tiene deuda antes de una renegociación.", "resource": "Dashboard Revisión Deuda", "url": null},
+  {"t": "Training Perfect Stores 8.10", "cat": "Pre-Venta", "ico": "🏪", "type": "PPT", "desc": "Guía para cargar un catálogo de alta calidad antes de pasar a venta.", "resource": "Training Perfect Stores 8.10", "url": null},
+  {"t": "Manual Onboarding — Zoho + SOB", "cat": "Venta", "ico": "💼", "type": "DOC", "desc": "Instructivo del proceso de onboarding de tiendas y flujo de ventas por Zoho y SOB.", "resource": "Manual Onboarding.doc", "url": null},
+  {"t": "Creación Expansiones Manager", "cat": "Venta", "ico": "📱", "type": "PPT", "desc": "Guía paso a paso para la creación de expansiones desde Portal Manager.", "resource": "Creacion de Expansiones Manager", "url": null},
+  {"t": "Montaje Onboarding y Tickets", "cat": "Venta", "ico": "🎫", "type": "PDF", "desc": "Procedimiento para escalar demoras en el montaje de tiendas mediante tickets.", "resource": "Montaje Onboarding Ticket Guide", "url": null},
+  {"t": "Portal Partners y Legal SOB", "cat": "Venta", "ico": "📄", "type": "DOC", "desc": "Guía de diligenciamiento de datos legales y bancarios en Portal Partners.", "resource": "Legal SOB Guide", "url": null},
+  {"t": "Rappi Aliados y Apps del Aliado", "cat": "Proceso", "ico": "📲", "type": "PPT", "desc": "Visual de aplicativos que utiliza el aliado para guiarlos correctamente sin reprocesos.", "resource": "Rappi Aliados y Portal Partners.pptx", "url": null},
+  {"t": "Reglas de Menú — Playbook 2024", "cat": "Proceso", "ico": "📋", "type": "PDF", "desc": "Cómo subir un menú correctamente para evitar rechazos operacionales.", "resource": "Reglas Playbook_2024.pdf", "url": null},
+  {"t": "Renegociación de Tiendas Churn", "cat": "Proceso", "ico": "🔄", "type": "PPT", "desc": "Proceso para renegociar tiendas inactivas de más de 3 meses.", "resource": "Renegociación Churn Playbook", "url": null},
+  {"t": "Brand Expansion Zoho", "cat": "Venta", "ico": "📈", "type": "PPT", "desc": "Flujo de trabajo para ejecutar Brand Expansions en el sistema Zoho.", "resource": "FLUJO BRAND EXPANSION - ZOHO.pptx", "url": null},
+  {"t": "Playbook Nueva Negociación", "cat": "Venta", "ico": "🤝", "type": "PPT", "desc": "Proceso y estandarización para abrir una nueva negociación comercial.", "resource": "Playbook - Nueva Negociacion.pptx", "url": null},
+  {"t": "Playbook Datos Fiscales y Bancarios", "cat": "Proceso", "ico": "🏦", "type": "PDF", "desc": "Documentación obligatoria para inicio de negociaciones en Latam.", "resource": "[Global] Playbook Datos Fiscales SS", "url": null},
+  {"t": "Contratos, Permanencia y Pagos", "cat": "Posventa", "ico": "📄", "type": "PDF", "desc": "Entender cláusulas contractuales, permanencia y frecuencia de pago.", "resource": "Permanencia, Frecuencia de pago y MP", "url": null},
+  {"t": "Playbook Cambios Contractuales", "cat": "Posventa", "ico": "🌍", "type": "PPT", "desc": "Manejo de variaciones contractuales y adendas según el país.", "resource": "Playbook_Cambios Contractuales", "url": null},
+  {"t": "Milla Extra y Payout IS", "cat": "Posventa", "ico": "⚡", "type": "PDF", "desc": "Revisión de metas de ventas, aceleradores y esquema de payout.", "resource": "MILLA EXTRA Playbook", "url": null},
+  {"t": "Power BI Handoff Dashboard", "cat": "Posventa", "ico": "📊", "type": "LINK", "desc": "Dashboard para revisar el porcentaje de Handoff exitoso de tiendas traídas.", "resource": "HANDOFF Power BI", "url": null},
+  {"t": "WOW FarmerMass y Beneficios Posventa", "cat": "Posventa", "ico": "🌟", "type": "PPT", "desc": "Beneficios posventa como gancho de cierre comercial dentro de la negociación.", "resource": "Playbook INSIDE SALE - ELC", "url": null},
+  {"t": "Playbook HubSpot — Comerciales", "cat": "Venta", "ico": "🟧", "type": "PPT", "desc": "Playbook de capacitación oficial de HubSpot CRM para la fuerza de ventas comercial.", "resource": "Playbook HubSpot Comerciales.pptx", "url": "https://docs.google.com/presentation/d/1q02UnMTNzO3vAneqKJ0wmQOOM766U9EvA4XrU6HiqTk/edit?slide=id.g3d532270b63_0_391#slide=id.g3d532270b63_0_391"},
+  {"t": "Playbook HubSpot — Supervisores", "cat": "Venta", "ico": "📙", "type": "PPT", "desc": "Playbook de gestión estratégica en HubSpot CRM para Supervisores y Líderes.", "resource": "Playbook HubSpot Supervisores.pptx", "url": "https://docs.google.com/presentation/d/1Yheg2fQIhfhEWNfiAEAZjIbpxOyg0we41nJLuz3WfGc/edit?slide=id.g3d532270b63_0_391#slide=id.g3d532270b63_0_391"},
+  {"t": "Quiz Google Forms — Comerciales", "cat": "Proceso", "ico": "📝", "type": "FORM", "desc": "Cuestionario oficial de certificación de HubSpot CRM para Comerciales.", "resource": "Google Forms", "url": "https://docs.google.com/forms/d/e/1FAIpQLSfX-qe2PqPpZdCPDtAYmSZ7ep7w2a4k_by917pUby7nf6_0Cg/viewform?usp=header"},
+  {"t": "Quiz Google Forms — Supervisores", "cat": "Proceso", "ico": "📝", "type": "FORM", "desc": "Cuestionario oficial de certificación de HubSpot CRM para Supervisores.", "resource": "Google Forms", "url": "https://docs.google.com/forms/d/e/1FAIpQLSeWiIw4Kzq-I2XIo8ZeEbmZdDH2lG_goB3ZFomJqi7AUr279w/viewform"}
 ];
 
 const MODULES=[
@@ -743,6 +754,32 @@ const LEADER_MODULES=[
     desc:'Gestión estratégica en HubSpot para Supervisores: Reasignación de negocios, ejecuciones de Workflows, aprobación de HO e informes de semáforo.'
   }
 ];
+
+const QUIZ_DATA={
+'HubSpot CRM — Comerciales':[
+  {q:'¿Cómo se debe ingresar oficialmente a HubSpot CRM en Rappi?',opts:['Ingresando usuario y contraseña en hubspot.com','Desde Okta > Mis Aplicaciones > HubSpot','Por un enlace enviado al correo personal','Solicitando clave al administrador en Slack'],correct:1,exp:'El acceso oficial es seguro mediante SSO a través de Okta (rappi.okta.com).'},
+  {q:'¿Cuál de las siguientes acciones NO cuenta como un "Contacto Efectivo" en el CRM?',opts:['Llamada telefónica conversada con el dueño','Buzón de voz o mensaje automatizado por bot de WhatsApp','Reunión virtual completada','Mensaje directo respondido por el aliado'],correct:1,exp:'Buzón de voz o mensajes automatizados de bots NO se consideran contacto efectivo.'},
+  {q:'Si el número telefónico de un lead está equivocado, ¿desde dónde debes editarlo?',opts:['No se puede editar','Desde el apartado de Tiendas (Store) y guardar en la base de datos','Creando una nota temporal','Enviando un ticket a soporte'],correct:1,exp:'Se debe corregir directamente en el registro de Tiendas (Store) para mantener la higiene de la data.'},
+  {q:'¿Qué herramienta integrada permite buscar números telefónicos a partir de la URL del mapa en Google?',opts:['Zoho Manager','Breeze IA de HubSpot','Grappi Location','Power BI'],correct:1,exp:'Breeze IA analiza la URL de ubicación en mapa y encuentra números de fuentes públicas.'},
+  {q:'¿Qué ocurre automáticamente cuando marcas un negocio con propuesta "Aceptada"?',opts:['Se elimina el negocio','Pasa automáticamente a la etapa "Esperando Documentos"','Se envía una factura al cliente','Se reasigna a otro comercial'],correct:1,exp:'Registrar la fecha de aceptación mueve el negocio automáticamente a la etapa de Esperando Documentos.'},
+  {q:'Para que un negocio en etapa "Nuevo" avance en el pipeline, ¿qué tarea es obligatorio completar primero?',opts:['Enviar un correo de presentación','Dar clic en "Iniciar Gestión" en la tarea asignada','Cambiar el propietario','Crear un reporte en Power BI'],correct:1,exp:'Dar por terminada la tarea "Iniciar Gestión" es la condición técnica para habilitar el avance de etapa.'},
+  {q:'¿Qué sucede si realizas una llamada pero no registras el resultado el mismo día?',opts:['El sistema adivina el resultado','No se te permite cambiar de etapa hasta registrar una nueva llamada','Se cierra el negocio como rechazado','El lead se elimina'],correct:1,exp:'Es fundamental registrar el resultado de TODAS las llamadas el mismo día para asegurar la trazabilidad.'},
+  {q:'Si un cliente no responde a una plantilla de WhatsApp enviada hace más de 24 horas, ¿qué debes hacer?',opts:['Llamar por teléfono o reabrir conversación enviando un nuevo mensaje/plantilla','Dar por descartado el negocio de inmediato','Esperar una semana sin gestionar','Cambiar de país el registro'],correct:0,exp:'Debes reabrir conversación o utilizar el conector telefónico habilitado para restablecer el contacto.'},
+  {q:'¿Cómo se define un "Negocio Descartado" en HubSpot?',opts:['Aquel que se reasigna automáticamente a otro comercial','Un lead que no se puede reasignar directamente y requiere crear una nueva oportunidad','Un cliente activo en la app','Una tienda en Onboarding'],correct:1,exp:'Los negocios descartados NO se pueden reasignar directamente; se crea una nueva oportunidad basada en el descartado.'},
+  {q:'¿Cuál es la regla de oro de la gestión comercial en HubSpot?',opts:['"Lo que no se registra en el CRM, no existe"','"No es necesario guardar las llamadas"','"Reasignar leads fuera del equipo es libre"','"Las notas reemplazan las tareas"'],correct:0,exp:'Registrar cada llamada, nota, correo y tarea garantiza el cumplimiento de cuotas y evita perder contexto.'}
+],
+'HubSpot CRM — Supervisores':[
+  {q:'¿Desde qué vista predeterminada en Tiendas se realiza la reasignación individual o masiva de leads?',opts:['Vista General','Vista "Inside-reasignar"','Pipeline de Ventas','Filtro de Ganancias'],correct:1,exp:'La vista "Inside-reasignar" permite filtrar por comercial y seleccionar registros para reasignación masiva.'},
+  {q:'¿Cuál es la restricción principal al reasignar negocios entre comerciales?',opts:['Se puede reasignar a cualquier área de la empresa','Solo se pueden cambiar de propietario dentro de su propio equipo','No existe ninguna restricción','Se requiere aprobación de finanzas'],correct:1,exp:'Los supervisores solo pueden reasignar negocios dentro de su equipo de trabajo asignado.'},
+  {q:'Al recuperar un negocio de la vista "Inside Stores descartadas para reasignar", ¿qué propiedades se deben actualizar en bloque?',opts:['Solo la foto del perfil','Tipo de Solicitud, Solicitante y Equipo Solicitante','El precio del menú','El nombre del restaurante'],correct:1,exp:'Se deben revisar y editar en bloque estas tres propiedades para que el Workflow se ejecute correctamente.'},
+  {q:'¿Quién debe aprobar manualmente en el CRM el paso de un negocio a "Handoff Efectivo" (HO)?',opts:['El comercial de manera automática','El Supervisor / Líder de equipo','El cliente desde su app','El Bot de Breeze IA'],correct:1,exp:'El supervisor debe revisar el HO y cambiar manualmente el estado a "Aprobado" para moverlo a Handoff Efectivo.'},
+  {q:'¿Qué negocios NO se pueden recuperar ni reasignar desde la categoría de Descartados?',opts:['Negocios en gestión','Nuevos, R2S y etapas posteriores','Negocios ilocalizados','Negocios de México'],correct:1,exp:'Las etapas de Nuevo, R2S y posteriores tienen reglas especiales y no se reasignan como descartados estándar.'},
+  {q:'¿Cuál panel de informes se debe consultar para revisar la versión "Semáforo" del equipo Inside Sales?',opts:['[Grows] - Brands','[Rappi] - Inside - Prueba','Pipeline Global B2B','Reporte de Churn'],correct:1,exp:'El panel "[Rappi] - Inside - Prueba" consolida la salud del pipeline y funnel por equipo.'},
+  {q:'Al reasignar un negocio a otro comercial, ¿en qué etapa queda el negocio?',opts:['Vuelve a Nuevo siempre','Se mueve a Ganado','Queda en la misma etapa en que lo tenía la persona anterior','Se borran todas las actividades'],correct:2,exp:'La reasignación mantiene la etapa actual del negocio para no perder la madurez de la gestión.'},
+  {q:'¿Qué herramienta de IA en HubSpot puede procesar un prompt para generar proyecciones de cierre y resúmenes ejecutivos?',opts:['Asistente Breeze IA','Zoho Connect','Amazon Connect CTI','Okta Dashboard'],correct:0,exp:'Breeze IA permite interactuar con prompts para generar resúmenes detallados y estado de cierres.'}
+]};
+
+const COUNTRY_DATA=[{code:'MX',name:'México',flag:'🇲🇽',total:180,active:172,progress:0},{code:'AR',name:'Argentina',flag:'🇦🇷',total:89,active:85,progress:0},{code:'CO',name:'Colombia',flag:'🇨🇴',total:68,active:65,progress:0},{code:'CL',name:'Chile',flag:'🇨🇱',total:52,active:50,progress:0},{code:'PE',name:'Perú',flag:'🇵🇪',total:61,active:58,progress:0},{code:'EC',name:'Ecuador',flag:'🇪🇨',total:35,active:33,progress:0}];
 
 let CU=null,curMod=null,qQ=[],qIdx=0,qScore=0,qAnswered=false,curQuizMod='';
 let curLsnMod=null,curLsnIdx=0,curSlideIdx=0;
@@ -1089,7 +1126,6 @@ function openLibResource(idx){
     // Abrir Modal Visor de Documento e Iniciar Estudio Interactivo Slide-by-Slide
     curLibItemIdx = idx;
     
-    // Generar diapositivas interactivas para el material de la biblioteca
     const slidesLib = [
       {t: `1. ${item.t} — Resumen Ejecutivo`, tag: `Biblioteca · ${item.cat}`, c: `<p>${item.desc}</p><div class="slide-box">📋 <b>Recurso Oficial:</b> ${item.resource}<br>Categoría: <b>${item.cat}</b></div>`},
       {t: `2. Guía de Aplicación Comercial`, tag: `Biblioteca · ${item.cat}`, c: `<p>Este material contiene las pautas oficiales estandarizadas por Inside Sales Rappi para aplicarlas durante la gestión con aliados.</p><ul><li>1. Revisa los puntos clave antes de iniciar llamadas o reuniones.</li><li>2. Aplica las políticas comerciales y normativas correspondientes a la categoría <b>${item.cat}</b>.</li></ul>`},
