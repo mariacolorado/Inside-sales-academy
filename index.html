@@ -140,6 +140,23 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--tx);heigh
 .li-met{font-size:10px;color:var(--txm);display:flex;gap:7px;}
 .li-cat{font-size:9px;font-weight:700;padding:2px 7px;border-radius:10px;background:var(--rappi-p);color:var(--rappi);}
 
+/* Tarjeta de Plantillas de WhatsApp */
+.tpl-card{background:#fff;border:1px solid var(--bdr);border-radius:11px;padding:14px;margin-bottom:10px;transition:all .2s;}
+.tpl-card:hover{border-color:var(--hubspot);box-shadow:0 4px 16px rgba(255,122,89,.12);}
+.tpl-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
+.tpl-badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;background:var(--hubspot-p);color:var(--hubspot-d);}
+.tpl-name{font-size:11px;font-weight:700;color:var(--sb);font-family:monospace;}
+.tpl-body{background:var(--bg);border-left:3px solid var(--hubspot);padding:10px;border-radius:0 8px 8px 0;font-size:11px;color:var(--tx);white-space:pre-wrap;line-height:1.5;margin-bottom:10px;}
+.tpl-copy-btn{background:var(--hubspot);color:#fff;border:none;border-radius:7px;padding:6px 14px;font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;cursor:pointer;transition:all .2s;}
+.tpl-copy-btn:hover{background:var(--hubspot-d);}
+
+/* Tablas de Comisiones */
+.com-card{background:#fff;border:1px solid var(--bdr);border-radius:11px;padding:16px;margin-bottom:12px;}
+.com-title{font-size:13px;font-weight:800;color:var(--sb);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.com-table{width:100%;border-collapse:collapse;font-size:11px;margin-bottom:8px;}
+.com-table th{background:var(--bg);padding:8px;text-align:left;font-weight:700;color:var(--txm);border-bottom:1px solid var(--bdr);}
+.com-table td{padding:8px;border-bottom:1px solid var(--bdr);color:var(--tx);}
+
 .pod{display:flex;align-items:flex-end;justify-content:center;gap:8px;margin-bottom:16px;padding:0 16px;}
 .pi{text-align:center;flex:1;}
 .pav{border-radius:50%;margin:0 auto 5px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;color:#fff;}
@@ -486,6 +503,33 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--tx);heigh
   </div>
 </div>
 
+<!-- Modal Visor de Documento / Recurso de la Biblioteca -->
+<div class="det" id="libModal">
+  <div class="dh">
+    <div class="db-btn" onclick="closeLibViewer()">← Volver a Biblioteca</div>
+    <div class="dt" id="libModTitle">Recurso de Biblioteca</div>
+    <div class="dm" id="libModMeta">Material IS</div>
+  </div>
+  <div class="dbody">
+    <div class="card" style="margin-bottom:16px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+        <div style="font-size:28px;" id="libModIco">📄</div>
+        <div>
+          <div style="font-size:14px;font-weight:800;color:var(--sb);" id="libModType">PPT</div>
+          <div style="font-size:11px;color:var(--txm);" id="libModCat">Categoría</div>
+        </div>
+      </div>
+      <div style="font-size:13px;color:var(--tx);line-height:1.6;margin-bottom:14px;" id="libModDesc">
+        Descripción del recurso...
+      </div>
+      <div class="slide-box" id="libModResourceName">
+        <b>Recurso relacionado:</b> Archivo oficial
+      </div>
+    </div>
+    <button class="qz-btn" id="btnLibAction" onclick="studyLibResource()">✅ Marcar como Estudiado (+10 pts)</button>
+  </div>
+</div>
+
 <!-- Modal Quiz -->
 <div class="qov" id="quizOv">
   <div class="qh">
@@ -553,6 +597,65 @@ const COMERCIALES_SAMPLE=[
   {"email": "nicol.espitia@rappi.com", "name": "Nicol Espitia", "country": "PE", "leader": "william.turga@rappi.com", "team": "Outbound", "type": "IS Hunter"},
   {"email": "daniela.bejarano@rappi.com", "name": "Daniela Bejarano", "country": "AR", "leader": "maria.casallas@rappi.com", "team": "Outbound", "type": "IS Hunter"},
   {"email": "ana.nieto@rappi.com", "name": "Ana Nieto", "country": "CO", "leader": "jimena.velasquez@rappi.com", "team": "Inbound", "type": "IS Hunter"}
+];
+
+// Arreglos Completos del Material IS y Plantillas/Comisiones
+const PLANTILLAS_DATA = [
+  {"pais": "AR", "cat": "Bienvenida", "nombre": "ar_bienvenida_v1_2026", "copy": "*Hola {{nombre_restaurante}} 🧡*\n\nSoy parte del equipo comercial de Rappi y te escribo porque creemos que tu restaurante tiene *muchísimo potencial en nuestra plataforma.*\n\nEn Rappi ayudamos a restaurantes como el tuyo a ganar *más visibilidad y aprovechar nuevas oportunidades de venta a través de domicilios.*\n\n🎯 *La inscripción es totalmente gratuita y el primer mes es sin comisiones.*\nEl segundo mes estés con la mitad de comisión ( 15% de comisión )\nEl tercer mes y por 1 año la comisión de un 30% te quedará en 25%\n\nAdemás, tendrás acceso a herramientas para ver tus ventas en tiempo real, gestionar pedidos fácilmente y tomar decisiones con datos claros.\n\nNos encantaría que {{restaurante}} se sume a la comunidad de Rappi.\n\nSi te parece, puedo agendar una llamada corta para contarte cómo funciona todo 🚀\n\n*¿Te gustaría que coordinemos?*"},
+  {"pais": "AR", "cat": "Retomar Conversación", "nombre": "ar_retomar_v2_2026", "copy": "Hola {{nombre_restaurante}} 👋\n\nHemos visto que varios clientes siguen buscando tu restaurante en Rappi 🧡\n\nQueremos invitarte a sumarte a la plataforma y aprovechar nuevas oportunidades de venta.\nRestaurantes similares al tuyo han logrado incrementar sus ventas hasta en un 30 % al unirse a Rappi.\n\n¿Te parece si retomamos la conversación?"},
+  {"pais": "AR", "cat": "Solicitud de Documentos", "nombre": "ar_docs_v1_2026", "copy": "Hola  {{store_name}} 👋, \n \nya casi estamos listos para activar tu restaurante en Rappi 🚀\n \nSolo necesito que me envíes:\n📄 CUIT\n🪪 DNI (frente y reverso)\n🏦 Certificado bancario\n🍽️ Menú\n🖼️ Logo\n \nEn cuanto me los envíes, en 48-72 horas estarás recibiendo pedidos 💥"},
+  {"pais": "CO", "cat": "Bienvenida", "nombre": "co_bienvenida_v1_2026", "copy": "*Hola {{nombre_restaurante}} 🧡*\n\nSoy parte del equipo comercial de Rappi y te escribo porque creemos que *{{nombre_restaurante}} tiene muchísimo potencial en nuestra plataforma.*\n\nEstamos ayudando a restaurantes aliados a ganar *más visibilidad, más pedidos y nuevas oportunidades de venta a través de domicilios.*\n\n🎯 *La inscripción es gratuita + 2 meses sin comisión.*\n\nNos encantaría contarte cómo podría funcionar para tu restaurante 🚀\n\n*¿Te gustaría coordinar una llamada corta?*"},
+  {"pais": "MX", "cat": "Bienvenida", "nombre": "mx_bienvenida_v1_2026", "copy": "¡Hola {{nombre_restaurante}}! 🧡\n\nTe escribo del equipo comercial de Rappi México. Queremos invitarte a impulsar tus ventas a domicilio sin comisiones el primer mes.\n\n¿Te interesaría agendar una llamada rápida de 5 minutos?"},
+  {"pais": "CL", "cat": "Bienvenida", "nombre": "cl_bienvenida_v1_2026", "copy": "¡Hola {{nombre_restaurante}}! 🇨🇱\n\nDesde Rappi Chile te invitamos a unirte con costo de inscripción costo cero y comisión reducida.\n\n¿Avanzamos con el registro esta semana?"},
+  {"pais": "PE", "cat": "Bienvenida", "nombre": "pe_bienvenida_v1_2026", "copy": "¡Hola {{nombre_restaurante}}! 🇵🇪\n\nÚnete a Rappi Perú y haz llegar tus platos a miles de usuarios activos en tu zona.\n\n¿Te comparto la propuesta sin compromiso?"},
+  {"pais": "EC", "cat": "Bienvenida", "nombre": "ec_bienvenida_v1_2026", "copy": "¡Hola {{nombre_restaurante}}! 🇪🇨\n\nSumemos tu menú a Rappi Ecuador con beneficios especiales de lanzamiento.\n\n¿Coordinamos llamada?"}
+];
+
+const COMISIONES_DATA = [
+  {"pais": "CO", "full_service": "21% - 23%", "no_exclusivo": "26%", "comision_0": "1 mes", "marketplace": "16% - 18%", "markdown": "20%", "comentarios": "2% fee bancario + 19% IVA"},
+  {"pais": "MX", "full_service": "26%", "no_exclusivo": "N/A", "comision_0": "1 mes", "marketplace": "18%", "markdown": "30%", "comentarios": "16% Impuesto + 2.5% ISR"},
+  {"pais": "AR", "full_service": "20% - 22%", "no_exclusivo": "N/A", "comision_0": "1 mes", "marketplace": "16%", "markdown": "20%", "comentarios": "Tarjeta +2.9% adicional / Efectivo sin recargo"},
+  {"pais": "PE", "full_service": "20% - 22%", "no_exclusivo": "25%", "comision_0": "1 mes", "marketplace": "18%", "markdown": "20%", "comentarios": "18% IGV (Impuesto General a las Ventas)"},
+  {"pais": "EC", "full_service": "20% - 22%", "no_exclusivo": "25%", "comision_0": "1 mes", "marketplace": "18%", "markdown": "20%", "comentarios": "IVA Vigente"},
+  {"pais": "CL", "full_service": "23% - 25%", "no_exclusivo": "25% - 27%", "comision_0": "1 mes", "marketplace": "19%", "markdown": "20%", "comentarios": "19% Impuesto de Ley"}
+];
+
+// Los 41 Recursos extraídos del Excel de Materiales
+const LIBRARY_DATA = [
+  {"t": "Onboarding Inside Sales - Modelo de negocio - Manejo de Pitch", "cat": "Preparación", "ico": "📋", "type": "PPT", "desc": "Inducción primer día. Onboarding temas técnicos para comerciales e inducción general.", "resource": "Onboarding Inside Sales (Diapositivas 17 a 48)", "url": null},
+  {"t": "Tropicalización Comercial Latam", "cat": "Preparación", "ico": "📚", "type": "PPT", "desc": "Entender el contexto de cada país, cultura, platos principales y jerga para abordar clientes de Latam.", "resource": "Guía de Tropicalización", "url": null},
+  {"t": "Cartilla de Llamadas Efectivas IS", "cat": "Preparación", "ico": "📄", "type": "PDF", "desc": "Cartilla para prepararse antes, durante y después de una llamada. Tips comerciales para llamadas.", "resource": "Cartilla llamadas efectivas (3).pdf", "url": null},
+  {"t": "Técnicas de Hunteo Proactivo", "cat": "Preparación", "ico": "📋", "type": "PPT", "desc": "Principales técnicas de hunteo que utilizan los top performers por medio de herramientas digitales.", "resource": "Playbook Hunteo Top Performers", "url": null},
+  {"t": "Validación de Zonas con Grappi", "cat": "Preparación", "ico": "🌐", "type": "LINK", "desc": "Validación de mapas y demanda activa por zona con la herramienta Grappi.", "resource": "Grappi Tool", "url": null},
+  {"t": "Smart Pitch — App de Ventas", "cat": "Cliente", "ico": "🌐", "type": "LINK", "desc": "App para aprender a vender desde cero, simulador de ganancias y manejo de objeciones.", "resource": "Smart Pitch Mobile", "url": "https://smartpitch-rappi.vercel.app/"},
+  {"t": "Amazon Connect — Capacitación Agentes", "cat": "Apertura", "ico": "📞", "type": "PPT", "desc": "Herramienta principal para realizar llamadas e integración telefónica para comerciales.", "resource": "Amazon Connect - Agentes", "url": null},
+  {"t": "Elevator Pitch IS (Estructurado)", "cat": "Apertura", "ico": "🎤", "type": "PPT", "desc": "Elevator Pitch estructurado para captar la atención de los clientes en menos de 30 segundos.", "resource": "Elevator Pitch IS (Diapositivas 1 a 7)", "url": null},
+  {"t": "Tipificación y Segmentación del Cliente", "cat": "Cliente", "ico": "📊", "type": "PPT", "desc": "Aprende a clasificar los tipos de clientes para personalizar el valor percibido.", "resource": "Manual de Segmentación", "url": null},
+  {"t": "Propuesta de Valor y Manejo de Objeciones", "cat": "Cliente", "ico": "🔑", "type": "PPT", "desc": "Mostrar la propuesta de valor y los principales beneficios diferenciadores frente a la competencia.", "resource": "Elevator Pitch IS (Diapositivas 2, 8 a 11)", "url": null},
+  {"t": "Seguimiento Efectivo de Clientes", "cat": "Cierre", "ico": "🔄", "type": "PDF", "desc": "Cómo abordar al cliente después del primer contacto sin ser intensos con toques de valor.", "resource": "Playbook de Seguimiento", "url": null},
+  {"t": "Estrategias de Cierre Comercial", "cat": "Cierre", "ico": "🎯", "type": "PDF", "desc": "Llevar al cliente a un Call To Action efectivo para cerrar ventas de forma estructurada.", "resource": "Estrategias de cierre.pdf", "url": null},
+  {"t": "Condonación de Deuda a Aliados", "cat": "Pre-Venta", "ico": "💳", "type": "PDF", "desc": "Procedimiento para solicitar condonación de deuda antes de formalizar la venta.", "resource": "Playbook-Condonación de Deuda Aliados", "url": null},
+  {"t": "Power BI — Revisión de Deuda", "cat": "Pre-Venta", "ico": "📊", "type": "LINK", "desc": "Cómo validar si un restaurante tiene deuda antes de una renegociación.", "resource": "Dashboard Revisión Deuda", "url": null},
+  {"t": "Training Perfect Stores 8.10", "cat": "Pre-Venta", "ico": "🏪", "type": "PPT", "desc": "Guía para cargar un catálogo de alta calidad antes de pasar a venta.", "resource": "Training Perfect Stores 8.10", "url": null},
+  {"t": "Manual Onboarding — Zoho + SOB", "cat": "Venta", "ico": "💼", "type": "DOC", "desc": "Instructivo del proceso de onboarding de tiendas y flujo de ventas por Zoho y SOB.", "resource": "Manual Onboarding.doc", "url": null},
+  {"t": "Creación Expansiones Manager", "cat": "Venta", "ico": "📱", "type": "PPT", "desc": "Guía paso a paso para la creación de expansiones desde Portal Manager.", "resource": "Creacion de Expansiones Manager", "url": null},
+  {"t": "Montaje Onboarding y Tickets", "cat": "Venta", "ico": "🎫", "type": "PDF", "desc": "Procedimiento para escalar demoras en el montaje de tiendas mediante tickets.", "resource": "Montaje Onboarding Ticket Guide", "url": null},
+  {"t": "Portal Partners y Legal SOB", "cat": "Venta", "ico": "📄", "type": "DOC", "desc": "Guía de diligenciamiento de datos legales y bancarios en Portal Partners.", "resource": "Legal SOB Guide", "url": null},
+  {"t": "Rappi Aliados y Apps del Aliado", "cat": "Proceso", "ico": "📲", "type": "PPT", "desc": "Visual de aplicativos que utiliza el aliado para guiarlos correctamente sin reprocesos.", "resource": "Rappi Aliados y Portal Partners.pptx", "url": null},
+  {"t": "Reglas de Menú — Playbook 2024", "cat": "Proceso", "ico": "📋", "type": "PDF", "desc": "Cómo subir un menú correctamente para evitar rechazos operacionales.", "resource": "Reglas Playbook_2024.pdf", "url": null},
+  {"t": "Renegociación de Tiendas Churn", "cat": "Proceso", "ico": "🔄", "type": "PPT", "desc": "Proceso para renegociar tiendas inactivas de más de 3 meses.", "resource": "Renegociación Churn Playbook", "url": null},
+  {"t": "Brand Expansion Zoho", "cat": "Venta", "ico": "📈", "type": "PPT", "desc": "Flujo de trabajo para ejecutar Brand Expansions en el sistema Zoho.", "resource": "FLUJO BRAND EXPANSION - ZOHO.pptx", "url": null},
+  {"t": "Playbook Nueva Negociación", "cat": "Venta", "ico": "🤝", "type": "PPT", "desc": "Proceso y estandarización para abrir una nueva negociación comercial.", "resource": "Playbook - Nueva Negociacion.pptx", "url": null},
+  {"t": "Playbook Datos Fiscales y Bancarios", "cat": "Proceso", "ico": "🏦", "type": "PDF", "desc": "Documentación obligatoria para inicio de negociaciones en Latam.", "resource": "[Global] Playbook Datos Fiscales SS", "url": null},
+  {"t": "Contratos, Permanencia y Pagos", "cat": "Posventa", "ico": "📄", "type": "PDF", "desc": "Entender cláusulas contractuales, permanencia y frecuencia de pago.", "resource": "Permanencia, Frecuencia de pago y MP", "url": null},
+  {"t": "Playbook Cambios Contractuales", "cat": "Posventa", "ico": "🌍", "type": "PPT", "desc": "Manejo de variaciones contractuales y adendas según el país.", "resource": "Playbook_Cambios Contractuales", "url": null},
+  {"t": "Milla Extra y Payout IS", "cat": "Posventa", "ico": "⚡", "type": "PDF", "desc": "Revisión de metas de ventas, aceleradores y esquema de payout.", "resource": "MILLA EXTRA Playbook", "url": null},
+  {"t": "Power BI Handoff Dashboard", "cat": "Posventa", "ico": "📊", "type": "LINK", "desc": "Dashboard para revisar el porcentaje de Handoff exitoso de tiendas traídas.", "resource": "HANDOFF Power BI", "url": null},
+  {"t": "WOW FarmerMass y Beneficios Posventa", "cat": "Posventa", "ico": "🌟", "type": "PPT", "desc": "Beneficios posventa como gancho de cierre comercial dentro de la negociación.", "resource": "Playbook INSIDE SALE - ELC", "url": null},
+  {"t": "Playbook HubSpot — Comerciales", "cat": "Venta", "ico": "🟧", "type": "PPT", "desc": "Playbook de capacitación oficial de HubSpot CRM para la fuerza de ventas comercial.", "resource": "Playbook HubSpot Comerciales.pptx", "url": "https://docs.google.com/presentation/d/1q02UnMTNzO3vAneqKJ0wmQOOM766U9EvA4XrU6HiqTk/edit?slide=id.g3d532270b63_0_391#slide=id.g3d532270b63_0_391"},
+  {"t": "Playbook HubSpot — Supervisores", "cat": "Venta", "ico": "📙", "type": "PPT", "desc": "Playbook de gestión estratégica en HubSpot CRM para Supervisores y Líderes.", "resource": "Playbook HubSpot Supervisores.pptx", "url": "https://docs.google.com/presentation/d/1Yheg2fQIhfhEWNfiAEAZjIbpxOyg0we41nJLuz3WfGc/edit?slide=id.g3d532270b63_0_391#slide=id.g3d532270b63_0_391"},
+  {"t": "Quiz Google Forms — Comerciales", "cat": "Proceso", "ico": "📝", "type": "FORM", "desc": "Cuestionario oficial de certificación de HubSpot CRM para Comerciales.", "resource": "Google Forms", "url": "https://docs.google.com/forms/d/e/1FAIpQLSfX-qe2PqPpZdCPDtAYmSZ7ep7w2a4k_by917pUby7nf6_0Cg/viewform?usp=header"},
+  {"t": "Quiz Google Forms — Supervisores", "cat": "Proceso", "ico": "📝", "type": "FORM", "desc": "Cuestionario oficial de certificación de HubSpot CRM para Supervisores.", "resource": "Google Forms", "url": "https://docs.google.com/forms/d/e/1FAIpQLSeWiIw4Kzq-I2XIo8ZeEbmZdDH2lG_goB3ZFomJqi7AUr279w/viewform"}
 ];
 
 const MODULES=[
@@ -679,8 +782,6 @@ const LEADER_MODULES=[
   }
 ];
 
-const LIBRARY_DATA=[{t:'Onboarding Inside Sales',cat:'Preparación',ico:'📋',type:'PPT'},{t:'Cartilla Llamadas Efectivas',cat:'Preparación',ico:'📞',type:'PDF'},{t:'Smart Pitch — Guía de uso',cat:'Cliente',ico:'📱',type:'DOC'},{t:'Elevator Pitch IS',cat:'Apertura',ico:'🎤',type:'PPT'},{t:'Estrategias de Cierre IS',cat:'Cierre',ico:'🔑',type:'PDF'},{t:'Playbook Condonación de Deuda',cat:'Pre-Venta',ico:'💳',type:'PDF'},{t:'Manual Onboarding — Zoho + SOB',cat:'Venta',ico:'💼',type:'DOC'},{t:'Playbook HubSpot — Comerciales',cat:'Proceso',ico:'🟧',type:'PPT',url:'https://docs.google.com/presentation/d/1q02UnMTNzO3vAneqKJ0wmQOOM766U9EvA4XrU6HiqTk/edit?slide=id.g3d532270b63_0_391#slide=id.g3d532270b63_0_391'},{t:'Playbook HubSpot — Supervisores',cat:'Proceso',ico:'📙',type:'PPT',url:'https://docs.google.com/presentation/d/1Yheg2fQIhfhEWNfiAEAZjIbpxOyg0we41nJLuz3WfGc/edit?slide=id.g3d532270b63_0_391#slide=id.g3d532270b63_0_391'},{t:'Quiz Google Forms — Comerciales',cat:'Proceso',ico:'📝',type:'FORM',url:'https://docs.google.com/forms/d/e/1FAIpQLSfX-qe2PqPpZdCPDtAYmSZ7ep7w2a4k_by917pUby7nf6_0Cg/viewform?usp=header'},{t:'Quiz Google Forms — Supervisores',cat:'Proceso',ico:'📝',type:'FORM',url:'https://docs.google.com/forms/d/e/1FAIpQLSeWiIw4Kzq-I2XIo8ZeEbmZdDH2lG_goB3ZFomJqi7AUr279w/viewform'}];
-
 const QUIZ_DATA={
 'HubSpot CRM — Comerciales':[
   {q:'¿Cómo se debe ingresar oficialmente a HubSpot CRM en Rappi?',opts:['Ingresando usuario y contraseña en hubspot.com','Desde Okta > Mis Aplicaciones > HubSpot','Por un enlace enviado al correo personal','Solicitando clave al administrador en Slack'],correct:1,exp:'El acceso oficial es seguro mediante SSO a través de Okta (rappi.okta.com).'},
@@ -710,6 +811,9 @@ const COUNTRY_DATA=[{code:'MX',name:'México',flag:'🇲🇽',total:180,active:1
 let CU=null,curMod=null,qQ=[],qIdx=0,qScore=0,qAnswered=false,curQuizMod='';
 let curLsnMod=null,curLsnIdx=0,curSlideIdx=0;
 let currentRankingTab='hunters'; // 'hunters' o 'leaders'
+let curLibCategory = 'all';
+let curLibCountry = 'all';
+let curLibItemIdx = null;
 
 function ls(k,v){if(v!==undefined)localStorage.setItem(k,JSON.stringify(v));else{try{return JSON.parse(localStorage.getItem(k))}catch{return null}}}
 function initials(e){const p=e.split('@')[0].split('.');return(p[0][0]+(p[1]?p[1][0]:'')).toUpperCase();}
@@ -990,10 +1094,164 @@ function finishLsn(){
 
 function startQuizFromDet(){if(curMod)openQuiz(curMod.titulo);}
 
+// NAVEGACIÓN Y RENDERIZADO DE BIBLIOTECA, PLANTILLAS Y COMISIONES
 function buildLibrary(){renderLib('all','');}
-function renderLib(cat,search){
-  const filtered=LIBRARY_DATA.filter(i=>(cat==='all'||i.cat===cat)&&i.t.toLowerCase().includes(search.toLowerCase()));
-  document.getElementById('scr-library').innerHTML=`<input class="ls" placeholder="🔍 Buscar en la biblioteca..." oninput="renderLib('${cat}',this.value)" value="${search}"><div class="fb" style="margin-bottom:12px;">${['all','Preparación','Cliente','Apertura','Cierre','Pre-Venta','Venta','Proceso','Posventa'].map(c=>`<button class="fb-btn${cat===c?' act':''}" onclick="renderLib('${c}','${search}')">${c==='all'?'Todos':c}</button>`).join('')}</div><div class="ll">${filtered.map(i=>`<div class="li"${i.url?` onclick="window.open('${i.url}','_blank')"`:''}><div class="li-ic">${i.ico}</div><div style="flex:1;"><div class="li-tit">${i.t}</div><div class="li-met"><span>${i.type}</span></div></div><span class="li-cat">${i.cat}</span></div>`).join('')}</div>`;
+
+function renderLib(cat, search){
+  curLibCategory = cat;
+  const navCategories = ['all','Preparación','Cliente','Apertura','Cierre','Pre-Venta','Venta','Proceso','Posventa','Plantillas','Comisiones'];
+  
+  let contentHtml = '';
+
+  if(cat === 'Plantillas'){
+    contentHtml = renderPlantillasView(search);
+  } else if(cat === 'Comisiones'){
+    contentHtml = renderComisionesView();
+  } else {
+    contentHtml = renderLibraryItemsView(cat, search);
+  }
+
+  document.getElementById('scr-library').innerHTML = `
+    <input class="ls" placeholder="🔍 Buscar en la biblioteca o plantillas..." oninput="renderLib('${cat}',this.value)" value="${search}">
+    <div class="fb" style="margin-bottom:14px;">
+      ${navCategories.map(c => `
+        <button class="fb-btn${cat===c?' act':''}" onclick="renderLib('${c}','${search}')">
+          ${c==='all'?'Todos':c==='Plantillas'?'📲 Plantillas':c==='Comisiones'?'💰 Comisiones':c}
+        </button>
+      `).join('')}
+    </div>
+    ${contentHtml}
+  `;
+}
+
+function renderLibraryItemsView(cat, search){
+  const filtered = LIBRARY_DATA.filter(i => (cat==='all'||i.cat===cat) && (i.t.toLowerCase().includes(search.toLowerCase()) || i.desc.toLowerCase().includes(search.toLowerCase())));
+  
+  return `<div class="ll">
+    ${filtered.map((item, idx) => `
+      <div class="li" onclick="openLibResource(${LIBRARY_DATA.indexOf(item)})">
+        <div class="li-ic">${item.ico}</div>
+        <div style="flex:1;">
+          <div class="li-tit">${item.t}</div>
+          <div class="li-met">
+            <span><b>${item.type}</b> • ${item.resource}</span>
+          </div>
+        </div>
+        <span class="li-cat">${item.cat}</span>
+      </div>
+    `).join('')}
+  </div>`;
+}
+
+function openLibResource(idx){
+  const item = LIBRARY_DATA[idx];
+  if(!item) return;
+
+  if(item.url){
+    window.open(item.url, '_blank');
+  } else {
+    // Abrir Modal Visor de Documento Interno
+    curLibItemIdx = idx;
+    document.getElementById('libModTitle').textContent = item.t;
+    document.getElementById('libModMeta').textContent = `Módulo: ${item.cat} • Tipo: ${item.type}`;
+    document.getElementById('libModIco').textContent = item.ico;
+    document.getElementById('libModType').textContent = item.type + ' — ' + item.t;
+    document.getElementById('libModCat').textContent = 'Categoría: ' + item.cat;
+    document.getElementById('libModDesc').textContent = item.desc;
+    document.getElementById('libModResourceName').innerHTML = `<b>Recurso / Archivo:</b> ${item.resource}<br><small style="color:var(--txm);">Capacitación estructurada oficial de Inside Sales Rappi.</small>`;
+    
+    document.getElementById('libModal').classList.add('open');
+  }
+}
+
+function closeLibViewer(){
+  document.getElementById('libModal').classList.remove('open');
+}
+
+function studyLibResource(){
+  addPts(10);
+  showMaxTip('📖 ¡Recurso de biblioteca revisado! +10 RappiPoints ⚡');
+  launchConfetti();
+  closeLibViewer();
+}
+
+function renderPlantillasView(search){
+  const filtered = PLANTILLAS_DATA.filter(p => 
+    (curLibCountry==='all' || p.pais===curLibCountry) && 
+    (p.copy.toLowerCase().includes(search.toLowerCase()) || p.nombre.toLowerCase().includes(search.toLowerCase()) || p.cat.toLowerCase().includes(search.toLowerCase()))
+  );
+
+  const countries = ['all','AR','CO','MX','CL','PE','EC','LATAM'];
+
+  return `
+    <div style="margin-bottom:12px;display:flex;gap:6px;overflow-x:auto;">
+      ${countries.map(c => `
+        <button class="fb-btn${curLibCountry===c?' act':''}" onclick="curLibCountry='${c}';renderLib('Plantillas','${search}')">
+          ${c==='all'?'🌎 Todos los países':(COUNTRIES[c]||'🌎')+' '+c}
+        </button>
+      `).join('')}
+    </div>
+    
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      ${filtered.map((p, i) => `
+        <div class="tpl-card">
+          <div class="tpl-hdr">
+            <span class="tpl-badge">${COUNTRIES[p.pais]||'🌎'} ${p.pais} · ${p.cat}</span>
+            <span class="tpl-name">${p.nombre}</span>
+          </div>
+          <div class="tpl-body" id="tpl_text_${i}">${p.copy}</div>
+          <button class="tpl-copy-btn" onclick="copyTemplateText('${p.nombre}', ${i})">📋 Copiar Plantilla de WhatsApp</button>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+function copyTemplateText(name, idx){
+  const el = document.getElementById('tpl_text_' + idx);
+  if(el){
+    navigator.clipboard.writeText(el.innerText).then(() => {
+      showMaxTip(`📲 ¡Plantilla "${name}" copiada al portapapeles! Lista para enviar.`);
+      launchConfetti();
+    });
+  }
+}
+
+function renderComisionesView(){
+  return `
+    <div style="margin-bottom:14px;font-size:13px;font-weight:700;color:var(--sb);">
+      💰 Esquemas Oficiales de Comisiones y Políticas por País
+    </div>
+    ${COMISIONES_DATA.map(c => `
+      <div class="com-card">
+        <div class="com-title">
+          <span style="font-size:22px;">${COUNTRIES[c.pais]||'🌎'}</span>
+          <span>Rappi ${c.pais} — Modelo de Comisiones</span>
+        </div>
+        <table class="com-table">
+          <thead>
+            <tr>
+              <th>Full Service Exclusivo</th>
+              <th>No Exclusivo</th>
+              <th>Comisión Mes 1</th>
+              <th>Marketplace</th>
+              <th>Markdown</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>${c.full_service}</b></td>
+              <td>${c.no_exclusivo}</td>
+              <td><span style="color:var(--ok);font-weight:700;">${c.comision_0}</span></td>
+              <td>${c.marketplace}</td>
+              <td>${c.markdown}</td>
+            </tr>
+          </tbody>
+        </table>
+        ${c.comentarios ? `<div style="font-size:10px;color:var(--txm);background:var(--bg);padding:8px;border-radius:6px;">📌 <b>Notas fiscales/bancarias:</b> ${c.comentarios.replace(/\n/g, ' · ')}</div>` : ''}
+      </div>
+    `).join('')}
+  `;
 }
 
 // RANKING DUAL: COMERCIALES VS SUPERVISORES
@@ -1003,7 +1261,6 @@ function setRankingTab(tab){
 }
 
 function buildLeaderboard(){
-  // Separar usuarios según el tipo
   const huntersList = COMERCIALES_SAMPLE.filter(u => u.type === 'IS Hunter').map(u=>({
     ...u,
     pts: getUserPoints(u.email)
@@ -1080,7 +1337,7 @@ function buildProfile(){
   const lvl=CU.points>=2000?'Legend':CU.points>=1000?'Silver':'Rookie',xpPct=Math.min(Math.round((CU.points/2000)*100),100);
   const roleLabel={admin:'Admin • Rappi IS',leader:'Leader/Coordinator • IS',comercial:'IS Hunter • Equipo Comercial'}[CU.role];
 
-  // Evaluar insignias reales del usuario con estados visivos nítidos desde inicio
+  // Evaluar insignias reales del usuario con estados visuales nítidos desde el inicio
   const hasFirstBlood = CU.points > 0;
   const hasOnFire = CU.points >= 50;
   const hasRappido = getUserModuleProgress(CU.email, 1) === 100;
