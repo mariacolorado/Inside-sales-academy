@@ -75,6 +75,7 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--tx);heigh
 .sec-tit{font-size:14px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:7px;}
 .g2{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
 .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
 
 .wb{background:linear-gradient(135deg,var(--sb) 0%,#1E293B 100%);border-radius:14px;padding:22px;margin-bottom:16px;position:relative;overflow:hidden;}
 .wb::before{content:'';position:absolute;right:-20px;top:-20px;width:160px;height:160px;background:rgba(255,68,31,.08);border-radius:50%;}
@@ -93,6 +94,7 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--tx);heigh
 .streak-b{background:#fff;border:1px solid var(--bdr);border-radius:11px;padding:12px 14px;margin-bottom:16px;display:flex;align-items:center;gap:10px;}
 .streak-days{display:flex;gap:5px;}
 .dd{width:26px;height:26px;border-radius:7px;background:var(--bg);border:1px solid var(--bdr);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;color:var(--txm);}
+.dd.done{background:var(--rappi);border-color:var(--rappi);color:#fff;}
 .dd.today{background:var(--rappi-p);border-color:var(--rappi);color:var(--rappi);}
 .qc{background:#fff;border:1px solid var(--bdr);border-radius:11px;padding:12px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:10px;}
 .qc:hover{border-color:var(--rappi);box-shadow:0 0 0 3px rgba(255,68,31,.05);}
@@ -110,6 +112,12 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--tx);heigh
 .mt.pc{background:linear-gradient(135deg,#1E3A5F,#2D5A8E);}
 .mt.ci{background:linear-gradient(135deg,#1A3C2B,#2D6147);}
 .mt.ob{background:linear-gradient(135deg,#3D1A1A,#7C2D2D);}
+.mt.ng{background:linear-gradient(135deg,#3D2A0A,#7C5A1A);}
+.mt.pr{background:linear-gradient(135deg,#1A1A3D,#2D2D7C);}
+.mt.ms{background:linear-gradient(135deg,#2A1A3D,#5A2D7C);}
+.mt.pv{background:linear-gradient(135deg,#0A2D0A,#1A5A5A);}
+.mt.co{background:linear-gradient(135deg,#2D1A0A,#7C4A1A);}
+.mt.vt{background:linear-gradient(135deg,#1A2D0A,#4A7C1A);}
 .mt.hs{background:linear-gradient(135deg,#FF7A59,#C83E1A);}
 .m-lk{position:absolute;inset:0;background:rgba(15,23,42,.7);display:flex;align-items:center;justify-content:center;font-size:24px;}
 .m-tg{position:absolute;top:7px;left:7px;font-size:9px;font-weight:700;padding:2px 7px;border-radius:10px;}
@@ -123,6 +131,7 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--tx);heigh
 .m-dur{font-size:10px;color:var(--txm);}
 
 .ls{width:100%;background:#fff;border:1px solid var(--bdr);border-radius:9px;padding:9px 12px;font-family:'Poppins',sans-serif;font-size:12px;outline:none;margin-bottom:12px;color:var(--tx);}
+.ls:focus{border-color:var(--rappi);}
 .ll{display:flex;flex-direction:column;gap:7px;}
 .li{background:#fff;border:1px solid var(--bdr);border-radius:11px;padding:12px 14px;display:flex;align-items:center;gap:10px;cursor:pointer;transition:all .2s;}
 .li:hover{border-color:var(--rappi);background:var(--rappi-p);}
@@ -130,6 +139,22 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--tx);heigh
 .li-tit{font-size:12px;font-weight:600;margin-bottom:2px;}
 .li-met{font-size:10px;color:var(--txm);display:flex;gap:7px;}
 .li-cat{font-size:9px;font-weight:700;padding:2px 7px;border-radius:10px;background:var(--rappi-p);color:var(--rappi);}
+
+.tpl-card{background:#fff;border:1px solid var(--bdr);border-radius:11px;padding:14px;margin-bottom:10px;transition:all .2s;}
+.tpl-card:hover{border-color:var(--hubspot);box-shadow:0 4px 16px rgba(255,122,89,.12);}
+.tpl-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
+.tpl-badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;background:var(--hubspot-p);color:var(--hubspot-d);}
+.tpl-name{font-size:11px;font-weight:700;color:var(--sb);font-family:monospace;}
+.tpl-body{background:var(--bg);border-left:3px solid var(--hubspot);padding:10px;border-radius:0 8px 8px 0;font-size:11px;color:var(--tx);white-space:pre-wrap;line-height:1.5;margin-bottom:10px;}
+.tpl-copy-btn{background:var(--hubspot);color:#fff;border:none;border-radius:7px;padding:6px 14px;font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;cursor:pointer;transition:all .2s;}
+.tpl-copy-btn:hover{background:var(--hubspot-d);}
+.tpl-copy-btn.copied{background:var(--ok);color:#fff;}
+
+.com-card{background:#fff;border:1px solid var(--bdr);border-radius:11px;padding:16px;margin-bottom:12px;}
+.com-title{font-size:13px;font-weight:800;color:var(--sb);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.com-table{width:100%;border-collapse:collapse;font-size:11px;margin-bottom:8px;}
+.com-table th{background:var(--bg);padding:8px;text-align:left;font-weight:700;color:var(--txm);border-bottom:1px solid var(--bdr);}
+.com-table td{padding:8px;border-bottom:1px solid var(--bdr);color:var(--tx);}
 
 .pod{display:flex;align-items:flex-end;justify-content:center;gap:8px;margin-bottom:16px;padding:0 16px;}
 .pi{text-align:center;flex:1;}
@@ -162,8 +187,8 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--tx);heigh
 
 .ach{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:14px;}
 .ac{background:#fff;border:1.5px solid var(--bdr);border-radius:11px;padding:11px;text-align:center;transition:all .3s ease;}
-.ac.locked-ach{opacity:.55;background:#f8fafc;}
-.ac.unlocked{opacity:1;border-color:var(--gold);background:#fff;box-shadow:0 6px 18px rgba(245,158,11,.25);}
+.ac.locked-ach{opacity:.55;background:#f8fafc;filter:contrast(0.9);}
+.ac.unlocked{opacity:1;border-color:var(--gold);background:#fff;box-shadow:0 6px 18px rgba(245,158,11,.25);transform:translateY(-2px);}
 .ac-i{font-size:22px;margin-bottom:3px;}
 .ac-n{font-size:10px;font-weight:700;color:var(--tx);}
 .ac-d{font-size:9px;color:var(--txm);}
@@ -173,6 +198,7 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--tx);heigh
 @keyframes slideUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 .dh{background:var(--sb);padding:18px;position:sticky;top:0;z-index:5;}
 .db-btn{color:rgba(255,255,255,.5);font-size:12px;cursor:pointer;margin-bottom:8px;display:flex;align-items:center;gap:5px;}
+.db-btn:hover{color:#fff;}
 .dt{color:#fff;font-size:16px;font-weight:800;}
 .dm{color:rgba(255,255,255,.4);font-size:11px;margin-top:3px;}
 .dbody{padding:18px;}
@@ -185,6 +211,7 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--tx);heigh
 .lsn:hover:not(.locked){border-color:var(--rappi);background:var(--rappi-p);}
 .lsn.locked{opacity:.55;cursor:not-allowed;background:#f1f5f9;}
 .lsn.done .l-ic{background:var(--ok);color:#fff;border:none;}
+.lsn.locked .l-ic{background:#cbd5e1;color:#64748b;}
 .l-ic{width:30px;height:30px;border-radius:7px;background:var(--bg);border:1px solid var(--bdr);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;}
 .l-tit{font-size:12px;font-weight:600;flex:1;}
 .l-dur{font-size:10px;color:var(--txm);}
@@ -195,7 +222,8 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--tx);heigh
 .lsnov{position:absolute;inset:0;background:var(--sb);z-index:70;display:none;flex-direction:column;overflow:hidden;}
 .lsnov.open{display:flex;animation:slideUp .25s ease;}
 .lsnh{background:rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.1);padding:14px 20px;display:flex;align-items:center;gap:12px;}
-.lsnh-back{color:rgba(255,255,255,.6);font-size:12px;cursor:pointer;}
+.lsnh-back{color:rgba(255,255,255,.6);font-size:12px;cursor:pointer;transition:color .2s;}
+.lsnh-back:hover{color:#fff;}
 .lsnh-tit{color:#fff;font-size:14px;font-weight:700;flex:1;}
 .lsnh-sub{color:var(--sbt);font-size:10px;}
 .lsn-body{flex:1;display:flex;flex-direction:column;padding:20px;overflow-y:auto;align-items:center;justify-content:center;}
@@ -205,16 +233,24 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--tx);heigh
 .slide-tag{font-size:10px;color:var(--txm);font-weight:600;}
 .slide-title{font-size:18px;font-weight:800;color:var(--sb);margin-bottom:14px;line-height:1.3;}
 .slide-content{font-size:13px;color:var(--tx);line-height:1.6;flex:1;}
+.slide-content p{margin-bottom:10px;}
+.slide-content ul{margin-left:18px;margin-bottom:12px;}
+.slide-content li{margin-bottom:6px;}
 .slide-box{background:var(--bg);border-left:4px solid var(--rappi);padding:12px;border-radius:0 8px 8px 0;margin:12px 0;font-size:12px;color:var(--tx);}
 .slide-box.hs{border-left-color:var(--hubspot);background:var(--hubspot-p);}
+.slide-img-placeholder{width:100%;height:180px;background:linear-gradient(135deg,#1E293B,#0F172A);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:600;margin:12px 0;text-align:center;padding:16px;}
 
 .lsn-ft{background:rgba(255,255,255,.05);border-top:1px solid rgba(255,255,255,.1);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;}
 .lsn-pbar{width:220px;height:6px;background:rgba(255,255,255,.1);border-radius:3px;overflow:hidden;}
 .lsn-pfil{height:100%;background:var(--rappi);border-radius:3px;transition:width .2s;}
 .lsn-nav{display:flex;gap:10px;}
 .lsn-btn{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;padding:8px 16px;border-radius:8px;cursor:pointer;transition:all .2s;}
+.lsn-btn:hover:not(:disabled){background:rgba(255,255,255,.2);}
 .lsn-btn:disabled{opacity:.3;cursor:not-allowed;}
 .lsn-btn.pri{background:var(--rappi);border-color:var(--rappi);}
+.lsn-btn.pri:hover{background:var(--rappi-d);}
+.lsn-btn.hs{background:var(--hubspot);border-color:var(--hubspot);}
+.lsn-btn.hs:hover{background:var(--hubspot-d);}
 
 .qov{position:absolute;inset:0;background:var(--bg);z-index:60;display:none;overflow-y:auto;}
 .qov.open{display:block;animation:slideUp .25s ease;}
@@ -228,6 +264,8 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--tx);heigh
 .q-q{font-size:14px;font-weight:700;margin-bottom:14px;line-height:1.4;}
 .q-opts{display:flex;flex-direction:column;gap:7px;margin-bottom:16px;}
 .q-opt{background:#fff;border:1.5px solid var(--bdr);border-radius:9px;padding:11px 13px;cursor:pointer;transition:all .2s;font-size:12px;text-align:left;font-family:'Poppins',sans-serif;color:var(--tx);}
+.q-opt:hover{border-color:var(--rappi);background:var(--rappi-p);}
+.q-opt.sel{border-color:var(--rappi);background:var(--rappi-p);font-weight:600;}
 .q-opt.cor{border-color:var(--ok);background:#ECFDF5;color:#065F46;}
 .q-opt.wr{border-color:#EF4444;background:#FEF2F2;color:#991B1B;}
 .q-nxt{width:100%;background:var(--rappi);border:none;border-radius:9px;padding:12px;color:#fff;font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;cursor:pointer;}
@@ -241,9 +279,53 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--tx);heigh
 .r-sub{font-size:12px;color:var(--txm);margin-bottom:16px;}
 .r-pts{background:var(--sb);color:#fff;border-radius:11px;padding:12px;margin-bottom:14px;}
 .r-pv{font-size:20px;font-weight:800;color:var(--gold);}
+.r-pl{font-size:11px;color:rgba(255,255,255,.5);}
 .r-act{display:flex;flex-direction:column;gap:7px;}
 .r-btn{border-radius:9px;padding:11px;font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;cursor:pointer;border:none;}
 .r-btn.pri{background:var(--rappi);color:#fff;}
+.r-btn.sec{background:#fff;border:1px solid var(--bdr);color:var(--tx);}
+.r-btn.hs{background:var(--hubspot);color:#fff;}
+
+.adm-tabs{display:flex;gap:7px;margin-bottom:14px;border-bottom:1px solid var(--bdr);padding-bottom:10px;}
+.adm-tab{background:none;border:none;font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;color:var(--txm);cursor:pointer;padding:6px 12px;border-radius:8px;transition:all .2s;}
+.adm-tab.act{background:var(--rappi);color:#fff;}
+.kpi-g{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px;}
+.kpi{background:#fff;border:1px solid var(--bdr);border-radius:11px;padding:13px;text-align:center;}
+.kpi-v{font-size:22px;font-weight:800;color:var(--rappi);}
+.kpi-l{font-size:10px;color:var(--txm);margin-top:2px;}
+.kpi-ic{font-size:18px;margin-bottom:3px;}
+.country-row{background:#fff;border:1px solid var(--bdr);border-radius:10px;padding:12px 14px;display:flex;align-items:center;gap:12px;margin-bottom:6px;}
+.c-flag{font-size:22px;width:36px;text-align:center;}
+.c-info{flex:1;}
+.c-name{font-size:13px;font-weight:700;}
+.c-sub{font-size:11px;color:var(--txm);}
+.c-bar-wrap{width:120px;}
+.c-bar{height:6px;background:var(--bdr);border-radius:3px;margin-top:4px;}
+.c-bar-f{height:100%;background:var(--rappi);border-radius:3px;}
+.c-pct{font-size:11px;font-weight:700;color:var(--rappi);min-width:32px;text-align:right;}
+.user-row{background:#fff;border:1px solid var(--bdr);border-radius:9px;padding:9px 12px;display:flex;align-items:center;gap:10px;margin-bottom:5px;}
+.u-av{width:30px;height:30px;border-radius:50%;background:var(--sb);display:flex;align-items:center;justify-content:center;color:#fff;font-size:10px;font-weight:700;flex-shrink:0;}
+.u-nm{font-size:12px;font-weight:600;flex:1;}
+.u-prog{width:80px;}
+.u-pb{height:5px;background:var(--bdr);border-radius:3px;}
+.u-pf{height:100%;border-radius:3px;}
+.u-pf.hi{background:var(--ok);}
+.u-pf.md{background:var(--warn);}
+.u-pf.lo{background:var(--rappi);}
+.u-pts{font-size:11px;font-weight:700;color:var(--rappi);min-width:55px;text-align:right;}
+
+.ldr-kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px;}
+.lkpi{background:#fff;border:1px solid var(--bdr);border-radius:11px;padding:12px;text-align:center;}
+.lkpi-v{font-size:18px;font-weight:800;color:var(--rappi);}
+.lkpi-l{font-size:10px;color:var(--txm);margin-top:2px;}
+.need-help{background:#FEF3C7;border:1px solid #FDE68A;border-radius:11px;padding:14px;margin-bottom:14px;}
+.nh-tit{font-size:13px;font-weight:700;color:#92400E;margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+.nh-item{display:flex;align-items:center;gap:9px;margin-bottom:7px;padding:9px;background:rgba(255,255,255,.7);border-radius:8px;}
+.nh-av{width:28px;height:28px;border-radius:50%;background:#F59E0B;display:flex;align-items:center;justify-content:center;color:#fff;font-size:10px;font-weight:700;}
+.nh-nm{font-size:12px;font-weight:600;flex:1;color:#92400E;}
+.nh-sub{font-size:10px;color:#B45309;}
+.coach-btn{background:#F59E0B;border:none;border-radius:6px;padding:5px 12px;color:#fff;font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;cursor:pointer;transition:all .2s;}
+.coach-btn:hover{background:#d97706;}
 
 .max-chat{position:fixed;bottom:24px;right:24px;width:270px;background:#fff;border:1px solid var(--bdr);border-radius:14px;box-shadow:0 8px 28px rgba(0,0,0,.1);z-index:80;display:none;}
 .max-chat.open{display:block;animation:slideUp .2s ease;}
@@ -375,7 +457,7 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--tx);heigh
     <div class="slide-card">
       <div class="slide-hdr">
         <span class="slide-num" id="slideNumLabel">Slide 1 de 4</span>
-        <span class="slide-tag" id="slideTagLabel">Training</span>
+        <span class="slide-tag" id="slideTagLabel">HubSpot Training</span>
       </div>
       <div class="slide-title" id="slideTitle">Cargando diapositiva...</div>
       <div class="slide-content" id="slideContent"></div>
@@ -412,94 +494,263 @@ const COMERCIALES_SAMPLE=[
   {"email": "karen.oviedo@rappi.com", "name": "Karen Oviedo", "country": "AR", "leader": "maria.casallas@rappi.com", "team": "Outbound", "type": "IS Hunter"},
   {"email": "german.godoy@rappi.com", "name": "German Godoy", "country": "AR", "leader": "maria.casallas@rappi.com", "team": "Inbound", "type": "IS Hunter"},
   {"email": "jonathan.chacon@rappi.com", "name": "Jonathan Chacon", "country": "AR", "leader": "maria.casallas@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "martin.payares@rappi.com", "name": "Martin Payares", "country": "AR", "leader": "maria.casallas@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "eliam.gomez@rappi.com", "name": "Eliam Gomez", "country": "AR", "leader": "maria.casallas@rappi.com", "team": "Proyecto IA", "type": "IS Hunter"},
+  {"email": "gira.perez@rappi.com", "name": "Gira Perez", "country": "AR", "leader": "maria.casallas@rappi.com", "team": "Inbound", "type": "IS Hunter"},
   {"email": "maria.casallas@rappi.com", "name": "Maria Casallas", "country": "AR", "leader": "juan.olivares@rappi.com", "team": "Outbound", "type": "Leader/Coordinator"},
+  {"email": "michael.caucali@rappi.com", "name": "Michael Caucali", "country": "AR", "leader": "maria.casallas@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "brayan.caicedo@rappi.com", "name": "Brayan Caicedo", "country": "AR", "leader": "maria.casallas@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "ivette.alvarez@rappi.com", "name": "Ivette Alvarez", "country": "CL", "leader": "estefany.ariza@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "camila.saez@rappi.com", "name": "Camila Saez", "country": "CL", "leader": "estefany.ariza@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "andrea.gaona@rappi.com", "name": "Andrea Gaona", "country": "CL", "leader": "estefany.ariza@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "laura.barrios@rappi.com", "name": "Laura Barrios", "country": "CL", "leader": "estefany.ariza@rappi.com", "team": "Inbound", "type": "IS Hunter"},
   {"email": "estefany.ariza@rappi.com", "name": "Estefany Ariza", "country": "CL", "leader": "juan.olivares@rappi.com", "team": "Inbound", "type": "Leader/Coordinator"},
+  {"email": "bastian.monardes@rappi.com", "name": "Bastian Monardes", "country": "CL", "leader": "estefany.ariza@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "sebastian.espejo@rappi.com", "name": "Sebastian Espejo", "country": "CL", "leader": "estefany.ariza@rappi.com", "team": "Inbound", "type": "IS Hunter"},
   {"email": "nicolas.loaiza@rappi.com", "name": "Nicolas Loaiza", "country": "CO", "leader": "juan.olivares@rappi.com", "team": "Inbound", "type": "Leader/Coordinator"},
+  {"email": "ginna.ararat@rappi.com", "name": "Ginna Ararat", "country": "CO", "leader": "nicolas.loaiza@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "angie.barriga@rappi.com", "name": "Angie Barriga", "country": "CO", "leader": "jimena.velasquez@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "tatiana.garcia@rappi.com", "name": "Tatiana Garcia", "country": "CO", "leader": "nicolas.loaiza@rappi.com", "team": "Inbound", "type": "IS Hunter"},
   {"email": "yensi.benavides@rappi.com", "name": "Yensi Benavides", "country": "MX", "leader": "juan.guaje@rappi.com", "team": "Outbound", "type": "IS Hunter"},
-  {"email": "oscar.barajas@rappi.com", "name": "Oscar Barajas", "country": "PE", "leader": "juan.olivares@rappi.com", "team": "Inbound", "type": "Leader/Coordinator"}
+  {"email": "adriana.martinez@rappi.com", "name": "Adriana Martinez", "country": "MX", "leader": "diego.barrera@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "kenly.manrique@rappi.com", "name": "Kenly Manrique", "country": "PE", "leader": "oscar.barajas@rappi.com", "team": "Outbound", "type": "IS Hunter"},
+  {"email": "daniel.sisa@rappi.com", "name": "Daniel Sisa", "country": "PE", "leader": "oscar.barajas@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "ana.torres@rappi.com", "name": "Ana Torres", "country": "PE", "leader": "oscar.barajas@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "alfredo.estarita@rappi.com", "name": "Alfredo Estarita", "country": "PE", "leader": "oscar.barajas@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "jonathan.baron@rappi.com", "name": "Jonathan Baron", "country": "PE", "leader": "oscar.barajas@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "miguel.salamanca@rappi.com", "name": "Miguel Salamanca", "country": "PE", "leader": "oscar.barajas@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "leslie.baquero@rappi.com", "name": "Leslie Baquero", "country": "PE", "leader": "oscar.barajas@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "jose.saiz@rappi.com", "name": "Jose Saiz", "country": "PE", "leader": "oscar.barajas@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "cristian.palacios@rappi.com", "name": "Cristian Palacios", "country": "PE", "leader": "oscar.barajas@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "ingrid.ospina@rappi.com", "name": "Ingrid Ospina", "country": "PE", "leader": "oscar.barajas@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "maria.reales@rappi.com", "name": "Maria Reales", "country": "PE", "leader": "oscar.barajas@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "jacqueline.herrera@rappi.com", "name": "Jacqueline Herrera", "country": "PE", "leader": "oscar.barajas@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "lina.gutierrez@rappi.com", "name": "Lina Gutierrez", "country": "PE", "leader": "oscar.barajas@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "catalina.pachon@rappi.com", "name": "Catalina Pachon", "country": "PE", "leader": "oscar.barajas@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "rodrigo.polo@rappi.com", "name": "Rodrigo Polo", "country": "PE", "leader": "oscar.barajas@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "alejandro.chacon@rappi.com", "name": "Alejandro Chacon", "country": "PE", "leader": "oscar.barajas@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "oscar.barajas@rappi.com", "name": "Oscar Barajas", "country": "PE", "leader": "juan.olivares@rappi.com", "team": "Inbound", "type": "Leader/Coordinator"},
+  {"email": "daniela.acosta@rappi.com", "name": "Daniela Acosta", "country": "PE", "leader": "william.turga@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "sebastian.escobar@rappi.com", "name": "Sebastian Escobar", "country": "EC", "leader": "marcela.contreras@rappi.com", "team": "Outbound", "type": "IS Hunter"},
+  {"email": "cristian.quiroga@rappi.com", "name": "Cristian Quiroga", "country": "EC", "leader": "marcela.contreras@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "marcela.contreras@rappi.com", "name": "Marcela Contreras", "country": "EC", "leader": "juan.olivares@rappi.com", "team": "Outbound", "type": "Leader/Coordinator"},
+  {"email": "andres.soto@rappi.com", "name": "Andres Soto", "country": "MX", "leader": "gisell.rojas@rappi.com", "team": "Outbound", "type": "IS Hunter"},
+  {"email": "jessica.uribe@rappi.com", "name": "Jessica Uribe", "country": "MX", "leader": "arnold.velasquez@rappi.com", "team": "Inbound", "type": "IS Hunter"},
+  {"email": "carol.barragan@rappi.com", "name": "Carol Barragan", "country": "MX", "leader": "juan.guaje@rappi.com", "team": "Outbound", "type": "IS Hunter"},
+  {"email": "nicol.espitia@rappi.com", "name": "Nicol Espitia", "country": "PE", "leader": "william.turga@rappi.com", "team": "Outbound", "type": "IS Hunter"},
+  {"email": "daniela.bejarano@rappi.com", "name": "Daniela Bejarano", "country": "AR", "leader": "maria.casallas@rappi.com", "team": "Outbound", "type": "IS Hunter"},
+  {"email": "ana.nieto@rappi.com", "name": "Ana Nieto", "country": "CO", "leader": "jimena.velasquez@rappi.com", "team": "Inbound", "type": "IS Hunter"}
+];
+
+const PLANTILLAS_DATA = [
+  {"pais": "AR", "cat": "Bienvenida", "nombre": "ar_bienvenida_v1_2026", "copy": "*Hola {{nombre_restaurante}} 🧡*\n\nSoy parte del equipo comercial de Rappi y te escribo porque creemos que tu restaurante tiene *muchísimo potencial en nuestra plataforma.*\n\nEn Rappi ayudamos a restaurantes como el tuyo a ganar *más visibilidad y aprovechar nuevas oportunidades de venta a través de domicilios.*\n\n🎯 *La inscripción es totalmente gratuita y el primer mes es sin comisiones.*\nEl segundo mes estés con la mitad de comisión ( 15% de comisión )\nEl tercer mes y por 1 año la comisión de un 30% te quedará en 25%\n\nAdemás, tendrás acceso a herramientas para ver tus ventas en tiempo real, gestionar pedidos fácilmente y tomar decisiones con datos claros.\n\nNos encantaría que {{restaurante}} se sume a la comunidad de Rappi.\n\nSi te parece, puedo agendar una llamada corta para contarte cómo funciona todo 🚀\n\n*¿Te gustaría que coordinemos?*"},
+  {"pais": "AR", "cat": "Retomar Conversación", "nombre": "ar_retomar_v2_2026", "copy": "Hola {{nombre_restaurante}} 👋\n\nHemos visto que varios clientes siguen buscando tu restaurante en Rappi 🧡\n\nQueremos invitarte a sumarte a la plataforma y aprovechar nuevas oportunidades de venta.\nRestaurantes similares al tuyo han logrado incrementar sus ventas hasta en un 30 % al unirse a Rappi.\n\n¿Te parece si retomamos la conversación?"},
+  {"pais": "AR", "cat": "Solicitud de Documentos", "nombre": "ar_docs_v1_2026", "copy": "Hola  {{store_name}} 👋, \n \nya casi estamos listos para activar tu restaurante en Rappi 🚀\n \nSolo necesito que me envíes:\n📄 CUIT\n🪪 DNI (frente y reverso)\n🏦 Certificado bancario\n🍽️ Menú\n🖼️ Logo\n \nEn cuanto me los envíes, en 48-72 horas estarás recibiendo pedidos 💥"},
+  {"pais": "CO", "cat": "Bienvenida", "nombre": "co_bienvenida_v1_2026", "copy": "*Hola {{nombre_restaurante}} 🧡*\n\nSoy parte del equipo comercial de Rappi y te escribo porque creemos que *{{nombre_restaurante}} tiene muchísimo potencial en nuestra plataforma.*\n\nEstamos ayudando a restaurantes aliados a ganar *más visibilidad, más pedidos y nuevas oportunidades de venta a través de domicilios.*\n\n🎯 *La inscripción es gratuita + 2 meses sin comisión.*\n\nNos encantaría contarte cómo podría funcionar para tu restaurante 🚀\n\n*¿Te gustaría coordinar una llamada corta?*"},
+  {"pais": "MX", "cat": "Bienvenida", "nombre": "mx_bienvenida_v1_2026", "copy": "¡Hola {{nombre_restaurante}}! 🧡\n\nTe escribo del equipo comercial de Rappi México. Queremos invitarte a impulsar tus ventas a domicilio sin comisiones el primer mes.\n\n¿Te interesaría agendar una llamada rápida de 5 minutos?"},
+  {"pais": "CL", "cat": "Bienvenida", "nombre": "cl_bienvenida_v1_2026", "copy": "¡Hola {{nombre_restaurante}}! 🇨🇱\n\nDesde Rappi Chile te invitamos a unirte con costo de inscripción costo cero y comisión reducida.\n\n¿Avanzamos con el registro esta semana?"},
+  {"pais": "PE", "cat": "Bienvenida", "nombre": "pe_bienvenida_v1_2026", "copy": "¡Hola {{nombre_restaurante}}! 🇵🇪\n\nÚnete a Rappi Perú y haz llegar tus platos a miles de usuarios activos en tu zona.\n\n¿Te comparto la propuesta sin compromiso?"},
+  {"pais": "EC", "cat": "Bienvenida", "nombre": "ec_bienvenida_v1_2026", "copy": "¡Hola {{nombre_restaurante}}! 🇪🇨\n\nSumemos tu menú a Rappi Ecuador con beneficios especiales de lanzamiento.\n\n¿Coordinamos llamada?"}
+];
+
+const COMISIONES_DATA = [
+  {"pais": "CO", "full_service": "21% - 23%", "no_exclusivo": "26%", "comision_0": "1 mes", "marketplace": "16% - 18%", "markdown": "20%", "comentarios": "2% fee bancario + 19% IVA"},
+  {"pais": "MX", "full_service": "26%", "no_exclusivo": "N/A", "comision_0": "1 mes", "marketplace": "18%", "markdown": "30%", "comentarios": "16% Impuesto + 2.5% ISR"},
+  {"pais": "AR", "full_service": "20% - 22%", "no_exclusivo": "N/A", "comision_0": "1 mes", "marketplace": "16%", "markdown": "20%", "comentarios": "Tarjeta +2.9% adicional / Efectivo sin recargo"},
+  {"pais": "PE", "full_service": "20% - 22%", "no_exclusivo": "25%", "comision_0": "1 mes", "marketplace": "18%", "markdown": "20%", "comentarios": "18% IGV (Impuesto General a las Ventas)"},
+  {"pais": "EC", "full_service": "20% - 22%", "no_exclusivo": "25%", "comision_0": "1 mes", "marketplace": "18%", "markdown": "20%", "comentarios": "IVA Vigente"},
+  {"pais": "CL", "full_service": "23% - 25%", "no_exclusivo": "25% - 27%", "comision_0": "1 mes", "marketplace": "19%", "markdown": "20%", "comentarios": "19% Impuesto de Ley"}
+];
+
+const LIBRARY_DATA = [
+  {"t": "Onboarding Inside Sales", "cat": "Preparación", "ico": "📋", "type": "PPT", "desc": "Inducción primer día. Onboarding temas técnicos para comerciales e inducción general.", "resource": "Onboarding Inside Sales", "url": null, "slides": [{"t": "1. Onboarding Inside Sales — Playbook Completo", "tag": "Preparación · Inducción", "c": "<p><b>Recurso / Archivo:</b> Onboarding Inside Sales</p><div class='slide-box'>📋 <b>Descripción:</b> Inducción primer día<br><b>Enfoque:</b> Playbook Completo (Todas las diapositivas)</div>"}, {"t": "2. Procedimiento Operativo y Buenas Prácticas", "tag": "Preparación · Inducción", "c": "<p>Pautas comerciales para <b>Onboarding Inside Sales</b>:</p><ul><li>1. Aplica los estándares estandarizados para la categoría <b>Preparación</b>.</li><li>2. Registra las actividades y tareas en HubSpot CRM inmediatamente.</li></ul>"}, {"t": "3. Cierre y Trazabilidad Comercial", "tag": "Preparación · Inducción", "c": "<p>Sincroniza tus compromisos con tu Supervisor de equipo para garantizar la conversión exitosa del aliado.</p>"}]},
+  {"t": "Onboarding temas tecnicos hunters new", "cat": "Preparación", "ico": "📋", "type": "PPT", "desc": "Inducción primer día", "resource": "Onboarding temas tecnicos hunters new", "url": null, "slides": [{"t": "1. Onboarding temas tecnicos hunters new — (Diapositivas 17 a 48)", "tag": "Recurso Oficial · Preparación", "c": "<p><b>Recurso / Archivo:</b> Onboarding temas tecnicos hunters new</p><div class='slide-box'>📋 <b>Descripción:</b> Inducción primer día<br><b>Enfoque:</b> (Diapositivas 17 a 48)</div>"}, {"t": "2. Procedimiento Operativo y Buenas Prácticas", "tag": "Recurso Oficial · Preparación", "c": "<p>Pautas comerciales para <b>Onboarding temas tecnicos hunters new</b>:</p><ul><li>1. Aplica los estándares estandarizados para la categoría <b>Preparación</b>.</li><li>2. Registra las actividades y tareas en HubSpot CRM inmediatamente.</li></ul>"}, {"t": "3. Cierre y Trazabilidad Comercial", "tag": "Recurso Oficial · Preparación", "c": "<p>Sincroniza tus compromisos con tu Supervisor de equipo para garantizar la conversión exitosa del aliado.</p>"}]},
+  {"t": "Tropicalización", "cat": "Preparación", "ico": "📋", "type": "PPT", "desc": "Entender el contexto de cada país, cultura, platos principales, jerga, etc. que permita abordar de mejor manera a los clientes de Latam", "resource": "Tropicalización", "url": null, "slides": [{"t": "1. Tropicalización — Playbook Completo", "tag": "Recurso Oficial · Preparación", "c": "<p><b>Recurso / Archivo:</b> Tropicalización</p><div class='slide-box'>📋 <b>Descripción:</b> Entender el contexto de cada país, cultura, platos principales, jerga, etc.<br><b>Enfoque:</b> Playbook Completo</div>"}]},
+  {"t": "Técnicas de Hunteo y Prospección Comercial", "cat": "Preparación", "ico": "📋", "type": "PPT", "desc": "Principales técnicas de hunteo que utilizan los top performers para prospectar nuevos clientes por medio de diferentes herramientas", "resource": "Técnicas de Hunteo y Prospección Comercial", "url": null},
+  {"t": "Smart Pitch App", "cat": "Cliente", "ico": "🌐", "type": "LINK", "desc": "App para aprender a vender desde cero, tener data de calidad previo contacto a los clientes, calculadora de simulador de ganancias", "resource": "https://smartpitch-rappi.vercel.app/", "url": "https://smartpitch-rappi.vercel.app/"},
+  {"t": "Amazon Connect - Capacitación para agentes", "cat": "Apertura", "ico": "📋", "type": "PPT", "desc": "Herramienta principal para realizar llamadas y la gestión comercial del los agentes de IS", "resource": "Amazon Connect - Capacitación para agentes", "url": null},
+  {"t": "Elevator Pitch IS", "cat": "Apertura", "ico": "📋", "type": "PPT", "desc": "Es importante tener un pitch claro, pero aún más importante tener un elevator pitch estructurado", "resource": "Elevator Pitch IS", "url": null},
+  {"t": "Estrategias de cierre", "cat": "Cierre", "ico": "📋", "type": "PPT", "desc": "Cuando ya le hemos dado toda la información de valor al cliente y rebatido las objeciones hay que llevar al cliente a un cierre", "resource": "Estrategias de cierre", "url": null},
+  {"t": "Playbook-Condonación de Deuda Aliados", "cat": "Pre-Venta", "ico": "📋", "type": "PPT", "desc": "Antes de realizar una venta, se debe validar que la tienda no tenga deuda.", "resource": "Playbook-Condonación de Deuda Aliados", "url": null},
+  {"t": "Training Perfect Stores 8.10", "cat": "Pre-Venta", "ico": "📋", "type": "PPT", "desc": "Para poder cargar una venta se debe cargar un muy buen catálogo", "resource": "Training Perfect Stores 8.10", "url": null},
+  {"t": "Manual Onboarding", "cat": "Venta", "ico": "📋", "type": "PPT", "desc": "Instructivo del proceso de onboarding de tiendas y el flujo de ventas por Zoho y SOB", "resource": "Manual Onboarding", "url": null},
+  {"t": "Creacion de Expansiones Manager", "cat": "Venta", "ico": "📋", "type": "PPT", "desc": "Creación Expansiones Manager", "resource": "Creacion de Expansiones Manager", "url": null},
+  {"t": "Legal SOB", "cat": "Venta", "ico": "📋", "type": "PPT", "desc": "Guía diligenciamiento de datis en Portal Partners", "resource": "Legal SOB", "url": null},
+  {"t": "Rappi Aliados y Portal Partners", "cat": "Venta", "ico": "📋", "type": "PPT", "desc": "Visual del aliado para guiarlos correctamente y evitar reprocesos", "resource": "Rappi Aliados y Portal Partners", "url": null},
+  {"t": "Reglas Playbook_2024", "cat": "Venta", "ico": "📋", "type": "PPT", "desc": "Indica cómo se debe subir un buen menú para evitar rechazos", "resource": "Reglas Playbook_2024", "url": null},
+  {"t": "Renegociación de tiendas en estado de Churn", "cat": "Venta", "ico": "📋", "type": "PPT", "desc": "Tiendas que operaron con Rappi pero llevan mas de 3 meses sin conectividad", "resource": "Renegociación de tiendas en estado de Churn", "url": null},
+  {"t": "Modificación de Condiciones Comerciales", "cat": "Venta", "ico": "📋", "type": "PPT", "desc": "Como modificar las condiciones comerciales sin afectar el proceso de negociación.", "resource": "Modificación de Condiciones Comerciales", "url": null},
+  {"t": "Proceso Inbound-Hunting", "cat": "Venta", "ico": "📋", "type": "PPT", "desc": "Cuando una negociacion tiene proceso de self onboarding se debe solicitar migración para pasar a Hunting", "resource": "Proceso Inbound-Hunting", "url": null},
+  {"t": "FLUJO BRAND EXPANSION - ZOHO.pptx", "cat": "Venta", "ico": "📋", "type": "PPT", "desc": "Como realizar una Brand Expansion", "resource": "FLUJO BRAND EXPANSION - ZOHO.pptx", "url": null},
+  {"t": "Playbook - Nueva Negociacion.pptx", "cat": "Venta", "ico": "📋", "type": "PPT", "desc": "Como realizar una nueva negociacion", "resource": "Playbook - Nueva Negociacion.pptx", "url": null},
+  {"t": "[Global] Playbook Datos Fiscales y Bancarios SS", "cat": "Venta", "ico": "📋", "type": "PPT", "desc": "Solicitud de documentación para inicio de negociación", "resource": "[Global] Playbook Datos Fiscales y Bancarios SS", "url": null},
+  {"t": "Overview Doc Checker", "cat": "Venta", "ico": "📋", "type": "PPT", "desc": "Seguimiento de Dock Checker", "resource": "Overview Doc Checker", "url": null},
+  {"t": "Permanencia, Frecuencia de pago y Cambio de FS a MP", "cat": "Posventa", "ico": "📋", "type": "PPT", "desc": "Entender los contratos que se envian a los aliados y posibles objeciones", "resource": "Permanencia, Frecuencia de pago y Cambio de FS a MP", "url": null},
+  {"t": "Playbook_Cambios Contractuales", "cat": "Posventa", "ico": "📋", "type": "PPT", "desc": "Se observan los cambios contractuales por país", "resource": "Playbook_Cambios Contractuales", "url": null},
+  {"t": "Playbook INSIDE SALE - ELC", "cat": "Posventa", "ico": "📋", "type": "PPT", "desc": "Entender el way of workf de FarmerMass y los beneficios posventa", "resource": "Playbook INSIDE SALE - ELC", "url": null},
+  {"t": "Marcación de HO", "cat": "Posventa", "ico": "📋", "type": "PPT", "desc": "Marcación automática de Handoff y casos de NO marcación", "resource": "Marcación de HO", "url": null},
+  {"t": "Playbook HubSpot — Comerciales", "cat": "Venta", "ico": "🟧", "type": "PPT", "desc": "Playbook de capacitación oficial de HubSpot CRM para la fuerza de ventas comercial.", "resource": "Playbook HubSpot Comerciales.pptx", "url": "https://docs.google.com/presentation/d/1q02UnMTNzO3vAneqKJ0wmQOOM766U9EvA4XrU6HiqTk/edit?slide=id.g3d532270b63_0_391#slide=id.g3d532270b63_0_391"},
+  {"t": "Playbook HubSpot — Supervisores", "cat": "Venta", "ico": "📙", "type": "PPT", "desc": "Playbook de gestión estratégica en HubSpot CRM para Supervisores y Líderes.", "resource": "Playbook HubSpot Supervisores.pptx", "url": "https://docs.google.com/presentation/d/1Yheg2fQIhfhEWNfiAEAZjIbpxOyg0we41nJLuz3WfGc/edit?slide=id.g3d532270b63_0_391#slide=id.g3d532270b63_0_391"},
+  {"t": "Quiz Google Forms — Comerciales", "cat": "Proceso", "ico": "📝", "type": "FORM", "desc": "Cuestionario oficial de certificación de HubSpot CRM para Comerciales.", "resource": "Google Forms", "url": "https://docs.google.com/forms/d/e/1FAIpQLSfX-qe2PqPpZdCPDtAYmSZ7ep7w2a4k_by917pUby7nf6_0Cg/viewform?usp=header"},
+  {"t": "Quiz Google Forms — Supervisores", "cat": "Proceso", "ico": "📝", "type": "FORM", "desc": "Cuestionario oficial de certificación de HubSpot CRM para Supervisores.", "resource": "Google Forms", "url": "https://docs.google.com/forms/d/e/1FAIpQLSeWiIw4Kzq-I2XIo8ZeEbmZdDH2lG_goB3ZFomJqi7AUr279w/viewform"}
 ];
 
 const MODULES=[
   {id:1,titulo:'Preparación Comercial',sub:'Onboarding · Pitch · Objeciones',emoji:'🚀',cat:'pc',tag:'nuevo',locked:false,progress:0,pts:150,
     lecciones:[
-      {t:'Onboarding Inside Sales — Día 1',d:'15 min',done:false,slides:[{t:'Bienvenida a Inside Sales Rappi',c:'<p>¡Hola crack! Bienvenido al equipo comercial más ágil de Latam.</p>'}]},
-      {t:'Modelo de negocio Rappi',d:'12 min',done:false,slides:[{t:'Ecosistema Rappi',c:'<p>Modelo tripartito de usuarios, aliados y repartidores.</p>'}]}
+      {t:'Onboarding Inside Sales — Día 1',d:'15 min',done:false,
+        slides:[
+          {t:'Bienvenida a Inside Sales Rappi',c:'<p>¡Hola crack! Bienvenido al equipo comercial más ágil de Latam. Hoy comienzas tu entrenamiento de alta performance.</p><div class="slide-box">🎯 <b>Objetivo:</b> Dominar las herramientas clave de prospección y cierre desde el primer día.</div>'},
+          {t:'Cultura de Alta Velocidad',c:'<p>En Rappi trabajamos con autonomía, orientación a resultados y resiliencia.</p><ul><li><b>Execution is King:</b> La acción supera a la especulación.</li><li><b>Data Driven:</b> Cada decisión comercial está respaldada por métricas.</li></ul>'},
+          {t:'Procedimientos Técnicos Hunters New',c:'<p>Revisión técnica de procesos para la incorporación de nuevos aliados (Diapositivas 17 a 48 del Playbook oficial).</p>'}
+        ]
+      },
+      {t:'Modelo de negocio Rappi',d:'12 min',done:false,slides:[{t:'Ecosistema Rappi',c:'<p>Rappi unifica usuarios, aliados (restaurantes) y repartidores en un modelo tripartito súper eficiente.</p>'}]},
+      {t:'Manejo de Pitch y Objeciones',d:'10 min',done:false,slides:[{t:'Estructura del Pitch Efectivo',c:'<p>1. Gancho de impacto<br>2. Propuesta de valor clara<br>3. Pregunta abierta de cierre</p>'}]},
+      {t:'Cartilla de llamadas efectivas',d:'8 min',done:false,slides:[{t:'Mejores Prácticas Telefónicas',c:'<p>Sonreír al hablar, usar tono seguro y registrar cada intento en el CRM.</p>'}]}
     ],
-    desc:'Inducción primer día. Aprende el modelo de negocio y manejo de objeciones.'
+    desc:'Inducción primer día. Aprende el modelo de negocio, cómo estructurar tu pitch y manejar objeciones desde el inicio.'
+  },
+  {id:2,titulo:'Prospección',sub:'Hunteo · Validación de Zonas',emoji:'🎯',cat:'pc',tag:'nuevo',locked:false,progress:0,pts:200,
+    lecciones:[
+      {t:'Técnicas de Hunteo — Top Performers',d:'12 min',done:false,slides:[{t:'LinkedIn & Social Selling',c:'<p>Investiga volumen de negocio y toma de decisión antes de llamar.</p>'}]},
+      {t:'Validación de zonas con Grappi',d:'10 min',done:false,slides:[{t:'Uso de Grappi',c:'<p>Valida áreas de cobertura activa para asegurar demanda.</p>'}]},
+      {t:'Herramientas de prospección digital',d:'9 min',done:false,slides:[{t:'Scraping & Google Maps',c:'<p>Búsqueda proactiva de negocios en zonas estratégicas.</p>'}]}
+    ],
+    desc:'Principales técnicas de hunteo que usan los top performers.'
+  },
+  {id:3,titulo:'Conocimiento del Cliente',sub:'Smart Pitch · Segmentación',emoji:'🧠',cat:'ci',tag:'nuevo',locked:false,progress:0,pts:200,
+    lecciones:[
+      {t:'Smart Pitch — App de entrenamiento',d:'14 min',done:false,slides:[{t:'Smart Pitch Mobile',c:'<p>Utiliza Smart Pitch para ensayar tu discurso con inteligencia artificial.</p>'}]},
+      {t:'Calculadora de simulador de ganancias',d:'10 min',done:false,slides:[{t:'Simulador GMV',c:'<p>Calcula el incremento de ventas estimadas para el aliado.</p>'}]},
+      {t:'Tipificación y segmentación del cliente',d:'12 min',done:false,slides:[{t:'Segmentos de Aliados',c:'<p>Clasifica negocios según volumen, categoría de comida y potencial de venta.</p>'}]},
+      {t:'Personalización del pitch por tipo',d:'8 min',done:false,slides:[{t:'Pitch Personalizado',c:'<p>Adapta tu discurso si hablas con un restaurante pequeño o una cadena.</p>'}]}
+    ],
+    desc:'Aprende a vender desde cero con Smart Pitch.'
+  },
+  {id:4,titulo:'Apertura y Contactabilidad',sub:'Amazon Connect · Elevator Pitch',emoji:'📞',cat:'ci',tag:'nuevo',locked:false,progress:0,pts:150,
+    lecciones:[
+      {t:'Amazon Connect — Herramienta principal',d:'11 min',done:false,slides:[{t:'Softphone Amazon Connect',c:'<p>Consola oficial para realizar y recibir llamadas integradas con el CRM.</p>'}]},
+      {t:'Elevator Pitch estructurado',d:'9 min',done:false,slides:[{t:'El Elevador de 30 segundos (Diapositivas 1 a 7)',c:'<p>Capta el interés en los primeros 10 segundos de la llamada.</p>'}]},
+      {t:'Scripts de primer contacto',d:'8 min',done:false,slides:[{t:'Guion de Apertura',c:'<p>Mensajes efectivos por WhatsApp y teléfono.</p>'}]},
+      {t:'Métricas de contactabilidad',d:'7 min',done:false,slides:[{t:'KPIs de Llamadas',c:'<p>Meta: Mínimo 40 llamadas diarias con tasa de contacto >25%.</p>'}]}
+    ],
+    desc:'Amazon Connect y Elevator Pitch que captura atención.'
   },
   {id:9,titulo:'HubSpot CRM — Comerciales',sub:'Pipeline · Contactabilidad · Breeze IA',emoji:'🟧',cat:'hs',tag:'nuevo',locked:false,progress:0,pts:300,
     playbookUrl:'https://docs.google.com/presentation/d/1q02UnMTNzO3vAneqKJ0wmQOOM766U9EvA4XrU6HiqTk/edit?slide=id.g3d532270b63_0_391#slide=id.g3d532270b63_0_391',
     formUrl:'https://docs.google.com/forms/d/e/1FAIpQLSfX-qe2PqPpZdCPDtAYmSZ7ep7w2a4k_by917pUby7nf6_0Cg/viewform?usp=header',
     lecciones:[
-      {t:'Acceso a HubSpot y Perfil Okta',d:'10 min',done:false,slides:[{t:'Login SSO',c:'<p>Ingreso seguro vía Okta SSO.</p>'}]}
-    ],
-    desc:'Capacitación oficial de HubSpot CRM para comerciales.'
-  },
-  {id:10,titulo:'Best Practices - Gestión Handoff',sub:'Alineación Comercial - Operativa · Marcación HO · Cierre',emoji:'🤝',cat:'pv',tag:'nuevo',locked:false,progress:0,pts:300,
-    playbookUrl:'https://docs.google.com/presentation/d/17RHOzWLNH0lYP4J-k5NCkrY_eTPoK8nSTXdg_hNZqOU/edit?slide=id.g3ba19521530_0_409#slide=id.g3ba19521530_0_409',
-    formUrl:'https://docs.google.com/spreadsheets/d/11H2z6pn-Y1nq2AOjDJc6lZH1OoRZxwUB2O7PtWsXQcs/edit?gid=0#gid=0',
-    lecciones:[
-      {t:'1. Fundamentos y Objetivos del Handoff (HO)',d:'10 min',done:false,
+      {t:'Acceso a HubSpot y Perfil Okta',d:'10 min',done:false,
         slides:[
-          {t:'1.1 Importancia del Handoff en la Operación',tag:'Gestión Handoff · Slide 1',c:'<p>El Handoff es el puente crítico entre el equipo de ventas (Hunting/Inside Sales) y Operaciones/Account Management.</p><div class="slide-box">🎯 <b>Objetivo Principal:</b> Garantizar que las expectativas vendidas al aliado se transfieran sin fricción al equipo que gestionará su activación.</div>'},
-          {t:'1.2 Criterios para un Handoff Exitoso',tag:'Gestión Handoff · Slide 2',c:'<p>Un HO correcto evita el rechazo de cuentas y aceleración de activación:</p><ul><li>Documentación legal y fiscal completa.</li><li>Menú estructurado según reglas vigentes.</li><li>Condiciones comerciales acordadas y firmadas.</li></ul>'}
+          {t:'1. ¿Qué es HubSpot CRM en Rappi?',tag:'HubSpot Training · Slide 1',c:'<p>HubSpot es la plataforma unificada que conecta ventas, marketing y operaciones con inteligencia artificial.</p><div class="slide-box hs">📍 <b>Visibilidad Total:</b> Cada deal, contacto y tarea en un solo lugar.<br>⚡ <b>Más Velocidad:</b> Automatiza seguimientos.<br>🤝 <b>Sin Reprocesos:</b> Todo el equipo comparte el mismo contexto.</div>'},
+          {t:'2. Login Oficial desde Okta',tag:'HubSpot Training · Slide 2',c:'<p>Para ingresar a HubSpot siempre debes hacerlo mediante SSO corporativo:</p><ul><li>1. Ingresa a Okta con tu correo corporativo: <b>rappi.okta.com</b></li><li>2. Ve a la pestaña <b>Mis Aplicaciones</b>.</li><li>3. Haz clic en la app <b>HubSpot</b>.</li></ul><div class="slide-img-placeholder">🔑 Okta SSO > Mis Aplicaciones > Icono HubSpot</div>'},
+          {t:'3. Configuración de Perfil y WhatsApp',tag:'HubSpot Training · Slide 3',c:'<p><b>Paso Obligatorio:</b> Configura tus datos para habilitar el envío de plantillas de WhatsApp con tu firma correcta.</p><ul><li>Ve a tu avatar superior > <i>Perfil y Preferencias</i>.</li><li>Confirma tu nombre completo y teléfono comercial registrado.</li><li>Conecta tu cuenta de Calendar para agendamiento automático.</li></ul>'}
         ]
       },
-      {t:'2. Validación de Cuentas y Marcación Correcta',d:'12 min',done:false,
+      {t:'Estructura del Pipeline y Etapas',d:'12 min',done:false,
         slides:[
-          {t:'2.1 Reglas de Marcación Automática',tag:'Gestión Handoff · Slide 3',c:'<p>Conoce los gatillos que marcan automáticamente un HO:</p><ul><li>Sincronización de datos entre CRM y Portal Partners.</li><li>Validación exitosa por parte del equipo de Doc Checker.</li></ul>'},
-          {t:'2.2 Identificación de Casos de NO Marcación',tag:'Gestión Handoff · Slide 4',c:'<p>⚠️ Evita reprocesos: Si el aliado no ha firmado contrato o falta el certificado bancario, el HO NO debe marcarse como completado.</p>'}
+          {t:'1. Diccionario de Términos en HubSpot',tag:'HubSpot Training · Slide 4',c:'<p>Familiarízate con los conceptos base del CRM:</p><ul><li><b>Negocios (Deals):</b> Oportunidades comerciales en marcha.</li><li><b>Tienda (Store):</b> Negocio o local creado en la plataforma.</li><li><b>Tipo Lead:</b> Oportunidades potenciales no vinculadas aún a Rappi.</li><li><b>Negocios Descartados:</b> Deals cerrados que NO se pueden reasignar directamente.</li></ul>'},
+          {t:'2. Recorrido del Pipeline de Ventas',tag:'HubSpot Training · Slide 5',c:'<p>El pipeline refleja el embudo de conversión desde el primer contacto hasta el Ready to Sell (R2S):</p><div class="slide-box">1. <b>Nuevo:</b> Lead asignado sin gestión inicial.<br>2. <b>En Gestión:</b> Primer intento comercial en marcha.<br>3. <b>Contacto Efectivo:</b> Comunicación real lograda.<br>4. <b>Propuesta Enviada:</b> Presentación de propuesta.<br>5. <b>Esperando Documentos:</b> Propuesta aceptada.<br>6. <b>Onboarding / R2S:</b> Carga en Portal Manager.</div>'},
+          {t:'3. Regla Técnica de Avance de Etapa',tag:'HubSpot Training · Slide 6',c:'<p>⚠️ <b>Condición técnica importante:</b></p><p>Cuando se asigna un lead en etapa <b>Nuevo</b>, el negocio NO avanzará hasta que entres al detalle del negocio y des clic en la tarea <b>"Iniciar la gestión"</b>.</p><div class="slide-img-placeholder">☑️ Completar tarea "Iniciar la gestión" en Actividades Recientes</div>'}
         ]
       },
-      {t:'3. Gestión de Excepciones y Condonación de Deuda',d:'15 min',done:false,
+      {t:'Registro de Contactabilidad y Resultados',d:'14 min',done:false,
         slides:[
-          {t:'3.1 Revisión de Deuda Previa del Aliado',tag:'Gestión Handoff · Slide 5',c:'<p>Antes de finalizar la transferencia, valida si el aliado posee deudas previas en la plataforma.</p><div class="slide-box hs">📌 Aplica el protocolo de condonación de deuda autorizado antes de marcar la cuenta en Onboarding.</div>'}
+          {t:'1. Reglas de Contactabilidad Estricta',tag:'HubSpot Training · Slide 7',c:'<p>Para registrar correctamente una llamada o mensaje:</p><ul><li><b>Llamadas:</b> Deben realizarse usando el conector de <b>Amazon Connect</b>.</li><li><b>WhatsApp:</b> Integrado desde el panel del negocio.</li><li><b>Importante:</b> Buzón de voz o mensajes de bots NO cuentan como Contacto Efectivo.</li></ul>'},
+          {t:'2. Cómo Registrar el Resultado de la Llamada',tag:'HubSpot Training · Slide 8',c:'<p>Al finalizar una llamada en Amazon Connect:</p><ul><li>1. Detén la grabación y guarda la llamada en el panel desplegable.</li><li>2. Selecciona el resultado: <i>Conectado</i>, <i>Sin Respuesta</i> o <i>Dejó mensaje</i>.</li><li>3. <b>Obligatorio:</b> En la columna izquierda, registra el "Resultado del contacto efectivo" el mismo día.</li></ul><div class="slide-box hs">💡 Si indicó que desea ser contactado otro día, selecciona <i>"Quiere ser contactado otro día"</i>.</div>'},
+          {t:'3. Cambio y Corrección de Teléfono',tag:'HubSpot Training · Slide 9',c:'<p>Si el número del restaurante es incorrecto:</p><p>Edítalo directamente en el objeto <b>Tiendas (Store)</b> a la derecha y guarda los cambios en la base de datos central. No lo dejes solo en una nota.</p>'}
         ]
       },
-      {t:'4. Roles: Responsabilidades Comerciales vs. Supervisión',d:'11 min',done:false,
+      {t:'Propuestas, Handoff (HO) y Descartados',d:'12 min',done:false,
         slides:[
-          {t:'4.1 Rol del Comercial (Hunter / IS)',tag:'Gestión Handoff · Slide 6',c:'<p>Recopilar información verídica, diligenciar campos obligatorios y asegurar reunión de traspaso efectiva.</p>'},
-          {t:'4.2 Rol del Supervisor / Líder',tag:'Gestión Handoff · Slide 7',c:'<p>Auditar la calidad de los datos, aprobar la transición en HubSpot y gestionar escalamientos con Onboarding.</p>'}
+          {t:'1. Registro de Propuesta Enviada y Aceptada',tag:'HubSpot Training · Slide 10',c:'<p>Pasos para avanzar el negocio con propuesta:</p><ul><li>1. Marca el resultado del contacto como <b>Propuesta Enviada</b>.</li><li>2. Registra la fecha, hora y pega el resumen de la propuesta enviada.</li><li>3. Cuando el cliente acepte, cambia el estado a <b>Aceptada</b>. El CRM lo moverá automáticamente a <i>Esperando Documentos</i>.</li></ul>'},
+          {t:'2. Proceso de Handoff (HO)',tag:'HubSpot Training · Slide 11',c:'<p>Para tiendas listas para Onboarding:</p><ul><li>El estado inicial del Handoff será <b>Pendiente</b>.</li><li>Una vez programado y realizado el HO efectivo, el Supervisor debe revisar y cambiar el estado a <b>Aprobado</b>.</li></ul>'},
+          {t:'3. Motivos de Descarte y Descartados',tag:'HubSpot Training · Slide 12',c:'<p>Si la propuesta es rechazada o el lead se ilocaliza:</p><ul><li>Indica el motivo exacto (ej. <i>Fuera de cobertura</i>, <i>Take rate alto</i>, <i>Sin gestión</i>).</li><li><b>Recuerda:</b> Los descartados quedan registrados para trazabilidad histórica.</li></ul>'}
         ]
       },
-      {t:'5. SLA de Activación y Seguimiento Post-Traspaso',d:'8 min',done:false,
+      {t:'Breeze IA & Tips para Negocios R2S',d:'10 min',done:false,
         slides:[
-          {t:'5.1 Tiempos de Respuesta (SLA)',tag:'Gestión Handoff · Slide 8',c:'<p>El SLA estándar post-Handoff para la activación en la app es de 48 a 72 horas habiles.</p>'}
+          {t:'1. Asistente Breeze IA en HubSpot',tag:'HubSpot Training · Slide 13',c:'<p>Utiliza Breeze IA para acelerar tu gestión diaria:</p><ul><li>Genera resúmenes automáticos de llamadas e interacciones pasadas.</li><li>Hazle preguntas como: <i>"¿Cuál es el número de teléfono según la URL del mapa?"</i></li><li>Breeze rastreará fuentes públicas para encontrar datos faltantes.</li></ul>'},
+          {t:'2. Integración con Portal Manager',tag:'HubSpot Training · Slide 14',c:'<p>En la etapa de Onboarding, selecciona las direcciones sugeridas por HubSpot para asegurar la sincronización con Portal Manager sin errores.</p>'},
+          {t:'3. Resumen de Reglas de Oro',tag:'HubSpot Training · Slide 15',c:'<div class="slide-box hs">🎯 <b>Registra todo:</b> Si no está en HubSpot, no existe.<br>🔄 <b>Paso siguiente claro:</b> Crea una tarea con fecha límite tras cada interacción.<br>⚡ <b>3 Intentos:</b> Si no contesta tras 3 intentos, registra llamada e ilocalizado.</div><p>¡Felicitaciones! Has recorrido la teoría completa. Ahora pulsa "Finalizar Lección" para sumar tus puntos.</p>'}
         ]
       }
     ],
-    desc:'Aprende las mejores prácticas para la marcación y transferencia de cuentas (Handoff) garantizando una transición impecable hacia Onboarding.'
+    desc:'Capacitación oficial de HubSpot CRM para comerciales. Aprende a gestionar tu pipeline, llamadas en Amazon, WhatsApp y Breeze IA.'
   }
 ];
 
 const LEADER_MODULES=[
+  {id:'L1',titulo:'Liderazgo de Alta Performance',emoji:'👑',cat:'ms',progress:0,pts:200,lecciones:[{t:'De vendedor a líder — El salto mental',d:'12 min',done:false,slides:[{t:'Mentalidad de Líder',c:'De enfocar tu éxito personal a potenciar el éxito de tu equipo.'}]},{t:'Estilos de liderazgo situacional',d:'10 min',done:false,slides:[{t:'Liderazgo Situacional',c:'Adapta tu acompañamiento según el nivel de madurez de cada comercial.'}]},{t:'Cómo inspirar sin micromanagear',d:'8 min',done:false,slides:[{t:'Autonomía y Control',c:'Establece metas claras y mide resultados en lugar de controlar minutos.'}]}]},
   {id:'L5',titulo:'HubSpot CRM — Supervisores',emoji:'📙',cat:'hs',progress:0,pts:350,
     playbookUrl:'https://docs.google.com/presentation/d/1Yheg2fQIhfhEWNfiAEAZjIbpxOyg0we41nJLuz3WfGc/edit?slide=id.g3d532270b63_0_391#slide=id.g3d532270b63_0_391',
     formUrl:'https://docs.google.com/forms/d/e/1FAIpQLSeWiIw4Kzq-I2XIo8ZeEbmZdDH2lG_goB3ZFomJqi7AUr279w/viewform',
     lecciones:[
-      {t:'Reasignación Individual y Masiva de Leads',d:'12 min',done:false,slides:[{t:'Asignación',c:'<p>Pasos para reasignación de negocios.</p>'}]}
+      {t:'Reasignación Individual y Masiva de Leads',d:'12 min',done:false,
+        slides:[
+          {t:'1. Vista "Inside-reasignar"',tag:'HubSpot Supervisors · Slide 1',c:'<p>Como supervisor, debes realizar las reasignaciones utilizando las vistas centrales predeterminadas.</p><ul><li>1. Ve al módulo de <b>Negocios</b>.</li><li>2. Haz clic en el icono <b>+</b> de vistas y busca <b>Inside-reasignar</b>.</li><li>3. Aplica filtros avanzados seleccionando el propietario actual.</li></ul>'},
+          {t:'2. Asignación Masiva en Bloque',tag:'HubSpot Supervisors · Slide 2',c:'<p>Pasos para reasignar un paquete de negocios:</p><ul><li>1. Selecciona las casillas de los negocios a reasignar.</li><li>2. Haz clic en el botón superior <b>Asignar</b>.</li><li>3. Elige el nuevo comercial en <i>Propietario del negocio</i> y confirma.</li></ul><div class="slide-box hs">⚠️ <b>Regla de Oro:</b> Solo se pueden reasignar negocios entre comerciales de tu propio equipo.</div>'}
+        ]
+      },
+      {t:'Creación de Negocios desde Descartados',d:'15 min',done:false,
+        slides:[
+          {t:'1. Recuperación de Tiendas Descartadas',tag:'HubSpot Supervisors · Slide 3',c:'<p>Cuando un negocio previo fue descartado pero se desea volver a trabajar:</p><ul><li>1. Ve al módulo de <b>Tiendas (Stores)</b>.</li><li>2. Carga la vista <i>Inside Stores descartadas para reasignar</i>.</li><li>3. Filtra por el motivo de descarte anterior (ej. <i>Sin gestión</i>).</li></ul>'},
+          {t:'2. Recreación Automática del Deal',tag:'HubSpot Supervisors · Slide 4',c:'<p>No se reasigna el deal descartado viejo; se ejecuta un Workflow que genera una nueva oportunidad manteniendo la trazabilidad histórica.</p>'}
+        ]
+      },
+      {t:'Workflows y Propiedades de Solicitud',d:'14 min',done:false,
+        slides:[
+          {t:'1. Edición en Bloque de Propiedades',tag:'HubSpot Supervisors · Slide 5',c:'<p>Para activar el Workflow de reciclaje de leads, edita en bloque las siguientes propiedades:</p><ul><li>1. <b>Tipo de Solicitud</b></li><li>2. <b>Solicitante</b></li><li>3. <b>Equipo Solicitante</b></li></ul><div class="slide-img-placeholder">⚙️ Editar en bloque > Actualizar Tipo de Solicitud</div>'}
+        ]
+      },
+      {t:'Aprobación de Handoff (HO) & Control',d:'10 min',done:false,
+        slides:[
+          {t:'1. Aprobación Manual de Handoff (HO)',tag:'HubSpot Supervisors · Slide 6',c:'<p>Cuando un comercial programa un HO y este resulta efectivo:</p><ul><li>El negocio entra a la etapa <i>Aprobación de Handoff</i>.</li><li>El supervisor debe ingresar, validar la información y cambiar manualmente la <i>Revisión de Handoff</i> a <b>Aprobado</b>.</li><li>Esto pasa el negocio a <b>Handoff Efectivo</b>.</li></ul>'}
+        ]
+      },
+      {t:'Paneles de Control, Prompts y Reporting Semáforo',d:'15 min',done:false,
+        slides:[
+          {t:'1. Panel Semáforo de Inside Sales',tag:'HubSpot Supervisors · Slide 7',c:'<p>Monitorea la salud del pipeline desde el panel oficial:</p><ul><li>Abre <b>Informes > Paneles</b>.</li><li>Selecciona el panel <b>[Rappi] - Inside - Prueba</b>.</li><li>Filtra por tu equipo para ver la conversión del Funnel en tiempo real.</li></ul>'},
+          {t:'2. Prompts para Reportes Ejecutivos',tag:'HubSpot Supervisors · Slide 8',c:'<p>Utiliza prompts en Breeze IA para generar resúmenes del equipo:</p><div class="slide-box hs">💬 <i>"Necesito analizar un informe ejecutivo consolidado - versión semáforo del equipo Inside."</i></div>'}
+        ]
+      }
     ],
-    desc:'Gestión estratégica en HubSpot para Supervisores.'
+    desc:'Gestión estratégica en HubSpot para Supervisores: Reasignación de negocios, ejecuciones de Workflows, aprobación de HO e informes de semáforo.'
   }
 ];
 
 const QUIZ_DATA={
 'HubSpot CRM — Comerciales':[
   {q:'¿Cómo se debe ingresar oficialmente a HubSpot CRM en Rappi?',opts:['Ingresando usuario y contraseña en hubspot.com','Desde Okta > Mis Aplicaciones > HubSpot','Por un enlace enviado al correo personal','Solicitando clave al administrador en Slack'],correct:1,exp:'El acceso oficial es seguro mediante SSO a través de Okta (rappi.okta.com).'},
-  {q:'¿Cuál es la regla de oro de la gestión comercial en HubSpot?',opts:['"Lo que no se registra en el CRM, no existe"','"No es necesario guardar las llamadas"','"Reasignar leads fuera del equipo es libre"','"Las notas reemplazan las tareas"'],correct:0,exp:'Registrar cada llamada, nota, correo y tarea garantiza la trazabilidad.'}
+  {q:'¿Cuál de las siguientes acciones NO cuenta como un "Contacto Efectivo" en el CRM?',opts:['Llamada telefónica conversada con el dueño','Buzón de voz o mensaje automatizado por bot de WhatsApp','Reunión virtual completada','Mensaje directo respondido por el aliado'],correct:1,exp:'Buzón de voz o mensajes automatizados de bots NO se consideran contacto efectivo.'},
+  {q:'Si el número telefónico de un lead está equivocado, ¿desde dónde debes editarlo?',opts:['No se puede editar','Desde el apartado de Tiendas (Store) y guardar en la base de datos','Creando una nota temporal','Enviando un ticket a soporte'],correct:1,exp:'Se debe corregir directamente en el registro de Tiendas (Store) para mantener la higiene de la data.'},
+  {q:'¿Qué herramienta integrada permite buscar números telefónicos a partir de la URL del mapa en Google?',opts:['Zoho Manager','Breeze IA de HubSpot','Grappi Location','Power BI'],correct:1,exp:'Breeze IA analiza la URL de ubicación en mapa y encuentra números de fuentes públicas.'},
+  {q:'¿Qué ocurre automáticamente cuando marcas un negocio con propuesta "Aceptada"?',opts:['Se elimina el negocio','Pasa automáticamente a la etapa "Esperando Documentos"','Se envía una factura al cliente','Se reasigna a otro comercial'],correct:1,exp:'Registrar la fecha de aceptación mueve el negocio automáticamente a la etapa de Esperando Documentos.'},
+  {q:'Para que un negocio en etapa "Nuevo" avance en el pipeline, ¿qué tarea es obligatorio completar primero?',opts:['Enviar un correo de presentación','Dar clic en "Iniciar Gestión" en la tarea asignada','Cambiar el propietario','Crear un reporte en Power BI'],correct:1,exp:'Dar por terminada la tarea "Iniciar Gestión" es la condición técnica para habilitar el avance de etapa.'},
+  {q:'¿Qué sucede si realizas una llamada pero no registras el resultado el mismo día?',opts:['El sistema adivina el resultado','No se te permite cambiar de etapa hasta registrar una nueva llamada','Se cierra el negocio como rechazado','El lead se elimina'],correct:1,exp:'Es fundamental registrar el resultado de TODAS las llamadas el mismo día para asegurar la trazabilidad.'},
+  {q:'Si un cliente no responde a una plantilla de WhatsApp enviada hace más de 24 horas, ¿qué debes hacer?',opts:['Llamar por teléfono o reabrir conversación enviando un nuevo mensaje/plantilla','Dar por descartado el negocio de inmediato','Esperar una semana sin gestionar','Cambiar de país el registro'],correct:0,exp:'Debes reabrir conversación o utilizar el conector telefónico habilitado para restablecer el contacto.'},
+  {q:'¿Cómo se define un "Negocio Descartado" en HubSpot?',opts:['Aquel que se reasigna automáticamente a otro comercial','Un lead que no se puede reasignar directamente y requiere crear una nueva oportunidad','Un cliente activo en la app','Una tienda en Onboarding'],correct:1,exp:'Los negocios descartados NO se pueden reasignar directamente; se crea una nueva oportunidad basada en el descartado.'},
+  {q:'¿Cuál es la regla de oro de la gestión comercial en HubSpot?',opts:['"Lo que no se registra en el CRM, no existe"','"No es necesario guardar las llamadas"','"Reasignar leads fuera del equipo es libre"','"Las notas reemplazan las tareas"'],correct:0,exp:'Registrar cada llamada, nota, correo y tarea garantiza el cumplimiento de cuotas y evita perder contexto.'}
 ],
-'Best Practices - Gestión Handoff':[
-  {q:'1. ¿Cuál es el objetivo principal del proceso de Handoff (HO) entre Ventas y Operaciones?',opts:['Transferir las expectativas vendidas al aliado y la documentación requerida para su activación sin fricción','Aumentar la comisión del comercial inmediatamente','Eliminar la cuenta del sistema CRM','Transferir el lead a otro equipo de ventas'],correct:0,exp:'El HO garantiza que toda la información comercial y legal pase a operaciones de forma limpia y sin reprocesos.'},
-  {q:'2. ¿Cuál es la condición indispensable antes de proceder a la marcación del HO?',opts:['Contrato firmado, documentos validados por Doc Checker y condiciones comerciales aceptadas','Hacer una llamada de bienvenida adicional','Enviar un correo personal al cliente','Crear una campaña en redes sociales'],correct:0,exp:'Sin la documentación legal y contractual aprobada, la transferencia genera rechazo.'},
-  {q:'3. En caso de que el aliado presente deudas previas en la plataforma, ¿qué acción se debe tomar?',opts:['Aplicar el protocolo de condonación de deuda autorizado antes del traspaso','Ignorar la deuda y completar el HO','Pedirle al cliente que cree otra razón social falsa','Transferir el problema al supervisor'],correct:0,exp:'Se debe resolver y validar la condonación de deuda mediante el canal autorizado previo al onboarding.'},
-  {q:'4. ¿Quién es el responsable directo de verificar la calidad de los datos y aprobar la marcación de HO en el CRM?',opts:['El Supervisor / Líder de equipo','El aliado comercial','El repartidor de la zona','El departamento de finanzas'],correct:0,exp:'El supervisor audita la calidad de los datos ingresados por el hunter antes de aprobar la transición.'},
-  {q:'5. ¿Cuál es el SLA promedio estimado para que la tienda quede activa en la app tras un Handoff efectivo?',opts:['48 a 72 horas hábiles','15 minutos','30 días calendarios','2 semanas'],correct:0,exp:'El estándar de activación una vez recibido un HO correcto es de 48 a 72 horas hábiles.'},
-  {q:'6. ¿Qué sucede si se marca un HO sin haber cargado el certificado bancario correspondiente?',opts:['Se genera un rechazo de cuenta por documentación incompleta','La tienda se activa de inmediato','Se acredita automáticamente una bonificación','El sistema genera el documento con IA'],correct:0,exp:'Documentos faltantes causan la devolución o bloqueo inmediato de la cuenta en Operaciones.'}
+'HubSpot CRM — Supervisores':[
+  {q:'¿Desde qué vista predeterminada en Tiendas se realiza la reasignación individual o masiva de leads?',opts:['Vista General','Vista "Inside-reasignar"','Pipeline de Ventas','Filtro de Ganancias'],correct:1,exp:'La vista "Inside-reasignar" permite filtrar por comercial y seleccionar registros para reasignación masiva.'},
+  {q:'¿Cuál es la restricción principal al reasignar negocios entre comerciales?',opts:['Se puede reasignar a cualquier área de la empresa','Solo se pueden cambiar de propietario dentro de su propio equipo','No existe ninguna restricción','Se requiere aprobación de finanzas'],correct:1,exp:'Los supervisores solo pueden reasignar negocios entre comerciales de tu propio equipo de trabajo asignado.'},
+  {q:'Al recuperar un negocio de la vista "Inside Stores descartadas para reasignar", ¿qué propiedades se deben actualizar en bloque?',opts:['Solo la foto del perfil','Tipo de Solicitud, Solicitante y Equipo Solicitante','El precio del menú','El nombre del restaurante'],correct:1,exp:'Se deben revisar y editar en bloque estas tres propiedades para que el Workflow se ejecute correctamente.'},
+  {q:'¿Quién debe aprobar manualmente en el CRM el paso de un negocio a "Handoff Efectivo" (HO)?',opts:['El comercial de manera automática','El Supervisor / Líder de equipo','El cliente desde su app','El Bot de Breeze IA'],correct:1,exp:'El supervisor debe revisar el HO y cambiar manualmente el estado a "Aprobado" para moverlo a Handoff Efectivo.'},
+  {q:'¿Qué negocios NO se pueden recuperar ni reasignar desde la categoría de Descartados?',opts:['Negocios en gestión','Nuevos, R2S y etapas posteriores','Negocios ilocalizados','Negocios de México'],correct:1,exp:'Las etapas de Nuevo, R2S y posteriores tienen reglas especiales y no se reasignan como descartados estándar.'},
+  {q:'¿Cuál panel de informes se debe consultar para revisar la versión "Semáforo" del equipo Inside Sales?',opts:['[Grows] - Brands','[Rappi] - Inside - Prueba','Pipeline Global B2B','Reporte de Churn'],correct:1,exp:'El panel "[Rappi] - Inside - Prueba" consolida la salud del pipeline y funnel por equipo.'},
+  {q:'Al reasignar un negocio a otro comercial, ¿en qué etapa queda el negocio?',opts:['Vuelve a Nuevo siempre','Se mueve a Ganado','Queda en la misma etapa en que lo tenía la persona anterior','Se borran todas las actividades'],correct:2,exp:'La reasignación mantiene la etapa actual del negocio para no perder la madurez de la gestión.'},
+  {q:'¿Qué herramienta de IA en HubSpot puede procesar un prompt para generar proyecciones de cierre y resúmenes ejecutivos?',opts:['Asistente Breeze IA','Zoho Connect','Amazon Connect CTI','Okta Dashboard'],correct:0,exp:'Breeze IA permite interactuar con prompts para generar resúmenes detallados y estado de cierres.'}
 ]};
+
+const COUNTRY_DATA=[{code:'MX',name:'México',flag:'🇲🇽',total:180,active:172,progress:0},{code:'AR',name:'Argentina',flag:'🇦🇷',total:89,active:85,progress:0},{code:'CO',name:'Colombia',flag:'🇨🇴',total:68,active:65,progress:0},{code:'CL',name:'Chile',flag:'🇨🇱',total:52,active:50,progress:0},{code:'PE',name:'Perú',flag:'🇵🇪',total:61,active:58,progress:0},{code:'EC',name:'Ecuador',flag:'🇪🇨',total:35,active:33,progress:0}];
 
 let CU=null,curMod=null,qQ=[],qIdx=0,qScore=0,qAnswered=false,curQuizMod='';
 let curLsnMod=null,curLsnIdx=0,curSlideIdx=0;
-let userQuizAnswers = {};
+let currentRankingTab='hunters'; 
+let curLibCategory = 'all';
+let curLibCountry = 'all';
 
 function ls(k,v){if(v!==undefined)localStorage.setItem(k,JSON.stringify(v));else{try{return JSON.parse(localStorage.getItem(k))}catch{return null}}}
 function initials(e){const p=e.split('@')[0].split('.');return(p[0][0]+(p[1]?p[1][0]:'')).toUpperCase();}
@@ -529,12 +780,44 @@ function doLogin(){
 }
 function logout(){ls('isa_email',null);location.reload();}
 
-function getUserPoints(email){ return ls('isa_pts_'+email) || 0; }
-function getUserModuleProgress(email, modId){ return ls('isa_prog_'+email+'_'+modId) || 0; }
-function saveUserModuleProgress(email, modId, pct){ localStorage.setItem('isa_prog_'+email+'_'+modId, pct); }
+function getUserPoints(email){
+  return ls('isa_pts_'+email) || 0;
+}
+
+function getUserModuleProgress(email, modId){
+  const key = 'isa_prog_'+email+'_'+modId;
+  return ls(key) || 0;
+}
+
+function saveUserModuleProgress(email, modId, pct){
+  localStorage.setItem('isa_prog_'+email+'_'+modId, pct);
+}
+
+function isQuizFailedToday(email, quizTitle){
+  const key = 'isa_qfail_'+email+'_'+quizTitle;
+  const failTimestamp = localStorage.getItem(key);
+  if(!failTimestamp) return false;
+  
+  const elapsedHours = (Date.now() - parseInt(failTimestamp, 10)) / (1000 * 60 * 60);
+  return elapsedHours < 24;
+}
+
+function setQuizFailedToday(email, quizTitle){
+  const key = 'isa_qfail_'+email+'_'+quizTitle;
+  localStorage.setItem(key, Date.now().toString());
+}
+
+function getHoursRemainingForQuiz(email, quizTitle){
+  const key = 'isa_qfail_'+email+'_'+quizTitle;
+  const failTimestamp = localStorage.getItem(key);
+  if(!failTimestamp) return 0;
+  
+  const elapsedHours = (Date.now() - parseInt(failTimestamp, 10)) / (1000 * 60 * 60);
+  return Math.max(0, Math.ceil(24 - elapsedHours));
+}
 
 function buildApp(){
-  buildSidebar();buildHome();buildAcademy();buildLeaderboard();buildProfile();
+  buildSidebar();buildHome();buildAcademy();buildLibrary();buildLeaderboard();buildProfile();
   if(CU.role==='admin')buildAdmin();
   if(CU.role==='leader')buildLeader();
   document.getElementById('ptsDisplay').style.display='flex';
@@ -547,7 +830,7 @@ function buildApp(){
 
 function buildSidebar(){
   const nav=document.getElementById('sbNav');
-  let items=[{id:'home',ic:'🏠',label:'Home'},{id:'academy',ic:'📚',label:'Academia',badge:'NEW'},{id:'leaderboard',ic:'🏆',label:'Ranking'},{id:'profile',ic:'👤',label:'Mi Perfil'}];
+  let items=[{id:'home',ic:'🏠',label:'Home'},{id:'academy',ic:'📚',label:'Academia',badge:'NEW'},{id:'library',ic:'📂',label:'Biblioteca'},{id:'leaderboard',ic:'🏆',label:'Ranking'},{id:'profile',ic:'👤',label:'Mi Perfil'}];
   if(CU.role==='admin')items.push({id:'admin',ic:'⚙️',label:'Admin Panel'});
   if(CU.role==='leader')items.push({id:'leader',ic:'📊',label:'Mi Equipo'});
   nav.innerHTML=items.map(i=>`<div class="ni${i.id==='home'?' act':''}" onclick="showSc('${i.id}',this)"><span class="ic">${i.ic}</span><span>${i.label}</span>${i.badge?`<span class="nb">${i.badge}</span>`:''}</div>`).join('')+`<div class="ni" onclick="logout()" style="margin-top:auto;color:#EF4444;opacity:.7;"><span class="ic">🚪</span><span>Salir</span></div>`;
@@ -557,256 +840,673 @@ function showSc(name,el){
   document.querySelectorAll('.scr').forEach(s=>s.classList.remove('act'));
   document.getElementById('scr-'+name).classList.add('act');
   if(el){document.querySelectorAll('.ni').forEach(n=>n.classList.remove('act'));el.classList.add('act');}
-  const titles={home:'Dashboard',academy:'📚 Academia',leaderboard:'🏆 Ranking',profile:'👤 Mi Perfil',admin:'⚙️ Admin Panel',leader:'📊 Mi Equipo'};
+  const titles={home:'Dashboard',academy:'📚 Academia',library:'📂 Biblioteca',leaderboard:'🏆 Ranking',profile:'👤 Mi Perfil',admin:'⚙️ Admin Panel',leader:'📊 Mi Equipo'};
   document.getElementById('hdrTitle').textContent=titles[name]||name;
 }
 function toggleSb(){const s=document.getElementById('sidebar');s.classList.toggle('col');document.getElementById('colBtn').textContent=s.classList.contains('col')?'▶':'◀';}
 
 function buildHome(){
   const n=CU.name,flag=COUNTRIES[CU.country]||'🌎';
+  
   const availableMods = CU.role==='leader'?[...MODULES,...LEADER_MODULES]:MODULES;
   let doneCount = 0;
-  let pendingMod = availableMods.find(m => getUserModuleProgress(CU.email, m.id) < 100) || availableMods[0];
+  availableMods.forEach(m=>{
+    if(getUserModuleProgress(CU.email, m.id)===100) doneCount++;
+  });
 
-  availableMods.forEach(m=>{ if(getUserModuleProgress(CU.email, m.id)===100) doneCount++; });
+  const sortedUsers = [...COMERCIALES_SAMPLE].sort((a,b)=>getUserPoints(b.email)-getUserPoints(a.email));
+  const userRankIdx = sortedUsers.findIndex(u=>u.email===CU.email);
+  const userRankLabel = (CU.points>0 && userRankIdx>=0) ? `#${userRankIdx+1}` : 'Sin ranking';
 
-  document.getElementById('scr-home').innerHTML=`
-    <div class="wb">
-      <div class="wb-gt">Bienvenid@ de vuelta ${flag}</div>
-      <div class="wb-nm">¡Hola, <span>${n}</span>! 👋</div>
-      <div class="wb-msg" style="color:#fff;font-weight:600;">🔥 Módulo destacado: <strong style="color:#FF7A59;">Best Practices - Gestión Handoff</strong>.</div>
-      <button class="wb-cta" onclick="showSc('academy',document.querySelectorAll('.ni')[1])">Ir a la Academia →</button>
-      <div class="wb-max">🤖</div>
-    </div>
-    
-    <div class="g3" style="margin-bottom:14px;">
-      <div class="stat-c"><div class="si">📚</div><div class="sv o">${doneCount}/${availableMods.length}</div><div class="sl">Módulos completados</div></div>
-      <div class="stat-c"><div class="si">⚡</div><div class="sv o">${CU.points.toLocaleString()}</div><div class="sl">RappiPoints</div></div>
-      <div class="stat-c"><div class="si">🏆</div><div class="sv" style="color:#F59E0B">Top IS</div><div class="sl">Ranking equipo</div></div>
-    </div>
-    
-    <div class="streak-b">
-      <div style="font-size:22px;">🔥</div>
-      <div style="flex:1;">
-        <div style="font-size:12px;font-weight:600;margin-bottom:5px;">Racha — 1 día activo</div>
-        <div class="streak-days"><div class="dd today">L</div><div class="dd">M</div><div class="dd">M</div><div class="dd">J</div><div class="dd">V</div><div class="dd">S</div><div class="dd">D</div></div>
-      </div>
-    </div>
-    
-    <div class="sec-tit">📊 Avance Semanal & Pendientes</div>
-    <div class="g2">
-      <div class="qc" onclick="openDet('${pendingMod.id}')">
-        <div style="font-size:22px;">${pendingMod.emoji}</div>
-        <div>
-          <div style="font-size:12px;font-weight:600;">Módulo Pendiente</div>
-          <div style="font-size:10px;color:var(--txm);">${pendingMod.titulo}</div>
-        </div>
-      </div>
-      <div class="qc" onclick="openQuiz('${pendingMod.titulo}')">
-        <div style="font-size:22px;">🎯</div>
-        <div>
-          <div style="font-size:12px;font-weight:600;">Quiz de ${pendingMod.titulo.split('-')[0]}</div>
-          <div style="font-size:10px;color:var(--txm);">${pendingMod.pts||300} RappiPoints</div>
-        </div>
-      </div>
-    </div>
-    
-    <div style="margin-top:12px;">
-      <div class="qc" onclick="dlReport()" style="border-color:var(--rappi);">
-        <div style="font-size:22px;">📊</div>
-        <div>
-          <div style="font-size:12px;font-weight:600;">Descargar Rappi-Report</div>
-          <div style="font-size:10px;color:var(--txm);">Genera un reporte actualizado con tu desempeño</div>
-        </div>
-      </div>
-    </div>
-  `;
+  document.getElementById('scr-home').innerHTML=`<div class="wb"><div class="wb-gt">Bienvenid@ de vuelta ${flag}</div><div class="wb-nm">¡Hola, <span>${n}</span>! 👋</div><div class="wb-msg" style="color:#fff;font-weight:600;">🔥 Nuevo módulo activo: <strong style="color:#FF7A59;">HubSpot CRM</strong>. <strong style="color:#FF441F;">¡Ponte al día y gana el podio!</strong></div><button class="wb-cta" onclick="showSc('academy',document.querySelectorAll('.ni')[1])">Ir a la Academia →</button><div class="wb-max">🤖</div></div><div class="g3" style="margin-bottom:14px;"><div class="stat-c"><div class="si">📚</div><div class="sv o">${doneCount}/${availableMods.length}</div><div class="sl">Módulos completados</div></div><div class="stat-c"><div class="si">⚡</div><div class="sv o">${CU.points.toLocaleString()}</div><div class="sl">RappiPoints</div></div><div class="stat-c"><div class="si">🏆</div><div class="sv" style="color:#F59E0B">${userRankLabel}</div><div class="sl">Ranking equipo</div></div></div><div class="streak-b"><div style="font-size:22px;">🔥</div><div style="flex:1;"><div style="font-size:12px;font-weight:600;margin-bottom:5px;">Racha — ${CU.points>0?'1 día activo':'Sin racha inicial'}</div><div class="streak-days"><div class="dd ${CU.points>0?'today':''}">L</div><div class="dd">M</div><div class="dd">M</div><div class="dd">J</div><div class="dd">V</div><div class="dd">S</div><div class="dd">D</div></div></div></div><div class="sec-tit">🎯 Acceso rápido</div><div class="g2"><div class="qc" onclick="openDet(9)"><div style="font-size:22px;">🟧</div><div><div style="font-size:12px;font-weight:600;">Nuevo Módulo</div><div style="font-size:10px;color:var(--txm);">HubSpot CRM — Comerciales</div></div></div><div class="qc" onclick="openQuiz('HubSpot CRM — Comerciales')"><div style="font-size:22px;">📝</div><div><div style="font-size:12px;font-weight:600;">Quiz HubSpot</div><div style="font-size:10px;color:var(--txm);">300 RappiPoints en juego</div></div></div><div class="qc" onclick="showSc('leaderboard',document.querySelectorAll('.ni')[3])"><div style="font-size:22px;">🏆</div><div><div style="font-size:12px;font-weight:600;">Ver ranking</div><div style="font-size:10px;color:var(--txm);">Compite con tu equipo</div></div></div><div class="qc" onclick="dlReport()"><div style="font-size:22px;">📊</div><div><div style="font-size:12px;font-weight:600;">Rappi-Report</div><div style="font-size:10px;color:var(--txm);">Descarga tu feedback</div></div></div></div>`;
 }
 
 function buildAcademy(){renderAcademy('all');}
 function renderAcademy(filter){
   const mods=CU.role==='leader'?[...MODULES,...LEADER_MODULES]:MODULES;
   const filtered=filter==='all'?mods:mods.filter(m=>m.tag===filter);
+  const thumbCls={pc:'pc',ci:'ci',ob:'ob',vt:'vt',pv:'pv',ms:'ms',hs:'hs'};
+  const tagColor={completado:'background:#ECFDF5;color:#065F46',prioritario:'background:#FEF3C7;color:#92400E',nuevo:'background:#EFF6FF;color:#1D4ED8',bloqueado:'background:#F1F5F9;color:#475569'};
+  const tagLabel={completado:'✅ Completado',prioritario:'⚡ Prioritario',nuevo:'🆕 Nuevo',bloqueado:'🔒 Bloqueado'};
   
-  document.getElementById('scr-academy').innerHTML=`
-    <div class="fb">
-      <button class="fb-btn${filter==='all'?' act':''}" onclick="renderAcademy('all')">Todos</button>
-      <button class="fb-btn${filter==='nuevo'?' act':''}" onclick="renderAcademy('nuevo')">🆕 Nuevos</button>
-    </div>
-    <div class="mg">
-      ${filtered.map(m=>{
-        const realProg = getUserModuleProgress(CU.email, m.id);
-        const isDone = realProg === 100;
-        return `<div class="mc${isDone?' done':''}" onclick="openDet(${typeof m.id==='number'?m.id:`'${m.id}'`})">
-          <div class="mt hs">
-            <span style="position:relative;z-index:2">${m.emoji}</span>
-            ${isDone?'<span class="m-tg" style="background:#ECFDF5;color:#065F46">✅ Completado</span>':''}
-          </div>
-          <div class="mb">
-            <div class="m-tit">${m.titulo}</div>
-            <div class="m-met">📖 ${m.lecciones.length} lecciones</div>
-            <div class="m-prog"><div class="m-pfil" style="width:${realProg}%"></div></div>
-            <div class="m-ft"><span class="m-pts">⚡ ${m.pts||150} pts</span><span class="m-dur">${realProg}%</span></div>
-          </div>
-        </div>`;
-      }).join('')}
-    </div>`;
+  document.getElementById('scr-academy').innerHTML=`<div class="fb"><button class="fb-btn${filter==='all'?' act':''}" onclick="renderAcademy('all')">Todos</button><button class="fb-btn${filter==='nuevo'?' act':''}" onclick="renderAcademy('nuevo')">🆕 Nuevos</button><button class="fb-btn${filter==='prioritario'?' act':''}" onclick="renderAcademy('prioritario')">⚡ Prioritarios</button><button class="fb-btn${filter==='completado'?' act':''}" onclick="renderAcademy('completado')">✅ Completados</button></div><div class="mg">${filtered.map(m=>{
+    const realProg = getUserModuleProgress(CU.email, m.id);
+    const isDone = realProg === 100;
+    return `<div class="mc${m.locked?' lk':''}${isDone?' done':''}" onclick="${m.locked?`alert('🔒 Completa el módulo anterior para desbloquear.')`:`openDet(${typeof m.id==='number'?m.id:`'${m.id}'`})`}"><div class="mt ${thumbCls[m.cat]||'hs'}"><span style="position:relative;z-index:2">${m.emoji}</span>${m.locked?'<div class="m-lk">🔒</div>':''}${isDone?'<span class="m-tg" style="background:#ECFDF5;color:#065F46">✅ Completado</span>':(m.tag?`<span class="m-tg" style="${tagColor[m.tag]||''}">${tagLabel[m.tag]||m.tag}</span>`:'<span class="m-tg" style="background:#F3E8FF;color:#6D28D9">👑 Líderes</span>')}</div><div class="mb"><div class="m-tit">${m.titulo}</div><div class="m-met">📖 ${m.lecciones.length} lecciones • ${m.sub||''}</div><div class="m-prog"><div class="m-pfil" style="width:${realProg}%"></div></div><div class="m-ft"><span class="m-pts">⚡ ${m.pts||150} pts</span><span class="m-dur">${realProg}%</span></div></div></div>`;
+  }).join('')}</div>`;
 }
 
 function openDet(id){
-  const m=[...MODULES,...LEADER_MODULES].find(x=>x.id==id);
+  const m=[...MODULES,...LEADER_MODULES].find(x=>x.id===id);
   if(!m)return;curMod=m;
   document.getElementById('detTitle').textContent=m.emoji+' '+m.titulo;
-  document.getElementById('detMeta').textContent=`${m.lecciones.length} lecciones • ${m.desc}`;
+  document.getElementById('detMeta').textContent=`${m.lecciones.length} lecciones • ${(m.desc||'').substring(0,80)}...`;
   
-  const pct = getUserModuleProgress(CU.email, m.id);
+  const savedLsnState = ls('isa_lsns_'+CU.email+'_'+m.id) || [];
+  m.lecciones.forEach((l, idx)=>{
+    if(savedLsnState.includes(idx)) l.done = true;
+  });
+
+  const doneCount = m.lecciones.filter(l=>l.done).length;
+  const pct = Math.round((doneCount/m.lecciones.length)*100);
+  m.progress = pct;
+  saveUserModuleProgress(CU.email, m.id, pct);
+
   document.getElementById('detPct').textContent=pct+'%';
   document.getElementById('detFill').style.width=pct+'%';
 
-  document.getElementById('lsnList').innerHTML=m.lecciones.map((l,i)=>`
-    <div class="lsn${l.done?' done':''}" onclick="openLsnViewer('${m.id}',${i})">
-      <div class="l-ic">${l.done?'✅':'▶️'}</div>
-      <div class="l-tit">${l.t}</div>
-      <span class="l-dur">${l.d}</span>
-    </div>
-  `).join('');
+  document.getElementById('lsnList').innerHTML=m.lecciones.map((l,i)=>{
+    const isUnlocked = (i===0 || m.lecciones[i-1].done);
+    if(isUnlocked){
+      return `<div class="lsn${l.done?' done':''}" onclick="openLsnViewer(${typeof m.id==='number'?m.id:`'${m.id}'`},${i})">
+        <div class="l-ic">${l.done?'✅':'▶️'}</div>
+        <div class="l-tit">${l.t} ${l.done?'':'<span style="color:var(--rappi);font-size:10px;">(Hacer clic para ver diapositivas)</span>'}</div>
+        <span class="l-dur">${l.d}</span>
+      </div>`;
+    }else{
+      return `<div class="lsn locked" onclick="alert('🔒 Lección bloqueada. Debes revisar todas las diapositivas de la lección anterior para desbloquear esta.')">
+        <div class="l-ic">🔒</div>
+        <div class="l-tit" style="color:var(--txm);">${l.t}</div>
+        <span class="l-dur">${l.d}</span>
+      </div>`;
+    }
+  }).join('');
+
+  const allDone = m.lecciones.every(l=>l.done);
+  const quizStartBtn = document.getElementById('qzStartBtn');
+  const isFailed = isQuizFailedToday(CU.email, m.titulo);
+
+  if(!allDone){
+    quizStartBtn.disabled = true;
+    document.getElementById('qzReq').textContent = 'Completa todas las lecciones para desbloquear el quiz';
+    document.getElementById('qzReq').style.display = 'block';
+  } else if(isFailed){
+    quizStartBtn.disabled = true;
+    const hoursLeft = getHoursRemainingForQuiz(CU.email, m.titulo);
+    document.getElementById('qzReq').textContent = `🔒 Quiz Bloqueado por 24 horas (Intento fallido reciente). Podrás intentar en ~${hoursLeft} hr(s). ¡Repasa las lecciones!`;
+    document.getElementById('qzReq').style.display = 'block';
+  } else {
+    quizStartBtn.disabled = false;
+    document.getElementById('qzReq').style.display = 'none';
+  }
 
   document.getElementById('modDet').classList.add('open');
 }
 
-function closeDet(){ document.getElementById('modDet').classList.remove('open'); renderAcademy('all'); }
+function closeDet(){
+  document.getElementById('modDet').classList.remove('open');
+  renderAcademy('all');
+}
 
 function openLsnViewer(modId, lsnIdx){
-  const m=[...MODULES,...LEADER_MODULES].find(x=>x.id==modId);
+  const m=[...MODULES,...LEADER_MODULES].find(x=>x.id===modId);
   if(!m)return;
   curLsnMod=m; curLsnIdx=lsnIdx; curSlideIdx=0;
+  
   document.getElementById('lsnViewTitle').textContent=m.lecciones[lsnIdx].t;
   document.getElementById('lsnViewSub').textContent=m.emoji+' '+m.titulo;
+  
+  if(m.playbookUrl){
+    document.getElementById('btnPlaybookExt').style.display='inline-block';
+  }else{
+    document.getElementById('btnPlaybookExt').style.display='none';
+  }
+  
   document.getElementById('lsnOv').classList.add('open');
   renderSlide();
 }
 
-function closeLsnViewer(){ document.getElementById('lsnOv').classList.remove('open'); }
+function openPlaybookExt(){
+  if(curLsnMod && curLsnMod.playbookUrl){
+    window.open(curLsnMod.playbookUrl, '_blank');
+  }
+}
+
+function closeLsnViewer(){
+  document.getElementById('lsnOv').classList.remove('open');
+}
 
 function renderSlide(){
   const lsn = curLsnMod.lecciones[curLsnIdx];
-  const slides = lsn.slides || [{t:'Inicio', c:'Contenido por defecto'}];
+  const slides = lsn.slides || [
+    {t:'Diapositiva 1: Introducción', tag:'Entrenamiento Oficial', c:`<p>Aprende los conceptos clave de <b>${lsn.t}</b>.</p><div class="slide-box">Revisa toda la información detallada para completar este módulo.</div>`},
+    {t:'Diapositiva 2: Procedimiento Comercial', tag:'Entrenamiento Oficial', c:`<p>Sigue los pasos y buenas prácticas registradas en la guía.</p>`},
+    {t:'Diapositiva 3: Cierre de Tema', tag:'Entrenamiento Oficial', c:`<p>Al llegar al final de las diapositivas se marcará automáticamente tu lección como completada.</p>`}
+  ];
+
   const total = slides.length;
   const s = slides[curSlideIdx];
   
   document.getElementById('slideNumLabel').textContent=`Slide ${curSlideIdx+1} de ${total}`;
-  document.getElementById('slideTitle').textContent=s.t;
-  document.getElementById('slideContent').innerHTML=s.c;
+  document.getElementById('slideTagLabel').textContent=s.tag || curLsnMod.titulo;
+  document.getElementById('slideTitle').textContent=s.t || lsn.t;
+  document.getElementById('slideContent').innerHTML=s.c || s.d || '';
   
   const pct = Math.round(((curSlideIdx+1)/total)*100);
   document.getElementById('slideProgressFill').style.width=pct+'%';
-  
+  document.getElementById('slidePctLabel').textContent=pct+'%';
+
   document.getElementById('btnPrevSlide').disabled = (curSlideIdx===0);
+  
   const btnNext = document.getElementById('btnNextSlide');
-  btnNext.textContent = (curSlideIdx < total-1)?'Siguiente ▶':'✅ Finalizar Lección';
+  if(curSlideIdx < total-1){
+    btnNext.textContent = 'Siguiente ▶';
+    btnNext.className = curLsnMod.cat==='hs' ? 'lsn-btn hs' : 'lsn-btn pri';
+  }else{
+    btnNext.textContent = '✅ Finalizar Lección (+15 pts)';
+    btnNext.className = 'lsn-btn pri';
+  }
 }
 
-function prevSlide(){ if(curSlideIdx > 0){ curSlideIdx--; renderSlide(); } }
+function prevSlide(){
+  if(curSlideIdx > 0){
+    curSlideIdx--;
+    renderSlide();
+  }
+}
+
 function nextSlide(){
   const lsn = curLsnMod.lecciones[curLsnIdx];
-  const total = (lsn.slides||[]).length;
-  if(curSlideIdx < total - 1){ curSlideIdx++; renderSlide(); }
-  else { finishLsn(); }
+  const slides = lsn.slides || [1,2,3];
+  const total = slides.length;
+
+  if(curSlideIdx < total - 1){
+    curSlideIdx++;
+    renderSlide();
+  } else {
+    finishLsn();
+  }
 }
 
 function finishLsn(){
-  curLsnMod.lecciones[curLsnIdx].done = true;
-  addPts(15);
+  const lsn = curLsnMod.lecciones[curLsnIdx];
+  const wasAlreadyDone = lsn.done;
+  
+  lsn.done = true;
+  
+  const savedLsnState = ls('isa_lsns_'+CU.email+'_'+curLsnMod.id) || [];
+  if(!savedLsnState.includes(curLsnIdx)){
+    savedLsnState.push(curLsnIdx);
+    localStorage.setItem('isa_lsns_'+CU.email+'_'+curLsnMod.id, JSON.stringify(savedLsnState));
+  }
+
+  if(!wasAlreadyDone){
+    addPts(15);
+    showMaxTip('🎉 ¡Lección completada! Has visto todas las diapositivas. +15 RappiPoints 🔥');
+    launchConfetti();
+  }
+  
   closeLsnViewer();
   openDet(curLsnMod.id);
 }
 
-function startQuizFromDet(){ if(curMod) openQuiz(curMod.titulo); }
+function startQuizFromDet(){if(curMod)openQuiz(curMod.titulo);}
+
+function buildLibrary(){renderLib('all','');}
+
+function renderLib(cat, search){
+  curLibCategory = cat;
+  const navCategories = ['all','Preparación','Cliente','Apertura','Cierre','Pre-Venta','Venta','Proceso','Posventa','Plantillas','Comisiones'];
+  
+  let contentHtml = '';
+
+  if(cat === 'Plantillas'){
+    contentHtml = renderPlantillasView(search);
+  } else if(cat === 'Comisiones'){
+    contentHtml = renderComisionesView();
+  } else {
+    contentHtml = renderLibraryItemsView(cat, search);
+  }
+
+  document.getElementById('scr-library').innerHTML = `
+    <input class="ls" placeholder="🔍 Buscar en la biblioteca o plantillas..." oninput="renderLib('${cat}',this.value)" value="${search}">
+    <div class="fb" style="margin-bottom:14px;">
+      ${navCategories.map(c => `
+        <button class="fb-btn${cat===c?' act':''}" onclick="renderLib('${c}','${search}')">
+          ${c==='all'?'Todos':c==='Plantillas'?'📲 Plantillas':c==='Comisiones'?'💰 Comisiones':c}
+        </button>
+      `).join('')}
+    </div>
+    ${contentHtml}
+  `;
+}
+
+function renderLibraryItemsView(cat, search){
+  const filtered = LIBRARY_DATA.filter(i => (cat==='all'||i.cat===cat) && (i.t.toLowerCase().includes(search.toLowerCase()) || i.desc.toLowerCase().includes(search.toLowerCase())));
+  
+  return `<div class="ll">
+    ${filtered.map((item, idx) => `
+      <div class="li" onclick="openLibResource(${LIBRARY_DATA.indexOf(item)})">
+        <div class="li-ic">${item.ico}</div>
+        <div style="flex:1;">
+          <div class="li-tit">${item.t}</div>
+          <div class="li-met">
+            <span><b>${item.type}</b> • ${item.resource}</span>
+          </div>
+        </div>
+        <span class="li-cat">${item.cat}</span>
+      </div>
+    `).join('')}
+  </div>`;
+}
+
+function openLibResource(idx){
+  const item = LIBRARY_DATA[idx];
+  if(!item) return;
+
+  if(item.url){
+    window.open(item.url, '_blank');
+  } else {
+    const slidesLib = item.slides || [
+      {t: `1. ${item.t} — Playbook Completo`, tag: `Biblioteca · ${item.cat}`, c: `<p>${item.desc}</p><div class="slide-box">📋 <b>Recurso Oficial:</b> ${item.resource}<br>Categoría: <b>${item.cat}</b></div>`},
+      {t: `2. Guía de Aplicación Comercial`, tag: `Biblioteca · ${item.cat}`, c: `<p>Este material contiene las pautas oficiales estandarizadas por Inside Sales Rappi para aplicarlas durante la gestión con aliados.</p><ul><li>1. Revisa los puntos clave antes de iniciar llamadas o reuniones.</li><li>2. Aplica las políticas comerciales y normativas correspondientes a la categoría <b>${item.cat}</b>.</li></ul>`},
+      {t: `3. Cierre y Buenas Prácticas`, tag: `Biblioteca · ${item.cat}`, c: `<p>Asegúrate de registrar las dudas o casos especiales con tu Supervisor para mantener alineado el proceso de venta.</p><p>¡Excelente trabajo al repasar este material oficial!</p>`}
+    ];
+
+    curLsnMod = {
+      id: 'LIB_' + idx,
+      titulo: item.t,
+      emoji: item.ico,
+      cat: 'pc',
+      lecciones: [{t: item.t, d: '5 min', done: false, slides: slidesLib}]
+    };
+    curLsnIdx = 0;
+    curSlideIdx = 0;
+
+    document.getElementById('lsnViewTitle').textContent = item.t;
+    document.getElementById('lsnViewSub').textContent = item.ico + ' Biblioteca · ' + item.cat;
+    document.getElementById('btnPlaybookExt').style.display = 'none';
+    document.getElementById('lsnOv').classList.add('open');
+    renderSlide();
+  }
+}
+
+function renderPlantillasView(search){
+  const filtered = PLANTILLAS_DATA.filter(p => 
+    (curLibCountry==='all' || p.pais===curLibCountry) && 
+    (p.copy.toLowerCase().includes(search.toLowerCase()) || p.nombre.toLowerCase().includes(search.toLowerCase()) || p.cat.toLowerCase().includes(search.toLowerCase()))
+  );
+
+  const countries = ['all','AR','CO','MX','CL','PE','EC','LATAM'];
+
+  return `
+    <div style="margin-bottom:12px;display:flex;gap:6px;overflow-x:auto;">
+      ${countries.map(c => `
+        <button class="fb-btn${curLibCountry===c?' act':''}" onclick="curLibCountry='${c}';renderLib('Plantillas','${search}')">
+          ${c==='all'?'🌎 Todos los países':(COUNTRIES[c]||'🌎')+' '+c}
+        </button>
+      `).join('')}
+    </div>
+    
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      ${filtered.map((p, i) => `
+        <div class="tpl-card">
+          <div class="tpl-hdr">
+            <span class="tpl-badge">${COUNTRIES[p.pais]||'🌎'} ${p.pais} · ${p.cat}</span>
+            <span class="tpl-name">${p.nombre}</span>
+          </div>
+          <div class="tpl-body" id="tpl_text_${i}">${p.copy}</div>
+          <button class="tpl-copy-btn" id="tpl_btn_${i}" onclick="copyTemplateText('${p.nombre}', ${i})">📋 Copiar Plantilla de WhatsApp</button>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+function copyTemplateText(name, idx){
+  const el = document.getElementById('tpl_text_' + idx);
+  const btn = document.getElementById('tpl_btn_' + idx);
+  if(el){
+    navigator.clipboard.writeText(el.innerText).then(() => {
+      showMaxTip(`📲 ¡Plantilla "${name}" copiada al portapapeles! Lista para enviar.`);
+      launchConfetti();
+      if(btn){
+        btn.innerText = '✔️ ¡Copiado!';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.innerText = '📋 Copiar Plantilla de WhatsApp';
+          btn.classList.remove('copied');
+        }, 2500);
+      }
+    });
+  }
+}
+
+function renderComisionesView(){
+  return `
+    <div style="margin-bottom:14px;font-size:13px;font-weight:700;color:var(--sb);">
+      💰 Esquemas Oficiales de Comisiones y Políticas por País
+    </div>
+    ${COMISIONES_DATA.map(c => `
+      <div class="com-card">
+        <div class="com-title">
+          <span style="font-size:22px;">${COUNTRIES[c.pais]||'🌎'}</span>
+          <span>Rappi ${c.pais} — Modelo de Comisiones</span>
+        </div>
+        <table class="com-table">
+          <thead>
+            <tr>
+              <th>Full Service Exclusivo</th>
+              <th>No Exclusivo</th>
+              <th>Comisión Mes 1</th>
+              <th>Marketplace</th>
+              <th>Markdown</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>${c.full_service}</b></td>
+              <td>${c.no_exclusivo}</td>
+              <td><span style="color:var(--ok);font-weight:700;">${c.comision_0}</span></td>
+              <td>${c.marketplace}</td>
+              <td>${c.markdown}</td>
+            </tr>
+          </tbody>
+        </table>
+        ${c.comentarios ? `<div style="font-size:10px;color:var(--txm);background:var(--bg);padding:8px;border-radius:6px;">📌 <b>Notas fiscales/bancarias:</b> ${c.comentarios.replace(/\n/g, ' · ')}</div>` : ''}
+      </div>
+    `).join('')}
+  `;
+}
+
+function setRankingTab(tab){
+  currentRankingTab = tab;
+  buildLeaderboard();
+}
+
+function buildLeaderboard(){
+  const huntersList = COMERCIALES_SAMPLE.filter(u => u.type === 'IS Hunter').map(u=>({
+    ...u,
+    pts: getUserPoints(u.email)
+  })).sort((a,b)=>b.pts - a.pts);
+
+  const leadersList = COMERCIALES_SAMPLE.filter(u => u.type === 'Leader/Coordinator' || LEADERS.has(u.email)).map(u=>({
+    ...u,
+    pts: getUserPoints(u.email)
+  })).sort((a,b)=>b.pts - a.pts);
+
+  const activeList = currentRankingTab === 'hunters' ? huntersList : leadersList;
+
+  const top3 = activeList.slice(0,3);
+  const rest = activeList.slice(3,10);
+
+  document.getElementById('scr-leaderboard').innerHTML=`
+    <div style="text-align:center;margin-bottom:14px;">
+      <div style="font-size:12px;font-weight:600;color:var(--txm);">Semana actual (Puntuación por diapositivas + Quizzes 100%)</div>
+      <div style="font-size:18px;font-weight:800;margin-top:3px;margin-bottom:12px;">🏆 Tablas de Clasificación Oficiales</div>
+      
+      <div class="adm-tabs" style="justify-content:center;border-bottom:none;margin-bottom:16px;">
+        <button class="adm-tab${currentRankingTab==='hunters'?' act':''}" onclick="setRankingTab('hunters')">🎯 Ranking Comerciales (${huntersList.length})</button>
+        <button class="adm-tab${currentRankingTab==='leaders'?' act':''}" onclick="setRankingTab('leaders')">👑 Ranking Supervisores (${leadersList.length})</button>
+      </div>
+    </div>
+    
+    <div class="pod">
+      <div class="pi p2">
+        <div class="pav" style="width:40px;height:40px">${top3[1]?top3[1].name.substring(0,2).toUpperCase():'--'}</div>
+        <div class="pn">${top3[1]?top3[1].name.split(' ')[0]:'Sin datos'}</div>
+        <div class="pp">${top3[1]?top3[1].pts.toLocaleString():0} pts</div>
+        <div class="pb"></div>
+      </div>
+      <div class="pi p1">
+        <div class="pav">${top3[0]?top3[0].name.substring(0,2).toUpperCase():'--'}</div>
+        <div class="pn">🥇 ${top3[0]?top3[0].name.split(' ')[0]:'Sin datos'}</div>
+        <div class="pp">${top3[0]?top3[0].pts.toLocaleString():0} pts</div>
+        <div class="pb"></div>
+      </div>
+      <div class="pi p3">
+        <div class="pav" style="width:40px;height:40px">${top3[2]?top3[2].name.substring(0,2).toUpperCase():'--'}</div>
+        <div class="pn">${top3[2]?top3[2].name.split(' ')[0]:'Sin datos'}</div>
+        <div class="pp">${top3[2]?top3[2].pts.toLocaleString():0} pts</div>
+        <div class="pb"></div>
+      </div>
+    </div>
+    
+    <div class="rl">
+      ${rest.map((u,i)=>`
+        <div class="ri">
+          <div class="r-num">${i+4}</div>
+          <div class="r-av">${u.name.substring(0,2).toUpperCase()}</div>
+          <div style="flex:1;">
+            <div class="r-nm">${u.name}</div>
+            <div class="r-info">${COUNTRIES[u.country]||''} ${u.country} • ${u.pts.toLocaleString()} pts</div>
+          </div>
+        </div>
+      `).join('')}
+      <div class="ri me">
+        <div class="r-num">⭐</div>
+        <div class="r-av">${CU.initials}</div>
+        <div style="flex:1;">
+          <div class="r-nm">${CU.name} (Tú)</div>
+          <div class="r-info">${COUNTRIES[CU.country]||''} • ${CU.points.toLocaleString()} pts</div>
+        </div>
+        <div style="font-size:12px;color:var(--rappi);font-weight:700;">⭐</div>
+      </div>
+    </div>
+  `;
+}
+
+function buildProfile(){
+  const lvl=CU.points>=2000?'Legend':CU.points>=1000?'Silver':'Rookie',xpPct=Math.min(Math.round((CU.points/2000)*100),100);
+  const roleLabel={admin:'Admin • Rappi IS',leader:'Leader/Coordinator • IS',comercial:'IS Hunter • Equipo Comercial'}[CU.role];
+
+  const hasFirstBlood = CU.points > 0;
+  const hasOnFire = CU.points >= 50;
+  const hasRappido = getUserModuleProgress(CU.email, 1) === 100;
+  const hasHubspot = getUserModuleProgress(CU.email, 9) === 100;
+  const hasPerfect = CU.points >= 300;
+  const hasFullStack = CU.points >= 1500;
+
+  document.getElementById('scr-profile').innerHTML=`
+    <div class="ph">
+      <div class="pav2">${CU.initials}</div>
+      <div class="p-nm">${CU.name}</div>
+      <div class="p-role">${roleLabel}</div>
+      <div style="margin-top:8px;display:inline-flex;align-items:center;gap:5px;background:rgba(255,68,31,.15);border:1px solid rgba(255,68,31,.3);border-radius:18px;padding:3px 10px;">
+        <span style="color:var(--rappi);font-size:11px;font-weight:600;">${lvl==='Legend'?'🏆':lvl==='Silver'?'🥈':'🎖️'} ${lvl}</span>
+      </div>
+      <div class="xb">
+        <div class="xl"><span>XP: ${CU.points.toLocaleString()}</span><span>Meta Legend: 2,000</span></div>
+        <div class="xbar"><div class="xfil" style="width:${xpPct}%"></div></div>
+      </div>
+    </div>
+    
+    <div class="sec-tit">🏅 Logros y Medallas</div>
+    <div class="ach">
+      <div class="ac ${hasFirstBlood?'unlocked':'locked-ach'}">
+        <div class="ac-i">🎯</div>
+        <div class="ac-n">First Blood</div>
+        <div class="ac-d">Primer quiz 100%</div>
+      </div>
+      <div class="ac ${hasOnFire?'unlocked':'locked-ach'}">
+        <div class="ac-i">🔥</div>
+        <div class="ac-n">On Fire</div>
+        <div class="ac-d">Racha de estudio</div>
+      </div>
+      <div class="ac ${hasRappido?'unlocked':'locked-ach'}">
+        <div class="ac-i">⚡</div>
+        <div class="ac-n">Rappido</div>
+        <div class="ac-d">Módulo en 1 día</div>
+      </div>
+      <div class="ac ${hasHubspot?'unlocked':'locked-ach'}">
+        <div class="ac-i">🟧</div>
+        <div class="ac-n">HubSpot Pro</div>
+        <div class="ac-d">Dominio de CRM</div>
+      </div>
+      <div class="ac ${hasPerfect?'unlocked':'locked-ach'}">
+        <div class="ac-i">💯</div>
+        <div class="ac-n">Perfect Run</div>
+        <div class="ac-d">3 quizzes 100%</div>
+      </div>
+      <div class="ac ${hasFullStack?'unlocked':'locked-ach'}">
+        <div class="ac-i">🚀</div>
+        <div class="ac-n">Full Stack</div>
+        <div class="ac-d">Todos los módulos</div>
+      </div>
+    </div>
+    
+    <button class="qz-btn" onclick="dlReport()" style="background:var(--sb)">📊 Descargar Rappi-Report</button>
+    <button class="qz-btn" onclick="logout()" style="background:transparent;border:1px solid var(--bdr);color:var(--txm);margin-top:7px;">Cerrar sesión</button>
+  `;
+}
+
+function buildAdmin(){renderAdminTab('overview');}
+function renderAdminTab(tab){
+  document.getElementById('scr-admin').innerHTML=`<div class="adm-tabs"><button class="adm-tab${tab==='overview'?' act':''}" onclick="renderAdminTab('overview')">📊 Overview</button><button class="adm-tab${tab==='users'?' act':''}" onclick="renderAdminTab('users')">👥 Comerciales (158)</button><button class="adm-tab${tab==='recognition'?' act':''}" onclick="renderAdminTab('recognition')">🏅 Reconocimiento</button></div>${tab==='overview'?renderAdmOverview():tab==='users'?renderAdmUsers():renderAdmRecognition()}`;
+}
+function renderAdmOverview(){
+  return`<div class="kpi-g"><div class="kpi"><div class="kpi-ic">👥</div><div class="kpi-v">158</div><div class="kpi-l">Total equipo activo</div></div><div class="kpi"><div class="kpi-ic">✅</div><div class="kpi-v">158</div><div class="kpi-l">Registrados en Okta</div></div><div class="kpi"><div class="kpi-ic">📈</div><div class="kpi-v">0%</div><div class="kpi-l">Progreso promedio inicial</div></div><div class="kpi"><div class="kpi-ic">⚠️</div><div class="kpi-v">0</div><div class="kpi-l">Alertas de riesgo</div></div></div><div class="sec-tit">🌎 Cobertura por país</div>${COUNTRY_DATA.map(c=>`<div class="country-row"><div class="c-flag">${c.flag}</div><div class="c-info"><div class="c-name">${c.name}</div><div class="c-sub">${c.active}/${c.total} activos</div></div><div class="c-bar-wrap"><div class="c-bar"><div class="c-bar-f" style="width:0%"></div></div></div><div class="c-pct">0%</div></div>`).join('')}`;
+}
+function renderAdmUsers(){
+  const userList = COMERCIALES_SAMPLE.map((u,i)=>({
+    ...u,
+    pts: getUserPoints(u.email),
+    prog: getUserModuleProgress(u.email, 9)
+  }));
+  return`<div style="font-size:12px;color:var(--txm);margin-bottom:10px;">158 comerciales activos extraídos del Excel oficial ↓</div>${userList.slice(0,10).map((u,i)=>`<div class="user-row"><div class="r-num">#${i+1}</div><div class="u-av">${u.name.substring(0,2).toUpperCase()}</div><div class="u-nm">${u.name}<div style="font-size:10px;color:var(--txm);">${COUNTRIES[u.country]||''} ${u.country} · Líder: ${firstName(u.leader)}</div></div><div class="u-prog"><div class="u-pb"><div class="u-pf hi" style="width:${u.prog}%"></div></div><div style="font-size:9px;color:var(--txm);margin-top:2px;">${u.prog}% completado</div></div><div class="u-pts">⚡ ${u.pts.toLocaleString()}</div></div>`).join('')}<div style="text-align:center;font-size:11px;color:var(--txm);padding:10px;">+ 148 usuarios más registrados en la base de datos</div>`;
+}
+function renderAdmRecognition(){return`<div class="card"><div class="sec-tit">📣 Comunicado oficial a la fuerza de ventas</div><textarea style="width:100%;height:80px;border:1px solid var(--bdr);border-radius:8px;padding:10px;font-family:'Poppins',sans-serif;font-size:12px;resize:none;outline:none;color:var(--tx);" placeholder="Escribe un mensaje motivacional para todo el equipo IS..."></textarea><button style="margin-top:8px;background:var(--rappi);border:none;border-radius:8px;padding:8px 16px;color:#fff;font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;cursor:pointer;" onclick="alert('📢 Mensaje enviado a los 158 comerciales!')">📢 Enviar a todo el equipo</button></div>`;}
+
+function buildLeader(){
+  const myTeam = COMERCIALES_SAMPLE.filter(u => u.leader.toLowerCase() === CU.email.toLowerCase());
+  const effectiveTeam = myTeam.length > 0 ? myTeam : COMERCIALES_SAMPLE.filter(u => u.leader.toLowerCase() === 'oscar.barajas@rappi.com');
+
+  const teamList = effectiveTeam.map(u => ({
+    ...u,
+    pts: getUserPoints(u.email),
+    prog: getUserModuleProgress(u.email, 9)
+  })).sort((a,b) => b.pts - a.pts);
+
+  const avgProg = Math.round(teamList.reduce((acc,u)=>acc+u.prog, 0) / (teamList.length || 1));
+  const needHelp = teamList.filter(u => u.prog < 50 || u.pts === 0);
+
+  document.getElementById('scr-leader').innerHTML=`
+    <div style="margin-bottom:14px;font-size:13px;font-weight:700;">👋 Hola ${CU.name}, aquí está el resumen de tu equipo comercial</div>
+    <div class="ldr-kpi">
+      <div class="lkpi"><div class="lkpi-v">${teamList.length}</div><div class="lkpi-l">Comerciales a cargo</div></div>
+      <div class="lkpi"><div class="lkpi-v">${avgProg}%</div><div class="lkpi-l">Progreso promedio</div></div>
+      <div class="lkpi"><div class="lkpi-v">${needHelp.length}</div><div class="lkpi-l">Requieren seguimiento</div></div>
+    </div>
+    
+    ${needHelp.length > 0 ? `
+    <div class="need-help">
+      <div class="nh-tit">⚠️ Requieren coaching esta semana</div>
+      ${needHelp.map(u => `
+        <div class="nh-item">
+          <div class="nh-av">${u.name.substring(0,2).toUpperCase()}</div>
+          <div style="flex:1;">
+            <div class="nh-nm">${u.name} (${COUNTRIES[u.country]||''} ${u.country})</div>
+            <div class="nh-sub">Sin progreso en módulo HubSpot CRM (0%)</div>
+          </div>
+          <button class="coach-btn" onclick="exportCoachingReport('${u.name}','${u.email}')">📄 Exportar Reporte 1:1</button>
+        </div>
+      `).join('')}
+    </div>` : ''}
+
+    <div class="sec-tit">👥 Mi equipo — Progreso Real (${teamList.length} comerciales)</div>
+    ${teamList.map((u,i) => `
+      <div class="user-row">
+        <div class="r-num">#${i+1}</div>
+        <div class="u-av">${u.name.substring(0,2).toUpperCase()}</div>
+        <div class="u-nm">
+          ${u.name}
+          <div style="font-size:10px;color:var(--txm);">${COUNTRIES[u.country]||''} ${u.country} · ${u.pts.toLocaleString()} pts</div>
+        </div>
+        <div class="u-prog">
+          <div class="u-pb"><div class="u-pf ${u.prog>70?'hi':u.prog>40?'md':'lo'}" style="width:${u.prog}%"></div></div>
+          <div style="font-size:9px;color:var(--txm);margin-top:2px;">${u.prog}%</div>
+        </div>
+        <div style="font-size:14px">${u.prog>70?'⭐':u.prog>40?'📈':'🆘'}</div>
+      </div>
+    `).join('')}
+    
+    <div style="margin-top:14px;padding:12px;background:var(--rappi-p);border:1px solid rgba(255,68,31,.15);border-radius:10px;font-size:11px;color:#CC3518;">
+      💡 <b>Tip de Max:</b> Revisa las reasignaciones y aprobaciones de HO en el módulo de HubSpot para acelerar cierres.
+    </div>
+  `;
+}
+
+function exportCoachingReport(name, email){
+  const txt = `📊 REPORTE DE COACHING 1:1 — INSIDE SALES\n${'='.repeat(44)}\n\nComercial: ${name}\nCorreo: ${email}\nSupervisor: ${CU.name} (${CU.email})\nFecha: ${new Date().toLocaleDateString('es-CO')}\n\n${'—'.repeat(44)}\n🔍 ESTADO DE AVANCE:\n• Progreso Módulo HubSpot: 0%\n• RappiPoints: 0 pts\n• Estado: Requiere inicio de capacitación urgente.\n\n🎯 COMPROMISOS 1:1:\n1. Revisar las diapositivas del módulo de HubSpot CRM antes de finalizar la semana.\n2. Completar el Quiz oficial obteniendo el 100% de respuestas correctas.\n3. Aplicar el registro de llamadas por Amazon Connect y WhatsApp.\n\n${'='.repeat(44)}\nGenerado desde Inside Sales Academy — Rappi 🚀\n`;
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([txt],{type:'text/plain;charset=utf-8'}));
+  a.download = `Reporte1to1_${name.replace(/\s+/g,'_')}.txt`;
+  a.click();
+  showMaxTip(`📄 Reporte 1:1 de ${name} exportado para tu reunión.`);
+}
 
 function openQuiz(name){
   curQuizMod=name;
-  qQ=QUIZ_DATA[name]||QUIZ_DATA['Best Practices - Gestión Handoff'];
-  qIdx=0;qScore=0;qAnswered=false;userQuizAnswers={};
+  qQ=QUIZ_DATA[name]||QUIZ_DATA['HubSpot CRM — Comerciales']||QUIZ_DATA['Prospección']||[];
+  qIdx=0;qScore=0;qAnswered=false;
   document.getElementById('qTitle').textContent='🎯 Quiz: '+name;
   document.getElementById('quizOv').classList.add('open');
   renderQ();
 }
 function closeQuiz(){document.getElementById('quizOv').classList.remove('open');}
-
 function renderQ(){
   if(qIdx>=qQ.length){showResults();return;}
   const q=qQ[qIdx];qAnswered=false;
   document.getElementById('qPfil').style.width=((qIdx/qQ.length)*100)+'%';
-  document.getElementById('qBody').innerHTML=`
-    <div class="q-num">Pregunta ${qIdx+1} de ${qQ.length}</div>
-    <div class="q-q">${q.q}</div>
-    <div class="q-opts">${q.opts.map((o,i)=>`<button class="q-opt" onclick="selOpt(${i})">${String.fromCharCode(65+i)}. ${o}</button>`).join('')}</div>
-    <div class="q-fb" id="qFb"></div>
-    <button class="q-nxt" id="qNxt" onclick="nextQ()" style="display:none">Siguiente →</button>`;
+  document.getElementById('qBody').innerHTML=`<div class="q-num">Pregunta ${qIdx+1} de ${qQ.length}</div><div class="q-q">${q.q}</div><div class="q-opts">${q.opts.map((o,i)=>`<button class="q-opt" onclick="selOpt(${i})">${String.fromCharCode(65+i)}. ${o}</button>`).join('')}</div><div class="q-fb" id="qFb"></div><button class="q-nxt" id="qNxt" onclick="nextQ()" style="display:none">Siguiente →</button>`;
 }
-
 function selOpt(i){
   if(qAnswered)return;qAnswered=true;
   const q=qQ[qIdx];
-  const isCorrect = (i===q.correct);
-  userQuizAnswers[`q_${qIdx+1}`] = isCorrect ? 100/qQ.length : 0;
-  
-  document.querySelectorAll('.q-opt').forEach((o,j)=>{
-    if(j===q.correct)o.classList.add('cor');
-    else if(j===i)o.classList.add('wr');
-    o.disabled=true;
-  });
-  
+  document.querySelectorAll('.q-opt').forEach((o,j)=>{if(j===q.correct)o.classList.add('cor');else if(j===i)o.classList.add('wr');o.disabled=true;});
   const fb=document.getElementById('qFb');
-  if(isCorrect){ qScore++; fb.className='q-fb cor'; fb.textContent='✅ Correcto. '+q.exp; }
-  else{ fb.className='q-fb wr'; fb.textContent='❌ Incorrecto. '+q.exp; }
+  if(i===q.correct){
+    qScore++;
+    fb.className='q-fb cor';
+    fb.textContent='✅ Correcto. '+q.exp;
+  }else{
+    fb.className='q-fb wr';
+    fb.textContent='❌ Incorrecto. '+q.exp;
+  }
   fb.style.display='block';
   document.getElementById('qNxt').style.display='block';
 }
-
 function nextQ(){qIdx++;renderQ();}
-
-function saveQuizResultsToSheet(totalScore){
-  const repoSheetUrl = "https://docs.google.com/spreadsheets/d/11H2z6pn-Y1nq2AOjDJc6lZH1OoRZxwUB2O7PtWsXQcs/edit?gid=0#gid=0";
-  const quizRecord = {
-    email: CU.email,
-    quiz: curQuizMod,
-    scores: userQuizAnswers,
-    total: totalScore + '%',
-    date: new Date().toISOString()
-  };
-  let storedRepos = ls('isa_quiz_repo') || [];
-  storedRepos.push(quizRecord);
-  ls('isa_quiz_repo', storedRepos);
-  console.log("Resultado guardado correctamente para Sheets:", quizRecord, repoSheetUrl);
-}
 
 function showResults(){
   const pct = Math.round((qScore/qQ.length)*100);
-  saveQuizResultsToSheet(pct);
-  
-  if(pct === 100){
-    const m = [...MODULES,...LEADER_MODULES].find(x=>x.titulo===curQuizMod);
-    addPts(m?.pts||300);
-    saveUserModuleProgress(CU.email, m?.id||10, 100);
+  const pass = (pct === 100);
+  const m = [...MODULES,...LEADER_MODULES].find(x=>x.titulo===curQuizMod);
+  const formUrl = m?.formUrl || (curQuizMod.includes('Supervisores')?'https://docs.google.com/forms/d/e/1FAIpQLSeWiIw4Kzq-I2XIo8ZeEbmZdDH2lG_goB3ZFomJqi7AUr279w/viewform':'https://docs.google.com/forms/d/e/1FAIpQLSfX-qe2PqPpZdCPDtAYmSZ7ep7w2a4k_by917pUby7nf6_0Cg/viewform?usp=header');
+
+  if(pass){
+    const earnedPts = m?.pts || 200;
+    addPts(earnedPts);
+    saveUserModuleProgress(CU.email, m?.id||9, 100);
     launchConfetti();
     document.getElementById('qBody').innerHTML=`
       <div class="r-scr">
         <div class="r-em">🎉</div>
+        <div style="font-size:12px;font-weight:600;color:var(--txm);">Resultado del quiz</div>
         <div class="r-sc">100%</div>
         <div class="r-msg">🎯 ¡PERFECTO! Módulo Aprobado</div>
-        <div class="r-sub">Data registrada correctamente en el repositorio oficial de Sheets.</div>
-        <div class="r-pts"><div class="r-pv">+${m?.pts||300} ⚡</div><div class="r-pl">RappiPoints ganados</div></div>
-        <div class="r-act"><button class="r-btn pri" onclick="closeQuiz();closeDet();">🏆 Volver</button></div>
+        <div class="r-sub">"¡Brutal! Has demostrado dominio total." — Max 🤖</div>
+        <div class="r-pts"><div class="r-pv">+${earnedPts} ⚡</div><div class="r-pl">RappiPoints ganados</div></div>
+        <div class="r-act">
+          <button class="r-btn pri" onclick="closeQuiz();closeDet();">🏆 Ver mi progreso</button>
+          <button class="r-btn hs" onclick="window.open('${formUrl}','_blank')">📋 Abrir Formulario Oficial Google Forms</button>
+        </div>
       </div>`;
   } else {
+    setQuizFailedToday(CU.email, curQuizMod);
     document.getElementById('qBody').innerHTML=`
       <div class="r-scr">
         <div class="r-em">😅</div>
+        <div style="font-size:12px;font-weight:600;color:var(--txm);">Resultado: ${qScore} de ${qQ.length} correctas</div>
         <div class="r-sc" style="color:#EF4444;">${pct}%</div>
-        <div class="r-msg">❌ Puntuación Insuficiente</div>
-        <div class="r-sub">Debes obtener 100% para aprobar. ¡Revisa las lecciones e intenta de nuevo!</div>
-        <div class="r-act"><button class="r-btn pri" onclick="closeQuiz();">📖 Reintentar</button></div>
+        <div class="r-msg" style="color:#991B1B;">❌ No aprobado (Se requiere 100%)</div>
+        <div class="r-sub">"Recuerda que solo el 100% te permite aprobar. ¡Repasa las diapositivas y vuelve a intentarlo en 24 horas!" — Max 🤖</div>
+        <div class="slide-box" style="background:#FEF2F2;border-left-color:#EF4444;text-align:left;margin-bottom:16px;">
+          🔒 <b>Quiz Bloqueado por 24 horas:</b> Podrás repetir este examen mañana a esta misma hora.
+        </div>
+        <div class="r-act">
+          <button class="r-btn pri" onclick="closeQuiz();closeDet();">📖 Volver a repasar lecciones</button>
+        </div>
       </div>`;
   }
 }
@@ -816,17 +1516,21 @@ function addPts(n){
   CU.points += n;
   localStorage.setItem('isa_pts_'+CU.email, CU.points);
   document.getElementById('ptsVal').textContent = CU.points.toLocaleString();
+  const el = document.getElementById('ptsVal');
+  el.style.color = '#FF441F';
+  setTimeout(()=>el.style.color='#fff', 600);
 }
 
 function launchConfetti(){
   const c=document.getElementById('confetti');
   c.innerHTML='';c.classList.add('act');
-  for(let i=0;i<50;i++){
+  const cols=['#FF441F','#FF6B47','#F59E0B','#10B981','#3B82F6','#8B5CF6','#FF7A59'];
+  for(let i=0;i<70;i++){
     const p=document.createElement('div');p.className='cp';
-    p.style.cssText=`left:${Math.random()*100}%;background:#FF441F;animation-duration:${1+Math.random()}s;width:6px;height:6px;`;
+    p.style.cssText=`left:${Math.random()*100}%;background:${cols[Math.floor(Math.random()*cols.length)]};animation-duration:${1+Math.random()*2}s;animation-delay:${Math.random()*.5}s;width:${5+Math.random()*7}px;height:${5+Math.random()*7}px;border-radius:${Math.random()>.5?'50%':'2px'};`;
     c.appendChild(p);
   }
-  setTimeout(()=>{c.classList.remove('act');},2000);
+  setTimeout(()=>{c.classList.remove('act');c.innerHTML='';},3000);
 }
 
 function showMaxTip(msg){
@@ -837,6 +1541,8 @@ function showMaxTip(msg){
 }
 function toggleMax(){document.getElementById('maxChat').classList.toggle('open');}
 
+const maxR=['¡Dale con toda! 🔥','¡Learn Rappido! 🚀 El que aprende rápido, crece rápido.','Tip: en HubSpot, lo que no se registra NO existe. 🟧','¡Eres un crack! Sigue así y llegarás al Legend. ⭐'];
+let rIdx=0;
 function sendMax(){
   const inp=document.getElementById('chatIn');
   if(!inp.value.trim())return;
@@ -844,32 +1550,32 @@ function sendMax(){
   const um=document.createElement('div');
   um.className='mm me';um.textContent=inp.value;
   b.appendChild(um);inp.value='';b.scrollTop=b.scrollHeight;
-  setTimeout(()=>{showMaxTip('¡Sigue avanzando en tus lecciones para subir de nivel!');},600);
+  setTimeout(()=>{showMaxTip(maxR[rIdx%maxR.length]);rIdx++;},700);
 }
 
 function dlReport(){
-  const txt=`📊 RAPPI-REPORT — INSIDE SALES ACADEMY\n${'='.repeat(40)}\nUsuario: ${CU.name}\nCorreo: ${CU.email}\nPuntos: ${CU.points}\nFecha: ${new Date().toLocaleDateString('es-CO')}\n`;
+  const n=CU?.name||'Usuario',pts=CU?.points||0,lvl=pts>=2000?'Legend':pts>=1000?'Silver':'Rookie';
+  const txt=`📊 RAPPI-REPORT — INSIDE SALES ACADEMY\n${'='.repeat(44)}\n\nNombre: ${n}\nRol: ${CU?.role||'Comercial'}\nNivel: ${lvl}\nPaís: ${CU?.country||'N/A'} ${COUNTRIES[CU?.country]||''}\nRappiPoints: ${pts.toLocaleString()}\nFecha: ${new Date().toLocaleDateString('es-CO')}\n${CU?.leader?`Líder: ${CU.leader}\n`:''}\n${'—'.repeat(44)}\n🤖 FEEDBACK DE MAX\n${'—'.repeat(44)}\n\n✅ RESUMEN DE PROGRESO:\n• RappiPoints acumulados: ${pts.toLocaleString()} pts\n• Nivel actual: ${lvl}\n\n💪 DE MAX PARA TI:\n"¡${n}, tú eres un crack! ${pts.toLocaleString()} RappiPoints demuestran tu esfuerzo en la plataforma. ¡Vamos con toda! — Max 🚀"\n\n${'='.repeat(44)}\nInside Sales Academy — Rappi | Powered by Max AI 🤖\n`;
   const a=document.createElement('a');
   a.href=URL.createObjectURL(new Blob([txt],{type:'text/plain;charset=utf-8'}));
-  a.download=`RappiReport_${CU.name.replace(/\s+/g,'_')}.txt`;
+  a.download=`RappiReport_${n.replace(/\s+/g,'_')}_${new Date().toISOString().slice(0,10)}.txt`;
   a.click();
+  showMaxTip('¡Tu Rappi-Report listo! 📊 🔥');
 }
-
-function buildLeaderboard(){}
-function buildProfile(){}
-function buildAdmin(){}
-function buildLeader(){}
 
 window.onload=()=>{
   const saved=ls('isa_email');
   if(saved){
+    const role = saved==='admin@rappi.com'?'admin':LEADERS.has(saved)?'leader':'comercial';
+    const sampleUser = COMERCIALES_SAMPLE.find(u=>u.email===saved);
     CU={
       email:saved,
-      name:firstName(saved),
+      name:sampleUser?.name||firstName(saved),
       initials:initials(saved),
-      role:LEADERS.has(saved)?'leader':'comercial',
+      role,
       points:getUserPoints(saved),
-      country:'CO'
+      leader:sampleUser?.leader||(role==='leader'?'juan.olivares@rappi.com':null),
+      country:sampleUser?.country||'CO'
     };
     document.getElementById('loginSc').style.display='none';
     buildApp();
