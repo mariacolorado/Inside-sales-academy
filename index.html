@@ -850,15 +850,86 @@ function buildHome(){
   
   const availableMods = CU.role==='leader'?[...MODULES,...LEADER_MODULES]:MODULES;
   let doneCount = 0;
+  let pendingMods = [];
+
   availableMods.forEach(m=>{
-    if(getUserModuleProgress(CU.email, m.id)===100) doneCount++;
+    const prog = getUserModuleProgress(CU.email, m.id);
+    if(prog === 100) {
+      doneCount++;
+    } else {
+      pendingMods.push({ ...m, progress: prog });
+    }
   });
 
   const sortedUsers = [...COMERCIALES_SAMPLE].sort((a,b)=>getUserPoints(b.email)-getUserPoints(a.email));
   const userRankIdx = sortedUsers.findIndex(u=>u.email===CU.email);
   const userRankLabel = (CU.points>0 && userRankIdx>=0) ? `#${userRankIdx+1}` : 'Sin ranking';
 
-  document.getElementById('scr-home').innerHTML=`<div class="wb"><div class="wb-gt">Bienvenid@ de vuelta ${flag}</div><div class="wb-nm">¡Hola, <span>${n}</span>! 👋</div><div class="wb-msg" style="color:#fff;font-weight:600;">🔥 Nuevo módulo activo: <strong style="color:#FF7A59;">HubSpot CRM</strong>. <strong style="color:#FF441F;">¡Ponte al día y gana el podio!</strong></div><button class="wb-cta" onclick="showSc('academy',document.querySelectorAll('.ni')[1])">Ir a la Academia →</button><div class="wb-max">🤖</div></div><div class="g3" style="margin-bottom:14px;"><div class="stat-c"><div class="si">📚</div><div class="sv o">${doneCount}/${availableMods.length}</div><div class="sl">Módulos completados</div></div><div class="stat-c"><div class="si">⚡</div><div class="sv o">${CU.points.toLocaleString()}</div><div class="sl">RappiPoints</div></div><div class="stat-c"><div class="si">🏆</div><div class="sv" style="color:#F59E0B">${userRankLabel}</div><div class="sl">Ranking equipo</div></div></div><div class="streak-b"><div style="font-size:22px;">🔥</div><div style="flex:1;"><div style="font-size:12px;font-weight:600;margin-bottom:5px;">Racha — ${CU.points>0?'1 día activo':'Sin racha inicial'}</div><div class="streak-days"><div class="dd ${CU.points>0?'today':''}">L</div><div class="dd">M</div><div class="dd">M</div><div class="dd">J</div><div class="dd">V</div><div class="dd">S</div><div class="dd">D</div></div></div></div><div class="sec-tit">🎯 Acceso rápido</div><div class="g2"><div class="qc" onclick="openDet(9)"><div style="font-size:22px;">🟧</div><div><div style="font-size:12px;font-weight:600;">Nuevo Módulo</div><div style="font-size:10px;color:var(--txm);">HubSpot CRM — Comerciales</div></div></div><div class="qc" onclick="openQuiz('HubSpot CRM — Comerciales')"><div style="font-size:22px;">📝</div><div><div style="font-size:12px;font-weight:600;">Quiz HubSpot</div><div style="font-size:10px;color:var(--txm);">300 RappiPoints en juego</div></div></div><div class="qc" onclick="showSc('leaderboard',document.querySelectorAll('.ni')[3])"><div style="font-size:22px;">🏆</div><div><div style="font-size:12px;font-weight:600;">Ver ranking</div><div style="font-size:10px;color:var(--txm);">Compite con tu equipo</div></div></div><div class="qc" onclick="dlReport()"><div style="font-size:22px;">📊</div><div><div style="font-size:12px;font-weight:600;">Rappi-Report</div><div style="font-size:10px;color:var(--txm);">Descarga tu feedback</div></div></div></div>`;
+  let pendingModulesHtml = '';
+  if(pendingMods.length === 0) {
+    pendingModulesHtml = `<div class="card" style="text-align:center;padding:20px;grid-column:span 2;"><div style="font-size:24px;">🎉</div><div style="font-size:13px;font-weight:700;">¡Felicitaciones! Has completado todos los módulos.</div></div>`;
+  } else {
+    pendingModulesHtml = pendingMods.map(m => {
+      const savedLsnState = ls('isa_lsns_'+CU.email+'_'+m.id) || [];
+      const totalLsn = m.lecciones.length;
+      const doneLsn = savedLsnState.length;
+      const leftLsn = totalLsn - doneLsn;
+      
+      return `
+        <div class="qc" onclick="openDet(${typeof m.id==='number'?m.id:`'${m.id}'`})">
+          <div style="font-size:22px;">${m.emoji}</div>
+          <div style="flex:1;">
+            <div style="font-size:12px;font-weight:700;">${m.titulo}</div>
+            <div style="font-size:10px;color:var(--txm);margin-bottom:4px;">Progreso: ${m.progress}% • ${leftLsn > 0 ? leftLsn + ' lección(es) pendiente(s)' : 'Listo para Quiz'}</div>
+            <div class="m-prog"><div class="m-pfil" style="width:${m.progress}%"></div></div>
+          </div>
+        </div>
+        <div class="qc" onclick="openQuiz('${m.titulo}')" style="border-left:3px solid var(--rappi);">
+          <div style="font-size:22px;">🎯</div>
+          <div>
+            <div style="font-size:12px;font-weight:700;">Quiz: ${m.titulo}</div>
+            <div style="font-size:10px;color:var(--rappi);font-weight:600;">⚡ ${m.pts||150} RappiPoints</div>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  document.getElementById('scr-home').innerHTML=`
+    <div class="wb">
+      <div class="wb-gt">Bienvenid@ de vuelta ${flag}</div>
+      <div class="wb-nm">¡Hola, <span>${n}</span>! 👋</div>
+      <div class="wb-msg" style="color:#fff;font-weight:600;">🔥 Nuevo módulo activo: <strong style="color:#FF7A59;">HubSpot CRM</strong>. <strong style="color:#FF441F;">¡Ponte al día y gana el podio!</strong></div>
+      <button class="wb-cta" onclick="showSc('academy',document.querySelectorAll('.ni')[1])">Ir a la Academia →</button>
+      <div class="wb-max">🤖</div>
+    </div>
+    
+    <div class="g3" style="margin-bottom:14px;">
+      <div class="stat-c"><div class="si">📚</div><div class="sv o">${doneCount}/${availableMods.length}</div><div class="sl">Módulos completados</div></div>
+      <div class="stat-c"><div class="si">⚡</div><div class="sv o">${CU.points.toLocaleString()}</div><div class="sl">RappiPoints</div></div>
+      <div class="stat-c"><div class="si">🏆</div><div class="sv" style="color:#F59E0B">${userRankLabel}</div><div class="sl">Ranking equipo</div></div>
+    </div>
+    
+    <div class="streak-b">
+      <div style="font-size:22px;">🔥</div>
+      <div style="flex:1;">
+        <div style="font-size:12px;font-weight:600;margin-bottom:5px;">Racha — ${CU.points>0?'1 día activo':'Sin racha inicial'}</div>
+        <div class="streak-days"><div class="dd ${CU.points>0?'today':''}">L</div><div class="dd">M</div><div class="dd">M</div><div class="dd">J</div><div class="dd">V</div><div class="dd">S</div><div class="dd">D</div></div>
+      </div>
+    </div>
+    
+    <div class="sec-tit">📈 Avance Semanal (Módulos pendientes y Quizzes)</div>
+    <div class="g2" style="margin-bottom:14px;">
+      ${pendingModulesHtml}
+      <div class="qc" onclick="dlReport()" style="grid-column: span 2; background: var(--bg); border: 1.5px dashed var(--bdr);">
+        <div style="font-size:22px;">📊</div>
+        <div>
+          <div style="font-size:12px;font-weight:700;">Rappi-Report</div>
+          <div style="font-size:10px;color:var(--txm);">Descarga tu feedback de avance en la academia</div>
+        </div>
+      </div>
+    </div>
+  `;
 }
 
 function buildAcademy(){renderAcademy('all');}
