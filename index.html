@@ -40,7 +40,7 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--tx);heigh
 .hdr-l p{font-size:11px;color:var(--txm);}
 .hdr-r{display:flex;align-items:center;gap:10px;}
 .pts-ctr{background:var(--sb);border-radius:18px;padding:5px 12px;display:flex;align-items:center;gap:7px;cursor:pointer;}
-.pts-v{color:#fff;font-weight:700;font-size:13px;}
+.pts-v{color:#fff;font-weight:700;font-size:13px;transition:color 0.3s;}
 .pts-l{color:#64748B;font-size:9px;font-weight:500;}
 .lvl-b{display:flex;align-items:center;gap:5px;background:var(--rappi-p);border:1px solid rgba(255,68,31,.2);border-radius:18px;padding:4px 10px;}
 .lvl-n{color:var(--rappi);font-size:11px;font-weight:700;}
@@ -125,7 +125,7 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--tx);heigh
 .m-tit{font-size:12px;font-weight:700;margin-bottom:3px;line-height:1.3;}
 .m-met{font-size:10px;color:var(--txm);margin-bottom:7px;}
 .m-prog{height:3px;background:var(--bdr);border-radius:2px;}
-.m-pfil{height:100%;background:var(--rappi);border-radius:2px;}
+.m-pfil{height:100%;background:var(--rappi);border-radius:2px;transition:width .3s ease;}
 .m-ft{display:flex;justify-content:space-between;align-items:center;margin-top:5px;}
 .m-pts{font-size:10px;font-weight:600;color:var(--rappi);}
 .m-dur{font-size:10px;color:var(--txm);}
@@ -140,7 +140,6 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--tx);heigh
 .li-met{font-size:10px;color:var(--txm);display:flex;gap:7px;}
 .li-cat{font-size:9px;font-weight:700;padding:2px 7px;border-radius:10px;background:var(--rappi-p);color:var(--rappi);}
 
-/* Tarjeta de Plantillas de WhatsApp */
 .tpl-card{background:#fff;border:1px solid var(--bdr);border-radius:11px;padding:14px;margin-bottom:10px;transition:all .2s;}
 .tpl-card:hover{border-color:var(--hubspot);box-shadow:0 4px 16px rgba(255,122,89,.12);}
 .tpl-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
@@ -149,8 +148,8 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--tx);heigh
 .tpl-body{background:var(--bg);border-left:3px solid var(--hubspot);padding:10px;border-radius:0 8px 8px 0;font-size:11px;color:var(--tx);white-space:pre-wrap;line-height:1.5;margin-bottom:10px;}
 .tpl-copy-btn{background:var(--hubspot);color:#fff;border:none;border-radius:7px;padding:6px 14px;font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;cursor:pointer;transition:all .2s;}
 .tpl-copy-btn:hover{background:var(--hubspot-d);}
+.tpl-copy-btn.copied{background:var(--ok);color:#fff;}
 
-/* Tablas de Comisiones */
 .com-card{background:#fff;border:1px solid var(--bdr);border-radius:11px;padding:16px;margin-bottom:12px;}
 .com-title{font-size:13px;font-weight:800;color:var(--sb);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
 .com-table{width:100%;border-collapse:collapse;font-size:11px;margin-bottom:8px;}
@@ -184,9 +183,8 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--tx);heigh
 .xb{margin-top:10px;}
 .xl{color:rgba(255,255,255,.4);font-size:10px;margin-bottom:3px;display:flex;justify-content:space-between;}
 .xbar{height:5px;background:rgba(255,255,255,.1);border-radius:3px;}
-.xfil{height:100%;background:var(--rappi);border-radius:3px;}
+.xfil{height:100%;background:var(--rappi);border-radius:3px;transition:width 0.3s ease;}
 
-/* Estilo Mejorado de Medallas/Logros */
 .ach{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:14px;}
 .ac{background:#fff;border:1.5px solid var(--bdr);border-radius:11px;padding:11px;text-align:center;transition:all .3s ease;}
 .ac.locked-ach{opacity:.55;background:#f8fafc;filter:contrast(0.9);}
@@ -207,7 +205,7 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--tx);heigh
 .dpc{background:#fff;border:1px solid var(--bdr);border-radius:11px;padding:14px;margin-bottom:14px;}
 .dpl{display:flex;justify-content:space-between;font-size:11px;font-weight:600;margin-bottom:7px;}
 .dpb{height:7px;background:var(--bg);border-radius:4px;}
-.dpf{height:100%;background:var(--rappi);border-radius:4px;}
+.dpf{height:100%;background:var(--rappi);border-radius:4px;transition:width 0.3s ease;}
 .lsn-l{display:flex;flex-direction:column;gap:7px;margin-bottom:14px;}
 .lsn{background:#fff;border:1px solid var(--bdr);border-radius:9px;padding:11px 13px;display:flex;align-items:center;gap:9px;cursor:pointer;transition:all .2s;}
 .lsn:hover:not(.locked){border-color:var(--rappi);background:var(--rappi-p);}
@@ -221,7 +219,6 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--tx);heigh
 .qz-btn:hover{background:var(--rappi-d);}
 .qz-btn:disabled{background:var(--bdr);color:var(--txm);cursor:not-allowed;}
 
-/* Visor de Lecciones Slide-by-Slide */
 .lsnov{position:absolute;inset:0;background:var(--sb);z-index:70;display:none;flex-direction:column;overflow:hidden;}
 .lsnov.open{display:flex;animation:slideUp .25s ease;}
 .lsnh{background:rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.1);padding:14px 20px;display:flex;align-items:center;gap:12px;}
@@ -316,29 +313,7 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--tx);heigh
 .u-pf.md{background:var(--warn);}
 .u-pf.lo{background:var(--rappi);}
 .u-pts{font-size:11px;font-weight:700;color:var(--rappi);min-width:55px;text-align:right;}
-.alert-row{background:#FEF2F2;border:1px solid #FECACA;border-radius:9px;padding:9px 12px;display:flex;align-items:center;gap:10px;margin-bottom:5px;}
-.alert-icon{font-size:16px;}
-.alert-info{flex:1;}
-.alert-nm{font-size:12px;font-weight:600;color:#991B1B;}
-.alert-sub{font-size:10px;color:#DC2626;}
-.alert-action{font-size:10px;font-weight:600;color:var(--rappi);cursor:pointer;border:1px solid var(--rappi);border-radius:6px;padding:3px 8px;background:none;}
-.login-log{background:#fff;border:1px solid var(--bdr);border-radius:9px;padding:9px 12px;display:flex;align-items:center;gap:10px;margin-bottom:5px;}
-.ll-av{width:28px;height:28px;border-radius:50%;background:var(--sb);display:flex;align-items:center;justify-content:center;color:#fff;font-size:9px;font-weight:700;flex-shrink:0;}
-.ll-nm{font-size:12px;font-weight:600;flex:1;}
-.ll-status{display:flex;flex-direction:column;align-items:flex-end;gap:2px;}
-.ll-active{font-size:10px;color:var(--ok);font-weight:600;display:flex;align-items:center;gap:4px;}
-.ll-dot{width:6px;height:6px;background:var(--ok);border-radius:50%;}
-.ll-time{font-size:9px;color:var(--txm);}
-.recog-card{background:linear-gradient(135deg,var(--sb),#1E293B);border-radius:13px;padding:16px;margin-bottom:12px;}
-.recog-title{color:#fff;font-size:14px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:7px;}
-.recog-item{display:flex;align-items:center;gap:10px;margin-bottom:8px;padding:10px;background:rgba(255,255,255,.05);border-radius:9px;}
-.recog-pos{font-size:18px;width:30px;text-align:center;}
-.recog-av{width:32px;height:32px;border-radius:50%;background:var(--rappi);display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:700;}
-.recog-info{flex:1;}
-.recog-nm{color:#fff;font-size:12px;font-weight:700;}
-.recog-sub{color:rgba(255,255,255,.4);font-size:10px;}
-.recog-pts{color:var(--gold);font-size:12px;font-weight:700;}
-.send-recog{background:var(--rappi);border:none;border-radius:8px;padding:7px 14px;color:#fff;font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;cursor:pointer;margin-top:8px;}
+
 .ldr-kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px;}
 .lkpi{background:#fff;border:1px solid var(--bdr);border-radius:11px;padding:12px;text-align:center;}
 .lkpi-v{font-size:18px;font-weight:800;color:var(--rappi);}
@@ -485,9 +460,7 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--tx);heigh
         <span class="slide-tag" id="slideTagLabel">HubSpot Training</span>
       </div>
       <div class="slide-title" id="slideTitle">Cargando diapositiva...</div>
-      <div class="slide-content" id="slideContent">
-        <!-- Contenido dinámico -->
-      </div>
+      <div class="slide-content" id="slideContent"></div>
     </div>
   </div>
   <div class="lsn-ft">
@@ -515,11 +488,8 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--tx);heigh
 
 <script>
 const COUNTRIES={AR:'🇦🇷',MX:'🇲🇽',CO:'🇨🇴',CL:'🇨🇱',PE:'🇵🇪',EC:'🇪🇨'};
-
-// Lista completa de Líderes/Supervisores extraída oficialmente del Excel
 const LEADERS=new Set(['maria.casallas@rappi.com','juan.olivares@rappi.com','estefany.ariza@rappi.com','jimena.velasquez@rappi.com','nicolas.loaiza@rappi.com','diego.barrera@rappi.com','juan.guaje@rappi.com','william.turga@rappi.com','oscar.barajas@rappi.com','marcela.contreras@rappi.com','gisell.rojas@rappi.com','arnold.velasquez@rappi.com','maria.colorado@rappi.com','mauricio.mora@rappi.com']);
 
-// Universo Completo de 158 Usuarios Activos del Excel Oficial
 const COMERCIALES_SAMPLE=[
   {"email": "karen.oviedo@rappi.com", "name": "Karen Oviedo", "country": "AR", "leader": "maria.casallas@rappi.com", "team": "Outbound", "type": "IS Hunter"},
   {"email": "german.godoy@rappi.com", "name": "German Godoy", "country": "AR", "leader": "maria.casallas@rappi.com", "team": "Inbound", "type": "IS Hunter"},
@@ -592,7 +562,6 @@ const COMISIONES_DATA = [
   {"pais": "CL", "full_service": "23% - 25%", "no_exclusivo": "25% - 27%", "comision_0": "1 mes", "marketplace": "19%", "markdown": "20%", "comentarios": "19% Impuesto de Ley"}
 ];
 
-// Los 29 Recursos Válidos con Playbook Filtrados de la Columna D
 const LIBRARY_DATA = [
   {"t": "Onboarding Inside Sales", "cat": "Preparación", "ico": "📋", "type": "PPT", "desc": "Inducción primer día. Onboarding temas técnicos para comerciales e inducción general.", "resource": "Onboarding Inside Sales", "url": null, "slides": [{"t": "1. Onboarding Inside Sales — Playbook Completo", "tag": "Preparación · Inducción", "c": "<p><b>Recurso / Archivo:</b> Onboarding Inside Sales</p><div class='slide-box'>📋 <b>Descripción:</b> Inducción primer día<br><b>Enfoque:</b> Playbook Completo (Todas las diapositivas)</div>"}, {"t": "2. Procedimiento Operativo y Buenas Prácticas", "tag": "Preparación · Inducción", "c": "<p>Pautas comerciales para <b>Onboarding Inside Sales</b>:</p><ul><li>1. Aplica los estándares estandarizados para la categoría <b>Preparación</b>.</li><li>2. Registra las actividades y tareas en HubSpot CRM inmediatamente.</li></ul>"}, {"t": "3. Cierre y Trazabilidad Comercial", "tag": "Preparación · Inducción", "c": "<p>Sincroniza tus compromisos con tu Supervisor de equipo para garantizar la conversión exitosa del aliado.</p>"}]},
   {"t": "Onboarding temas tecnicos hunters new", "cat": "Preparación", "ico": "📋", "type": "PPT", "desc": "Inducción primer día", "resource": "Onboarding temas tecnicos hunters new", "url": null, "slides": [{"t": "1. Onboarding temas tecnicos hunters new — (Diapositivas 17 a 48)", "tag": "Recurso Oficial · Preparación", "c": "<p><b>Recurso / Archivo:</b> Onboarding temas tecnicos hunters new</p><div class='slide-box'>📋 <b>Descripción:</b> Inducción primer día<br><b>Enfoque:</b> (Diapositivas 17 a 48)</div>"}, {"t": "2. Procedimiento Operativo y Buenas Prácticas", "tag": "Recurso Oficial · Preparación", "c": "<p>Pautas comerciales para <b>Onboarding temas tecnicos hunters new</b>:</p><ul><li>1. Aplica los estándares estandarizados para la categoría <b>Preparación</b>.</li><li>2. Registra las actividades y tareas en HubSpot CRM inmediatamente.</li></ul>"}, {"t": "3. Cierre y Trazabilidad Comercial", "tag": "Recurso Oficial · Preparación", "c": "<p>Sincroniza tus compromisos con tu Supervisor de equipo para garantizar la conversión exitosa del aliado.</p>"}]},
@@ -826,15 +795,25 @@ function saveUserModuleProgress(email, modId, pct){
 
 function isQuizFailedToday(email, quizTitle){
   const key = 'isa_qfail_'+email+'_'+quizTitle;
-  const failDate = localStorage.getItem(key);
-  if(!failDate) return false;
-  const today = new Date().toISOString().slice(0,10);
-  return failDate === today;
+  const failTimestamp = localStorage.getItem(key);
+  if(!failTimestamp) return false;
+  
+  const elapsedHours = (Date.now() - parseInt(failTimestamp, 10)) / (1000 * 60 * 60);
+  return elapsedHours < 24;
 }
 
 function setQuizFailedToday(email, quizTitle){
-  const today = new Date().toISOString().slice(0,10);
-  localStorage.setItem('isa_qfail_'+email+'_'+quizTitle, today);
+  const key = 'isa_qfail_'+email+'_'+quizTitle;
+  localStorage.setItem(key, Date.now().toString());
+}
+
+function getHoursRemainingForQuiz(email, quizTitle){
+  const key = 'isa_qfail_'+email+'_'+quizTitle;
+  const failTimestamp = localStorage.getItem(key);
+  if(!failTimestamp) return 0;
+  
+  const elapsedHours = (Date.now() - parseInt(failTimestamp, 10)) / (1000 * 60 * 60);
+  return Math.max(0, Math.ceil(24 - elapsedHours));
 }
 
 function buildApp(){
@@ -935,15 +914,16 @@ function openDet(id){
 
   const allDone = m.lecciones.every(l=>l.done);
   const quizStartBtn = document.getElementById('qzStartBtn');
-  const isFailedToday = isQuizFailedToday(CU.email, m.titulo);
+  const isFailed = isQuizFailedToday(CU.email, m.titulo);
 
   if(!allDone){
     quizStartBtn.disabled = true;
     document.getElementById('qzReq').textContent = 'Completa todas las lecciones para desbloquear el quiz';
     document.getElementById('qzReq').style.display = 'block';
-  } else if(isFailedToday){
+  } else if(isFailed){
     quizStartBtn.disabled = true;
-    document.getElementById('qzReq').textContent = '🔒 Quiz Bloqueado hasta mañana (Solo se permite 1 intento fallido cada 24 hrs). ¡Repasa las lecciones!';
+    const hoursLeft = getHoursRemainingForQuiz(CU.email, m.titulo);
+    document.getElementById('qzReq').textContent = `🔒 Quiz Bloqueado por 24 horas (Intento fallido reciente). Podrás intentar en ~${hoursLeft} hr(s). ¡Repasa las lecciones!`;
     document.getElementById('qzReq').style.display = 'block';
   } else {
     quizStartBtn.disabled = false;
@@ -1062,7 +1042,6 @@ function finishLsn(){
 
 function startQuizFromDet(){if(curMod)openQuiz(curMod.titulo);}
 
-// NAVEGACIÓN Y RENDERIZADO DE BIBLIOTECA, PLANTILLAS Y COMISIONES
 function buildLibrary(){renderLib('all','');}
 
 function renderLib(cat, search){
@@ -1118,7 +1097,6 @@ function openLibResource(idx){
   if(item.url){
     window.open(item.url, '_blank');
   } else {
-    // Abrir Visor Slide-by-Slide interactivo con el contenido único del material
     const slidesLib = item.slides || [
       {t: `1. ${item.t} — Playbook Completo`, tag: `Biblioteca · ${item.cat}`, c: `<p>${item.desc}</p><div class="slide-box">📋 <b>Recurso Oficial:</b> ${item.resource}<br>Categoría: <b>${item.cat}</b></div>`},
       {t: `2. Guía de Aplicación Comercial`, tag: `Biblioteca · ${item.cat}`, c: `<p>Este material contiene las pautas oficiales estandarizadas por Inside Sales Rappi para aplicarlas durante la gestión con aliados.</p><ul><li>1. Revisa los puntos clave antes de iniciar llamadas o reuniones.</li><li>2. Aplica las políticas comerciales y normativas correspondientes a la categoría <b>${item.cat}</b>.</li></ul>`},
@@ -1168,7 +1146,7 @@ function renderPlantillasView(search){
             <span class="tpl-name">${p.nombre}</span>
           </div>
           <div class="tpl-body" id="tpl_text_${i}">${p.copy}</div>
-          <button class="tpl-copy-btn" onclick="copyTemplateText('${p.nombre}', ${i})">📋 Copiar Plantilla de WhatsApp</button>
+          <button class="tpl-copy-btn" id="tpl_btn_${i}" onclick="copyTemplateText('${p.nombre}', ${i})">📋 Copiar Plantilla de WhatsApp</button>
         </div>
       `).join('')}
     </div>
@@ -1177,10 +1155,19 @@ function renderPlantillasView(search){
 
 function copyTemplateText(name, idx){
   const el = document.getElementById('tpl_text_' + idx);
+  const btn = document.getElementById('tpl_btn_' + idx);
   if(el){
     navigator.clipboard.writeText(el.innerText).then(() => {
       showMaxTip(`📲 ¡Plantilla "${name}" copiada al portapapeles! Lista para enviar.`);
       launchConfetti();
+      if(btn){
+        btn.innerText = '✔️ ¡Copiado!';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.innerText = '📋 Copiar Plantilla de WhatsApp';
+          btn.classList.remove('copied');
+        }, 2500);
+      }
     });
   }
 }
@@ -1222,7 +1209,6 @@ function renderComisionesView(){
   `;
 }
 
-// RANKING DUAL: COMERCIALES VS SUPERVISORES
 function setRankingTab(tab){
   currentRankingTab = tab;
   buildLeaderboard();
@@ -1249,7 +1235,6 @@ function buildLeaderboard(){
       <div style="font-size:12px;font-weight:600;color:var(--txm);">Semana actual (Puntuación por diapositivas + Quizzes 100%)</div>
       <div style="font-size:18px;font-weight:800;margin-top:3px;margin-bottom:12px;">🏆 Tablas de Clasificación Oficiales</div>
       
-      <!-- Pestañas Duales de Competencia -->
       <div class="adm-tabs" style="justify-content:center;border-bottom:none;margin-bottom:16px;">
         <button class="adm-tab${currentRankingTab==='hunters'?' act':''}" onclick="setRankingTab('hunters')">🎯 Ranking Comerciales (${huntersList.length})</button>
         <button class="adm-tab${currentRankingTab==='leaders'?' act':''}" onclick="setRankingTab('leaders')">👑 Ranking Supervisores (${leadersList.length})</button>
@@ -1367,7 +1352,7 @@ function buildProfile(){
 
 function buildAdmin(){renderAdminTab('overview');}
 function renderAdminTab(tab){
-  document.getElementById('scr-admin').innerHTML=`<div class="adm-tabs"><button class="adm-tab${tab==='overview'?' act':''}" onclick="renderAdminTab('overview')">📊 Overview</button><button class="adm-tab${tab==='users'?' act':''}" onclick="renderAdminTab('users')">👥 Comerciales (158)</button><button class="adm-tab${tab==='access'?' act':''}" onclick="renderAdminTab('access')">🔍 Asistencia</button><button class="adm-tab${tab==='recognition'?' act':''}" onclick="renderAdminTab('recognition')">🏅 Reconocimiento</button></div>${tab==='overview'?renderAdmOverview():tab==='users'?renderAdmUsers():tab==='access'?renderAdmAccess():renderAdmRecognition()}`;
+  document.getElementById('scr-admin').innerHTML=`<div class="adm-tabs"><button class="adm-tab${tab==='overview'?' act':''}" onclick="renderAdminTab('overview')">📊 Overview</button><button class="adm-tab${tab==='users'?' act':''}" onclick="renderAdminTab('users')">👥 Comerciales (158)</button><button class="adm-tab${tab==='recognition'?' act':''}" onclick="renderAdminTab('recognition')">🏅 Reconocimiento</button></div>${tab==='overview'?renderAdmOverview():tab==='users'?renderAdmUsers():renderAdmRecognition()}`;
 }
 function renderAdmOverview(){
   return`<div class="kpi-g"><div class="kpi"><div class="kpi-ic">👥</div><div class="kpi-v">158</div><div class="kpi-l">Total equipo activo</div></div><div class="kpi"><div class="kpi-ic">✅</div><div class="kpi-v">158</div><div class="kpi-l">Registrados en Okta</div></div><div class="kpi"><div class="kpi-ic">📈</div><div class="kpi-v">0%</div><div class="kpi-l">Progreso promedio inicial</div></div><div class="kpi"><div class="kpi-ic">⚠️</div><div class="kpi-v">0</div><div class="kpi-l">Alertas de riesgo</div></div></div><div class="sec-tit">🌎 Cobertura por país</div>${COUNTRY_DATA.map(c=>`<div class="country-row"><div class="c-flag">${c.flag}</div><div class="c-info"><div class="c-name">${c.name}</div><div class="c-sub">${c.active}/${c.total} activos</div></div><div class="c-bar-wrap"><div class="c-bar"><div class="c-bar-f" style="width:0%"></div></div></div><div class="c-pct">0%</div></div>`).join('')}`;
@@ -1380,10 +1365,8 @@ function renderAdmUsers(){
   }));
   return`<div style="font-size:12px;color:var(--txm);margin-bottom:10px;">158 comerciales activos extraídos del Excel oficial ↓</div>${userList.slice(0,10).map((u,i)=>`<div class="user-row"><div class="r-num">#${i+1}</div><div class="u-av">${u.name.substring(0,2).toUpperCase()}</div><div class="u-nm">${u.name}<div style="font-size:10px;color:var(--txm);">${COUNTRIES[u.country]||''} ${u.country} · Líder: ${firstName(u.leader)}</div></div><div class="u-prog"><div class="u-pb"><div class="u-pf hi" style="width:${u.prog}%"></div></div><div style="font-size:9px;color:var(--txm);margin-top:2px;">${u.prog}% completado</div></div><div class="u-pts">⚡ ${u.pts.toLocaleString()}</div></div>`).join('')}<div style="text-align:center;font-size:11px;color:var(--txm);padding:10px;">+ 148 usuarios más registrados en la base de datos</div>`;
 }
-function renderAdmAccess(){return`<div style="font-size:12px;font-weight:700;margin-bottom:10px;">👥 Registros de inicio de sesión activos</div>${LOGIN_LOG.map(u=>`<div class="login-log"><div class="ll-av">${u.ini}</div><div class="ll-nm">${u.nm}<div style="font-size:10px;color:var(--txm);">${u.mods}</div></div><div class="ll-status"><div class="ll-time">${u.time}</div></div></div>`).join('')}`;}
 function renderAdmRecognition(){return`<div class="card"><div class="sec-tit">📣 Comunicado oficial a la fuerza de ventas</div><textarea style="width:100%;height:80px;border:1px solid var(--bdr);border-radius:8px;padding:10px;font-family:'Poppins',sans-serif;font-size:12px;resize:none;outline:none;color:var(--tx);" placeholder="Escribe un mensaje motivacional para todo el equipo IS..."></textarea><button style="margin-top:8px;background:var(--rappi);border:none;border-radius:8px;padding:8px 16px;color:#fff;font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;cursor:pointer;" onclick="alert('📢 Mensaje enviado a los 158 comerciales!')">📢 Enviar a todo el equipo</button></div>`;}
 
-// VISTA COMPLETA DE "MI EQUIPO" PARA SUPERVISORES CON TODOS SUS COMERCIALES
 function buildLeader(){
   const myTeam = COMERCIALES_SAMPLE.filter(u => u.leader.toLowerCase() === CU.email.toLowerCase());
   const effectiveTeam = myTeam.length > 0 ? myTeam : COMERCIALES_SAMPLE.filter(u => u.leader.toLowerCase() === 'oscar.barajas@rappi.com');
@@ -1517,9 +1500,9 @@ function showResults(){
         <div style="font-size:12px;font-weight:600;color:var(--txm);">Resultado: ${qScore} de ${qQ.length} correctas</div>
         <div class="r-sc" style="color:#EF4444;">${pct}%</div>
         <div class="r-msg" style="color:#991B1B;">❌ No aprobado (Se requiere 100%)</div>
-        <div class="r-sub">"Recuerda que solo el 100% te permite aprobar. ¡Repasa las diapositivas y vuelve a intentarlo mañana!" — Max 🤖</div>
+        <div class="r-sub">"Recuerda que solo el 100% te permite aprobar. ¡Repasa las diapositivas y vuelve a intentarlo en 24 horas!" — Max 🤖</div>
         <div class="slide-box" style="background:#FEF2F2;border-left-color:#EF4444;text-align:left;margin-bottom:16px;">
-          🔒 <b>Quiz Bloqueado por 24 horas:</b> Podrás repetir este examen a partir de mañana.
+          🔒 <b>Quiz Bloqueado por 24 horas:</b> Podrás repetir este examen mañana a esta misma hora.
         </div>
         <div class="r-act">
           <button class="r-btn pri" onclick="closeQuiz();closeDet();">📖 Volver a repasar lecciones</button>
